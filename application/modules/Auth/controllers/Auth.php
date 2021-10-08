@@ -95,10 +95,10 @@ class Auth extends CI_Controller {
         $this->curl->setHeader('Content-Type', 'application/json');
         $this->curl->get('https://dev.alfabet.io/wordpress/wp-json/wp/v2/users/?search=' . $data['uname']);
         $exec = $this->curl->response;
-        foreach ($exec[0]->avatar_urls as $key => $value) {
-            $stdArray[$key] = $value;
-        }
         if (!$exec->code and $exec[0]->id) {//jika berhasil $exec[0]->id
+            foreach ($exec[0]->avatar_urls as $key => $value) {
+                $stdArray[$key] = $value;
+            }
             $sesion = [
                 'id_user' => $exec[0]->id,
                 'uname' => $exec[0]->name,
@@ -106,7 +106,11 @@ class Auth extends CI_Controller {
             ];
             $this->session->set_userdata($sesion);
             $result = redirect(base_url('Streaming/index/'), 'refresh');
-        } else {//jika salah
+        } elseif (empty ($exec)) {
+            $this->Attempt(2);
+            $result = redirect(base_url('Auth/index/'), $this->session->set_flashdata('err_msg', 'username not exists, please use your email'));
+        }
+        else {//jika salah
             //stdClass Object
             //(
             //    [code] => incorrect_password
