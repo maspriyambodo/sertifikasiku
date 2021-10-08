@@ -95,14 +95,14 @@ class Auth extends CI_Controller {
         $this->curl->setHeader('Content-Type', 'application/json');
         $this->curl->get('https://dev.alfabet.io/wordpress/wp-json/wp/v2/users/?search=' . $data['uname']);
         $exec = $this->curl->response;
-        foreach ($exec[0]->avatar_urls as $key => $value) {
-            $stdArray[$key] = $value;
-        }
+//        foreach ($exec[0]->avatar_urls as $key => $value) {
+//            $stdArray[$key] = $value;
+//        }
         if (!$exec->code and $exec[0]->id) {//jika berhasil $exec[0]->id
             $sesion = [
                 'id_user' => $exec[0]->id,
                 'uname' => $exec[0]->name,
-                'ava' => $stdArray[96]
+                'ava' => 'https://secure.gravatar.com/avatar/b4ebfb4bb8f525bfe576db44ac099d94?s=96&d=mm&r=g'
             ];
             $this->session->set_userdata($sesion);
             $result = redirect(base_url('Streaming/index/'), 'refresh');
