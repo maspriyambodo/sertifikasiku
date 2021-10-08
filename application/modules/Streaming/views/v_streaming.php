@@ -3,6 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <title>Live Streaming</title>
+        <link href="<?php echo base_url('assets/images/systems/' . $this->bodo->Sys('favico')); ?>" rel="shortcut icon"/>
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Poppins:wght@100;200&display=swap" rel="stylesheet"> 
@@ -19,7 +20,7 @@
         <nav class="navbar navbar-expand-lg navbar-light sticky-top bg-custom">
             <div class="container-fluid">
                 <a class="navbar-brand" href="#">
-                    <img src="https://sertifikasiku.mycapturer.com/assets/images/systems/logo.png" alt="Festival Sertifikasiku"/>
+                    <img src="https://sertifikasiku.mycapturer.com/assets/images/systems/logo.png" alt="Festival Sertifikasiku" style="width: 167px;"/>
                 </a>
                 <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
