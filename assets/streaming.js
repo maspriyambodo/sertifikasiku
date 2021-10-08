@@ -61,7 +61,7 @@ window.onload = function () {
         event.stopPropagation();
     });
     $("#bgndVideo").YTPlayer({
-        videoURL: 'Op7tywmRV3I',
+        videoURL: 'c_fRtpQf4Oc',
         containment: 'self',
         autoPlay: false,
         mute: false,
@@ -104,7 +104,7 @@ function Send_chat(id) {
             };
             $.ajax({
                 type: "POST",
-                url: "Streaming/Chat_send/",
+                url: "https://sertifikasiku.mycapturer.com/Streaming/Chat_send/",
                 data: dataString,
                 dataType: "json",
                 cache: false,
@@ -140,7 +140,7 @@ function Send_chat(id) {
             };
             $.ajax({
                 type: "POST",
-                url: "Streaming/Chat_send/",
+                url: "https://sertifikasiku.mycapturer.com/Streaming/Chat_send/",
                 data: dataString,
                 dataType: "json",
                 cache: false,
@@ -148,7 +148,9 @@ function Send_chat(id) {
                     if (data.success === true) {
                         var socket = io.connect('https://live-chat.mycapturer.com');
                         socket.emit('new_message', {
-                            msgtxt: data.msg
+                            msgtxt: data.msg,
+                            uname: data.uname,
+                            avatar: data.ava
                         });
                         $('textarea[name="msgtxt2"]').val('');
                     } else if (data.success === false) {
