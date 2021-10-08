@@ -1,0 +1,25 @@
+{
+    "name": "maspriyambodo/cms",
+    "type": "project",
+    "description": "cms of maspriyambodo",
+    "homepage": "https://maspriyambodo.co.id",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "maspriyambodo",
+            "email": "info@mycapturer.com"
+        }
+    ],
+    "require": {
+        "studio-42/elfinder": "^2.1",
+        "pusher/pusher-php-server": "^7.0",
+        "mpdf/mpdf": "^8.0",
+        "php-curl-class/php-curl-class": "9999999-dev",
+        "phpoffice/phpspreadsheet": "1.18.0"
+    },
+    "support": {
+        "source": "https://github.com/maspriyambodo/master_cms",
+        "facebook": "https://facebook.com/nohackeron/",
+        "instagram": "https://instagram.com/priyambodoss/"
+    }
+}
