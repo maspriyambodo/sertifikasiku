@@ -54,7 +54,7 @@ window.onload = function () {
                     + '<img src="' + window.location.protocol + '//' + window.location.host + '/assets/images/users/' + data.avatar + '" class="rounded-circle" alt="' + data.username + '">'
                     + '</div>'
                     + '<div class="mx-2">'
-                    + '<a href="javascript:void(0);" class="text-danger font-weight-bold font-size-h6" style="text-decoration:none;">' + data.username + ' </a>'
+                    + '<a href="javascript:void(0);" class="font-size-h6" style="text-decoration:none;">' + data.username + ' </a>'
                     + '</div>'
                     + '</div>'
                     + '<div class="mt-2 p-5 bg-light text-dark-50 font-weight-bold font-size-lg text-left wrap-chat"> ' + data.msgtxt + ' </div>'
