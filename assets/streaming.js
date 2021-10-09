@@ -33,7 +33,7 @@ window.onload = function () {
                     + '</div>'
                     );
             $('#msg_dir2').append(
-                    +'<div class="d-flex flex-column mb-5 align-items-start">'
+                    '<div class="d-flex flex-column mb-5 align-items-start">'
                     + '<div class="d-flex align-items-center" title="Administrator">'
                     + '<div class="symbol symbol-40 mr-3">'
                     + '<img class="rounded-circle" alt="' + data.username + '" src="' + window.location.protocol + '//' + window.location.host + '/assets/images/users/' + data.avatar + '">'
@@ -54,7 +54,7 @@ window.onload = function () {
                     + '<img src="' + window.location.protocol + '//' + window.location.host + '/assets/images/users/' + data.avatar + '" class="rounded-circle" alt="' + data.username + '">'
                     + '</div>'
                     + '<div class="mx-2 bg-dark px-2 rounded">'
-                    + '<a href="javascript:void(0);" class="text-danger font-weight-bold font-size-h6" style="text-decoration:none;">' + data.username + ' </a>'
+                    + '<a href="javascript:void(0);" class="text-white font-size-h6" style="text-decoration:none;">' + data.username + ' </a>'
                     + '<span class="font-size-sm"><i class="fas fa-crown text-warning"></i></span>'
                     + '</div>'
                     + '</div>'
@@ -62,13 +62,13 @@ window.onload = function () {
                     + '</div>'
                     );
             $('#msg_dir2').append(
-                    +'<div class="d-flex flex-column mb-5 align-items-start">'
+                    '<div class="d-flex flex-column mb-5 align-items-start">'
                     + '<div class="d-flex align-items-center" title="Platinum Member">'
                     + '<div class="symbol symbol-40 mr-3">'
                     + '<img class="rounded-circle" alt="' + data.username + '" src="' + window.location.protocol + '//' + window.location.host + '/assets/images/users/' + data.avatar + '">'
                     + '</div>'
                     + '<div class="mx-2 bg-dark px-2 rounded">'
-                    + '<a href="javascript:void(0);" class="text-danger font-weight-bold font-size-h6" style="text-decoration:none;">' + data.username + ' </a>'
+                    + '<a href="javascript:void(0);" class="font-size-h6" style="text-decoration:none;">' + data.username + ' </a>'
                     + '<span class="text-muted font-size-sm"><i class="fas fa-crown text-warning"></i></span>'
                     + '</div>'
                     + '</div>'
@@ -90,7 +90,7 @@ window.onload = function () {
                     + '</div>'
                     );
             $('#msg_dir2').append(
-                    +'<div class="d-flex flex-column mb-5 align-items-start">'
+                    '<div class="d-flex flex-column mb-5 align-items-start">'
                     + '<div class="d-flex align-items-center" title="Silver Member">'
                     + '<div class="symbol symbol-40 mr-3">'
                     + '<img class="rounded-circle" alt="' + data.username + '" src="' + window.location.protocol + '//' + window.location.host + '/assets/images/users/' + data.avatar + '">'
