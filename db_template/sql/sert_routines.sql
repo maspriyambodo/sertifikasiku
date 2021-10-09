@@ -337,7 +337,7 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `sys_menu_group_select` ()  BEGIN
 END$$
 
 DROP PROCEDURE IF EXISTS `sys_menu_insert`$$
-CREATE DEFINER=`admin`@`%` PROCEDURE `sys_menu_insert` (IN `parent` INT, IN `nama_menu` VARCHAR(50), IN `link_menu` VARCHAR(255), IN `no_order` INT, IN `gr_menu` INT, IN `ico_menu` VARCHAR(50), IN `desc_txt` VARCHAR(255), IN `user_login` INT)  BEGIN
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sys_menu_insert` (IN `parent` INT, IN `nama_menu` VARCHAR(50), IN `link_menu` VARCHAR(255), IN `no_order` INT, IN `gr_menu` INT, IN `ico_menu` VARCHAR(50), IN `desc_txt` VARCHAR(255), IN `user_login` INT)  BEGIN
 	DECLARE
 		new_id_menu INT DEFAULT 0;
 	DECLARE
