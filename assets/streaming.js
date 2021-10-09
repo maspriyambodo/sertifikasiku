@@ -18,8 +18,7 @@ window.onload = function () {
     var socket = io.connect('https://live-chat.mycapturer.com');
     socket.on('new_message', function (data) {
         if (data.name_role === 'Administrator' || data.name_role === 'Super User') {
-            $('#msg_dir').append(
-                    '<div class="d-flex flex-column mb-5 align-items-start">'
+            var txt1 = '<div class="d-flex flex-column mb-5 align-items-start">'
                     + '<div class="d-flex align-items-center" title="Administrator">'
                     + '<div class="symbol symbol-40 mr-3">'
                     + '<img src="' + window.location.protocol + '//' + window.location.host + '/assets/images/users/' + data.avatar + '" class="rounded-circle" alt="' + data.username + '">'
@@ -30,25 +29,11 @@ window.onload = function () {
                     + '</div>'
                     + '</div>'
                     + '<div class="mt-2 p-5 bg-danger text-white font-size-lg text-left wrap-chat"> ' + data.msgtxt + ' </div>'
-                    + '</div>'
-                    );
-            $('#msg_dir2').append(
-                    '<div class="d-flex flex-column mb-5 align-items-start">'
-                    + '<div class="d-flex align-items-center" title="Administrator">'
-                    + '<div class="symbol symbol-40 mr-3">'
-                    + '<img class="rounded-circle" alt="' + data.username + '" src="' + window.location.protocol + '//' + window.location.host + '/assets/images/users/' + data.avatar + '">'
-                    + '</div>'
-                    + '<div class="mx-2">'
-                    + '<a href="javascript:void(0);" class="text-danger font-weight-bold font-size-h6" style="text-decoration:none;">' + data.username + ' </a>'
-                    + '<span class="text-muted font-size-sm"><i class="fas fa-user-shield text-danger"></i></span>'
-                    + '</div>'
-                    + '</div>'
-                    + '<div class="mt-2 p-5 bg-danger text-white font-size-lg text-left wrap-chat"> ' + data.msgtxt + ' </div>'
-                    + '</div>'
-                    );
+                    + '</div>';
+            $('#msg_dir').append(txt1);
+            $('#msg_dir2').append(txt1);
         } else if (data.name_role === 'platinum') {
-            $('#msg_dir').append(
-                    '<div class="d-flex flex-column mb-5 align-items-start">'
+            var txt2 = '<div class="d-flex flex-column mb-5 align-items-start">'
                     + '<div class="d-flex align-items-center" title="Platinum Member">'
                     + '<div class="symbol symbol-40 mr-3">'
                     + '<img src="' + window.location.protocol + '//' + window.location.host + '/assets/images/users/' + data.avatar + '" class="rounded-circle" alt="' + data.username + '">'
@@ -59,25 +44,11 @@ window.onload = function () {
                     + '</div>'
                     + '</div>'
                     + '<div class="mt-2 p-5 bg-light-success font-size-lg text-left wrap-chat"> ' + data.msgtxt + ' </div>'
-                    + '</div>'
-                    );
-            $('#msg_dir2').append(
-                    '<div class="d-flex flex-column mb-5 align-items-start">'
-                    + '<div class="d-flex align-items-center" title="Platinum Member">'
-                    + '<div class="symbol symbol-40 mr-3">'
-                    + '<img class="rounded-circle" alt="' + data.username + '" src="' + window.location.protocol + '//' + window.location.host + '/assets/images/users/' + data.avatar + '">'
-                    + '</div>'
-                    + '<div class="mx-2 bg-dark px-2 rounded">'
-                    + '<a href="javascript:void(0);" class="font-size-h6" style="text-decoration:none;">' + data.username + ' </a>'
-                    + '<span class="text-muted font-size-sm"><i class="fas fa-crown text-warning"></i></span>'
-                    + '</div>'
-                    + '</div>'
-                    + '<div class="mt-2 p-5 bg-light-success font-size-lg text-left wrap-chat"> ' + data.msgtxt + ' </div>'
-                    + '</div>'
-                    );
+                    + '</div>';
+            $('#msg_dir').append(txt2);
+            $('#msg_dir2').append(txt2);
         } else if (data.name_role === 'silver') {
-            $('#msg_dir').append(
-                    '<div class="d-flex flex-column mb-5 align-items-start">'
+            var txt3 = '<div class="d-flex flex-column mb-5 align-items-start">'
                     + '<div class="d-flex align-items-center" title="Silver Member">'
                     + '<div class="symbol symbol-40 mr-3">'
                     + '<img src="' + window.location.protocol + '//' + window.location.host + '/assets/images/users/' + data.avatar + '" class="rounded-circle" alt="' + data.username + '">'
@@ -87,21 +58,9 @@ window.onload = function () {
                     + '</div>'
                     + '</div>'
                     + '<div class="mt-2 p-5 bg-light text-dark-50 font-weight-bold font-size-lg text-left wrap-chat"> ' + data.msgtxt + ' </div>'
-                    + '</div>'
-                    );
-            $('#msg_dir2').append(
-                    '<div class="d-flex flex-column mb-5 align-items-start">'
-                    + '<div class="d-flex align-items-center" title="Silver Member">'
-                    + '<div class="symbol symbol-40 mr-3">'
-                    + '<img class="rounded-circle" alt="' + data.username + '" src="' + window.location.protocol + '//' + window.location.host + '/assets/images/users/' + data.avatar + '">'
-                    + '</div>'
-                    + '<div class="mx-2">'
-                    + '<a href="javascript:void(0);" class="text-danger font-weight-bold font-size-h6" style="text-decoration:none;">' + data.username + ' </a>'
-                    + '</div>'
-                    + '</div>'
-                    + '<div class="mt-2 p-5 bg-light text-dark-50 font-weight-bold font-size-lg text-left wrap-chat"> ' + data.msgtxt + ' </div>'
-                    + '</div>'
-                    );
+                    + '</div>';
+            $('#msg_dir').append(txt3);
+            $('#msg_dir2').append(txt3);
         }
         $('#msg_dir').animate({
             scrollTop: $('#msg_dir').get(0).scrollHeight
