@@ -164,11 +164,12 @@ function Send_chat(id) {
             };
             $.ajax({
                 type: "POST",
-                url: window.location.protocol + '//' + window.location.host + '/Streaming/Chat_send/',
+                url: "https://sertifikasiku.mycapturer.com/Streaming/Chat_send/",
                 data: dataString,
                 dataType: "json",
                 cache: false,
                 success: function (data) {
+                    $('input[name="msgtxt"]').val('');
                     if (data.success === true) {
                         var socket = io.connect('https://live-chat.mycapturer.com');
                         socket.emit('new_message', {
@@ -179,7 +180,6 @@ function Send_chat(id) {
                             id_user: data.user_id,
                             id_role: data.role_id
                         });
-                        $('input[name="msgtxt"]').val('');
                     } else if (data.success === false) {
                         window.location.href = '';
                     }
@@ -198,11 +198,12 @@ function Send_chat(id) {
             };
             $.ajax({
                 type: "POST",
-                url: window.location.protocol + '//' + window.location.host + '/Streaming/Chat_send/',
+                url: "https://sertifikasiku.mycapturer.com/Streaming/Chat_send/",
                 data: dataString,
                 dataType: "json",
                 cache: false,
                 success: function (data) {
+                    $('textarea[name="msgtxt2"]').val('');
                     if (data.success === true) {
                         var socket = io.connect('https://live-chat.mycapturer.com');
                         socket.emit('new_message', {
@@ -213,7 +214,6 @@ function Send_chat(id) {
                             id_user: data.user_id,
                             id_role: data.role_id
                         });
-                        $('textarea[name="msgtxt2"]').val('');
                     } else if (data.success === false) {
                         window.location.href = '';
                     }
