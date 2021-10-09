@@ -12,3 +12,4 @@
 /application/modules/Systems/models/M_default.development
 /composer.lock
 /node_modules
+/package-lock.json
