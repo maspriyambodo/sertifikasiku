@@ -19,8 +19,8 @@
     <body>
         <nav class="navbar navbar-expand-lg navbar-light sticky-top bg-custom">
             <div class="container-fluid">
-                <a class="navbar-brand" href="#">
-                    <img src="https://sertifikasiku.mycapturer.com/assets/images/systems/logo.png" alt="Festival Sertifikasiku" style="width: 167px;"/>
+                <a class="navbar-brand" href="<?php echo base_url('Dashboard/'); ?>">
+                    <img src="<?php echo base_url('assets/images/systems/' . $this->bodo->Sys('logo')); ?>" title="" alt="Festival Sertifikasiku"/>
                 </a>
                 <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
@@ -36,7 +36,7 @@
         </nav>
         <section id="main_webinar" class="clearfix main_webinar">
             <div class="container">
-                <div class="row pt-4">
+                <div class="row pt-5">
                     <div class="col-lg-8 d-xs-block col-xs-12 col-12 col-md-12">
                         <div id="bgndVideo" class="player"></div>
                     </div>
@@ -50,9 +50,59 @@
                                     </div>
                                 </div>
                             </div>
-                            <div id="msg_dir" class="card-body"></div>
+                            <div id="msg_dir" class="card-body">
+                                <?php foreach ($chat as $txtchat) { ?>
+                                    <?php if ($txtchat->role_name == 'Administrator' or $txtchat->role_name == 'Super User'): ?>
+
+                                        <div class="d-flex flex-column mb-5 align-items-start">
+                                            <div class="d-flex align-items-center" title="Administrator">
+                                                <div class="symbol symbol-40 mr-3">
+                                                    <?php echo '<img src="' . base_url('assets/images/users/' . $txtchat->pict) . '" class="rounded-circle" alt="' . $txtchat->uname . '"/>'; ?>
+                                                </div>
+                                                <div class="mx-2">
+                                                    <a href="javascript:void(0);" class="text-danger font-weight-bold font-size-h6" style="text-decoration:none;"><?php echo $txtchat->uname; ?> </a>
+                                                    <span class="font-size-sm"><i class="fas fa-user-shield text-danger"></i></span>
+                                                </div>
+                                            </div>
+                                            <div class="mt-2 p-5 bg-danger text-white font-size-lg text-left wrap-chat">
+                                                <?php echo $txtchat->msg; ?>
+                                            </div>
+                                        </div>
+                                    <?php elseif ($txtchat->role_name == 'platinum') : ?>
+                                        <div class="d-flex flex-column mb-5 align-items-start">
+                                            <div class="d-flex align-items-center" title="Platinum Member">
+                                                <div class="symbol symbol-40 mr-3">
+                                                    <?php echo '<img src="' . base_url('assets/images/users/' . $txtchat->pict) . '" class="rounded-circle" alt="' . $txtchat->uname . '"/>'; ?>
+                                                </div>
+                                                <div class="mx-2 bg-dark px-2 rounded">
+                                                    <a href="javascript:void(0);" class="text-white font-size-h6" style="text-decoration:none;font-size:1.150rem;"><?php echo $txtchat->uname; ?> </a>
+                                                    <span class="font-size-md"><i class="fas fa-crown text-warning"></i></span>
+                                                </div>
+                                            </div>
+                                            <div class="mt-2 p-5 bg-light-success font-size-lg text-left wrap-chat">
+                                                <?php echo $txtchat->msg; ?>
+                                            </div>
+                                        </div>
+                                    <?php elseif ($txtchat->role_name == 'silver') : ?>
+                                        <div class="d-flex flex-column mb-5 align-items-start">
+                                            <div class="d-flex align-items-center" title="Silver Member">
+                                                <div class="symbol symbol-40 mr-3">
+                                                    <?php echo '<img src="' . base_url('assets/images/users/' . $txtchat->pict) . '" class="rounded-circle" alt="' . $txtchat->uname . '"/>'; ?>
+                                                </div>
+                                                <div class="mx-2">
+                                                    <a href="javascript:void(0);" class="font-size-h6" style="text-decoration:none;font-size:1.150rem;"><?php echo $txtchat->uname; ?> </a>
+                                                </div>
+                                            </div>
+                                            <div class="mt-2 p-5 bg-light text-dark-50 font-weight-bold font-size-lg text-left wrap-chat">
+                                                <?php echo $txtchat->msg; ?>
+                                            </div>
+                                        </div>
+                                    <?php endif; ?>
+                                <?php } ?>
+                            </div>
                             <div class="card-footer input-group mb-3 chat_footer">
-                                <input type="text" class="form-control" name="msgtxt" autocomplete="off" onkeypress="Javascript: if (event.keyCode === 13) Send_chat(1);">
+                                <input type="text" class="form-control" name="msgtxt" autocomplete="off" onkeypress="Javascript: if (event.keyCode === 13)
+                                            Send_chat(1);">
                                 <button type="button" class="input-group-text" onclick="Send_chat(1)"><i class="fas fa-paper-plane"></i></button>                             
                             </div>
                         </div>
@@ -163,13 +213,64 @@
                     <div class="modal-body">
                         <div id="scroll-pull" class="scroll scroll-pull" data-height="375" data-mobile-height="300">
                             <!--begin::Messages-->
-                            <div id="msg_dir2" class="messages"></div>
+                            <div id="msg_dir2" class="messages">
+
+                                <?php foreach ($chat as $txtchat2) { ?>
+                                    <?php if ($txtchat2->role_name == 'Administrator' or $txtchat2->role_name == 'Super User'): ?>
+                                        <div class="d-flex flex-column mb-5 align-items-start">
+                                            <div class="d-flex align-items-center" title="Administrator">
+                                                <div class="symbol symbol-40 mr-3">
+                                                    <img class="rounded-circle" alt="<?php echo $txtchat2->uname; ?>" src="<?php echo base_url('assets/images/users/' . $txtchat2->pict); ?>">
+                                                </div>
+                                                <div class="mx-2">
+                                                    <a href="javascript:void(0);" class="text-danger font-weight-bold font-size-h6" style="text-decoration:none;"><?php echo $txtchat2->uname; ?> </a>
+                                                    <span class="text-muted font-size-sm"><i class="fas fa-user-shield text-danger"></i></span>
+                                                </div>
+                                            </div>
+                                            <div class="mt-2 p-5 bg-danger text-white font-size-lg text-left wrap-chat">
+                                                <?php echo $txtchat2->msg; ?>
+                                            </div>
+                                        </div>
+                                    <?php elseif ($txtchat2->role_name == 'platinum') : ?>
+                                        <div class="d-flex flex-column mb-5 align-items-start">
+                                            <div class="d-flex align-items-center" title="Platinum Member">
+                                                <div class="symbol symbol-40 mr-3">
+                                                    <img class="rounded-circle" alt="<?php echo $txtchat2->uname; ?>" src="<?php echo base_url('assets/images/users/' . $txtchat2->pict); ?>">
+                                                </div>
+                                                <div class="mx-2 bg-dark px-2 rounded">
+                                                    <a href="javascript:void(0);" class="text-white font-size-h6" style="text-decoration:none;font-size:1.150rem;"><?php echo $txtchat2->uname; ?> </a>
+                                                    <span class="font-size-md"><i class="fas fa-crown text-warning"></i></span>
+                                                </div>
+                                            </div>
+                                            <div class="mt-2 p-5 bg-light-success font-size-lg text-left wrap-chat">
+                                                <?php echo $txtchat2->msg; ?>
+                                            </div>
+                                        </div>
+                                    <?php elseif ($txtchat2->role_name == 'silver') : ?>
+                                        <div class="d-flex flex-column mb-5 align-items-start">
+                                            <div class="d-flex align-items-center" title="Silver Member">
+                                                <div class="symbol symbol-40 mr-3">
+                                                    <img class="rounded-circle" alt="<?php echo $txtchat2->uname; ?>" src="<?php echo base_url('assets/images/users/' . $txtchat2->pict); ?>">
+                                                </div>
+                                                <div class="mx-2">
+                                                    <a href="javascript:void(0);" class="font-size-h6" style="text-decoration:none;font-size:1.150rem;"><?php echo $txtchat2->uname; ?> </a>
+                                                </div>
+                                            </div>
+                                            <div class="mt-2 p-5 bg-light text-dark-50 font-weight-bold font-size-lg text-left wrap-chat">
+                                                <?php echo $txtchat2->msg; ?>
+                                            </div>
+                                        </div>
+                                    <?php endif; ?>
+                                <?php } ?>
+
+                            </div>
                             <!--end::Messages-->
                         </div>
                     </div>
                     <div class="card-footer align-items-center">
                         <!--begin::Compose-->
-                        <textarea name="msgtxt2" class="form-control border-0 p-0" rows="4" placeholder="Type a message" onkeypress="Javascript: if (event.keyCode === 13) Send_chat(2);"></textarea>
+                        <textarea name="msgtxt2" class="form-control border-0 p-0" rows="4" placeholder="Type a message" onkeypress="Javascript: if (event.keyCode === 13)
+                                    Send_chat(2);"></textarea>
                         <div class="d-flex align-items-center justify-content-between mt-2">
                             <div class="mr-3"></div>
                             <div>

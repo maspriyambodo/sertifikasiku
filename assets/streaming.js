@@ -17,38 +17,94 @@ window.onload = function () {
     };
     var socket = io.connect('https://live-chat.mycapturer.com');
     socket.on('new_message', function (data) {
-        $('#msg_dir').append(
-                '<div class="d-flex flex-column mb-5 align-items-start">'
-                + '<div class="d-flex align-items-center">'
-                + '<div class="symbol symbol-40 mr-3">'
-                + '<img class="rounded-circle" alt="username" src="' + data.ava + '">'
-                + '</div>'
-                + '<div class="mx-2">'
-                + '<a href="#" class="text-dark-75 text-hover-primary font-weight-bold font-size-h6" style="text-decoration:none;">' + data.uname + ' </a>'
-                + '<span class="text-muted font-size-sm"><i class="fas fa-check-circle text-info"></i></span>'
-                + '</div>'
-                + '</div>'
-                + '<div class="mt-2 p-5 bg-light-success text-dark-50 font-weight-bold font-size-lg text-left wrap-chat">'
-                + data.msgtxt
-                + '</div>'
-                + '</div>'
-                );
-        $('#msg_dir2').append(
-                '<div class="d-flex flex-column mb-5 align-items-start">'
-                + '<div class="d-flex align-items-center">'
-                + '<div class="symbol symbol-40 mr-3">'
-                + '<img class="rounded-circle" alt="Pic" src="' + data.ava + '">'
-                + '</div>'
-                + '<div class="mx-2">'
-                + '<a href="#" class="text-dark-75 text-hover-primary font-weight-bold font-size-h6" style="text-decoration:none;">' + data.uname + ' </a>'
-                + '<span class="text-muted font-size-sm"></span>'
-                + '</div>'
-                + '</div>'
-                + '<div class="mt-2 rounded p-5 bg-light-success text-dark-50 font-weight-bold font-size-lg text-left max-w-400px">'
-                + data.msgtxt
-                + '</div>'
-                + '</div>'
-                );
+        if (data.name_role === 'Administrator' || data.name_role === 'Super User') {
+            $('#msg_dir').append(
+                    '<div class="d-flex flex-column mb-5 align-items-start">'
+                    + '<div class="d-flex align-items-center" title="Administrator">'
+                    + '<div class="symbol symbol-40 mr-3">'
+                    + '<img src="' + window.location.host + '/assets/images/users/' + data.avatar + '" class="rounded-circle" alt="' + data.username + '">'
+                    + '</div>'
+                    + '<div class="mx-2">'
+                    + '<a href="javascript:void(0);" class="text-danger font-weight-bold font-size-h6" style="text-decoration:none;">' + data.username + ' </a>'
+                    + '<span class="font-size-sm"><i class="fas fa-user-shield text-danger"></i></span>'
+                    + '</div>'
+                    + '</div>'
+                    + '<div class="mt-2 p-5 bg-danger text-white font-size-lg text-left wrap-chat"> ' + data.msgtxt + ' </div>'
+                    + '</div>'
+                    );
+            $('#msg_dir2').append(
+                    +'<div class="d-flex flex-column mb-5 align-items-start">'
+                    + '<div class="d-flex align-items-center" title="Administrator">'
+                    + '<div class="symbol symbol-40 mr-3">'
+                    + '<img class="rounded-circle" alt="' + data.username + '" src="' + window.location.host + '/assets/images/users/' + data.avatar + '">'
+                    + '</div>'
+                    + '<div class="mx-2">'
+                    + '<a href="javascript:void(0);" class="text-danger font-weight-bold font-size-h6" style="text-decoration:none;">' + data.username + ' </a>'
+                    + '<span class="text-muted font-size-sm"><i class="fas fa-user-shield text-danger"></i></span>'
+                    + '</div>'
+                    + '</div>'
+                    + '<div class="mt-2 p-5 bg-danger text-white font-size-lg text-left wrap-chat"> ' + data.msgtxt + ' </div>'
+                    + '</div>'
+                    );
+        } else if (data.name_role === 'platinum') {
+            $('#msg_dir').append(
+                    '<div class="d-flex flex-column mb-5 align-items-start">'
+                    + '<div class="d-flex align-items-center" title="Platinum Member">'
+                    + '<div class="symbol symbol-40 mr-3">'
+                    + '<img src="' + window.location.host + '/assets/images/users/' + data.avatar + '" class="rounded-circle" alt="' + data.username + '">'
+                    + '</div>'
+                    + '<div class="mx-2 bg-dark px-2 rounded">'
+                    + '<a href="javascript:void(0);" class="text-danger font-weight-bold font-size-h6" style="text-decoration:none;">' + data.username + ' </a>'
+                    + '<span class="font-size-sm"><i class="fas fa-crown text-warning"></i></span>'
+                    + '</div>'
+                    + '</div>'
+                    + '<div class="mt-2 p-5 bg-light-success font-size-lg text-left wrap-chat"> ' + data.msgtxt + ' </div>'
+                    + '</div>'
+                    );
+            $('#msg_dir2').append(
+                    +'<div class="d-flex flex-column mb-5 align-items-start">'
+                    + '<div class="d-flex align-items-center" title="Platinum Member">'
+                    + '<div class="symbol symbol-40 mr-3">'
+                    + '<img class="rounded-circle" alt="' + data.username + '" src="' + window.location.host + '/assets/images/users/' + data.avatar + '">'
+                    + '</div>'
+                    + '<div class="mx-2 bg-dark px-2 rounded">'
+                    + '<a href="javascript:void(0);" class="text-danger font-weight-bold font-size-h6" style="text-decoration:none;">' + data.username + ' </a>'
+                    + '<span class="text-muted font-size-sm"><i class="fas fa-user-shield text-danger"></i></span>'
+                    + '</div>'
+                    + '</div>'
+                    + '<div class="mt-2 p-5 bg-light-success font-size-lg text-left wrap-chat"> ' + data.msgtxt + ' </div>'
+                    + '</div>'
+                    );
+        } else if (data.name_role === 'silver') {
+            $('#msg_dir').append(
+                    '<div class="d-flex flex-column mb-5 align-items-start">'
+                    + '<div class="d-flex align-items-center" title="Silver Member">'
+                    + '<div class="symbol symbol-40 mr-3">'
+                    + '<img src="' + window.location.host + '/assets/images/users/' + data.avatar + '" class="rounded-circle" alt="' + data.username + '">'
+                    + '</div>'
+                    + '<div class="mx-2">'
+                    + '<a href="javascript:void(0);" class="text-danger font-weight-bold font-size-h6" style="text-decoration:none;">' + data.username + ' </a>'
+                    + '<span class="font-size-sm"><i class="fas fa-crown text-warning"></i></span>'
+                    + '</div>'
+                    + '</div>'
+                    + '<div class="mt-2 p-5 bg-light text-dark-50 font-weight-bold font-size-lg text-left wrap-chat"> ' + data.msgtxt + ' </div>'
+                    + '</div>'
+                    );
+            $('#msg_dir2').append(
+                    +'<div class="d-flex flex-column mb-5 align-items-start">'
+                    + '<div class="d-flex align-items-center" title="Silver Member">'
+                    + '<div class="symbol symbol-40 mr-3">'
+                    + '<img class="rounded-circle" alt="' + data.username + '" src="' + window.location.host + '/assets/images/users/' + data.avatar + '">'
+                    + '</div>'
+                    + '<div class="mx-2">'
+                    + '<a href="javascript:void(0);" class="text-danger font-weight-bold font-size-h6" style="text-decoration:none;">' + data.username + ' </a>'
+                    + '<span class="text-muted font-size-sm"><i class="fas fa-user-shield text-danger"></i></span>'
+                    + '</div>'
+                    + '</div>'
+                    + '<div class="mt-2 p-5 bg-light text-dark-50 font-weight-bold font-size-lg text-left wrap-chat"> ' + data.msgtxt + ' </div>'
+                    + '</div>'
+                    );
+        }
         $('#msg_dir').animate({
             scrollTop: $('#msg_dir').get(0).scrollHeight
         });
@@ -87,6 +143,12 @@ window.onload = function () {
         centerMode: false,
         centerPadding: '60px'
     });
+    $('#msg_dir').animate({
+        scrollTop: $('#msg_dir').get(0).scrollHeight
+    });
+    $('#scroll-pull').animate({
+        scrollTop: $('#scroll-pull').get(0).scrollHeight
+    });
 };
 function Open_chat() {
     $('#scroll-pull').animate({
@@ -104,26 +166,24 @@ function Send_chat(id) {
             };
             $.ajax({
                 type: "POST",
-                url: "https://sertifikasiku.mycapturer.com/Streaming/Chat_send/",
+                url: "http://localhost/sertifikasiku/Streaming/Chat_send/",
                 data: dataString,
                 dataType: "json",
                 cache: false,
                 success: function (data) {
-                    console.log(data);
                     if (data.success === true) {
                         var socket = io.connect('https://live-chat.mycapturer.com');
                         socket.emit('new_message', {
+                            username: data.uname,
                             msgtxt: data.msg,
-                            uname: data.uname,
-                            avatar: data.ava
+                            avatar: data.ava,
+                            role_name: data.role_name,
+                            id_user: data.user_id,
+                            id_role: data.role_id
                         });
                         $('input[name="msgtxt"]').val('');
                     } else if (data.success === false) {
-                        $("#name").val(data.name);
-                        $("#email").val(data.email);
-                        $("#subject").val(data.subject);
-                        $("#message").val(data.message);
-                        $("#notif").html(data.notif);
+                        window.location.href = '';
                     }
                 }, error: function (jqXHR) {
                     toastr.error('error ' + jqXHR.status + ' ' + jqXHR.statusText);
@@ -140,7 +200,7 @@ function Send_chat(id) {
             };
             $.ajax({
                 type: "POST",
-                url: "https://sertifikasiku.mycapturer.com/Streaming/Chat_send/",
+                url: "http://localhost/sertifikasiku/Streaming/Chat_send/",
                 data: dataString,
                 dataType: "json",
                 cache: false,
@@ -148,17 +208,16 @@ function Send_chat(id) {
                     if (data.success === true) {
                         var socket = io.connect('https://live-chat.mycapturer.com');
                         socket.emit('new_message', {
+                            username: data.uname,
                             msgtxt: data.msg,
-                            uname: data.uname,
-                            avatar: data.ava
+                            avatar: data.ava,
+                            role_name: data.role_name,
+                            id_user: data.user_id,
+                            id_role: data.role_id
                         });
                         $('textarea[name="msgtxt2"]').val('');
                     } else if (data.success === false) {
-                        $("#name").val(data.name);
-                        $("#email").val(data.email);
-                        $("#subject").val(data.subject);
-                        $("#message").val(data.message);
-                        $("#notif").html(data.notif);
+                        window.location.href = '';
                     }
                 }, error: function (jqXHR) {
                     toastr.error('error ' + jqXHR.status + ' ' + jqXHR.statusText);
@@ -166,6 +225,4 @@ function Send_chat(id) {
             });
         }
     }
-
-
 }

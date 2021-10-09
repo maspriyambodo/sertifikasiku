@@ -47,78 +47,11 @@ class Auth extends CI_Controller {
                 $this->Attempt(1);
                 $result = redirect(base_url('Signin'), $this->session->set_flashdata('err_msg', 'Sorry, your password was incorrect. Please double-check your password.'));
             }
-        } elseif (!empty($exec) and $exec->limit_login == 3) {
+        } elseif (!empty($exec) and ($exec->limit_login == 3)) {
             blocked_account();
         } else {
-            $this->wp_login($data);
-        }
-        return $result;
-    }
-
-    /* private function wp_login($data) 
-     * {
-      "id": 404,
-      "name": "administrator",
-      "url": "",
-      "description": "",
-      "link": "https://dev.alfabet.io/wordpress/author/administrator/",
-      "slug": "administrator",
-      "avatar_urls": {
-      "24": "https://secure.gravatar.com/avatar/b4ebfb4bb8f525bfe576db44ac099d94?s=24&d=mm&r=g",
-      "48": "https://secure.gravatar.com/avatar/b4ebfb4bb8f525bfe576db44ac099d94?s=48&d=mm&r=g",
-      "96": "https://secure.gravatar.com/avatar/b4ebfb4bb8f525bfe576db44ac099d94?s=96&d=mm&r=g"
-      },
-      "meta": [],
-      "_links": {
-      "self": [
-      {
-      "href": "https://dev.alfabet.io/wordpress/wp-json/wp/v2/users/404"
-      }
-      ],
-      "collection": [
-      {
-      "href": "https://dev.alfabet.io/wordpress/wp-json/wp/v2/users"
-      }
-      ]
-      }
-      }
-     */
-
-    private function wp_login($data) {
-        $this->load->library('user_agent');
-        $this->curl = new Curl\Curl();
-        $this->curl->disableTimeout();
-        $this->curl->setHeader('Connection', 'keep-alive');
-        $this->curl->setHeader('User-Agent', $this->agent->referrer());
-        $this->curl->setFollowLocation(true);
-        $this->curl->setBasicAuthentication($data['uname'], $data['pwd']);
-        $this->curl->setHeader('Content-Type', 'application/json');
-        $this->curl->get('https://dev.alfabet.io/wordpress/wp-json/wp/v2/users/?search=' . $data['uname']);
-        $exec = $this->curl->response;
-        if (!$exec->code and $exec[0]->id) {//jika berhasil $exec[0]->id
-            foreach ($exec[0]->avatar_urls as $key => $value) {
-                $stdArray[$key] = $value;
-            }
-            $sesion = [
-                'id_user' => $exec[0]->id,
-                'uname' => $exec[0]->name,
-                'ava' => $stdArray[96]
-            ];
-            $this->session->set_userdata($sesion);
-            $result = redirect(base_url('Streaming/index/'), 'refresh');
-        } elseif (empty ($exec)) {
             $this->Attempt(2);
-            $result = redirect(base_url('Auth/index/'), $this->session->set_flashdata('err_msg', 'username not exists, please use your email'));
-        }
-        else {//jika salah
-            //stdClass Object
-            //(
-            //    [code] => incorrect_password
-            //    [message] => The provided password is an invalid application password.
-            //    [data] => 
-            //)
-            $this->Attempt(2);
-            $result = redirect(base_url('Auth/index/'), $this->session->set_flashdata('err_msg', '<b>' . $exec->code . '</b>, ' . $exec->message));
+            $result = redirect(base_url('Signin'), $this->session->set_flashdata('err_msg', 'username not registered!'));
         }
         return $result;
     }
