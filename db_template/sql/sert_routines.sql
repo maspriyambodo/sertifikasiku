@@ -180,18 +180,18 @@ DROP PROCEDURE IF EXISTS `sys_auth`$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `sys_auth` (IN `usernama` VARCHAR(100))  BEGIN
 
 	SELECT
-	`sys_auth`.`id_user`,
-	`sys_auth`.`uname`,
-	`sys_auth`.`pwd`,
-	`sys_auth`.`pict`,
-	`sys_auth`.`stat_aktif`,
-	`sys_auth`.`role_id`,
-	`sys_auth`.`role_stat`,
-	`sys_auth`.`role_name`,
-	`sys_auth`.`fullname`,
-	`sys_auth`.`last_login`,
-	`sys_auth`.`ip_address`,
-	`sys_auth`.`limit_login` 
+		`sys_auth`.`id_user`,
+		`sys_auth`.`uname`,
+		`sys_auth`.`pwd`,
+		`sys_auth`.`pict`,
+		`sys_auth`.`stat_aktif`,
+		`sys_auth`.`role_id`,
+		`sys_auth`.`role_stat`,
+		`sys_auth`.`role_name`,
+		`sys_auth`.`fullname`,
+		`sys_auth`.`last_login`,
+		`sys_auth`.`ip_address`,
+		`sys_auth`.`limit_login` 
 	FROM sys_auth
 	WHERE sys_auth.uname = usernama 
 	AND sys_auth.stat_aktif = 1
