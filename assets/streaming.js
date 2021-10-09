@@ -164,7 +164,7 @@ function Send_chat(id) {
             };
             $.ajax({
                 type: "POST",
-                url: "http://localhost/sertifikasiku/Streaming/Chat_send/",
+                url: window.location.protocol + '//' + window.location.host + '/Streaming/Chat_send/',
                 data: dataString,
                 dataType: "json",
                 cache: false,
@@ -198,7 +198,7 @@ function Send_chat(id) {
             };
             $.ajax({
                 type: "POST",
-                url: "http://localhost/sertifikasiku/Streaming/Chat_send/",
+                url: window.location.protocol + '//' + window.location.host + '/Streaming/Chat_send/',
                 data: dataString,
                 dataType: "json",
                 cache: false,
