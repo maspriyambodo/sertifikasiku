@@ -42,10 +42,6 @@ window.onload = function () {
                     + '<a href="javascript:void(0);" class="text-white font-size-h6" style="text-decoration:none;">' + data.username + ' </a>'
                     + '<span class="font-size-sm"><i class="fas fa-crown text-warning"></i></span>'
                     + '</div>'
-                    + '<div class="btn-group btn_control">'
-                    + '<button type="button" class="btn btn-sm btn-default" value="' + data.chat_id + '" title="Kick Member" onclick="Kick_user(this.value)"><i class="fas fa-times text-danger"></i></button>'
-                    + '<button type="button" class="btn btn-sm btn-default" value="' + data.chat_id + '" title="Warning Member" onclick="Warning_user(this.value)"><i class="fas fa-exclamation text-warning"></i></button>'
-                    + '</div>'
                     + '</div>'
                     + '<div class="mt-2 p-5 bg-light-success font-size-lg text-left wrap-chat"> ' + data.msgtxt + ' </div>'
                     + '</div>';
@@ -59,10 +55,6 @@ window.onload = function () {
                     + '</div>'
                     + '<div class="mx-2" title="Silver Member">'
                     + '<a href="javascript:void(0);" class="font-size-h6" style="text-decoration:none;">' + data.username + ' </a>'
-                    + '</div>'
-                    + '<div class="btn-group btn_control">'
-                    + '<button type="button" class="btn btn-sm btn-default" value="' + data.chat_id + '" title="Kick Member" onclick="Kick_user(this.value)"><i class="fas fa-times text-danger"></i></button>'
-                    + '<button type="button" class="btn btn-sm btn-default" value="' + data.chat_id + '" title="Warning Member" onclick="Warning_user(this.value)"><i class="fas fa-exclamation text-warning"></i></button>'
                     + '</div>'
                     + '</div>'
                     + '<div class="mt-2 p-5 bg-light text-dark-50 font-weight-bold font-size-lg text-left wrap-chat"> ' + data.msgtxt + ' </div>'
@@ -156,6 +148,7 @@ function Send_chat(id) {
                     } else {
                         toastr.warning('error, your message not sent');
                     }
+                    console.log(data.chat_attempt);
                 }, error: function (jqXHR) {
                     toastr.error('error ' + jqXHR.status + ' ' + jqXHR.statusText);
                 }
@@ -202,32 +195,4 @@ function Send_chat(id) {
             });
         }
     }
-}
-function Kick_user(id_chat) {
-    $.ajax({
-        type: "GET",
-        url: window.location.protocol + '//' + window.location.host + '/Streaming/Get_detail?token=' + id_chat,
-        dataType: "json",
-        cache: false,
-        success: function (data) {
-            console.log(data);
-        },
-        error: function (jqXHR) {
-            toastr.error('error ' + jqXHR.status + ' ' + jqXHR.statusText);
-        }
-    });
-}
-function Warning_user(id_chat) {
-    $.ajax({
-        type: "GET",
-        url: window.location.protocol + '//' + window.location.host + '/Streaming/Get_detail?token=' + id_chat,
-        dataType: "json",
-        cache: false,
-        success: function (data) {
-            console.log(data);
-        },
-        error: function (jqXHR) {
-            toastr.error('error ' + jqXHR.status + ' ' + jqXHR.statusText);
-        }
-    });
 }

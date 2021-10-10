@@ -53,7 +53,8 @@ class Streaming extends CI_Controller {
                 $data['chat_id'] = Enkrip($exec);
             }
         }
-        $data['block_chat'] = $block_chat;
+        $data['block_chat'] = ($block_chat === true ? true : false);
+        $data['chat_attempt'] = $this->session->userdata('chat_attempt');
         ToJson($data);
     }
 
