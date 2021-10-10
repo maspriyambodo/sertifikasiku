@@ -137,6 +137,9 @@ function Send_chat(id) {
                 cache: false,
                 success: function (data) {
                     $('input[name="msgtxt"]').val('');
+                    if(data.block_chat === true){
+                        toastr.warning('sistem kami mendeteksi kata-kata tidak pantas, anda akan mendapatkan hukuman jika ');
+                    }
                     if (data.success === true) {
                         var socket = io.connect('https://live-chat.mycapturer.com');
                         socket.emit('new_message', {
@@ -174,6 +177,9 @@ function Send_chat(id) {
                 cache: false,
                 success: function (data) {
                     $('textarea[name="msgtxt2"]').val('');
+                    if(data.block_chat === true){
+                        toastr.warning('sistem kami mendeteksi kata-kata tidak pantas, anda akan mendapatkan hukuman jika ');
+                    }
                     if (data.success === true) {
                         var socket = io.connect('https://live-chat.mycapturer.com');
                         socket.emit('new_message', {

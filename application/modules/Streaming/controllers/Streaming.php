@@ -7,6 +7,8 @@ class Streaming extends CI_Controller {
     public function __construct() {
         parent::__construct();
         $this->load->model('M_streaming', 'model');
+        $this->id_user = Dekrip($this->session->userdata('id_user'));
+        $this->role_id = Dekrip($this->session->userdata('role_id'));
     }
 
     public function index() {
@@ -18,21 +20,38 @@ class Streaming extends CI_Controller {
     }
 
     public function Chat_send() {
-        $id_user = Dekrip($this->session->userdata('id_user'));
-        $role_id = Dekrip($this->session->userdata('role_id'));
-        if (empty($id_user) and empty($role_id)) {
+        $data = [];
+        $this->load->helper(['text', 'offensive_words']);
+//        $string = word_censor(Post_input('message'), word_block(), '<del class="text-danger">censor</del>');
+        $string = word_censor(Post_input('message'), word_block(), '<del class="text-danger">censor</del>');
+        if (strpos($string, '<del class="text-danger">censor</del>')) {
+            $attempt = $this->session->userdata('chat_attempt');
+            $attempt++;
+            $this->session->set_userdata('chat_attempt', $attempt);
+            if ($attempt == 3) {
+                $this->session->sess_destroy();
+                $this->session->set_tempdata('blocked_account', true, 300);
+                blocked_account();
+            }
+            $data['block_chat'] = true;
+        } else {
+            $data['block_chat'] = false;
+        }
+        $this->_chatSend($string, $data);
+    }
+
+    private function _chatSend($string, $data) {
+        if (empty($this->id_user) and empty($this->role_id)) {
             $this->session->sess_destroy();
-            $data = [
-                'success' => false
-            ];
+            $data['success'] = false;
         } else {
             $data = [
                 'uname' => $this->session->userdata('uname'),
-                'msg' => Post_input('message'),
+                'msg' => $string,
                 'ava' => base_url('assets/images/users/' . $this->session->userdata('avatar')),
                 'role_name' => $this->session->userdata('role_name'),
-                'user_id' => $id_user,
-                'role_id' => $role_id
+                'user_id' => $this->id_user,
+                'role_id' => $this->role_id
             ];
             $exec = $this->model->Insert_chat($data);
             if ($exec === false) {
