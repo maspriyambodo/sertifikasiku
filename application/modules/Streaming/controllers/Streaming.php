@@ -20,7 +20,6 @@ class Streaming extends CI_Controller {
     }
 
     public function Chat_send() {
-        $data = [];
         $this->load->helper(['text', 'offensive_words']);
 //        $string = word_censor(Post_input('message'), word_block(), '<del class="text-danger">censor</del>');
         $string = word_censor(Post_input('message'), word_block(), '<del class="text-danger">censor</del>');
