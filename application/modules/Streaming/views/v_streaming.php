@@ -70,13 +70,17 @@
                                         </div>
                                     <?php elseif ($txtchat->role_name == 'platinum') : ?>
                                         <div class="d-flex flex-column mb-5 align-items-start">
-                                            <div class="d-flex align-items-center" title="Platinum Member">
-                                                <div class="symbol symbol-40 mr-3">
+                                            <div class="d-flex align-items-center">
+                                                <div class="symbol symbol-40 mr-3" title="Platinum Member">
                                                     <?php echo '<img src="' . base_url('assets/images/users/' . $txtchat->pict) . '" class="rounded-circle" alt="' . $txtchat->uname . '"/>'; ?>
                                                 </div>
-                                                <div class="mx-2 bg-dark px-2 rounded">
+                                                <div class="mx-2 bg-dark px-2 rounded" title="Platinum Member">
                                                     <a href="javascript:void(0);" class="text-white font-size-h6" style="text-decoration:none;font-size:1.150rem;"><?php echo $txtchat->uname; ?> </a>
                                                     <span class="font-size-md"><i class="fas fa-crown text-warning"></i></span>
+                                                </div>
+                                                <div class="btn-group btn_control">
+                                                    <button type="button" class="btn btn-sm btn-default" value="<?php echo Enkrip($txtchat->id); ?>" title="Kick Member" onclick="Kick_user(this.value)"><i class="fas fa-times text-danger"></i></button>
+                                                    <button type="button" class="btn btn-sm btn-default" value="<?php echo Enkrip($txtchat->id); ?>" title="Warning Member" onclick="Warning_user(this.value)"><i class="fas fa-exclamation text-warning"></i></button>
                                                 </div>
                                             </div>
                                             <div class="mt-2 p-5 bg-light-success font-size-lg text-left wrap-chat">
@@ -85,12 +89,16 @@
                                         </div>
                                     <?php elseif ($txtchat->role_name == 'silver') : ?>
                                         <div class="d-flex flex-column mb-5 align-items-start">
-                                            <div class="d-flex align-items-center" title="Silver Member">
-                                                <div class="symbol symbol-40 mr-3">
+                                            <div class="d-flex align-items-center">
+                                                <div class="symbol symbol-40 mr-3" title="Silver Member">
                                                     <?php echo '<img src="' . base_url('assets/images/users/' . $txtchat->pict) . '" class="rounded-circle" alt="' . $txtchat->uname . '"/>'; ?>
                                                 </div>
-                                                <div class="mx-2">
+                                                <div class="mx-2" title="Silver Member">
                                                     <a href="javascript:void(0);" class="font-size-h6" style="text-decoration:none;font-size:1.150rem;"><?php echo $txtchat->uname; ?> </a>
+                                                </div>
+                                                <div class="btn-group btn_control">
+                                                    <button type="button" class="btn btn-sm btn-default" value="<?php echo Enkrip($txtchat->id); ?>" title="Kick Member" onclick="Kick_user(this.value)"><i class="fas fa-times text-danger"></i></button>
+                                                    <button type="button" class="btn btn-sm btn-default" value="<?php echo Enkrip($txtchat->id); ?>" title="Warning Member" onclick="Warning_user(this.value)"><i class="fas fa-exclamation text-warning"></i></button>
                                                 </div>
                                             </div>
                                             <div class="mt-2 p-5 bg-light text-dark-50 font-weight-bold font-size-lg text-left wrap-chat">
@@ -233,13 +241,17 @@
                                         </div>
                                     <?php elseif ($txtchat2->role_name == 'platinum') : ?>
                                         <div class="d-flex flex-column mb-5 align-items-start">
-                                            <div class="d-flex align-items-center" title="Platinum Member">
-                                                <div class="symbol symbol-40 mr-3">
+                                            <div class="d-flex align-items-center">
+                                                <div class="symbol symbol-40 mr-3" title="Platinum Member">
                                                     <img class="rounded-circle" alt="<?php echo $txtchat2->uname; ?>" src="<?php echo base_url('assets/images/users/' . $txtchat2->pict); ?>">
                                                 </div>
-                                                <div class="mx-2 bg-dark px-2 rounded">
+                                                <div class="mx-2 bg-dark px-2 rounded" title="Platinum Member">
                                                     <a href="javascript:void(0);" class="text-white font-size-h6" style="text-decoration:none;font-size:1.150rem;"><?php echo $txtchat2->uname; ?> </a>
                                                     <span class="font-size-md"><i class="fas fa-crown text-warning"></i></span>
+                                                </div>
+                                                <div class="btn-group btn_control">
+                                                    <button type="button" class="btn btn-sm btn-default" value="<?php echo Enkrip($txtchat2->id); ?>" title="Kick Member" onclick="Kick_user(this.value)"><i class="fas fa-times text-danger"></i></button>
+                                                    <button type="button" class="btn btn-sm btn-default" value="<?php echo Enkrip($txtchat2->id); ?>" title="Warning Member" onclick="Warning_user(this.value)"><i class="fas fa-exclamation text-warning"></i></button>
                                                 </div>
                                             </div>
                                             <div class="mt-2 p-5 bg-light-success font-size-lg text-left wrap-chat">
@@ -248,12 +260,16 @@
                                         </div>
                                     <?php elseif ($txtchat2->role_name == 'silver') : ?>
                                         <div class="d-flex flex-column mb-5 align-items-start">
-                                            <div class="d-flex align-items-center" title="Silver Member">
-                                                <div class="symbol symbol-40 mr-3">
+                                            <div class="d-flex align-items-center">
+                                                <div class="symbol symbol-40 mr-3" title="Silver Member">
                                                     <img class="rounded-circle" alt="<?php echo $txtchat2->uname; ?>" src="<?php echo base_url('assets/images/users/' . $txtchat2->pict); ?>">
                                                 </div>
-                                                <div class="mx-2">
+                                                <div class="mx-2" title="Silver Member">
                                                     <a href="javascript:void(0);" class="font-size-h6" style="text-decoration:none;font-size:1.150rem;"><?php echo $txtchat2->uname; ?> </a>
+                                                </div>
+                                                <div class="btn-group btn_control">
+                                                    <button type="button" class="btn btn-sm btn-default" value="<?php echo Enkrip($txtchat2->id); ?>" title="Kick Member" onclick="Kick_user(this.value)"><i class="fas fa-times text-danger"></i></button>
+                                                    <button type="button" class="btn btn-sm btn-default" value="<?php echo Enkrip($txtchat2->id); ?>" title="Warning Member" onclick="Warning_user(this.value)"><i class="fas fa-exclamation text-warning"></i></button>
                                                 </div>
                                             </div>
                                             <div class="mt-2 p-5 bg-light text-dark-50 font-weight-bold font-size-lg text-left wrap-chat">

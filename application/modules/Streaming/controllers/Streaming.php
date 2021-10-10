@@ -30,14 +30,42 @@ class Streaming extends CI_Controller {
                 'success' => true,
                 'uname' => $this->session->userdata('uname'),
                 'msg' => Post_input('message'),
-                'ava' => $this->session->userdata('avatar'),
+                'ava' => base_url('assets/images/users/' . $this->session->userdata('avatar')),
                 'role_name' => $this->session->userdata('role_name'),
                 'user_id' => $id_user,
                 'role_id' => $role_id
             ];
+            $exec = $this->model->Insert_chat($data);
+            if (!$exec) {
+                $data['success'] = 'gagal';
+            } else {
+                $data['chat_id'] = Enkrip($exec);
+            }
         }
-        $this->model->Insert_chat($data);
         ToJson($data);
+    }
+
+    public function Get_detail() {
+        $id_chat = Dekrip(Post_get('token'));
+        $exec = $this->model->Get_detail($id_chat);
+        die(print_array($exec));
+        if (empty($exec)) {
+            $data = [
+                'success' => false,
+            ];
+        } else {
+            $data = [
+                'success' => true,
+                'uname' => $exec[0]->uname,
+                'msg' => $exec[0]->msg,
+                'ava' => base_url('assets/images/users/' . $exec[0]->pict),
+                'role_name' => $exec[0]->role_name,
+                'user_id' => $exec[0]->user_id,
+                'role_id' => $exec[0]->role_id,
+                'chat_id' => $exec[0]->id
+            ];
+        }
+        return ToJson($data);
     }
 
 }

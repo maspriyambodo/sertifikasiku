@@ -28,9 +28,25 @@ class M_streaming extends CI_Model {
         if ($this->db->trans_status() === false) {
             $this->db->trans_rollback();
             log_message('error', 'error insert chat');
+            $result = false;
         } else {
             $this->db->trans_commit();
+            $result = $this->db->insert_id();
         }
+        return $result;
+    }
+
+    public function Get_detail($id_chat) {
+        $exec = $this->db->select('tr_chat.id, tr_chat.user_id, tr_chat.msg, tr_chat.syscreatedate, sys_users.uname, sys_users.pict, sys_users.role_id,sys_roles.`name` AS role_name')
+                ->from('tr_chat')
+                ->join('sys_users', 'tr_chat.user_id = sys_users.id', 'LEFT')
+                ->join('sys_roles', 'sys_users.role_id = sys_roles.id', 'LEFT')
+                ->where('`tr_chat`.`id`', $id_chat, false)
+                ->order_by('tr_chat.id ASC')
+                ->limit(1)
+                ->get()
+                ->result();
+        return $exec;
     }
 
 }

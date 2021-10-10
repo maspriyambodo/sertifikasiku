@@ -21,7 +21,7 @@ window.onload = function () {
             var txt1 = '<div class="d-flex flex-column mb-5 align-items-start">'
                     + '<div class="d-flex align-items-center" title="Administrator">'
                     + '<div class="symbol symbol-40 mr-3">'
-                    + '<img src="' + window.location.protocol + '//' + window.location.host + '/assets/images/users/' + data.avatar + '" class="rounded-circle" alt="' + data.username + '">'
+                    + '<img src="' + data.avatar + '" class="rounded-circle" alt="' + data.username + '">'
                     + '</div>'
                     + '<div class="mx-2">'
                     + '<a href="javascript:void(0);" class="text-danger font-weight-bold font-size-h6" style="text-decoration:none;">' + data.username + ' </a>'
@@ -34,13 +34,17 @@ window.onload = function () {
             $('#msg_dir2').append(txt1);
         } else if (data.name_role === 'platinum') {
             var txt2 = '<div class="d-flex flex-column mb-5 align-items-start">'
-                    + '<div class="d-flex align-items-center" title="Platinum Member">'
-                    + '<div class="symbol symbol-40 mr-3">'
-                    + '<img src="' + window.location.protocol + '//' + window.location.host + '/assets/images/users/' + data.avatar + '" class="rounded-circle" alt="' + data.username + '">'
+                    + '<div class="d-flex align-items-center">'
+                    + '<div class="symbol symbol-40 mr-3" title="Platinum Member">'
+                    + '<img src="' + data.avatar + '" class="rounded-circle" alt="' + data.username + '">'
                     + '</div>'
-                    + '<div class="mx-2 bg-dark px-2 rounded">'
+                    + '<div class="mx-2 bg-dark px-2 rounded" title="Platinum Member">'
                     + '<a href="javascript:void(0);" class="text-white font-size-h6" style="text-decoration:none;">' + data.username + ' </a>'
                     + '<span class="font-size-sm"><i class="fas fa-crown text-warning"></i></span>'
+                    + '</div>'
+                    + '<div class="btn-group btn_control">'
+                    + '<button type="button" class="btn btn-sm btn-default" value="' + data.chat_id + '" title="Kick Member" onclick="Kick_user(this.value)"><i class="fas fa-times text-danger"></i></button>'
+                    + '<button type="button" class="btn btn-sm btn-default" value="' + data.chat_id + '" title="Warning Member" onclick="Warning_user(this.value)"><i class="fas fa-exclamation text-warning"></i></button>'
                     + '</div>'
                     + '</div>'
                     + '<div class="mt-2 p-5 bg-light-success font-size-lg text-left wrap-chat"> ' + data.msgtxt + ' </div>'
@@ -49,12 +53,16 @@ window.onload = function () {
             $('#msg_dir2').append(txt2);
         } else if (data.name_role === 'silver') {
             var txt3 = '<div class="d-flex flex-column mb-5 align-items-start">'
-                    + '<div class="d-flex align-items-center" title="Silver Member">'
-                    + '<div class="symbol symbol-40 mr-3">'
-                    + '<img src="' + window.location.protocol + '//' + window.location.host + '/assets/images/users/' + data.avatar + '" class="rounded-circle" alt="' + data.username + '">'
+                    + '<div class="d-flex align-items-center">'
+                    + '<div class="symbol symbol-40 mr-3" title="Silver Member">'
+                    + '<img src="' + data.avatar + '" class="rounded-circle" alt="' + data.username + '">'
                     + '</div>'
-                    + '<div class="mx-2">'
+                    + '<div class="mx-2" title="Silver Member">'
                     + '<a href="javascript:void(0);" class="font-size-h6" style="text-decoration:none;">' + data.username + ' </a>'
+                    + '</div>'
+                    + '<div class="btn-group btn_control">'
+                    + '<button type="button" class="btn btn-sm btn-default" value="' + data.chat_id + '" title="Kick Member" onclick="Kick_user(this.value)"><i class="fas fa-times text-danger"></i></button>'
+                    + '<button type="button" class="btn btn-sm btn-default" value="' + data.chat_id + '" title="Warning Member" onclick="Warning_user(this.value)"><i class="fas fa-exclamation text-warning"></i></button>'
                     + '</div>'
                     + '</div>'
                     + '<div class="mt-2 p-5 bg-light text-dark-50 font-weight-bold font-size-lg text-left wrap-chat"> ' + data.msgtxt + ' </div>'
@@ -137,10 +145,13 @@ function Send_chat(id) {
                             avatar: data.ava,
                             role_name: data.role_name,
                             id_user: data.user_id,
-                            id_role: data.role_id
+                            id_role: data.role_id,
+                            id_chat: data.chat_id
                         });
                     } else if (data.success === false) {
                         window.location.href = '';
+                    } else {
+                        toastr.warning('error, your message not sent');
                     }
                 }, error: function (jqXHR) {
                     toastr.error('error ' + jqXHR.status + ' ' + jqXHR.statusText);
@@ -171,10 +182,13 @@ function Send_chat(id) {
                             avatar: data.ava,
                             role_name: data.role_name,
                             id_user: data.user_id,
-                            id_role: data.role_id
+                            id_role: data.role_id,
+                            id_chat: data.chat_id
                         });
                     } else if (data.success === false) {
                         window.location.href = '';
+                    } else {
+                        toastr.warning('error, your message not sent');
                     }
                 }, error: function (jqXHR) {
                     toastr.error('error ' + jqXHR.status + ' ' + jqXHR.statusText);
@@ -182,4 +196,32 @@ function Send_chat(id) {
             });
         }
     }
+}
+function Kick_user(id_chat) {
+    $.ajax({
+        type: "GET",
+        url: window.location.protocol + '//' + window.location.host + '/Streaming/Get_detail?token=' + id_chat,
+        dataType: "json",
+        cache: false,
+        success: function (data) {
+            console.log(data);
+        },
+        error: function (jqXHR) {
+            toastr.error('error ' + jqXHR.status + ' ' + jqXHR.statusText);
+        }
+    });
+}
+function Warning_user(id_chat) {
+    $.ajax({
+        type: "GET",
+        url: window.location.protocol + '//' + window.location.host + '/Streaming/Get_detail?token=' + id_chat,
+        dataType: "json",
+        cache: false,
+        success: function (data) {
+            console.log(data);
+        },
+        error: function (jqXHR) {
+            toastr.error('error ' + jqXHR.status + ' ' + jqXHR.statusText);
+        }
+    });
 }
