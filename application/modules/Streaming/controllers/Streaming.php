@@ -27,7 +27,6 @@ class Streaming extends CI_Controller {
             ];
         } else {
             $data = [
-                'success' => true,
                 'uname' => $this->session->userdata('uname'),
                 'msg' => Post_input('message'),
                 'ava' => base_url('assets/images/users/' . $this->session->userdata('avatar')),
@@ -36,9 +35,10 @@ class Streaming extends CI_Controller {
                 'role_id' => $role_id
             ];
             $exec = $this->model->Insert_chat($data);
-            if (!$exec) {
+            if ($exec === false) {
                 $data['success'] = 'gagal';
             } else {
+                $data['success'] = true;
                 $data['chat_id'] = Enkrip($exec);
             }
         }
