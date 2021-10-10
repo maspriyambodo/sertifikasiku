@@ -23,7 +23,7 @@ class Streaming extends CI_Controller {
         $this->load->helper(['text', 'offensive_words']);
 //        $string = word_censor(Post_input('message'), word_block(), '<del class="text-danger">censor</del>');
         $string = word_censor(Post_input('message'), word_block(), '<del class="text-danger">censor</del>');
-        if (strpos($string, '<del class="text-danger">censor</del>')) {
+        if (strpos($string, 'censor')) {
             $attempt = $this->session->userdata('chat_attempt');
             $attempt++;
             $this->session->set_userdata('chat_attempt', $attempt);
