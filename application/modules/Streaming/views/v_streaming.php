@@ -78,10 +78,6 @@
                                                     <a href="javascript:void(0);" class="text-white font-size-h6" style="text-decoration:none;font-size:1.150rem;"><?php echo $txtchat->uname; ?> </a>
                                                     <span class="font-size-md"><i class="fas fa-crown text-warning"></i></span>
                                                 </div>
-                                                <div class="btn-group btn_control">
-                                                    <button type="button" class="btn btn-sm btn-default" value="<?php echo Enkrip($txtchat->id); ?>" title="Kick Member" onclick="Kick_user(this.value)"><i class="fas fa-times text-danger"></i></button>
-                                                    <button type="button" class="btn btn-sm btn-default" value="<?php echo Enkrip($txtchat->id); ?>" title="Warning Member" onclick="Warning_user(this.value)"><i class="fas fa-exclamation text-warning"></i></button>
-                                                </div>
                                             </div>
                                             <div class="mt-2 p-5 bg-light-success font-size-lg text-left wrap-chat">
                                                 <?php echo $txtchat->msg; ?>
@@ -95,10 +91,6 @@
                                                 </div>
                                                 <div class="mx-2" title="Silver Member">
                                                     <a href="javascript:void(0);" class="font-size-h6" style="text-decoration:none;font-size:1.150rem;"><?php echo $txtchat->uname; ?> </a>
-                                                </div>
-                                                <div class="btn-group btn_control">
-                                                    <button type="button" class="btn btn-sm btn-default" value="<?php echo Enkrip($txtchat->id); ?>" title="Kick Member" onclick="Kick_user(this.value)"><i class="fas fa-times text-danger"></i></button>
-                                                    <button type="button" class="btn btn-sm btn-default" value="<?php echo Enkrip($txtchat->id); ?>" title="Warning Member" onclick="Warning_user(this.value)"><i class="fas fa-exclamation text-warning"></i></button>
                                                 </div>
                                             </div>
                                             <div class="mt-2 p-5 bg-light text-dark-50 font-weight-bold font-size-lg text-left wrap-chat">
@@ -249,10 +241,6 @@
                                                     <a href="javascript:void(0);" class="text-white font-size-h6" style="text-decoration:none;font-size:1.150rem;"><?php echo $txtchat2->uname; ?> </a>
                                                     <span class="font-size-md"><i class="fas fa-crown text-warning"></i></span>
                                                 </div>
-                                                <div class="btn-group btn_control">
-                                                    <button type="button" class="btn btn-sm btn-default" value="<?php echo Enkrip($txtchat2->id); ?>" title="Kick Member" onclick="Kick_user(this.value)"><i class="fas fa-times text-danger"></i></button>
-                                                    <button type="button" class="btn btn-sm btn-default" value="<?php echo Enkrip($txtchat2->id); ?>" title="Warning Member" onclick="Warning_user(this.value)"><i class="fas fa-exclamation text-warning"></i></button>
-                                                </div>
                                             </div>
                                             <div class="mt-2 p-5 bg-light-success font-size-lg text-left wrap-chat">
                                                 <?php echo $txtchat2->msg; ?>
@@ -266,10 +254,6 @@
                                                 </div>
                                                 <div class="mx-2" title="Silver Member">
                                                     <a href="javascript:void(0);" class="font-size-h6" style="text-decoration:none;font-size:1.150rem;"><?php echo $txtchat2->uname; ?> </a>
-                                                </div>
-                                                <div class="btn-group btn_control">
-                                                    <button type="button" class="btn btn-sm btn-default" value="<?php echo Enkrip($txtchat2->id); ?>" title="Kick Member" onclick="Kick_user(this.value)"><i class="fas fa-times text-danger"></i></button>
-                                                    <button type="button" class="btn btn-sm btn-default" value="<?php echo Enkrip($txtchat2->id); ?>" title="Warning Member" onclick="Warning_user(this.value)"><i class="fas fa-exclamation text-warning"></i></button>
                                                 </div>
                                             </div>
                                             <div class="mt-2 p-5 bg-light text-dark-50 font-weight-bold font-size-lg text-left wrap-chat">

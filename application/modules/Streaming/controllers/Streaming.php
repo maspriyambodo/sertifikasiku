@@ -28,19 +28,12 @@ class Streaming extends CI_Controller {
             $attempt++;
             $this->session->set_userdata('chat_attempt', $attempt);
             $block_chat = true;
-        } else {
-            $block_chat = false;
-        }
-        if ($attempt == 3) {
-            $block_chat = true;
-            $this->session->sess_destroy();
-            $this->session->set_tempdata('blocked_account', true, 300);
         }
         return $this->_chatSend($string, $block_chat);
     }
 
     private function _chatSend($string, $block_chat) {
-        if (empty($this->id_user) and empty($this->role_id)) {
+        if (empty($this->id_user) and empty($this->role_id) or ($this->session->userdata('chat_attempt') === 3)) {
             $this->session->sess_destroy();
             $data['success'] = false;
         } else {
