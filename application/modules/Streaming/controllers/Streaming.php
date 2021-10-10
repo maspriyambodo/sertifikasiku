@@ -35,12 +35,7 @@ class Streaming extends CI_Controller {
             $data['success'] = false;
             $this->session->sess_destroy();
             $this->session->set_tempdata('blocked_account', true, 300);
-        }
-        $this->_chatSend($string, $data);
-    }
-
-    private function _chatSend($string, $data) {
-        if (empty($this->id_user) and empty($this->role_id)) {
+        } elseif (empty($this->id_user) and empty($this->role_id)) {
             $this->session->sess_destroy();
             $data['success'] = false;
         } else {
