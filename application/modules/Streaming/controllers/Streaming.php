@@ -27,15 +27,19 @@ class Streaming extends CI_Controller {
             $attempt = $this->session->userdata('chat_attempt');
             $attempt++;
             $this->session->set_userdata('chat_attempt', $attempt);
-            $data['block_chat'] = true;
+            $block_chat = true;
         } else {
-            $data['block_chat'] = false;
+            $block_chat = false;
         }
         if ($attempt == 3) {
-            $data['success'] = false;
             $this->session->sess_destroy();
             $this->session->set_tempdata('blocked_account', true, 300);
-        } elseif (empty($this->id_user) and empty($this->role_id)) {
+        }
+        return $this->_chatSend($string, $block_chat);
+    }
+
+    private function _chatSend($string, $block_chat) {
+        if (empty($this->id_user) and empty($this->role_id)) {
             $this->session->sess_destroy();
             $data['success'] = false;
         } else {
@@ -55,6 +59,7 @@ class Streaming extends CI_Controller {
                 $data['chat_id'] = Enkrip($exec);
             }
         }
+        $data['block_chat'] = $block_chat;
         ToJson($data);
     }
 
