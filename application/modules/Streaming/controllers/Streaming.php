@@ -36,6 +36,7 @@ class Streaming extends CI_Controller {
         if (empty($this->id_user) and empty($this->role_id) or ($this->session->userdata('chat_attempt') === 3)) {
             $this->session->sess_destroy();
             $data['success'] = false;
+            $this->session->set_tempdata('blocked_account', true, 300);
         } else {
             $data = [
                 'uname' => $this->session->userdata('uname'),
