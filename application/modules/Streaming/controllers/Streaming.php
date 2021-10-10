@@ -48,7 +48,6 @@ class Streaming extends CI_Controller {
     public function Get_detail() {
         $id_chat = Dekrip(Post_get('token'));
         $exec = $this->model->Get_detail($id_chat);
-        die(print_array($exec));
         if (empty($exec)) {
             $data = [
                 'success' => false,
