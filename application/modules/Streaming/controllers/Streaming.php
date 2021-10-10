@@ -32,6 +32,7 @@ class Streaming extends CI_Controller {
             $block_chat = false;
         }
         if ($attempt == 3) {
+            $block_chat = true;
             $this->session->sess_destroy();
             $this->session->set_tempdata('blocked_account', true, 300);
         }
