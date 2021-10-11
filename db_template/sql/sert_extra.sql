@@ -4,6 +4,13 @@
 --
 
 --
+-- Indexes for table `dt_materi`
+--
+ALTER TABLE `dt_materi`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `id` (`id`) USING BTREE;
+
+--
 -- Indexes for table `dt_notif`
 --
 ALTER TABLE `dt_notif`
@@ -119,6 +126,15 @@ ALTER TABLE `sys_users`
   ADD KEY `role_id` (`role_id`) USING BTREE;
 
 --
+-- Indexes for table `tr_absensi`
+--
+ALTER TABLE `tr_absensi`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `id` (`id`) USING BTREE,
+  ADD KEY `materi_id` (`materi_id`),
+  ADD KEY `tr_absensi_ibfk_1` (`user_id`);
+
+--
 -- Indexes for table `tr_chat`
 --
 ALTER TABLE `tr_chat`
@@ -129,6 +145,12 @@ ALTER TABLE `tr_chat`
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `dt_materi`
+--
+ALTER TABLE `dt_materi`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `dt_notif`
@@ -185,10 +207,16 @@ ALTER TABLE `sys_users`
   MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
+-- AUTO_INCREMENT for table `tr_absensi`
+--
+ALTER TABLE `tr_absensi`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `tr_chat`
 --
 ALTER TABLE `tr_chat`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 
 --
 -- Constraints for dumped tables
@@ -254,6 +282,13 @@ ALTER TABLE `sys_permissions`
 --
 ALTER TABLE `sys_users`
   ADD CONSTRAINT `sys_users_ibfk_1` FOREIGN KEY (`role_id`) REFERENCES `sys_roles` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+--
+-- Constraints for table `tr_absensi`
+--
+ALTER TABLE `tr_absensi`
+  ADD CONSTRAINT `tr_absensi_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `sys_users` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  ADD CONSTRAINT `tr_absensi_ibfk_2` FOREIGN KEY (`materi_id`) REFERENCES `dt_materi` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
 
 --
 -- Constraints for table `tr_chat`
