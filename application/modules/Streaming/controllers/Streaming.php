@@ -83,8 +83,10 @@ class Streaming extends CI_Controller {
         return ToJson($data);
     }
 
-    public function Kick_user() {
-        
+    public function punishment() {
+        $this->model->Kick_user($this->id_user);
+        $this->session->sess_destroy();
+        blocked_account();
     }
 
 }

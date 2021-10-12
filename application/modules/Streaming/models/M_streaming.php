@@ -60,4 +60,21 @@ class M_streaming extends CI_Model {
         return $exec;
     }
 
+    public function Kick_user($id_user) {
+        $this->db->trans_begin();
+        $this->db->set([
+                    '`sys_users`.`login_attempt`' => 3 + false,
+                    '`sys_users`.`sysupdateuser`' => $id_user + false,
+                    'sys_users.sysupdatedate' => date('Y-m-d H:i:s')
+                ])
+                ->where('`sys_users`.`id`', $id_user, false)
+                ->update('sys_users');
+        if ($this->db->trans_status() === false) {
+            $this->db->trans_rollback();
+            log_message('error', 'error while Kick_user => ./application/modules/Streaming/models/M_streaming.php Line ');
+        } else {
+            $this->db->trans_commit();
+        }
+    }
+
 }
