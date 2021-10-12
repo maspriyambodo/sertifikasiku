@@ -437,7 +437,6 @@
                                         id_role: data.role_id,
                                         id_chat: data.chat_id
                                     });
-                                    socket.close();
                                 } else if (data.success === false) {
                                     window.location.href = '';
                                 } else {
@@ -478,7 +477,6 @@
                                         id_role: data.role_id,
                                         id_chat: data.chat_id
                                     });
-                                    socket.close();
                                 } else if (data.success === false) {
                                     window.location.href = '';
                                 } else {
