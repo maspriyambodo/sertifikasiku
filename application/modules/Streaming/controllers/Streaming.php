@@ -70,16 +70,21 @@ class Streaming extends CI_Controller {
         } else {
             $data = [
                 'success' => true,
-                'uname' => $exec[0]->uname,
-                'msg' => $exec[0]->msg,
-                'ava' => base_url('assets/images/users/' . $exec[0]->pict),
-                'role_name' => $exec[0]->role_name,
-                'user_id' => $exec[0]->user_id,
-                'role_id' => $exec[0]->role_id,
-                'chat_id' => $exec[0]->id
+                'uname' => $exec->uname,
+                'key' => base64_encode($exec->uname),
+                'msg' => $exec->msg,
+                'ava' => base_url('assets/images/users/' . $exec->pict),
+                'role_name' => $exec->role_name,
+                'user_id' => $exec->user_id,
+                'role_id' => $exec->role_id,
+                'chat_id' => $exec->id
             ];
         }
         return ToJson($data);
+    }
+
+    public function Kick_user() {
+        
     }
 
 }

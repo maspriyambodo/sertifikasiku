@@ -21,7 +21,13 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mb.YTPlayer/3.3.9/jquery.mb.YTPlayer.js" integrity="sha512-QEsEUG6vCJ4YMCLGNXn9zScVK2FYKyMSntIS5s3P8h1c5kz5320OE5nij835WZqfTt3JrfyyoOTm0JhVWoqJPA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js" integrity="sha512-XtmMtDEcNz2j7ekrtHvOVR4iwwaD6o/FUJe6+Zq+HgcCsk3kj4uSQQR8weQ2QVj1o0Pk6PwYLohm206ZzNfubg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.js" integrity="sha512-lbwH47l/tPXJYG9AcFNoJaTMhGvYWhVM9YI43CT+uteTRRaiLCui8snIgyAN8XWgNjNhCqlAUdzZptso6OCoFQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         <script src="<?php echo base_url('node_modules/socket.io-client/dist/socket.io.min.js'); ?>" type="text/javascript"></script>
+        <style>
+            .swal-overlay {
+                background-color: black;
+            }
+        </style>
     </head>
     <body>
         <nav class="navbar navbar-expand-lg navbar-light sticky-top bg-custom">
@@ -76,6 +82,7 @@
                                                 <?php echo $txtchat->msg; ?>
                                             </div>
                                         </div>
+
                                     <?php elseif ($txtchat->role_name == 'platinum') : ?>
                                         <div class="d-flex flex-column mb-5 align-items-start">
                                             <div class="d-flex align-items-center">
@@ -86,6 +93,16 @@
                                                     <a href="javascript:void(0);" class="text-white font-size-h6" style="text-decoration:none;font-size:14px;"><?php echo $txtchat->uname; ?> </a>
                                                     <span class="font-size-md"><i class="fas fa-crown text-warning" style="font-size:13px;"></i></span>
                                                 </div>
+                                                <?php
+                                                if ($this->session->userdata('role_name') === 'Super User' or $this->session->userdata('role_name') === 'Administrator') {
+                                                    echo '<div id="btn_control' . $txtchat->id . '" class="btn-group">'
+                                                    . '<button type="button" class="btn btn-sm btn-default" value="' . Enkrip($txtchat->id) . '" title="Kick Member" onclick="Kick_user(this.value)"><i class="fas fa-times text-danger"></i></button>'
+                                                    . '<button type="button" class="btn btn-sm btn-default" value="' . Enkrip($txtchat->id) . '" title="Warning Member" onclick="Warning_user(this.value)"><i class="fas fa-exclamation text-warning"></i></button>'
+                                                    . '</div>';
+                                                } else {
+                                                    null;
+                                                }
+                                                ?>
                                             </div>
                                             <div class="mt-2 p-5 bg-light-success font-size-lg text-left wrap-chat">
                                                 <?php echo $txtchat->msg; ?>
@@ -100,6 +117,16 @@
                                                 <div class="mx-2" title="Silver Member">
                                                     <a href="javascript:void(0);" class="font-size-h6" style="text-decoration:none;font-size:1.150rem;"><?php echo $txtchat->uname; ?> </a>
                                                 </div>
+                                                <?php
+                                                if ($this->session->userdata('role_name') === 'Super User' or $this->session->userdata('role_name') === 'Administrator') {
+                                                    echo '<div id="btn_control' . $txtchat->id . '" class="btn-group">'
+                                                    . '<button type="button" class="btn btn-sm btn-default" value="' . Enkrip($txtchat->id) . '" title="Kick Member" onclick="Kick_user(this.value)"><i class="fas fa-times text-danger"></i></button>'
+                                                    . '<button type="button" class="btn btn-sm btn-default" value="' . Enkrip($txtchat->id) . '" title="Warning Member" onclick="Warning_user(this.value)"><i class="fas fa-exclamation text-warning"></i></button>'
+                                                    . '</div>';
+                                                } else {
+                                                    null;
+                                                }
+                                                ?>
                                             </div>
                                             <div class="mt-2 p-5 bg-light text-dark-50 font-weight-bold font-size-lg text-left wrap-chat">
                                                 <?php echo $txtchat->msg; ?>
@@ -249,6 +276,16 @@
                                                     <a href="javascript:void(0);" class="text-white font-size-h6" style="text-decoration:none;font-size:14px;"><?php echo $txtchat2->uname; ?> </a>
                                                     <span class="font-size-md"><i class="fas fa-crown text-warning" style="font-size:14px;"></i></span>
                                                 </div>
+                                                <?php
+                                                if ($this->session->userdata('role_name') === 'Super User' or $this->session->userdata('role_name') === 'Administrator') {
+                                                    echo '<div id="btn_control' . $txtchat2->id . '" class="btn-group">'
+                                                    . '<button type="button" class="btn btn-sm btn-default" value="' . Enkrip($txtchat2->id) . '" title="Kick Member" onclick="Kick_user(this.value)"><i class="fas fa-times text-danger"></i></button>'
+                                                    . '<button type="button" class="btn btn-sm btn-default" value="' . Enkrip($txtchat2->id) . '" title="Warning Member" onclick="Warning_user(this.value)"><i class="fas fa-exclamation text-warning"></i></button>'
+                                                    . '</div>';
+                                                } else {
+                                                    null;
+                                                }
+                                                ?>
                                             </div>
                                             <div class="mt-2 p-5 bg-light-success font-size-lg text-left wrap-chat">
                                                 <?php echo $txtchat2->msg; ?>
@@ -263,6 +300,16 @@
                                                 <div class="mx-2" title="Silver Member">
                                                     <a href="javascript:void(0);" class="font-size-h6" style="text-decoration:none;font-size:1.150rem;"><?php echo $txtchat2->uname; ?> </a>
                                                 </div>
+                                                <?php
+                                                if ($this->session->userdata('role_name') === 'Super User' or $this->session->userdata('role_name') === 'Administrator') {
+                                                    echo '<div id="btn_control' . $txtchat2->id . '" class="btn-group">'
+                                                    . '<button type="button" class="btn btn-sm btn-default" value="' . Enkrip($txtchat2->id) . '" title="Kick Member" onclick="Kick_user(this.value)"><i class="fas fa-times text-danger"></i></button>'
+                                                    . '<button type="button" class="btn btn-sm btn-default" value="' . Enkrip($txtchat2->id) . '" title="Warning Member" onclick="Warning_user(this.value)"><i class="fas fa-exclamation text-warning"></i></button>'
+                                                    . '</div>';
+                                                } else {
+                                                    null;
+                                                }
+                                                ?>
                                             </div>
                                             <div class="mt-2 p-5 bg-light text-dark-50 font-weight-bold font-size-lg text-left wrap-chat">
                                                 <?php echo $txtchat2->msg; ?>
@@ -361,6 +408,13 @@
                     });
                     $('#scroll-pull').animate({
                         scrollTop: $('#scroll-pull').get(0).scrollHeight
+                    });
+                });
+                socket.on('<?php echo base64_encode($this->session->userdata('uname')); ?>', function (data) {
+                    swal("makanya jangan ngomong jorok goblok!", {
+                        buttons: ["TUTUP", false]
+                    }).then((value) => {
+                        window.location.href = '<?php echo base_url('Auth/Logout'); ?>';
                     });
                 });
                 document.getElementById("bgndVideo").addEventListener("contextmenu", function (event) {
@@ -488,6 +542,37 @@
                         });
                     }
                 }
+            }
+            function Kick_user(id_chat) {
+                $.ajax({
+                    type: "GET",
+                    url: "<?php echo base_url('Streaming/Get_detail?token='); ?>" + id_chat,
+                    dataType: "json",
+                    cache: false,
+                    success: function (data) {
+                        if (data.success === true) {
+                            var socket = io.connect('https://live-chat.mycapturer.com');
+                            socket.emit('kick_user', {
+                                "uname": data.uname,
+                                "key": data.key,
+                                "msg": data.msg,
+                                "ava": data.ava,
+                                "role_name": data.role_name,
+                                "user_id": data.user_id,
+                                "role_id": data.role_id,
+                                "chat_id": data.chat_id
+                            });
+                        } else {
+                            toastr.error('error while getting user data!');
+                        }
+                    },
+                    error: function (jqXHR) {
+                        toastr.error('error ' + jqXHR.status + ' ' + jqXHR.statusText);
+                    }
+                });
+            }
+            function Warning_user(id_chat) {
+
             }
         </script>
     </body>

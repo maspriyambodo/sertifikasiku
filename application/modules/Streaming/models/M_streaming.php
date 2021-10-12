@@ -45,7 +45,7 @@ class M_streaming extends CI_Model {
                 ->order_by('tr_chat.id ASC')
                 ->limit(1)
                 ->get()
-                ->result();
+                ->row();
         return $exec;
     }
 
