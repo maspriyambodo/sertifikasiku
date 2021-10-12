@@ -1,7 +1,4 @@
 ### Instalation
-login:
-username: bod
-password: password
 ---
 rename folder `/application/config.production` to `config`
 
@@ -62,11 +59,11 @@ give RW access folder sessions in application folder
 ---
 follow these steps for import database, database files in folder `./db_template/sql/`
 
-1. `cms_database.sql`
-1. `cms_table_*.sql`
-1. `cms_view_*.sql`
-1. `cms_routines.sql`
-1. `cms_extra.sql`
+1. `sert_database.sql`
+1. `sert_table_*.sql`
+1. `sert_view_*.sql`
+1. `sert_routines.sql`
+1. `sert_extra.sql`
 
 ### Requirements
 ---
