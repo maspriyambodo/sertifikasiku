@@ -148,7 +148,6 @@ function Send_chat(id) {
                     } else {
                         toastr.warning('error, your message not sent');
                     }
-                    console.log(data.chat_attempt);
                 }, error: function (jqXHR) {
                     toastr.error('error ' + jqXHR.status + ' ' + jqXHR.statusText);
                 }
