@@ -180,19 +180,19 @@ ALTER TABLE `mt_country`
 -- AUTO_INCREMENT for table `sys_menu`
 --
 ALTER TABLE `sys_menu`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `sys_menu_group`
 --
 ALTER TABLE `sys_menu_group`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `sys_permissions`
 --
 ALTER TABLE `sys_permissions`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=65;
 
 --
 -- AUTO_INCREMENT for table `sys_roles`

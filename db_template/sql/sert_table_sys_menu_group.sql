@@ -26,4 +26,5 @@ CREATE TABLE `sys_menu_group` (
 
 INSERT INTO `sys_menu_group` (`id`, `nama`, `description`, `order_no`, `stat`, `syscreateuser`, `syscreatedate`, `sysupdateuser`, `sysupdatedate`, `sysdeleteuser`, `sysdeletedate`) VALUES
 (1, 'Applications', 'default menu on system, menghapus grup ini akan membuat error pada system.\r\nmohon untuk tidak menghapus grup ini!', 1, 1, 1, '1970-01-01 00:00:00', 1, '1970-01-01 00:00:00', 0, '1970-01-01 00:00:00'),
-(2, 'Systems', 'default menu on system, menghapus grup ini akan membuat error pada system.\r\nmohon untuk tidak menghapus grup ini!', 999, 1, 1, '1970-01-01 00:00:00', 1, '1970-01-01 00:00:00', 0, '1970-01-01 00:00:00');
+(2, 'Systems', 'default menu on system, menghapus grup ini akan membuat error pada system.\r\nmohon untuk tidak menghapus grup ini!', 999, 1, 1, '1970-01-01 00:00:00', 1, '1970-01-01 00:00:00', 0, '1970-01-01 00:00:00'),
+(3, 'Master Data', 'menu untuk master data', 2, 1, 1, '2021-10-11 16:04:07', NULL, NULL, NULL, NULL);

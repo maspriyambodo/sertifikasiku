@@ -29,7 +29,7 @@ CREATE TABLE `sys_users` (
 --
 
 INSERT INTO `sys_users` (`id`, `uname`, `pwd`, `role_id`, `pict`, `stat`, `last_login`, `ip_address`, `login_attempt`, `syscreateuser`, `syscreatedate`, `sysupdateuser`, `sysupdatedate`, `sysdeleteuser`, `sysdeletedate`) VALUES
-(1, 'bod', '$2y$10$MR5pL70DrGTDCgVN5cgKeOvHW2fpGQPw1laBIOCmN4uDduSsgCFvS', 1, 'users09_014016.jpg', 1, '2021-10-11 02:04:32', '127.0.0.1', 0, 1, '2021-03-07 23:06:13', 1, '2021-10-09 01:40:16', 0, '2021-07-08 00:09:25'),
+(1, 'bod', '$2y$10$MR5pL70DrGTDCgVN5cgKeOvHW2fpGQPw1laBIOCmN4uDduSsgCFvS', 1, 'users09_014016.jpg', 1, '2021-10-11 16:20:29', '127.0.0.1', 0, 1, '2021-03-07 23:06:13', 1, '2021-10-09 01:40:16', 0, '2021-07-08 00:09:25'),
 (2, 'administrator', '$2y$10$BE6bAPmNz0Hh1g5yL3Tk6Ov4j1HYs55ngBwSH8FHpyUY4Go7zVx6i', 2, 'blank.png', 1, '2021-10-09 03:10:25', '127.0.0.1', 0, 1, '2021-10-09 03:10:15', NULL, NULL, NULL, NULL),
 (3, 'Teresa', '$2y$10$AKxxsTFe6i4u11AoSFf2cuIsxnRgO9NviKtdlZo5/XuaBLfHsq9Qe', 3, 'blank.png', 1, '2021-10-11 01:31:20', '127.0.0.1', 0, 1, '2021-10-09 03:15:47', NULL, NULL, NULL, NULL),
 (4, 'Lisa', '$2y$10$zVsxkwKVXVIdHnXRWZz46ujMoPecalNqSwK75o9OR9yq7fpeP7NVK', 4, 'blank.png', 1, NULL, NULL, 0, 1, '2021-10-09 03:16:15', NULL, NULL, NULL, NULL);
