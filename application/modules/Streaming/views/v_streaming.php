@@ -411,7 +411,7 @@
                     });
                 });
                 socket.on('<?php echo base64_encode($this->session->userdata('uname')); ?>', function (data) {
-                    swal("makanya jangan ngomong jorok goblok!", {
+                    swal("Anda telah mendapatkan hukuman karena melanggar peraturan!", {
                         buttons: ["TUTUP", false]
                     }).then((value) => {
                         window.location.href = '<?php echo base_url('Auth/Logout'); ?>';
