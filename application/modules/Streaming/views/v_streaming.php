@@ -309,7 +309,7 @@
                     "showMethod": "fadeIn",
                     "hideMethod": "fadeOut"
                 };
-                var socket = io.connect('https://live-chat.mycapturer.com', { transports: ["websocket"] });
+                var socket = io.connect('https://live-chat.mycapturer.com');
                 socket.on('new_message', function (data) {
                     if (data.name_role === 'Administrator' || data.name_role === 'Super User') {
                         var txt1 = '<div class="d-flex flex-column mb-5 align-items-start">'
@@ -427,7 +427,7 @@
                                     toastr.warning('sistem kami mendeteksi kata-kata tidak pantas, anda akan mendapatkan hukuman jika ');
                                 }
                                 if (data.success === true) {
-                                    var socket = io.connect('https://live-chat.mycapturer.com', {transports: ["websocket"]});
+                                    var socket = io.connect('https://live-chat.mycapturer.com');
                                     socket.emit('new_message', {
                                         username: data.uname,
                                         msgtxt: data.msg,
@@ -468,7 +468,7 @@
                                     toastr.warning('sistem kami mendeteksi kata-kata tidak pantas, anda akan mendapatkan hukuman jika ');
                                 }
                                 if (data.success === true) {
-                                    var socket = io.connect('https://live-chat.mycapturer.com', {transports: ["websocket"]});
+                                    var socket = io.connect('https://live-chat.mycapturer.com');
                                     socket.emit('new_message', {
                                         username: data.uname,
                                         msgtxt: data.msg,
