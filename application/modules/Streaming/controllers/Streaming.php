@@ -13,10 +13,11 @@ class Streaming extends CI_Controller {
 
     public function index() {
         $data = [
+            'materi' => $this->model->Materi(),
             'chat' => $this->model->Read_chat(),
             'privilege' => $this->bodo->Check_previlege('Streaming/index/')
         ];
-        $this->load->view('v_streaming', $data);
+        return $this->parser->parse('v_streaming', $data);
     }
 
     public function Chat_send() {
