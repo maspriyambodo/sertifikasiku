@@ -2,10 +2,11 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>Live Streaming</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        <title><?php echo $materi[0]->nama_materi; ?></title>
         <link href="<?php echo base_url('assets/images/systems/' . $this->bodo->Sys('favico')); ?>" rel="shortcut icon"/>
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com" rel="preconnect"/>
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin/>
         <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Poppins:wght@100;200&display=swap" rel="stylesheet"> 
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery.mb.YTPlayer/3.3.9/css/jquery.mb.YTPlayer.min.css" integrity="sha512-+HWFHCZZfMe4XQRKS0bOzQ1r4+G2eknhMqP+FhFIkcmWPJlB4uFaIagSIRCKDOZI3IHc0t7z4+N/g2hIaO/JIw==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.1/css/bootstrap.min.css" integrity="sha512-6KY5s6UI5J7SVYuZB4S/CZMyPylqyyNZco376NM2Z8Sb8OxEdp02e1jkKk/wZxIEmjQ6DRCEBhni+gpr9c4tvA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -13,8 +14,14 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css" integrity="sha512-yHknP1/AwR+yx26cB1y0cjvQUMvEa2PFzt1c9LlS4pRQ5NOTZFWbhBig+X9G9eYW/8m0/4OXNx8pxJ6z57x0dw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css" integrity="sha512-17EgCFERpgZKcm0j0fEq1YCJuyAWdz9KUtv1EjVuaOz8pDnh/0nZxmU6BBXwaaxqoi9PQXnRWqlcDB027hgv9A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.css" integrity="sha512-6S2HWzVFxruDlZxI3sXOZZ4/eJ8AcxkQH1+JjSe/ONCEqR9L4Ysq5JdT5ipqtzU7WHalNwzwBv+iE51gNHJNqQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
         <link rel="stylesheet" href="<?php echo base_url('assets/streaming.css'); ?>"/>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.1/js/bootstrap.min.js" integrity="sha512-ewfXo9Gq53e1q1+WDTjaHAGZ8UvCWq0eXONhwDuIoaH8xz2r96uoAYaQCm1oQhnBfRXrvJztNXFsTloJfgbL5Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-migrate/3.3.2/jquery-migrate.min.js" integrity="sha512-3fMsI1vtU2e/tVxZORSEeuMhXnT9By80xlmXlsOku7hNwZSHJjwcOBpmy+uu+fyWwGCLkMvdVbHkeoXdAzBv+w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mb.YTPlayer/3.3.9/jquery.mb.YTPlayer.js" integrity="sha512-QEsEUG6vCJ4YMCLGNXn9zScVK2FYKyMSntIS5s3P8h1c5kz5320OE5nij835WZqfTt3JrfyyoOTm0JhVWoqJPA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js" integrity="sha512-XtmMtDEcNz2j7ekrtHvOVR4iwwaD6o/FUJe6+Zq+HgcCsk3kj4uSQQR8weQ2QVj1o0Pk6PwYLohm206ZzNfubg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.js" integrity="sha512-lbwH47l/tPXJYG9AcFNoJaTMhGvYWhVM9YI43CT+uteTRRaiLCui8snIgyAN8XWgNjNhCqlAUdzZptso6OCoFQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="<?php echo base_url('node_modules/socket.io-client/dist/socket.io.min.js'); ?>" type="text/javascript"></script>
     </head>
     <body>
         <nav class="navbar navbar-expand-lg navbar-light sticky-top bg-custom">
@@ -34,6 +41,7 @@
                 </div>
             </div>
         </nav>
+        <input type="hidden" name="url_video"/>
         <section id="main_webinar" class="clearfix main_webinar">
             <div class="container">
                 <div class="row pt-5">
@@ -283,13 +291,204 @@
                 </div>
             </div>
         </div>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.1/js/bootstrap.min.js" integrity="sha512-ewfXo9Gq53e1q1+WDTjaHAGZ8UvCWq0eXONhwDuIoaH8xz2r96uoAYaQCm1oQhnBfRXrvJztNXFsTloJfgbL5Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-migrate/3.3.2/jquery-migrate.min.js" integrity="sha512-3fMsI1vtU2e/tVxZORSEeuMhXnT9By80xlmXlsOku7hNwZSHJjwcOBpmy+uu+fyWwGCLkMvdVbHkeoXdAzBv+w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mb.YTPlayer/3.3.9/jquery.mb.YTPlayer.js" integrity="sha512-QEsEUG6vCJ4YMCLGNXn9zScVK2FYKyMSntIS5s3P8h1c5kz5320OE5nij835WZqfTt3JrfyyoOTm0JhVWoqJPA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js" integrity="sha512-XtmMtDEcNz2j7ekrtHvOVR4iwwaD6o/FUJe6+Zq+HgcCsk3kj4uSQQR8weQ2QVj1o0Pk6PwYLohm206ZzNfubg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.js" integrity="sha512-lbwH47l/tPXJYG9AcFNoJaTMhGvYWhVM9YI43CT+uteTRRaiLCui8snIgyAN8XWgNjNhCqlAUdzZptso6OCoFQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-        <script src="<?php echo base_url('node_modules/socket.io-client/dist/socket.io.min.js'); ?>" type="text/javascript"></script>
-        <script src="<?php echo base_url('assets/streaming.js?this'); ?>"></script>
+        <script>
+            window.onload = function () {
+                toastr.options = {
+                    "closeButton": true,
+                    "debug": false,
+                    "newestOnTop": true,
+                    "progressBar": false,
+                    "positionClass": "toast-top-right",
+                    "preventDuplicates": true,
+                    "showDuration": "300",
+                    "hideDuration": "0",
+                    "timeOut": "0",
+                    "extendedTimeOut": "0",
+                    "showEasing": "swing",
+                    "hideEasing": "linear",
+                    "showMethod": "fadeIn",
+                    "hideMethod": "fadeOut"
+                };
+                var socket = io.connect('https://live-chat.mycapturer.com');
+                socket.on('new_message', function (data) {
+                    if (data.name_role === 'Administrator' || data.name_role === 'Super User') {
+                        var txt1 = '<div class="d-flex flex-column mb-5 align-items-start">'
+                                + '<div class="d-flex align-items-center" title="Administrator">'
+                                + '<div class="symbol symbol-40 mr-3">'
+                                + '<img src="' + data.avatar + '" class="rounded-circle" alt="' + data.username + '">'
+                                + '</div>'
+                                + '<div class="mx-2">'
+                                + '<a href="javascript:void(0);" class="text-danger font-weight-bold font-size-h6" style="text-decoration:none;">' + data.username + ' </a>'
+                                + '<span class="font-size-sm"><i class="fas fa-user-shield text-danger"></i></span>'
+                                + '</div>'
+                                + '</div>'
+                                + '<div class="mt-2 p-5 bg-danger text-white font-size-lg text-left wrap-chat"> ' + data.msgtxt + ' </div>'
+                                + '</div>';
+                        $('#msg_dir').append(txt1);
+                        $('#msg_dir2').append(txt1);
+                    } else if (data.name_role === 'platinum') {
+                        var txt2 = '<div class="d-flex flex-column mb-5 align-items-start">'
+                                + '<div class="d-flex align-items-center">'
+                                + '<div class="symbol symbol-40 mr-3" title="Platinum Member">'
+                                + '<img src="' + data.avatar + '" class="rounded-circle" alt="' + data.username + '">'
+                                + '</div>'
+                                + '<div class="mx-2 bg-dark px-2 rounded" title="Platinum Member">'
+                                + '<a href="javascript:void(0);" class="text-white font-size-h6" style="text-decoration:none;">' + data.username + ' </a>'
+                                + '<span class="font-size-sm"><i class="fas fa-crown text-warning"></i></span>'
+                                + '</div>'
+                                + '</div>'
+                                + '<div class="mt-2 p-5 bg-light-success font-size-lg text-left wrap-chat"> ' + data.msgtxt + ' </div>'
+                                + '</div>';
+                        $('#msg_dir').append(txt2);
+                        $('#msg_dir2').append(txt2);
+                    } else if (data.name_role === 'silver') {
+                        var txt3 = '<div class="d-flex flex-column mb-5 align-items-start">'
+                                + '<div class="d-flex align-items-center">'
+                                + '<div class="symbol symbol-40 mr-3" title="Silver Member">'
+                                + '<img src="' + data.avatar + '" class="rounded-circle" alt="' + data.username + '">'
+                                + '</div>'
+                                + '<div class="mx-2" title="Silver Member">'
+                                + '<a href="javascript:void(0);" class="font-size-h6" style="text-decoration:none;">' + data.username + ' </a>'
+                                + '</div>'
+                                + '</div>'
+                                + '<div class="mt-2 p-5 bg-light text-dark-50 font-weight-bold font-size-lg text-left wrap-chat"> ' + data.msgtxt + ' </div>'
+                                + '</div>';
+                        $('#msg_dir').append(txt3);
+                        $('#msg_dir2').append(txt3);
+                    }
+                    $('#msg_dir').animate({
+                        scrollTop: $('#msg_dir').get(0).scrollHeight
+                    });
+                    $('#scroll-pull').animate({
+                        scrollTop: $('#scroll-pull').get(0).scrollHeight
+                    });
+                });
+                document.getElementById("bgndVideo").addEventListener("contextmenu", function (event) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                });
+                $("#bgndVideo").YTPlayer({
+                    videoURL: '<?php echo $materi[0]->link_video; ?>',
+                    containment: 'self',
+                    autoPlay: false,
+                    mute: false,
+                    startAt: 0,
+                    showControls: true,
+                    useOnMobile: true,
+                    vol: 100,
+                    opacity: 1,
+                    optimizeDisplay: true,
+                    loop: false,
+                    showYTLogo: false,
+                    remember_last_time: true,
+                    stopMovieOnBlur: true,
+                    useNoCookie: true
+                });
+                $('.sertif-carousel').slick({
+                    slidesToScroll: 1,
+                    dots: false,
+                    infinite: false,
+                    cssEase: 'linear',
+                    lazyLoad: 'ondemand',
+                    arrows: true,
+                    centerMode: false,
+                    centerPadding: '60px'
+                });
+                $('#msg_dir').animate({
+                    scrollTop: $('#msg_dir').get(0).scrollHeight
+                });
+                $('#scroll-pull').animate({
+                    scrollTop: $('#scroll-pull').get(0).scrollHeight
+                });
+            };
+            function Open_chat() {
+                $('#scroll-pull').animate({
+                    scrollTop: $('#scroll-pull').get(0).scrollHeight
+                });
+            }
+            function Send_chat(id) {
+                if (id === 1) {
+                    var msgtxt = $('input[name="msgtxt"]').val();
+                    if (msgtxt.length <= 1) {
+                        toastr.warning('Message is too short! 15 characters minimum');
+                    } else {
+                        var dataString = {
+                            message: msgtxt
+                        };
+                        $.ajax({
+                            type: "POST",
+                            url: "<?php echo base_url('Streaming/Chat_send/'); ?>",
+                            data: dataString,
+                            dataType: "json",
+                            cache: false,
+                            success: function (data) {
+                                $('input[name="msgtxt"]').val('');
+                                if (data.block_chat === true) {
+                                    toastr.warning('sistem kami mendeteksi kata-kata tidak pantas, anda akan mendapatkan hukuman jika ');
+                                }
+                                if (data.success === true) {
+                                    var socket = io.connect('https://live-chat.mycapturer.com');
+                                    socket.emit('new_message', {
+                                        username: data.uname,
+                                        msgtxt: data.msg,
+                                        avatar: data.ava,
+                                        role_name: data.role_name,
+                                        id_user: data.user_id,
+                                        id_role: data.role_id,
+                                        id_chat: data.chat_id
+                                    });
+                                } else if (data.success === false) {
+                                    window.location.href = '';
+                                } else {
+                                    toastr.warning('error, your message not sent');
+                                }
+                            }, error: function (jqXHR) {
+                                toastr.error('error ' + jqXHR.status + ' ' + jqXHR.statusText);
+                            }
+                        });
+                    }
+                } else if (id === 2) {
+                    var msgtxt = $('textarea[name="msgtxt2"]').val();
+                    if (msgtxt.length <= 1) {
+                        toastr.warning('Message is too short! 15 characters minimum');
+                    } else {
+                        var dataString = {
+                            message: msgtxt
+                        };
+                        $.ajax({
+                            type: "POST",
+                            url: "<?php echo base_url('Streaming/Chat_send/'); ?>",
+                            data: dataString,
+                            dataType: "json",
+                            cache: false,
+                            success: function (data) {
+                                $('textarea[name="msgtxt2"]').val('');
+                                if (data.block_chat === true) {
+                                    toastr.warning('sistem kami mendeteksi kata-kata tidak pantas, anda akan mendapatkan hukuman jika ');
+                                }
+                                if (data.success === true) {
+                                    var socket = io.connect('https://live-chat.mycapturer.com');
+                                    socket.emit('new_message', {
+                                        username: data.uname,
+                                        msgtxt: data.msg,
+                                        avatar: data.ava,
+                                        role_name: data.role_name,
+                                        id_user: data.user_id,
+                                        id_role: data.role_id,
+                                        id_chat: data.chat_id
+                                    });
+                                } else if (data.success === false) {
+                                    window.location.href = '';
+                                } else {
+                                    toastr.warning('error, your message not sent');
+                                }
+                            }, error: function (jqXHR) {
+                                toastr.error('error ' + jqXHR.status + ' ' + jqXHR.statusText);
+                            }
+                        });
+                    }
+                }
+            }
+        </script>
     </body>
 </html>
