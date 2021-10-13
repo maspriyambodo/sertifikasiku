@@ -2,16 +2,16 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="modal_activeLabel">Active Materi</h5>
+                <h5 class="modal-title" id="modal_activeLabel">Active Data Sesi</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <i aria-hidden="true" class="fas fa-times"></i>
                 </button>
             </div>
-            <form action="<?php echo site_url('Master/Materi/Set_active/'); ?>" method="post">
+            <form action="<?php echo site_url('Master/Sesi/Set_active/'); ?>" method="post">
                 <div class="modal-body">
                     <input type="hidden" name="<?php echo $csrf['name'] ?>" value="<?php echo $csrf['hash'] ?>"/>
                     <input type="hidden" name="id"/>
-                    <p>Activate Materi, making the materi accessible again</p>
+                    <p>Activate Sesi, making the sesi accessible again</p>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-light-primary font-weight-bold" data-dismiss="modal"><i class="far fa-times-circle"></i> Cancel</button>
