@@ -432,32 +432,33 @@
                     });
                 });
                 socket.on('<?php echo base64_encode($this->session->userdata('uname')); ?>', function (data) {
-                    Swal.fire({
-                        title: 'Alert!',
-                        text: 'Anda mendapatkan hukuman karena telah melanggar peraturan!',
-                        icon: 'error',
-                        confirmButtonText: 'TUTUP',
-                        allowOutsideClick: false,
-                        allowEscapeKey: false,
-                        allowEnterKey: true
-                    }).then((result) => {
-                        $('#main_webinar').empty();
-                        $('.second_webinar').empty();
-                        $('#chat_on_mobile').empty();
-                        $('#kt_chat_modol').empty();
-                        window.location.href = "<?php echo base_url('Streaming/punishment/'); ?>";
-                    });
-                });
-                socket.on('<?php echo base64_encode($this->session->userdata('uname')); ?>', function (data) {
-                    Swal.fire({
-                        title: 'Warning!',
-                        text: 'Anda mendapatkan peringatan karena telah melanggar peraturan!',
-                        icon: 'warning',
-                        confirmButtonText: 'TUTUP',
-                        allowOutsideClick: false,
-                        allowEscapeKey: false,
-                        allowEnterKey: true
-                    });
+                    if (data.category === 1) {
+                        Swal.fire({
+                            title: 'Alert!',
+                            text: 'Anda mendapatkan hukuman karena telah melanggar peraturan!',
+                            icon: 'error',
+                            confirmButtonText: 'TUTUP',
+                            allowOutsideClick: false,
+                            allowEscapeKey: false,
+                            allowEnterKey: true
+                        }).then((result) => {
+                            $('#main_webinar').empty();
+                            $('.second_webinar').empty();
+                            $('#chat_on_mobile').empty();
+                            $('#kt_chat_modol').empty();
+                            window.location.href = "<?php echo base_url('Streaming/punishment/'); ?>";
+                        });
+                    } else {
+                        Swal.fire({
+                            title: 'Warning!',
+                            text: 'Anda mendapatkan peringatan karena telah melanggar peraturan!',
+                            icon: 'warning',
+                            confirmButtonText: 'TUTUP',
+                            allowOutsideClick: false,
+                            allowEscapeKey: false,
+                            allowEnterKey: true
+                        });
+                    }
                 });
                 document.getElementById("bgndVideo").addEventListener("contextmenu", function (event) {
                     event.preventDefault();
