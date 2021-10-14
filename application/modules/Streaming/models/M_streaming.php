@@ -34,6 +34,7 @@ class M_streaming extends CI_Model {
             $this->db->trans_commit();
             $result = $this->db->insert_id();
         }
+        log_message('error', $result);
         return $result;
     }
 
