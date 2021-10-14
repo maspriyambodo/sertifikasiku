@@ -45,7 +45,8 @@ class Streaming extends CI_Controller {
                 'ava' => base_url('assets/images/users/' . $this->session->userdata('avatar')),
                 'role_name' => $this->session->userdata('role_name'),
                 'user_id' => $this->id_user,
-                'role_id' => $this->role_id
+                'role_id' => $this->role_id,
+                'materi_id' => Post_input('materi_id')
             ];
             $exec = $this->model->Insert_chat($data);
             if ($exec === false) {

@@ -49,6 +49,11 @@
         echo '<input type="hidden" name="id_sesi" value="' . $materi[0]->id_sesi . '"/>';
         echo '<input type="hidden" name="nama_materi" value="' . $materi[0]->nama_materi . '"/>';
         echo '<input type="hidden" name="deskripsi" value="' . $materi[0]->deskripsi . '"/>';
+        echo '<input type="hidden" name="tgl_start" value="' . date('Y-m-d', strtotime($materi[0]->time_start)) . '"/>';
+        echo '<input type="hidden" name="jam_start" value="' . date('H:i', strtotime($materi[0]->time_start)) . '"/>';
+        echo '<input type="hidden" name="tgl_stop" value="' . date('Y-m-d', strtotime($materi[0]->time_stop)) . '"/>';
+        echo '<input type="hidden" name="jam_stop" value="' . date('H:i', strtotime($materi[0]->time_stop)) . '"/>';
+        echo '<input type="hidden" name="nama_sesi" value="' . date('H:i', strtotime($materi[0]->nama_sesi)) . '"/>';
         ?>
         <section id="main_webinar" class="clearfix main_webinar">
             <div class="container">
@@ -491,7 +496,8 @@
                         toastr.warning('Message is too short! 15 characters minimum');
                     } else {
                         var dataString = {
-                            message: msgtxt
+                            message: msgtxt,
+                            materi_id: $('input[name="id_materi"]').val()
                         };
                         $.ajax({
                             type: "POST",
@@ -531,7 +537,8 @@
                         toastr.warning('Message is too short! 15 characters minimum');
                     } else {
                         var dataString = {
-                            message: msgtxt
+                            message: msgtxt,
+                            materi_id: $('input[name="id_materi"]').val()
                         };
                         $.ajax({
                             type: "POST",

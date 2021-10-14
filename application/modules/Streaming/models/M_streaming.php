@@ -22,7 +22,8 @@ class M_streaming extends CI_Model {
             'tr_chat.user_id' => $data['user_id'],
             'tr_chat.msg' => $data['msg'],
             'tr_chat.syscreateuser' => $data['user_id'],
-            'tr_chat.syscreatedate' => date('Y-m-d H:i:s')
+            'tr_chat.syscreatedate' => date('Y-m-d H:i:s'),
+            'tr_chat.materi_id' => $data['materi_id']
         ]);
         $this->db->insert('tr_chat');
         if ($this->db->trans_status() === false) {
