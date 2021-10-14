@@ -26,15 +26,14 @@ class M_streaming extends CI_Model {
             'tr_chat.materi_id' => $data['materi_id']
         ]);
         $this->db->insert('tr_chat');
+        $result = $this->db->insert_id();
         if ($this->db->trans_status() === false) {
             $this->db->trans_rollback();
             log_message('error', 'error insert chat');
             $result = false;
         } else {
             $this->db->trans_commit();
-            $result = $this->db->insert_id();
         }
-        log_message('error', $result);
         return $result;
     }
 
