@@ -367,8 +367,8 @@
                 var socket = io.connect('https://live-chat.mycapturer.com');
                 socket.on('new_message', function (data) {
                     var role_user = $('input[name="role_name"]').val();
-                    var btn_admin = '<button type="button" class="btn btn-sm btn-default" value="' + data.key + '" title="Kick Member ' + data.username + '" onclick="Kick_user(this.value)"><i class="fas fa-times text-danger"></i></button>'
-                            + '<button type="button" class="btn btn-sm btn-default" value="' + data.key + '" title="Warning Member ' + data.username + '" onclick="Warning_user(this.value)"><i class="fas fa-exclamation text-warning"></i></button>';
+                    var btn_admin = '<button type="button" class="btn btn-sm btn-default" value="' + data.chat_id + '" title="Kick Member ' + data.username + '" onclick="Kick_user(this.value)"><i class="fas fa-times text-danger"></i></button>'
+                            + '<button type="button" class="btn btn-sm btn-default" value="' + data.chat_id + '" title="Warning Member ' + data.username + '" onclick="Warning_user(this.value)"><i class="fas fa-exclamation text-warning"></i></button>';
                     if (data.name_role === 'Administrator' || data.name_role === 'Super User') {
                         var txt1 = '<div class="d-flex flex-column mb-5 align-items-start">'
                                 + '<div class="d-flex align-items-center" title="Administrator">'
