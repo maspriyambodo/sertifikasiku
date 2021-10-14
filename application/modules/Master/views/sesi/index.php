@@ -16,21 +16,10 @@
             <table class="table table-bordered table-hover table-striped" style="width:100%;">
                 <thead class="text-center text-uppercase">
                     <tr>
-                        <th rowspan="2">no</th>
-                        <th rowspan="2">Sesi</th>
-                        <th rowspan="2">nama materi</th>
-                        <th rowspan="2">Deskripsi</th>
-                        <th colspan="2">Waktu Mulai</th>
-                        <th colspan="2">Waktu Selesai</th>
-                        <th rowspan="2">Link Video</th>
-                        <th rowspan="2">Status</th>
-                        <th rowspan="2">action</th>
-                    </tr>
-                    <tr>
-                        <th>Tanggal</th>
-                        <th>Jam</th>
-                        <th>Tanggal</th>
-                        <th>Jam</th>
+                        <th>no</th>
+                        <th>Sesi</th>
+                        <th>Status</th>
+                        <th>action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -39,23 +28,16 @@
                         $data = [];
                     }
                     foreach ($data as $key => $menu) {
-                        $id_materi = Enkrip($menu->id);
+                        $id = Enkrip($menu->id);
                         ?>
                         <tr>
                             <td class="text-center">
                                 <?php
-                                static $id = 1;
-                                echo $id++;
+                                static $no = 1;
+                                echo $no++;
                                 ?>
                             </td>
-                            <td class="text-center"><?php echo $menu->nama_sesi; ?></td>
-                            <td><?php echo $menu->nama_materi; ?></td>
-                            <td><?php echo $menu->deskripsi; ?></td>
-                            <td class="text-center"><?php echo $menu->tgl_mulai; ?></td>
-                            <td class="text-center"><?php echo $menu->jam_mulai; ?></td>
-                            <td class="text-center"><?php echo $menu->tgl_selesai; ?></td>
-                            <td class="text-center"><?php echo $menu->jam_selesai; ?></td>
-                            <td class="text-center"><?php echo $menu->link_video; ?></td>
+                            <td class="text-center"><?php echo $menu->nama; ?></td>
                             <td class="text-center">
                                 <?php
                                 if ($menu->stat) {
@@ -68,9 +50,9 @@
                             
                             <td class="text-center">
                                 <?php
-                                $editbtn = '<a href="'.base_url('Master/Materi/Edit/'.$id_materi).'" id="editbtn" type="button" class="btn btn-icon btn-warning btn-xs" title="Edit" value="' . $id_materi . '" ><i class="far fa-edit"></i></a>';
-                                $delbtn = '<button id="delbtn" type="button" class="btn btn-icon btn-danger btn-xs" title="Delete" value="' . $id_materi . '" onclick="Delete(this.value)"><i class="far fa-trash-alt"></i></button>';
-                                $activebtn = '<button id="actvbtn" type="button" class="btn btn-icon btn-default btn-xs" title="Set Active" value="' . $id_materi . '" onclick="Active(this.value)"><i class="fas fa-unlock text-success"></i></button>';
+                                $editbtn = '<a href="'.base_url('Master/Sesi/Edit/'.$id).'" id="editbtn" type="button" class="btn btn-icon btn-warning btn-xs" title="Edit" value="' . $id . '" ><i class="far fa-edit"></i></a>';
+                                $delbtn = '<button id="delbtn" type="button" class="btn btn-icon btn-danger btn-xs" title="Delete" value="' . $id . '" onclick="Delete(this.value)"><i class="far fa-trash-alt"></i></button>';
+                                $activebtn = '<button id="actvbtn" type="button" class="btn btn-icon btn-default btn-xs" title="Set Active" value="' . $id . '" onclick="Active(this.value)"><i class="fas fa-unlock text-success"></i></button>';
 
                                 echo '<div class="btn-group">'; // open div btn-group
 

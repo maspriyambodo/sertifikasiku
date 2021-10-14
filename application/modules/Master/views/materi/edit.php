@@ -70,7 +70,7 @@
                     </div>
             <hr>
             <div class="btn-group">
-                <a href="<?php echo site_url('Systems/Menu/index/'); ?>" class="btn btn-danger" title="Cancel Update"><i class="fas fa-times"></i> Cancel</a>
+                <a href="<?php echo site_url('Master/Materi/index/'); ?>" class="btn btn-danger" title="Cancel Update"><i class="fas fa-times"></i> Cancel</a>
                 <button type="submit" class="btn btn-success"><i class="far fa-save"></i> Update</button>
             </div>
         </form>

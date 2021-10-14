@@ -48,7 +48,7 @@ class Materi extends CI_Controller {
             ];
         $exec = $this->model->pro_add($data);
 
-        if ($exec['status'] == false) {
+        if (!$exec) {
             $result = redirect(base_url('Master/Materi/index/'), $this->session->set_flashdata('err_msg', 'error while insert data'));
         } else {
             $result = redirect(base_url('Master/Materi/index/'), $this->session->set_flashdata('succ_msg', 'success, new data has been added'));
@@ -71,7 +71,7 @@ class Materi extends CI_Controller {
                 'sysupdatedate' => date('Y-m-d h:i:sa')
             ];
             $exec = $this->model->update($data);
-            if ($exec['status'] == false) {
+            if (!$exec) {
                $result = redirect(base_url('Master/Materi/index/'), $this->session->set_flashdata('err_msg', 'error while update new group'));
             } else {
                 $result = redirect(base_url('Master/Materi/index/'), $this->session->set_flashdata('succ_msg', 'success, new group menu has been updated'));
@@ -84,7 +84,7 @@ class Materi extends CI_Controller {
     $id_materi = $this->bodo->Dec(Post_input('id'));
     $exec = $this->model->delete($id_materi);
 
-    if ($exec['status'] == false) {
+    if (!$exec) {
         $result = redirect(base_url('Master/Materi/index/'), $this->session->set_flashdata('err_msg', 'error while insert data'));
     } else {
         $result = redirect(base_url('Master/Materi/index/'), $this->session->set_flashdata('succ_msg', 'success, new data has been added'));
@@ -92,6 +92,19 @@ class Materi extends CI_Controller {
     return $result;
 
     }
+
+    public function Set_active() {
+        $id_materi = $this->bodo->Dec(Post_input('id'));
+        $exec = $this->model->active($id_materi);
+    
+        if (!$exec) {
+            $result = redirect(base_url('Master/Materi/index/'), $this->session->set_flashdata('err_msg', 'error while insert data'));
+        } else {
+            $result = redirect(base_url('Master/Materi/index/'), $this->session->set_flashdata('succ_msg', 'success, new data has been added'));
+        }
+        return $result;
+    
+        }
 
 
     public function Edit($id) {
