@@ -8,7 +8,8 @@
 --
 ALTER TABLE `dt_materi`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `id` (`id`) USING BTREE;
+  ADD UNIQUE KEY `id` (`id`) USING BTREE,
+  ADD KEY `id_sesi` (`id_sesi`);
 
 --
 -- Indexes for table `dt_notif`
@@ -47,6 +48,12 @@ ALTER TABLE `mt_country`
   ADD PRIMARY KEY (`id`) USING BTREE,
   ADD KEY `code` (`code`) USING BTREE,
   ADD KEY `id` (`id`) USING BTREE;
+
+--
+-- Indexes for table `mt_sesimateri`
+--
+ALTER TABLE `mt_sesimateri`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `mt_wil_kabupaten`
@@ -121,6 +128,7 @@ ALTER TABLE `sys_roles`
 -- Indexes for table `sys_users`
 --
 ALTER TABLE `sys_users`
+  ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `id` (`id`) USING BTREE,
   ADD UNIQUE KEY `uname` (`uname`) USING BTREE,
   ADD KEY `role_id` (`role_id`) USING BTREE;
@@ -140,7 +148,8 @@ ALTER TABLE `tr_absensi`
 ALTER TABLE `tr_chat`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `id` (`id`) USING BTREE,
-  ADD KEY `user_id` (`user_id`);
+  ADD KEY `user_id` (`user_id`),
+  ADD KEY `materi_id` (`materi_id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -177,10 +186,16 @@ ALTER TABLE `mt_country`
   MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=250;
 
 --
+-- AUTO_INCREMENT for table `mt_sesimateri`
+--
+ALTER TABLE `mt_sesimateri`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT for table `sys_menu`
 --
 ALTER TABLE `sys_menu`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `sys_menu_group`
@@ -192,7 +207,7 @@ ALTER TABLE `sys_menu_group`
 -- AUTO_INCREMENT for table `sys_permissions`
 --
 ALTER TABLE `sys_permissions`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=65;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=69;
 
 --
 -- AUTO_INCREMENT for table `sys_roles`
@@ -216,11 +231,17 @@ ALTER TABLE `tr_absensi`
 -- AUTO_INCREMENT for table `tr_chat`
 --
 ALTER TABLE `tr_chat`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `dt_materi`
+--
+ALTER TABLE `dt_materi`
+  ADD CONSTRAINT `dt_materi_ibfk_1` FOREIGN KEY (`id_sesi`) REFERENCES `mt_sesimateri` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
 
 --
 -- Constraints for table `dt_notif`
@@ -294,4 +315,5 @@ ALTER TABLE `tr_absensi`
 -- Constraints for table `tr_chat`
 --
 ALTER TABLE `tr_chat`
-  ADD CONSTRAINT `tr_chat_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `sys_users` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+  ADD CONSTRAINT `tr_chat_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `sys_users` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  ADD CONSTRAINT `tr_chat_ibfk_2` FOREIGN KEY (`materi_id`) REFERENCES `dt_materi` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT;

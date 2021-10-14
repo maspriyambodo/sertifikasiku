@@ -31,7 +31,7 @@ CREATE TABLE `sys_menu` (
 INSERT INTO `sys_menu` (`id`, `menu_parent`, `nama`, `link`, `order_no`, `group_menu`, `icon`, `description`, `stat`, `syscreateuser`, `syscreatedate`, `sysupdateuser`, `sysupdatedate`, `sysdeleteuser`, `sysdeletedate`) VALUES
 (1, NULL, 'Dashboard', 'Applications/Dashboard/index/', 100, 1, 'fas fa-tachometer-alt', 'menu default systems', 1, 1, '2021-03-11 04:07:27', 1, '2021-09-12 05:22:21', 0, '2021-07-07 23:54:26'),
 (2, NULL, 'Master Wilayah', 'javascrip:;', 300, 3, 'fas fa-globe-asia', 'menu untuk master data wilayah indonesia', 1, 1, '2021-03-13 12:29:43', 1, '2021-10-11 16:09:42', 0, '0000-00-00 00:00:00'),
-(3, NULL, 'Master Country', 'Master/Country/index/', 306, 3, 'fas fa-globe', 'menu untuk master data negara /country', 1, 1, '2021-03-13 19:35:02', 1, '2021-10-11 16:04:33', 0, '0000-00-00 00:00:00'),
+(3, NULL, 'Master Country', 'Master/Country/index/', 307, 3, 'fas fa-globe', 'menu untuk master data negara /country', 1, 1, '2021-03-13 19:35:02', 1, '2021-10-11 16:04:33', 0, '0000-00-00 00:00:00'),
 (4, 2, 'Provinsi', 'Master/Wilayah/Provinsi/index/', 301, 3, '', 'menu untuk master data provinsi indonesia', 1, 1, '2021-03-13 12:31:34', 1, '2021-10-11 16:10:47', 0, '0000-00-00 00:00:00'),
 (5, 2, 'Kabupaten', 'Master/Wilayah/Kabupaten/index/', 302, 3, '', 'menu untuk master data kabupaten indonesia', 1, 1, '2021-03-13 19:21:17', 1, '2021-10-11 16:11:28', 0, '0000-00-00 00:00:00'),
 (6, 2, 'Kecamatan', 'Master/Wilayah/Kecamatan/index/', 303, 3, '', 'menu untuk master data kecamatan indonesia', 1, 1, '2021-03-13 19:22:00', 1, '2021-10-11 16:12:03', 0, '0000-00-00 00:00:00'),
@@ -44,4 +44,5 @@ INSERT INTO `sys_menu` (`id`, `menu_parent`, `nama`, `link`, `order_no`, `group_
 (13, NULL, 'Blocked Account', 'Systems/Locked/index/', 205, 2, 'fas fa-lock', NULL, 1, 1, '2021-06-07 11:33:39', 0, '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00'),
 (14, NULL, 'Password Management', 'Applications/Password_management/index/', 109, 1, 'fas fa-key', 'menu untuk aplikasi penyimpanan password', 1, 1, '2021-09-15 14:46:08', NULL, NULL, NULL, NULL),
 (15, NULL, 'Streaming', 'Streaming/index/', 102, 1, 'fas fa-video', 'aplikasi untuk live streaming', 1, 1, '2021-10-09 00:24:10', NULL, NULL, NULL, NULL),
-(16, NULL, 'Master Materi', 'Master/Materi/index/', 305, 3, 'fas fa-book', 'menu untuk master data materi', 1, 1, '2021-10-11 15:57:51', 1, '2021-10-11 16:04:55', NULL, NULL);
+(16, NULL, 'Master Materi', 'Master/Materi/index/', 305, 3, 'fas fa-book', 'menu untuk master data materi', 1, 1, '2021-10-11 15:57:51', 1, '2021-10-11 16:04:55', NULL, NULL),
+(17, NULL, 'Master Sesi', 'Master/Sesi/index/', 306, 3, 'far fa-clock', 'menu untuk master data sesi materi', 1, 1, '2021-10-12 10:39:27', 1, '2021-10-12 11:20:56', NULL, NULL);
