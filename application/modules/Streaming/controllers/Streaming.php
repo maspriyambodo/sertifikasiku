@@ -54,7 +54,7 @@ class Streaming extends CI_Controller {
                 $data['success'] = 'gagal';
             } else {
                 $data['success'] = true;
-                $data['chat_id'] = $exec;
+                $data['chat_id'] = Enkrip($exec);
             }
         }
         $data['block_chat'] = ($block_chat === true ? true : false);
