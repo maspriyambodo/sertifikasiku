@@ -43,7 +43,13 @@
                 </div>
             </div>
         </nav>
-        <input type="hidden" name="url_video"/>
+        <?php
+        echo '<input type="hidden" name="url_video" value="' . $materi[0]->link_video . '"/>';
+        echo '<input type="hidden" name="id_materi" value="' . $materi[0]->id_materi . '"/>';
+        echo '<input type="hidden" name="id_sesi" value="' . $materi[0]->id_sesi . '"/>';
+        echo '<input type="hidden" name="nama_materi" value="' . $materi[0]->nama_materi . '"/>';
+        echo '<input type="hidden" name="deskripsi" value="' . $materi[0]->deskripsi . '"/>';
+        ?>
         <section id="main_webinar" class="clearfix main_webinar">
             <div class="container">
                 <div class="row pt-5">
@@ -424,12 +430,23 @@
                         window.location.href = "<?php echo base_url('Streaming/punishment/'); ?>";
                     });
                 });
+                socket.on('<?php echo base64_encode($this->session->userdata('uname')); ?>', function (data) {
+                    Swal.fire({
+                        title: 'Warning!',
+                        text: 'Anda mendapatkan peringatan karena telah melanggar peraturan!',
+                        icon: 'warning',
+                        confirmButtonText: 'TUTUP',
+                        allowOutsideClick: false,
+                        allowEscapeKey: false,
+                        allowEnterKey: true
+                    });
+                });
                 document.getElementById("bgndVideo").addEventListener("contextmenu", function (event) {
                     event.preventDefault();
                     event.stopPropagation();
                 });
                 $("#bgndVideo").YTPlayer({
-                    videoURL: '<?php echo $materi[0]->link_video; ?>',
+                    videoURL: $('input[name=url_video]').val(),
                     containment: 'self',
                     autoPlay: false,
                     mute: false,
@@ -559,16 +576,31 @@
                     success: function (data) {
                         if (data.success === true) {
                             var socket = io.connect('https://live-chat.mycapturer.com');
-                            socket.emit('kick_user', {
-                                "uname": data.uname,
-                                "key": data.key,
-                                "msg": data.msg,
-                                "ava": data.ava,
-                                "role_name": data.role_name,
-                                "user_id": data.user_id,
-                                "role_id": data.role_id,
-                                "chat_id": data.chat_id
+                            Swal.fire({
+                                html: 'Member <b class="text-danger">' + data.uname + '</b> akan mendapatkan hukuman karena melanggar peraturan.',
+                                icon: 'question',
+                                confirmButtonText: 'OK',
+                                showCancelButton: true,
+                                allowOutsideClick: false,
+                                allowEscapeKey: false,
+                                allowEnterKey: true
+                            }).then((result) => {
+                                if (result.isConfirmed === true) {
+                                    socket.emit('kick_user', {
+                                        "uname": data.uname,
+                                        "key": data.key,
+                                        "msg": data.msg,
+                                        "ava": data.ava,
+                                        "role_name": data.role_name,
+                                        "user_id": data.user_id,
+                                        "role_id": data.role_id,
+                                        "chat_id": data.chat_id
+                                    });
+                                } else {
+                                    return true;
+                                }
                             });
+
                         } else {
                             toastr.error('error while getting user data!');
                         }
@@ -579,7 +611,46 @@
                 });
             }
             function Warning_user(id_chat) {
-
+                $.ajax({
+                    type: "GET",
+                    url: "<?php echo base_url('Streaming/Get_detail?token='); ?>" + id_chat,
+                    dataType: "json",
+                    cache: false,
+                    success: function (data) {
+                        if (data.success === true) {
+                            var socket = io.connect('https://live-chat.mycapturer.com');
+                            Swal.fire({
+                                html: 'Anda akan memberikan peringatan kepada: <b class="text-danger">' + data.uname + '</b> karena melanggar peraturan.',
+                                icon: 'question',
+                                confirmButtonText: 'OK',
+                                showCancelButton: true,
+                                allowOutsideClick: false,
+                                allowEscapeKey: false,
+                                allowEnterKey: true
+                            }).then((result) => {
+                                if (result.isConfirmed === true) {
+                                    socket.emit('warning_user', {
+                                        "uname": data.uname,
+                                        "key": data.key,
+                                        "msg": data.msg,
+                                        "ava": data.ava,
+                                        "role_name": data.role_name,
+                                        "user_id": data.user_id,
+                                        "role_id": data.role_id,
+                                        "chat_id": data.chat_id
+                                    });
+                                } else {
+                                    return true;
+                                }
+                            });
+                        } else {
+                            toastr.error('error while getting user data!');
+                        }
+                    },
+                    error: function (jqXHR) {
+                        toastr.error('error ' + jqXHR.status + ' ' + jqXHR.statusText);
+                    }
+                });
             }
         </script>
     </body>
