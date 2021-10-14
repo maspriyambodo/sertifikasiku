@@ -419,7 +419,7 @@
                         null;
                     }
                     if (role_user === 'Super User' || role_user === 'Administrator') {
-                        $('#btn_control' + data.id_chat).append(btn_admin);
+                        $('#btn_control' + data.chat_id).append(btn_admin);
                     } else {
                         null;
                     }
