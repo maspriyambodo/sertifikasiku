@@ -104,8 +104,8 @@
                                                 <?php
                                                 if ($this->session->userdata('role_name') === 'Super User' or $this->session->userdata('role_name') === 'Administrator') {
                                                     echo '<div id="btn_control' . $txtchat->id . '" class="btn-group">'
-                                                    . '<button type="button" class="btn btn-sm btn-default" value="' . Enkrip($txtchat->id) . '" title="Kick Member" onclick="Kick_user(this.value)"><i class="fas fa-times text-danger"></i></button>'
-                                                    . '<button type="button" class="btn btn-sm btn-default" value="' . Enkrip($txtchat->id) . '" title="Warning Member" onclick="Warning_user(this.value)"><i class="fas fa-exclamation text-warning"></i></button>'
+                                                    . '<button type="button" class="btn btn-sm btn-default" value="' . $txtchat->id . '" title="Kick Member" onclick="Kick_user(this.value)"><i class="fas fa-times text-danger"></i></button>'
+                                                    . '<button type="button" class="btn btn-sm btn-default" value="' . $txtchat->id . '" title="Warning Member" onclick="Warning_user(this.value)"><i class="fas fa-exclamation text-warning"></i></button>'
                                                     . '</div>';
                                                 } else {
                                                     null;
@@ -128,8 +128,8 @@
                                                 <?php
                                                 if ($this->session->userdata('role_name') === 'Super User' or $this->session->userdata('role_name') === 'Administrator') {
                                                     echo '<div id="btn_control' . $txtchat->id . '" class="btn-group">'
-                                                    . '<button type="button" class="btn btn-sm btn-default" value="' . Enkrip($txtchat->id) . '" title="Kick Member" onclick="Kick_user(this.value)"><i class="fas fa-times text-danger"></i></button>'
-                                                    . '<button type="button" class="btn btn-sm btn-default" value="' . Enkrip($txtchat->id) . '" title="Warning Member" onclick="Warning_user(this.value)"><i class="fas fa-exclamation text-warning"></i></button>'
+                                                    . '<button type="button" class="btn btn-sm btn-default" value="' . $txtchat->id . '" title="Kick Member" onclick="Kick_user(this.value)"><i class="fas fa-times text-danger"></i></button>'
+                                                    . '<button type="button" class="btn btn-sm btn-default" value="' . $txtchat->id . '" title="Warning Member" onclick="Warning_user(this.value)"><i class="fas fa-exclamation text-warning"></i></button>'
                                                     . '</div>';
                                                 } else {
                                                     null;
@@ -287,8 +287,8 @@
                                                 <?php
                                                 if ($this->session->userdata('role_name') === 'Super User' or $this->session->userdata('role_name') === 'Administrator') {
                                                     echo '<div id="btn_control' . $txtchat2->id . '" class="btn-group">'
-                                                    . '<button type="button" class="btn btn-sm btn-default" value="' . Enkrip($txtchat2->id) . '" title="Kick Member" onclick="Kick_user(this.value)"><i class="fas fa-times text-danger"></i></button>'
-                                                    . '<button type="button" class="btn btn-sm btn-default" value="' . Enkrip($txtchat2->id) . '" title="Warning Member" onclick="Warning_user(this.value)"><i class="fas fa-exclamation text-warning"></i></button>'
+                                                    . '<button type="button" class="btn btn-sm btn-default" value="' . $txtchat2->id . '" title="Kick Member" onclick="Kick_user(this.value)"><i class="fas fa-times text-danger"></i></button>'
+                                                    . '<button type="button" class="btn btn-sm btn-default" value="' . $txtchat2->id . '" title="Warning Member" onclick="Warning_user(this.value)"><i class="fas fa-exclamation text-warning"></i></button>'
                                                     . '</div>';
                                                 } else {
                                                     null;
