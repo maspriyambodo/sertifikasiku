@@ -44,6 +44,7 @@
             </div>
         </nav>
         <?php
+        echo '<input type="hidden" name="role_name" value="' . $this->session->userdata('role_name') . '"/>';
         echo '<input type="hidden" name="url_video" value="' . $materi[0]->link_video . '"/>';
         echo '<input type="hidden" name="id_materi" value="' . $materi[0]->id_materi . '"/>';
         echo '<input type="hidden" name="id_sesi" value="' . $materi[0]->id_sesi . '"/>';
@@ -366,6 +367,9 @@
                 };
                 var socket = io.connect('https://live-chat.mycapturer.com');
                 socket.on('new_message', function (data) {
+                    var role_user = $('input[name="role_name"]').val();
+                    var btn_admin = '<button type="button" class="btn btn-sm btn-default" value="' + data.key + '" title="Kick Member ' + data.username + '" onclick="Kick_user(this.value)"><i class="fas fa-times text-danger"></i></button>'
+                            + '<button type="button" class="btn btn-sm btn-default" value="' + data.key + '" title="Warning Member ' + data.username + '" onclick="Warning_user(this.value)"><i class="fas fa-exclamation text-warning"></i></button>';
                     if (data.name_role === 'Administrator' || data.name_role === 'Super User') {
                         var txt1 = '<div class="d-flex flex-column mb-5 align-items-start">'
                                 + '<div class="d-flex align-items-center" title="Administrator">'
@@ -391,6 +395,7 @@
                                 + '<a href="javascript:void(0);" class="text-white font-size-h6" style="text-decoration:none;">' + data.username + ' </a>'
                                 + '<span class="font-size-sm"><i class="fas fa-crown text-warning"></i></span>'
                                 + '</div>'
+                                + '<div id="btn_control' + data.id_chat + '" class="btn-group"></div>'
                                 + '</div>'
                                 + '<div class="mt-2 p-5 bg-light-success font-size-lg text-left wrap-chat"> ' + data.msgtxt + ' </div>'
                                 + '</div>';
@@ -405,11 +410,19 @@
                                 + '<div class="mx-2" title="Silver Member">'
                                 + '<a href="javascript:void(0);" class="font-size-h6" style="text-decoration:none;">' + data.username + ' </a>'
                                 + '</div>'
+                                + '<div id="btn_control' + data.id_chat + '" class="btn-group"></div>'
                                 + '</div>'
                                 + '<div class="mt-2 p-5 bg-light text-dark-50 font-weight-bold font-size-lg text-left wrap-chat"> ' + data.msgtxt + ' </div>'
                                 + '</div>';
                         $('#msg_dir').append(txt3);
                         $('#msg_dir2').append(txt3);
+                    } else {
+                        null;
+                    }
+                    if (role_user === 'Super User' || role_user === 'Administrator') {
+                        $('#btn_control' + data.id_chat).append(btn_admin);
+                    } else {
+                        null;
                     }
                     $('#msg_dir').animate({
                         scrollTop: $('#msg_dir').get(0).scrollHeight
@@ -514,6 +527,7 @@
                                     var socket = io.connect('https://live-chat.mycapturer.com');
                                     socket.emit('new_message', {
                                         username: data.uname,
+                                        key: data.key,
                                         msgtxt: data.msg,
                                         avatar: data.ava,
                                         role_name: data.role_name,
@@ -555,6 +569,7 @@
                                     var socket = io.connect('https://live-chat.mycapturer.com');
                                     socket.emit('new_message', {
                                         username: data.uname,
+                                        key: data.key,
                                         msgtxt: data.msg,
                                         avatar: data.ava,
                                         role_name: data.role_name,
