@@ -363,7 +363,6 @@
                     "hideEasing": "linear",
                     "showMethod": "fadeIn",
                     "hideMethod": "fadeOut"
-
                 };
                 var socket = io.connect('https://live-chat.mycapturer.com');
                 socket.on('new_message', function (data) {
@@ -395,7 +394,7 @@
                                 + '<a href="javascript:void(0);" class="text-white font-size-h6" style="text-decoration:none;">' + data.username + ' </a>'
                                 + '<span class="font-size-sm"><i class="fas fa-crown text-warning"></i></span>'
                                 + '</div>'
-                                + '<div id="btn_control' + data.id_chat + '" class="btn-group"></div>'
+                                + '<div id="btn_control' + data.chat_id + '" class="btn-group"></div>'
                                 + '</div>'
                                 + '<div class="mt-2 p-5 bg-light-success font-size-lg text-left wrap-chat"> ' + data.msgtxt + ' </div>'
                                 + '</div>';
@@ -410,7 +409,7 @@
                                 + '<div class="mx-2" title="Silver Member">'
                                 + '<a href="javascript:void(0);" class="font-size-h6" style="text-decoration:none;">' + data.username + ' </a>'
                                 + '</div>'
-                                + '<div id="btn_control' + data.id_chat + '" class="btn-group"></div>'
+                                + '<div id="btn_control' + data.chat_id + '" class="btn-group"></div>'
                                 + '</div>'
                                 + '<div class="mt-2 p-5 bg-light text-dark-50 font-weight-bold font-size-lg text-left wrap-chat"> ' + data.msgtxt + ' </div>'
                                 + '</div>';
