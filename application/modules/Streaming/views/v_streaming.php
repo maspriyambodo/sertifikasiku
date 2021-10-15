@@ -116,13 +116,13 @@
                                                 <?php echo $txtchat->msg; ?>
                                             </div>
                                         </div>
-                                    <?php elseif ($txtchat->role_name == 'silver') : ?>
+                                    <?php elseif ($txtchat->role_name == 'silver' or $txtchat->role_name == 'basic') : ?>
                                         <div class="d-flex flex-column mb-5 align-items-start">
                                             <div class="d-flex align-items-center">
-                                                <div class="symbol symbol-40 mr-3" title="Silver Member">
+                                                <div class="symbol symbol-40 mr-3" title="<?php echo ucfirst($txtchat->role_name); ?> Member">
                                                     <?php echo '<img src="' . base_url('assets/images/users/' . $txtchat->pict) . '" class="rounded-circle" alt="' . $txtchat->uname . '"/>'; ?>
                                                 </div>
-                                                <div class="mx-2" title="Silver Member">
+                                                <div class="mx-2" title="<?php echo ucfirst($txtchat->role_name); ?> Member">
                                                     <a href="javascript:void(0);" class="font-size-h6" style="text-decoration:none;font-size:1.150rem;"><?php echo $txtchat->uname; ?> </a>
                                                 </div>
                                                 <?php
@@ -400,13 +400,13 @@
                                 + '</div>';
                         $('#msg_dir').append(txt2);
                         $('#msg_dir2').append(txt2);
-                    } else if (data.name_role === 'silver') {
+                    } else if (data.name_role === 'silver' || data.name_role === 'basic') {
                         var txt3 = '<div class="d-flex flex-column mb-5 align-items-start">'
                                 + '<div class="d-flex align-items-center">'
-                                + '<div class="symbol symbol-40 mr-3" title="Silver Member">'
+                                + '<div class="symbol symbol-40 mr-3" title="' + data.name_role + ' member">'
                                 + '<img src="' + data.avatar + '" class="rounded-circle" alt="' + data.username + '">'
                                 + '</div>'
-                                + '<div class="mx-2" title="Silver Member">'
+                                + '<div class="mx-2" title="' + data.name_role + ' member">'
                                 + '<a href="javascript:void(0);" class="font-size-h6" style="text-decoration:none;">' + data.username + ' </a>'
                                 + '</div>'
                                 + '<div id="btn_control' + data.chat_id + '" class="btn-group"></div>'
