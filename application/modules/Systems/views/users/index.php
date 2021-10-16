@@ -2,9 +2,11 @@
     <div class="card-body">
         <?php
         if ($privilege['create']) {
+            require_once 'modal_import.php';
             echo '<div class="text-right">'
             . '<div class="form-group">'
-            . '<button id="add_user" type="button" class="btn btn-icon btn-primary" title="Add new user" onclick="Add_user()"><i class="fas fa-user-plus"></i></button>'
+            . '<button id="add_user" type="button" class="btn btn-icon btn-primary mr-4" title="Add new user" onclick="Add_user()"><i class="fas fa-user-plus"></i></button>'
+            . '<button id="import_user" type="button" class="btn btn-icon btn-secondary" title="Import data user" data-toggle="modal" data-target="#modal_import"><i class="fas fa-file-upload"></i></button>'
             . '</div>'
             . '</div>';
         } else {

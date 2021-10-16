@@ -2,6 +2,8 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+use PhpOffice\PhpSpreadsheet\Reader\Xlsx;
+
 class Users extends CI_Controller {
 
     public function __construct() {
@@ -262,14 +264,93 @@ class Users extends CI_Controller {
             $result = redirect(base_url('Systems/Users/index/'), $this->session->set_flashdata('err_msg', 'failed, error while processing user data'));
         } else {
             $data = [
-                'sys_users.pwd' => password_hash("a", PASSWORD_DEFAULT),
+                'pwd' => password_hash("a", PASSWORD_DEFAULT),
                 '`sys_users`.`login_attempt`' => 0 + false,
                 '`sys_users`.`sysupdateuser`' => $this->user + false,
-                'sys_users.sysupdatedate' => date('Y-m-d H:i:s')
+                'sysupdatedate' => date('Y-m-d H:i:s')
             ];
             $result = $this->M_users->Reset($data, $id);
         }
         return $result;
+    }
+
+    /* public function Import() 
+     * $file = Array
+      (
+      [name] => Daftar Aplikasi Bimas Islam.xlsx
+      [type] => application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
+      [tmp_name] => /tmp/phpbcxiR5
+      [error] => 0
+      [size] => 11013
+      )
+     */
+
+    public function Import() {
+        $file = $_FILES['importxt'];
+        $reader = new Xlsx();
+        $reader->setReadDataOnly(true);
+        $spreadsheet = $reader->load($file['tmp_name']);
+        $sheetData = $spreadsheet->getActiveSheet()->toArray();
+        if (!empty($sheetData)) {
+            for ($i = 1; $i < count($sheetData); $i++) {
+                $field = strtolower($sheetData[$i]['0']); // uname
+                $field1 = strtolower($sheetData[$i]['1']); //role_name
+                $field2 = $sheetData[$i]['2']; //fullname
+                $field3 = $sheetData[$i]['3']; //is_active
+                if ($field1 === 'super user') {
+                    $role_name = 1;
+                } elseif ($field1 === 'administrator') {
+                    $role_name = 2;
+                } elseif ($field1 === 'platinum') {
+                    $role_name = 3;
+                } elseif ($field1 === 'silver') {
+                    $role_name = 4;
+                } elseif ($field1 === 'basic') {
+                    $role_name = 5;
+                } else {
+                    $role_name = 6;
+                }
+                $data[] = (object) [
+                            'uname' => $field,
+                            'role_id' => $role_name + false,
+                            'stat' => ($field3 === 1 ? 1 : 0) + false,
+                            'pict' => 'blank.png',
+                            'syscreateuser' => $this->user + false,
+                            'syscreatedate' => date('Y-m-d H:i:s')
+                ];
+                $dt_user[] = (object) [
+                            'nama' => $field2,
+                            'mail' => $field,
+                            'sys_user_id' => null,
+                            'syscreateuser' => $this->user + false,
+                            'syscreatedate' => date('Y-m-d H:i:s')
+                ];
+            }
+            $result = $this->Check_duplikat($data, $dt_user);
+        } else {
+            $result = redirect(base_url('Systems/Users/index/'), $this->session->set_flashdata('err_msg', 'failed, file not supported!'));
+        }
+        return $result;
+    }
+
+    private function Check_duplikat($data, $dt_user) {
+        foreach ($data as $key => $value) {
+            $cek = $this->M_users->Cek_dulikat($value->uname);
+            if ($cek > 0) {
+                unset($data[$key]);
+            }
+        }
+        $this->M_users->Import_m($data);
+        foreach ($dt_user as $key2 => $value2) {
+            $sys_user_id = $this->M_users->Get_userid($value2->mail);
+            if (!empty($sys_user_id)) {
+                $dt_user[$key2]->sys_user_id = $sys_user_id->sys_user_id;
+            } else {
+                unset($dt_user[$key2]);
+            }
+        }
+        $this->M_users->insert_dtuser($dt_user);
+        return redirect(base_url('Systems/Users/index/'), $this->session->set_flashdata('succ_msg', 'success, ' . count($data) . ' users has been added!'));
     }
 
 }

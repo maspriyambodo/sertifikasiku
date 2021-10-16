@@ -124,4 +124,39 @@ class M_users extends CI_Model {
         }
     }
 
+    /* public function Import_m($data) 
+     * sys_users.uname,
+      sys_users.role_id,
+      sys_users.pict,
+      sys_users.stat,
+      sys_users.syscreateuser,
+      sys_users.syscreatedate
+     */
+
+    public function Import_m($data) {
+        $this->db->insert_batch('sys_users', $data);
+    }
+
+    public function Get_userid($mail) {
+        $exec = $this->db->select('sys_users.id AS sys_user_id')
+                ->from('sys_users')
+                ->where('sys_users.uname', $mail)
+                ->limit(1)
+                ->get()
+                ->row();
+        return $exec;
+    }
+
+    public function insert_dtuser($data) {
+        $this->db->insert_batch('dt_users', $data);
+    }
+
+    public function Cek_dulikat($uname) {
+        $exec = $this->db->select()
+                ->from('sys_users')
+                ->where('sys_users.uname', $uname)
+                ->count_all_results();
+        return $exec;
+    }
+
 }
