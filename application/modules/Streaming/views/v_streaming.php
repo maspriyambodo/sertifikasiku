@@ -368,6 +368,11 @@
                     "showMethod": "fadeIn",
                     "hideMethod": "fadeOut"
                 };
+                socket.emit('join_streaming', {});
+                socket.on('join_streaming', function (data) {
+                    document.getElementById('viewers').innerHTML = '';
+                    document.getElementById('viewers').innerHTML = data.jumlah;
+                });
                 socket.on('new_message', function (data) {
                     var role_user = $('input[name="role_name"]').val();
                     var btn_admin = '<button type="button" class="btn btn-sm btn-default" value="' + data.chat_id + '" title="Kick Member ' + data.username + '" onclick="Kick_user(this.value)"><i class="fas fa-times text-danger"></i></button>'
@@ -527,7 +532,7 @@
                                     toastr.warning('sistem kami mendeteksi kata-kata tidak pantas, anda akan mendapatkan hukuman jika ');
                                 }
                                 if (data.success === true) {
-                                    
+
                                     socket.emit('new_message', {
                                         username: data.uname,
                                         key: data.key,
@@ -569,7 +574,7 @@
                                     toastr.warning('sistem kami mendeteksi kata-kata tidak pantas, anda akan mendapatkan hukuman jika ');
                                 }
                                 if (data.success === true) {
-                                    
+
                                     socket.emit('new_message', {
                                         username: data.uname,
                                         key: data.key,
@@ -600,7 +605,7 @@
                     cache: false,
                     success: function (data) {
                         if (data.success === true) {
-                            
+
                             Swal.fire({
                                 html: 'Member <b class="text-danger">' + data.uname + '</b> akan mendapatkan hukuman karena melanggar peraturan.',
                                 icon: 'question',
@@ -643,7 +648,7 @@
                     cache: false,
                     success: function (data) {
                         if (data.success === true) {
-                            
+
                             Swal.fire({
                                 html: 'Anda akan memberikan peringatan kepada: <b class="text-danger">' + data.uname + '</b> karena melanggar peraturan.',
                                 icon: 'question',
