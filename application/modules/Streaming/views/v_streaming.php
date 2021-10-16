@@ -61,6 +61,9 @@
                 <div class="row pt-5">
                     <div class="col-lg-8 d-xs-block col-xs-12 col-12 col-md-12">
                         <div id="bgndVideo" class="player"></div>
+                        <div class="form-group">
+                            <span id="viewers"></span> sedang menonton
+                        </div>
                     </div>
                     <div class="col-lg-4 d-none d-xl-block"><!-- d-sm-none d-xl-block -->
                         <div class="card live-chat-lg">
@@ -347,6 +350,7 @@
             </div>
         </div>
         <script>
+            var socket = io.connect('https://live-chat.mycapturer.com');
             window.onload = function () {
                 toastr.options = {
                     "closeButton": true,
@@ -364,7 +368,6 @@
                     "showMethod": "fadeIn",
                     "hideMethod": "fadeOut"
                 };
-                var socket = io.connect('https://live-chat.mycapturer.com');
                 socket.on('new_message', function (data) {
                     var role_user = $('input[name="role_name"]').val();
                     var btn_admin = '<button type="button" class="btn btn-sm btn-default" value="' + data.chat_id + '" title="Kick Member ' + data.username + '" onclick="Kick_user(this.value)"><i class="fas fa-times text-danger"></i></button>'
@@ -524,7 +527,7 @@
                                     toastr.warning('sistem kami mendeteksi kata-kata tidak pantas, anda akan mendapatkan hukuman jika ');
                                 }
                                 if (data.success === true) {
-                                    var socket = io.connect('https://live-chat.mycapturer.com');
+                                    
                                     socket.emit('new_message', {
                                         username: data.uname,
                                         key: data.key,
@@ -566,7 +569,7 @@
                                     toastr.warning('sistem kami mendeteksi kata-kata tidak pantas, anda akan mendapatkan hukuman jika ');
                                 }
                                 if (data.success === true) {
-                                    var socket = io.connect('https://live-chat.mycapturer.com');
+                                    
                                     socket.emit('new_message', {
                                         username: data.uname,
                                         key: data.key,
@@ -597,7 +600,7 @@
                     cache: false,
                     success: function (data) {
                         if (data.success === true) {
-                            var socket = io.connect('https://live-chat.mycapturer.com');
+                            
                             Swal.fire({
                                 html: 'Member <b class="text-danger">' + data.uname + '</b> akan mendapatkan hukuman karena melanggar peraturan.',
                                 icon: 'question',
@@ -640,7 +643,7 @@
                     cache: false,
                     success: function (data) {
                         if (data.success === true) {
-                            var socket = io.connect('https://live-chat.mycapturer.com');
+                            
                             Swal.fire({
                                 html: 'Anda akan memberikan peringatan kepada: <b class="text-danger">' + data.uname + '</b> karena melanggar peraturan.',
                                 icon: 'question',
