@@ -1,7 +1,8 @@
 <?php
 
 defined('BASEPATH') OR exit('No direct script access allowed');
-$route['default_controller'] = 'Auth';
+$route['default_controller'] = 'Landing';
+$route['admin'] = 'Auth/index/';
 $route['Change%(:any)'] = 'Systems/Change/';
 $route['Setting%20Profile'] = 'Systems/Profile/';
 $route['Dashboard'] = 'Applications/Dashboard/index/';
