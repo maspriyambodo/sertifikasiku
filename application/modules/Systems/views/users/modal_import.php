@@ -14,6 +14,11 @@
                         <label for="importxt">Upload File:</label>
                         <input id="importxt" class="form-control" accept=".xlsx, .xls" type="file" name="importxt" required="" autocomplete="off"/>
                     </div>
+                    <div class="mt-4">
+                        <div class="text-right">
+                            <a href="<?php echo base_url('Systems/Users/Download?token=' . Enkrip('benar')); ?>" target="new">Download format file</a>
+                        </div>
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default font-weight-bold" data-dismiss="modal"><i class="far fa-times-circle text-danger"></i> Cancel</button>

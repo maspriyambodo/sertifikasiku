@@ -353,4 +353,14 @@ class Users extends CI_Controller {
         return redirect(base_url('Systems/Users/index/'), $this->session->set_flashdata('succ_msg', 'success, ' . count($data) . ' users has been added!'));
     }
 
+    public function Download() {
+        $token = Dekrip(Post_get('token'));
+        if ($token == 'benar') {
+            header('Content-Disposition: attachment; filename=' . md5(date('Y-m-d H:i:s')) . '.xlsx');
+            readfile(base_url('assets/media/sertif.xlsx'));
+        } else {
+            echo "your token not match!";
+        }
+    }
+
 }
