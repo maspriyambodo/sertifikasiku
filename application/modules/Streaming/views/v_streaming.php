@@ -143,6 +143,30 @@
                                                 <?php echo $txtchat->msg; ?>
                                             </div>
                                         </div>
+                                    <?php else : ?>
+                                        <div class="d-flex flex-column mb-5 align-items-start">
+                                            <div class="d-flex align-items-center">
+                                                <div class="symbol symbol-40 mr-3" title="<?php echo ucfirst($txtchat->role_name); ?> Member">
+                                                    <?php echo '<img src="' . base_url('assets/images/users/' . $txtchat->pict) . '" class="rounded-circle" alt="' . $txtchat->uname . '"/>'; ?>
+                                                </div>
+                                                <div class="mx-2" title="<?php echo ucfirst($txtchat->role_name); ?> Member">
+                                                    <a href="javascript:void(0);" class="font-size-h6" style="text-decoration:none;font-size:1.150rem;"><?php echo $txtchat->fullname; ?> </a>
+                                                </div>
+                                                <?php
+                                                if ($this->session->userdata('role_name') === 'Super User' or $this->session->userdata('role_name') === 'Administrator') {
+                                                    echo '<div id="btn_control' . $txtchat->id . '" class="btn-group">'
+                                                    . '<button type="button" class="btn btn-sm btn-default" value="' . $txtchat->id . '" title="Kick Member" onclick="Kick_user(this.value)"><i class="fas fa-times text-danger"></i></button>'
+                                                    . '<button type="button" class="btn btn-sm btn-default" value="' . $txtchat->id . '" title="Warning Member" onclick="Warning_user(this.value)"><i class="fas fa-exclamation text-warning"></i></button>'
+                                                    . '</div>';
+                                                } else {
+                                                    null;
+                                                }
+                                                ?>
+                                            </div>
+                                            <div class="mt-2 p-5 bg-light text-dark-50 font-weight-bold font-size-lg text-left wrap-chat">
+                                                <?php echo $txtchat->msg; ?>
+                                            </div>
+                                        </div>
                                     <?php endif; ?>
                                 <?php } ?>
                             </div>
@@ -302,7 +326,31 @@
                                                 <?php echo $txtchat2->msg; ?>
                                             </div>
                                         </div>
-                                    <?php elseif ($txtchat2->role_name == 'silver') : ?>
+                                    <?php elseif ($txtchat2->role_name == 'silver' or $txtchat2->role_name == 'basic') : ?>
+                                        <div class="d-flex flex-column mb-5 align-items-start">
+                                            <div class="d-flex align-items-center">
+                                                <div class="symbol symbol-40 mr-3" title="Silver Member">
+                                                    <img class="rounded-circle" alt="<?php echo $txtchat2->uname; ?>" src="<?php echo base_url('assets/images/users/' . $txtchat2->pict); ?>">
+                                                </div>
+                                                <div class="mx-2" title="Silver Member">
+                                                    <a href="javascript:void(0);" class="font-size-h6" style="text-decoration:none;font-size:1.150rem;"><?php echo $txtchat2->fullname; ?> </a>
+                                                </div>
+                                                <?php
+                                                if ($this->session->userdata('role_name') === 'Super User' or $this->session->userdata('role_name') === 'Administrator') {
+                                                    echo '<div id="btn_control' . $txtchat2->id . '" class="btn-group">'
+                                                    . '<button type="button" class="btn btn-sm btn-default" value="' . Enkrip($txtchat2->id) . '" title="Kick Member" onclick="Kick_user(this.value)"><i class="fas fa-times text-danger"></i></button>'
+                                                    . '<button type="button" class="btn btn-sm btn-default" value="' . Enkrip($txtchat2->id) . '" title="Warning Member" onclick="Warning_user(this.value)"><i class="fas fa-exclamation text-warning"></i></button>'
+                                                    . '</div>';
+                                                } else {
+                                                    null;
+                                                }
+                                                ?>
+                                            </div>
+                                            <div class="mt-2 p-5 bg-light text-dark-50 font-weight-bold font-size-lg text-left wrap-chat">
+                                                <?php echo $txtchat2->msg; ?>
+                                            </div>
+                                        </div>
+                                    <?php else : ?>
                                         <div class="d-flex flex-column mb-5 align-items-start">
                                             <div class="d-flex align-items-center">
                                                 <div class="symbol symbol-40 mr-3" title="Silver Member">
@@ -424,7 +472,20 @@
                         $('#msg_dir').append(txt3);
                         $('#msg_dir2').append(txt3);
                     } else {
-                        null;
+                        var txt3 = '<div class="d-flex flex-column mb-5 align-items-start">'
+                                + '<div class="d-flex align-items-center">'
+                                + '<div class="symbol symbol-40 mr-3" title="' + data.name_role + ' member">'
+                                + '<img src="' + data.avatar + '" class="rounded-circle" alt="' + data.username + '">'
+                                + '</div>'
+                                + '<div class="mx-2" title="' + data.name_role + ' member">'
+                                + '<a href="javascript:void(0);" class="font-size-h6" style="text-decoration:none;">' + data.fullname + ' </a>'
+                                + '</div>'
+                                + '<div id="btn_control' + data.chat_id + '" class="btn-group"></div>'
+                                + '</div>'
+                                + '<div class="mt-2 p-5 bg-light text-dark-50 font-weight-bold font-size-lg text-left wrap-chat"> ' + data.msgtxt + ' </div>'
+                                + '</div>';
+                        $('#msg_dir').append(txt3);
+                        $('#msg_dir2').append(txt3);
                     }
                     if (role_user === 'Super User' || role_user === 'Administrator') {
                         $('#btn_control' + data.chat_id).append(btn_admin);
