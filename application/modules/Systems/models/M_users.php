@@ -171,4 +171,10 @@ class M_users extends CI_Model {
         return $exec;
     }
 
+    public function set_password($param) {
+        $this->db->set('sys_users.pwd', $param['otp'])
+                ->where('`sys_users`.`id`', $param['sys_user_id'], false)
+                ->update('sys_users');
+    }
+
 }
