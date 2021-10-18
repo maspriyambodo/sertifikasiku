@@ -296,7 +296,8 @@ class Users extends CI_Controller {
                 $field = strtolower($sheetData[$i]['0']); // uname
                 $field1 = strtolower($sheetData[$i]['1']); //role_name
                 $field2 = $sheetData[$i]['2']; //fullname
-                $field3 = $sheetData[$i]['3']; //is_active
+                $field3 = $sheetData[$i]['3']; //telepon
+                $field4 = $sheetData[$i]['4']; //pekerjaan
                 if ($field1 === 'super user') {
                     $role_name = 1;
                 } elseif ($field1 === 'administrator') {
@@ -313,7 +314,7 @@ class Users extends CI_Controller {
                 $data[] = (object) [
                             'uname' => $field,
                             'role_id' => $role_name + false,
-                            'stat' => ($field3 === 1 ? 1 : 0) + false,
+                            'stat' => 1 + false,
                             'pict' => 'blank.png',
                             'syscreateuser' => $this->user + false,
                             'syscreatedate' => date('Y-m-d H:i:s')
@@ -322,6 +323,8 @@ class Users extends CI_Controller {
                             'nama' => $field2,
                             'mail' => $field,
                             'sys_user_id' => null,
+                            'telp' => $field3,
+                            'pekerjaan' => $field4,
                             'syscreateuser' => $this->user + false,
                             'syscreatedate' => date('Y-m-d H:i:s')
                 ];
