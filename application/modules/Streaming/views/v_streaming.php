@@ -126,7 +126,7 @@
                                                     <?php echo '<img src="' . base_url('assets/images/users/' . $txtchat->pict) . '" class="rounded-circle" alt="' . $txtchat->uname . '"/>'; ?>
                                                 </div>
                                                 <div class="mx-2" title="<?php echo ucfirst($txtchat->role_name); ?> Member">
-                                                    <a href="javascript:void(0);" class="font-size-h6" style="text-decoration:none;font-size:1.150rem;"><?php echo $txtchat->uname; ?> </a>
+                                                    <a href="javascript:void(0);" class="font-size-h6" style="text-decoration:none;font-size:1.150rem;"><?php echo $txtchat->fullname; ?> </a>
                                                 </div>
                                                 <?php
                                                 if ($this->session->userdata('role_name') === 'Super User' or $this->session->userdata('role_name') === 'Administrator') {
