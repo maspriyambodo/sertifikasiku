@@ -206,7 +206,7 @@
                     <div class="modal-body">
                         <div id="form_mail">
                             <div class="form-floating input-group input-group-lg">
-                                <input id="mailtxt" name="mailtxt" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
+                                <input id="mailtxt" name="mailtxt" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" autocomplete="off">
                                 <label for="mailtxt">Email address</label>
                                 <span class="input-group-text" id="inputGroup-sizing-lg" onclick="send_otp()" style="cursor:pointer;">SEND OTP</span>
                             </div>
@@ -219,14 +219,18 @@
                                 <div class="col-md-3"></div>
                                 <div class="col-md-6">
                                     <div class="d-flex flex-row mt-5" style="margin-left: 9%;">
-                                        <input name="otp1" type="text" class="form-control form-otp" autofocus="" maxlength="1" style="width:50px;">
-                                        <input name="otp2" type="text" class="form-control form-otp" maxlength="1" style="width:50px;">
-                                        <input name="otp3" type="text" class="form-control form-otp" maxlength="1" style="width:50px;">
-                                        <input name="otp4" type="text" class="form-control form-otp" maxlength="1" style="width:50px;">
-                                        <input name="otp5" type="text" class="form-control form-otp" maxlength="1" style="width:50px;">
+                                        <input name="otp1" type="text" class="form-control form-otp" autofocus="" maxlength="1" onkeypress="return isNumber(event)" autocomplete="off" style="width:50px;">
+                                        <input name="otp2" type="text" class="form-control form-otp" maxlength="1" onkeypress="return isNumber(event)" autocomplete="off" style="width:50px;">
+                                        <input name="otp3" type="text" class="form-control form-otp" maxlength="1" onkeypress="return isNumber(event)" autocomplete="off" style="width:50px;">
+                                        <input name="otp4" type="text" class="form-control form-otp" maxlength="1" onkeypress="return isNumber(event)" autocomplete="off" style="width:50px;">
+                                        <input name="otp5" type="text" class="form-control form-otp" maxlength="1" onkeypress="return isNumber(event)" autocomplete="off" style="width:50px;">
                                     </div>
                                 </div>
                                 <div class="col-md-3"></div>
+                            </div>
+                            <div class="clearfix my-4"></div>
+                            <div class="text-center">
+                                <button type="button" class="btn btn-info" onclick="verify_otp()">Verifikasi</button>
                             </div>
                             <div class="clearfix my-4"></div>
                             <div class="text-center">
@@ -282,6 +286,39 @@
             }
             function close_login() {
                 document.getElementById('err_msg').innerHTML = 'email not registered!';
+            }
+            function isNumber(b) {
+                b = (b) ? b : window.event;
+                var a = (b.which) ? b.which : b.keyCode;
+                if (a > 31 && (a < 48 || a > 57)) {
+                    return false;
+                }
+                $(".form-otp").keyup(function () {
+                    if (this.value.length == this.maxLength) {
+                        $(this).next('.form-otp').focus();
+                    }
+                });
+            }
+            function verify_otp() {
+                var a, b, c, d, e, otp;
+                a = $('input[name="otp1"]').val();
+                b = $('input[name="otp2"]').val();
+                c = $('input[name="otp3"]').val();
+                d = $('input[name="otp4"]').val();
+                e = $('input[name="otp5"]').val();
+                otp = a + b + c + d + e;
+                $.ajax({
+                    type: "GET",
+                    url: "<?php echo base_url('Landing/verify_otp/'); ?>",
+                    dataType: "json",
+                    cache: false,
+                    success: function (data) {
+                        
+                    },
+                    error: function (jqXHR) {
+                        
+                    }
+                });
             }
         </script>
     </body>

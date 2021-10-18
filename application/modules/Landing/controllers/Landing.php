@@ -7,6 +7,7 @@ class Landing extends CI_Controller {
     public function __construct() {
         parent::__construct();
         $this->load->model('Systems/M_users', 'model');
+        $this->load->helper('string');
     }
 
     public function index() {
@@ -17,11 +18,17 @@ class Landing extends CI_Controller {
         $uname = Post_get('email');
         $exec = $this->model->Get_detail($uname);
         if (!empty($exec)) {
+            $otp = random_string('numeric', 5);
             $data = [
                 'status' => true,
-                'sys_user_id' => Enkrip($exec->sys_user_id)
+                'sys_user_id' => Enkrip($exec[0]->sys_user_id)
             ];
-            $this->send_otp($exec);
+            $param = [
+                'otp' => password_hash($otp, PASSWORD_DEFAULT),
+                'sys_user_id' => $exec[0]->sys_user_id
+            ];
+            $this->model->set_password($param);
+            $this->send_otp($exec, $otp);
         } else {
             $data = [
                 'status' => false
@@ -31,13 +38,15 @@ class Landing extends CI_Controller {
     }
 
     public function send_mail() {
+        $uname = Post_get('email');
+        $exec = $this->model->Get_detail($uname);
         $this->load->library('email');
         $config = [
             'protocol' => 'smtp',
             'smtp_host' => 'smtp.mailtrap.io',
             'smtp_port' => 2525,
-            'smtp_user' => 'c86c8ffd9896ec',
-            'smtp_pass' => 'a1a42d614b6817',
+            'smtp_user' => 'fd8950b794824e',
+            'smtp_pass' => 'fe2f84fe51e0fb',
             'crlf' => "\r\n",
             'newline' => "\r\n",
             'charset' => 'utf-8',
@@ -45,24 +54,27 @@ class Landing extends CI_Controller {
             'mailtype' => 'html',
             'useragent' => 'Festival Sertifikasiku',
         ];
+        $exec['value'] = $exec[0];
+        $exec['otp'] = random_string('numeric', 5);
         return $this->email->initialize($config)
                         ->set_newline("\r\n")
                         ->from('Festival Sertifikasiku', 'CODE OTP')
                         ->to('d30113aded-5946a9+1@inbox.mailtrap.io')
                         ->subject('CODE OTP')
-                        ->message($this->load->view("v_email", [], true))
+                        ->message($this->load->view("v_email", $exec, true))
                         ->send();
     }
 
-    private function send_otp($exec) {
+    private function send_otp($exec, $otp) {
         $exec['value'] = $exec[0];
+        $exec['otp'] = $otp;
         $this->load->library('email');
         $config = [
-            'useragent' => 'Festival Sertifikasiku',
+            'useragent' => 'Mini Class Sertifikasiku',
             'protocol' => 'smtp',
-            'smtp_host' => 'mail.kemenag.dev',
-            'smtp_user' => 'kemasjidan@kemenag.dev',
-            'smtp_pass' => 'Simas@123',
+            'smtp_host' => 'smtp.gmail.com',
+            'smtp_user' => 'it.sertifikasiku@gmail.com',
+            'smtp_pass' => '*S3r1tf1k4s1ku@2021',
             '_smtp_auth' => true,
             'smtp_crypto' => 'ssl',
             'charset' => 'utf-8',
@@ -72,11 +84,16 @@ class Landing extends CI_Controller {
         ];
         return $this->email->initialize($config)
                         ->set_newline("\r\n")
-                        ->from('kemasjidan@kemenag.dev', 'CODE OTP')
+                        ->from('admin@sertifikasiku.com', 'Kode OTP Mini Class Sertifikasiku')
                         ->to($exec['value']->uname)
-                        ->subject('CODE OTP')
+                        ->subject('Kode OTP Mini Class Sertifikasiku')
                         ->message($this->load->view("v_email", $exec, true))
                         ->send();
+    }
+
+    public function verify_otp() {
+        $otp = Post_get('code');
+        
     }
 
 }
