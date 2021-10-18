@@ -5,9 +5,10 @@ defined('BASEPATH') OR exit('No direct script access allowed, are you trying to 
 class M_streaming extends CI_Model {
 
     public function Read_chat() {
-        $exec = $this->db->select('tr_chat.id, tr_chat.user_id, tr_chat.msg, tr_chat.syscreatedate, sys_users.uname, sys_users.pict, sys_users.role_id,sys_roles.`name` AS role_name')
+        $exec = $this->db->select('tr_chat.id, tr_chat.user_id, tr_chat.msg, tr_chat.syscreatedate, sys_users.uname,dt_users.nama AS fullname, sys_users.pict, sys_users.role_id,sys_roles.`name` AS role_name')
                 ->from('tr_chat')
                 ->join('sys_users', 'tr_chat.user_id = sys_users.id', 'LEFT')
+                ->join('dt_users', 'sys_users.id = dt_users.sys_user_id', 'LEFT')
                 ->join('sys_roles', 'sys_users.role_id = sys_roles.id', 'LEFT')
                 ->where('DAY(tr_chat.syscreatedate)', 'DAY(CURDATE())', false)
                 ->order_by('tr_chat.id', 'ASC')

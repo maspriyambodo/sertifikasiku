@@ -41,6 +41,7 @@ class Streaming extends CI_Controller {
         } else {
             $data = [
                 'uname' => $this->session->userdata('uname'),
+                'fullname' => $this->session->userdata('fullname'),
                 'key' => Enkrip($this->session->userdata('uname')),
                 'msg' => $string,
                 'ava' => base_url('assets/images/users/' . $this->session->userdata('avatar')),

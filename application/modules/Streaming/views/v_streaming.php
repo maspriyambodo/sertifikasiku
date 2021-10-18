@@ -284,7 +284,7 @@
                                                     <img class="rounded-circle" alt="<?php echo $txtchat2->uname; ?>" src="<?php echo base_url('assets/images/users/' . $txtchat2->pict); ?>">
                                                 </div>
                                                 <div class="mx-2 bg-dark px-2 rounded" title="Platinum Member">
-                                                    <a href="javascript:void(0);" class="text-white font-size-h6" style="text-decoration:none;font-size:14px;"><?php echo $txtchat2->uname; ?> </a>
+                                                    <a href="javascript:void(0);" class="text-white font-size-h6" style="text-decoration:none;font-size:14px;"><?php echo $txtchat2->fullname; ?> </a>
                                                     <span class="font-size-md"><i class="fas fa-crown text-warning" style="font-size:14px;"></i></span>
                                                 </div>
                                                 <?php
@@ -309,7 +309,7 @@
                                                     <img class="rounded-circle" alt="<?php echo $txtchat2->uname; ?>" src="<?php echo base_url('assets/images/users/' . $txtchat2->pict); ?>">
                                                 </div>
                                                 <div class="mx-2" title="Silver Member">
-                                                    <a href="javascript:void(0);" class="font-size-h6" style="text-decoration:none;font-size:1.150rem;"><?php echo $txtchat2->uname; ?> </a>
+                                                    <a href="javascript:void(0);" class="font-size-h6" style="text-decoration:none;font-size:1.150rem;"><?php echo $txtchat2->fullname; ?> </a>
                                                 </div>
                                                 <?php
                                                 if ($this->session->userdata('role_name') === 'Super User' or $this->session->userdata('role_name') === 'Administrator') {
@@ -399,7 +399,7 @@
                                 + '<img src="' + data.avatar + '" class="rounded-circle" alt="' + data.username + '">'
                                 + '</div>'
                                 + '<div class="mx-2 bg-dark px-2 rounded" title="Platinum Member">'
-                                + '<a href="javascript:void(0);" class="text-white font-size-h6" style="text-decoration:none;">' + data.username + ' </a>'
+                                + '<a href="javascript:void(0);" class="text-white font-size-h6" style="text-decoration:none;">' + data.fullname + ' </a>'
                                 + '<span class="font-size-sm"><i class="fas fa-crown text-warning"></i></span>'
                                 + '</div>'
                                 + '<div id="btn_control' + data.chat_id + '" class="btn-group"></div>'
@@ -415,7 +415,7 @@
                                 + '<img src="' + data.avatar + '" class="rounded-circle" alt="' + data.username + '">'
                                 + '</div>'
                                 + '<div class="mx-2" title="' + data.name_role + ' member">'
-                                + '<a href="javascript:void(0);" class="font-size-h6" style="text-decoration:none;">' + data.username + ' </a>'
+                                + '<a href="javascript:void(0);" class="font-size-h6" style="text-decoration:none;">' + data.fullname + ' </a>'
                                 + '</div>'
                                 + '<div id="btn_control' + data.chat_id + '" class="btn-group"></div>'
                                 + '</div>'
