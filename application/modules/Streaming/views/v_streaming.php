@@ -101,7 +101,7 @@
                                                     <?php echo '<img src="' . base_url('assets/images/users/' . $txtchat->pict) . '" class="rounded-circle" alt="' . $txtchat->uname . '"/>'; ?>
                                                 </div>
                                                 <div class="mx-2 bg-dark px-2 rounded" title="Platinum Member">
-                                                    <a href="javascript:void(0);" class="text-white font-size-h6" style="text-decoration:none;font-size:14px;"><?php echo $txtchat->uname; ?> </a>
+                                                    <a href="javascript:void(0);" class="text-white font-size-h6" style="text-decoration:none;font-size:14px;"><?php echo $txtchat->fullname; ?> </a>
                                                     <span class="font-size-md"><i class="fas fa-crown text-warning" style="font-size:13px;"></i></span>
                                                 </div>
                                                 <?php
