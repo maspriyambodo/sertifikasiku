@@ -13,9 +13,11 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css" integrity="sha512-yHknP1/AwR+yx26cB1y0cjvQUMvEa2PFzt1c9LlS4pRQ5NOTZFWbhBig+X9G9eYW/8m0/4OXNx8pxJ6z57x0dw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css" integrity="sha512-17EgCFERpgZKcm0j0fEq1YCJuyAWdz9KUtv1EjVuaOz8pDnh/0nZxmU6BBXwaaxqoi9PQXnRWqlcDB027hgv9A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         <link rel="stylesheet" href="<?php echo base_url('assets/streaming.css'); ?>"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.css" integrity="sha512-6S2HWzVFxruDlZxI3sXOZZ4/eJ8AcxkQH1+JjSe/ONCEqR9L4Ysq5JdT5ipqtzU7WHalNwzwBv+iE51gNHJNqQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.1/js/bootstrap.min.js" integrity="sha512-ewfXo9Gq53e1q1+WDTjaHAGZ8UvCWq0eXONhwDuIoaH8xz2r96uoAYaQCm1oQhnBfRXrvJztNXFsTloJfgbL5Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js" integrity="sha512-XtmMtDEcNz2j7ekrtHvOVR4iwwaD6o/FUJe6+Zq+HgcCsk3kj4uSQQR8weQ2QVj1o0Pk6PwYLohm206ZzNfubg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.js" integrity="sha512-lbwH47l/tPXJYG9AcFNoJaTMhGvYWhVM9YI43CT+uteTRRaiLCui8snIgyAN8XWgNjNhCqlAUdzZptso6OCoFQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         <style>
             .form-otp {
                 margin-right: 12px
@@ -31,6 +33,7 @@
         </style>
     </head>
     <body>
+        <input type="hidden" name="<?php echo $csrf['name'] ?>" value="<?php echo $csrf['hash'] ?>"/>
         <nav class="navbar navbar-expand-lg navbar-light sticky-top bg-custom">
             <div class="container-fluid">
                 <a class="navbar-brand" href="<?php echo base_url('Dashboard/'); ?>">
@@ -206,7 +209,7 @@
                     <div class="modal-body">
                         <div id="form_mail">
                             <div class="form-floating input-group input-group-lg">
-                                <input id="mailtxt" name="mailtxt" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" autocomplete="off">
+                                <input id="mailtxt" name="mailtxt" type="email" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" autocomplete="off">
                                 <label for="mailtxt">Email address</label>
                                 <span class="input-group-text" id="inputGroup-sizing-lg" onclick="send_otp()" style="cursor:pointer;">SEND OTP</span>
                             </div>
@@ -247,6 +250,22 @@
         </div>
         <script>
             window.onload = function () {
+                toastr.options = {
+                    "closeButton": true,
+                    "debug": false,
+                    "newestOnTop": true,
+                    "progressBar": false,
+                    "positionClass": "toast-top-right",
+                    "preventDuplicates": true,
+                    "showDuration": "300",
+                    "hideDuration": "0",
+                    "timeOut": "0",
+                    "extendedTimeOut": "0",
+                    "showEasing": "swing",
+                    "hideEasing": "linear",
+                    "showMethod": "fadeIn",
+                    "hideMethod": "fadeOut"
+                };
                 $('.sertif-carousel').slick({
                     slidesToScroll: 1,
                     dots: false,
@@ -277,7 +296,7 @@
                             }
                         },
                         error: function (jqXHR) {
-
+                            toastr.error('error ' + jqXHR.status + ' ' + jqXHR.statusText);
                         }
                     });
                 } else {
@@ -292,31 +311,45 @@
                 var a = (b.which) ? b.which : b.keyCode;
                 if (a > 31 && (a < 48 || a > 57)) {
                     return false;
+                } else {
+                    $(".form-otp").keyup(function () {
+                        if (this.value.length === this.maxLength) {
+                            $(this).next('.form-otp').focus();
+                        }
+                    });
                 }
-                $(".form-otp").keyup(function () {
-                    if (this.value.length == this.maxLength) {
-                        $(this).next('.form-otp').focus();
-                    }
-                });
             }
             function verify_otp() {
-                var a, b, c, d, e, otp;
+                var a, b, c, d, e, otp, csrf, mail;
                 a = $('input[name="otp1"]').val();
                 b = $('input[name="otp2"]').val();
                 c = $('input[name="otp3"]').val();
                 d = $('input[name="otp4"]').val();
                 e = $('input[name="otp5"]').val();
                 otp = a + b + c + d + e;
+                csrf = $('input[name="bodo_csrf_token"]').val();
+                mail = $('input[name="mailtxt"]').val();
+                var dataString = {
+                    otp_code: otp,
+                    bodo_csrf_token: csrf,
+                    mail_user: mail
+                };
                 $.ajax({
-                    type: "GET",
+                    type: "POST",
                     url: "<?php echo base_url('Landing/verify_otp/'); ?>",
+                    data: dataString,
                     dataType: "json",
                     cache: false,
                     success: function (data) {
-                        
+                        $('input[name="bodo_csrf_token"]').val(data.csrf);
+                        if (data.stat === true) {
+                            window.location.href = data.href_url;
+                        } else {
+                            toastr.warning('mohon masukkan kode OTP dengan benar, atau kirim ulang kode!');
+                        }
                     },
                     error: function (jqXHR) {
-                        
+                        toastr.error('error ' + jqXHR.status + ' ' + jqXHR.statusText);
                     }
                 });
             }

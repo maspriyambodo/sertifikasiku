@@ -7,11 +7,15 @@ class Landing extends CI_Controller {
     public function __construct() {
         parent::__construct();
         $this->load->model('Systems/M_users', 'model');
+        $this->load->model('Auth/M_auth');
         $this->load->helper('string');
     }
 
     public function index() {
-        $this->parser->parse('v_landing', []);
+        $data = [
+            'csrf' => $this->bodo->Csrf()
+        ];
+        $this->parser->parse('v_landing', $data);
     }
 
     public function Get_mail() {
@@ -92,8 +96,25 @@ class Landing extends CI_Controller {
     }
 
     public function verify_otp() {
-        $otp = Post_get('code');
-        
+        $data = [
+            'uname' => Post_input("mail_user"),
+            'pwd' => Post_input("otp_code")
+        ];
+        $exec = $this->M_auth->Signin($data);
+        $hashed = $exec->pwd;
+        if (password_verify($data['pwd'], $hashed)) {
+            $this->bodo->Set_session($exec);
+            $result = [
+                'stat' => true,
+                'href_url' => base_url('Streaming/index/')
+            ];
+        } else {
+            $result = [
+                'stat' => false
+            ];
+        }
+        $result['csrf'] = $this->bodo->Csrf()['hash'];
+        return ToJson($result);
     }
 
 }
