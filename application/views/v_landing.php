@@ -257,7 +257,7 @@
             };
             function send_otp() {
                 var mailtxt = $('input[name="mailtxt"]').val();
-                document.getElementById('err_msg').innerHTML = 'please fill your email!';
+                document.getElementById('err_msg').innerHTML = '';
                 if (mailtxt !== '') {
                     $.ajax({
                         type: "GET",
