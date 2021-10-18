@@ -138,12 +138,24 @@ class M_users extends CI_Model {
     }
 
     public function Get_userid($mail) {
-        $exec = $this->db->select('sys_users.id AS sys_user_id')
+        $exec = $this->db->select('sys_users.id AS sys_user_id,sys_users.uname,dt_users.nama AS fullname')
                 ->from('sys_users')
+                ->join('dt_users', 'sys_users.id = dt_users.sys_user_id', 'LEFT')
                 ->where('sys_users.uname', $mail)
                 ->limit(1)
                 ->get()
                 ->row();
+        return $exec;
+    }
+
+    public function Get_detail($mail) {
+        $exec = $this->db->select('sys_users.id AS sys_user_id,sys_users.uname,dt_users.nama AS fullname')
+                ->from('sys_users')
+                ->join('dt_users', 'sys_users.id = dt_users.sys_user_id', 'LEFT')
+                ->where('sys_users.uname', $mail)
+                ->limit(1)
+                ->get()
+                ->result();
         return $exec;
     }
 

@@ -258,7 +258,7 @@
             function send_otp() {
                 var mailtxt = $('input[name="mailtxt"]').val();
                 document.getElementById('err_msg').innerHTML = 'please fill your email!';
-                if (mailtxt) {
+                if (mailtxt !== '') {
                     $.ajax({
                         type: "GET",
                         url: "<?php echo base_url('Landing/Get_mail?email='); ?>" + mailtxt,

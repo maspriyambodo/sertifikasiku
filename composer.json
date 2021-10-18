@@ -15,7 +15,8 @@
         "pusher/pusher-php-server": "^7.0",
         "mpdf/mpdf": "^8.0",
         "php-curl-class/php-curl-class": "9999999-dev",
-        "phpoffice/phpspreadsheet": "1.18.0"
+        "phpoffice/phpspreadsheet": "1.18.0",
+        "swiftmailer/swiftmailer": "^6.2"
     },
     "support": {
         "source": "https://github.com/maspriyambodo/master_cms",
