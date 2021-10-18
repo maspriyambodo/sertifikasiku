@@ -474,14 +474,14 @@
                 $("#bgndVideo").YTPlayer({
                     videoURL: $('input[name=url_video]').val(),
                     containment: 'self',
-                    autoPlay: false,
+                    autoPlay: true,
                     mute: false,
                     startAt: 0,
                     showControls: true,
                     useOnMobile: true,
                     vol: 100,
                     opacity: 1,
-                    optimizeDisplay: true,
+                    optimizeDisplay: false,
                     loop: false,
                     showYTLogo: false,
                     remember_last_time: true,
@@ -535,6 +535,7 @@
 
                                     socket.emit('new_message', {
                                         username: data.uname,
+                                        fullname: data.fullname,
                                         key: data.key,
                                         msgtxt: data.msg,
                                         avatar: data.ava,
@@ -577,6 +578,7 @@
 
                                     socket.emit('new_message', {
                                         username: data.uname,
+                                        fullname: data.fullname,
                                         key: data.key,
                                         msgtxt: data.msg,
                                         avatar: data.ava,
