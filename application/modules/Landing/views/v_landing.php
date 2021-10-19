@@ -323,7 +323,7 @@
                 }
             }
             function close_login() {
-                document.getElementById('err_msg').innerHTML = 'email not registered!';
+                document.getElementById('err_msg').innerHTML = '';
             }
             function isNumber(b) {
                 b = (b) ? b : window.event;
