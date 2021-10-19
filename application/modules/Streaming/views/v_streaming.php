@@ -61,9 +61,6 @@
                 <div class="row pt-5">
                     <div class="col-lg-8 d-xs-block col-xs-12 col-12 col-md-12">
                         <div id="bgndVideo" class="player"></div>
-                        <div class="form-group">
-                            <span id="viewers"></span> sedang menonton
-                        </div>
                     </div>
                     <div class="col-lg-4 d-none d-xl-block"><!-- d-sm-none d-xl-block -->
                         <div class="card live-chat-lg">
@@ -417,10 +414,6 @@
                     "hideMethod": "fadeOut"
                 };
                 socket.emit('join_streaming', {});
-                socket.on('join_streaming', function (data) {
-                    document.getElementById('viewers').innerHTML = '';
-                    document.getElementById('viewers').innerHTML = data.jumlah;
-                });
                 socket.on('new_message', function (data) {
                     var role_user = $('input[name="role_name"]').val();
                     var btn_admin = '<button type="button" class="btn btn-sm btn-default" value="' + data.chat_id + '" title="Kick Member ' + data.username + '" onclick="Kick_user(this.value)"><i class="fas fa-times text-danger"></i></button>'
