@@ -221,7 +221,7 @@
                                 <span id="err_msg" class="text-danger"></span>
                             </div>
                         </div>
-                        <div id="form_otp">
+<!--                        <div id="form_otp">
                             <div class="text-center mt-4">
                                 Mohon cek kotak spam jika kode OTP tidak ada dalam kotak masuk.
                             </div>
@@ -249,7 +249,7 @@
                                 </div>
                                 <a id="otp_resend">Resend Code</a> <span id="otp_timer"></span>
                             </div>
-                        </div>
+                        </div>-->
                     </div>
                     <div class="card-footer"></div>
                 </div>
@@ -296,20 +296,7 @@
                         cache: false,
                         success: function (data) {
                             if (data.status === true) {
-                                $('#form_mail').hide();
-                                $('#form_otp').show();
-                                var fiveSeconds = new Date().getTime() + 30000;
-                                $('#otp_timer').countdown(fiveSeconds, {elapse: true})
-                                        .on('update.countdown', function (event) {
-                                            var $this = $(this);
-                                            if (event.elapsed) {
-                                                $('#otp_timer').empty();
-                                                $('#otp_resend').attr('href', 'javascript:send_otp()');
-                                            } else {
-                                                $this.html(event.strftime('%S'));
-                                                $('#otp_resend').removeAttr('href');
-                                            }
-                                        });
+                                window.location.href = data.href_url;
                             } else {
                                 document.getElementById('err_msg').innerHTML = 'email not registered!';
                             }

@@ -19,20 +19,23 @@ class Landing extends CI_Controller {
     }
 
     public function Get_mail() {
-        $uname = Post_get('email');
-        $exec = $this->model->Get_detail($uname);
+        $uname['uname'] = Post_get('email');
+        $exec = $this->model->Get_detail($uname['uname']);
         if (!empty($exec)) {
+            $set_session = $this->M_auth->Signin($uname);
+            $this->bodo->Set_session($set_session);
             $otp = random_string('numeric', 5);
             $data = [
                 'status' => true,
-                'sys_user_id' => Enkrip($exec[0]->sys_user_id)
+                'sys_user_id' => Enkrip($exec[0]->sys_user_id),
+                'href_url' => base_url('Streaming/index/')
             ];
             $param = [
                 'otp' => password_hash($otp, PASSWORD_DEFAULT),
                 'sys_user_id' => $exec[0]->sys_user_id
             ];
-            $this->model->set_password($param);
-            $this->send_otp($exec, $otp);
+//            $this->model->set_password($param);
+//            $this->send_otp($exec, $otp);
         } else {
             $data = [
                 'status' => false
