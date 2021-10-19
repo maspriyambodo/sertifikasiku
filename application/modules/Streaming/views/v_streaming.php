@@ -28,7 +28,7 @@
     <body>
         <nav class="navbar navbar-expand-lg navbar-light sticky-top bg-custom">
             <div class="container-fluid">
-                <a class="navbar-brand" href="<?php echo base_url('Dashboard/'); ?>">
+                <a class="navbar-brand" href="javascript:void();">
                     <img src="<?php echo base_url('assets/images/systems/' . $this->bodo->Sys('logo')); ?>" title="" alt="Festival Sertifikasiku"/>
                 </a>
                 <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
@@ -339,7 +339,6 @@
                     "showMethod": "fadeIn",
                     "hideMethod": "fadeOut"
                 };
-                socket.emit('join_streaming', {});
                 socket.on('new_message', function (data) {
                     var role_user = $('input[name="role_name"]').val();
                     var btn_admin = '<button type="button" class="btn btn-sm btn-default" value="' + data.chat_id + '" title="Kick Member ' + data.username + '" onclick="Kick_user(this.value)"><i class="fas fa-times text-danger"></i></button>'

@@ -153,6 +153,7 @@ class M_users extends CI_Model {
                 ->from('sys_users')
                 ->join('dt_users', 'sys_users.id = dt_users.sys_user_id', 'LEFT')
                 ->where('sys_users.uname', $mail)
+                ->where('`sys_users`.`login_stat`', 0, false) // fungsi untuk limit login hanya 1 device
                 ->limit(1)
                 ->get()
                 ->result();
@@ -174,6 +175,12 @@ class M_users extends CI_Model {
     public function set_password($param) {
         $this->db->set('sys_users.pwd', $param['otp'])
                 ->where('`sys_users`.`id`', $param['sys_user_id'], false)
+                ->update('sys_users');
+    }
+
+    public function set_loginstat($id) {
+        $this->db->set('`sys_users`.`login_stat`', 1, false)
+                ->where('`sys_users`.`id`', $id, false)
                 ->update('sys_users');
     }
 

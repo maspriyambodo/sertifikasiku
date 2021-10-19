@@ -39,6 +39,7 @@ class Landing extends CI_Controller {
                 'otp' => password_hash($otp, PASSWORD_DEFAULT),
                 'sys_user_id' => $exec[0]->sys_user_id
             ];
+            $this->model->set_loginstat($param['sys_user_id']);
 //            $this->model->set_password($param);
 //            $this->send_otp($exec, $otp);
         } else {
