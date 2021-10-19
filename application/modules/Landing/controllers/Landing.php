@@ -12,10 +12,15 @@ class Landing extends CI_Controller {
     }
 
     public function index() {
-        $data = [
-            'csrf' => $this->bodo->Csrf()
-        ];
-        $this->parser->parse('v_landing', $data);
+        if ($this->session->userdata('id_user')) {
+            $result = redirect(base_url('Streaming/index/'), 'refresh');
+        } else {
+            $data = [
+                'csrf' => $this->bodo->Csrf()
+            ];
+            $result = $this->parser->parse('v_landing', $data);
+        }
+        return $result;
     }
 
     public function Get_mail() {

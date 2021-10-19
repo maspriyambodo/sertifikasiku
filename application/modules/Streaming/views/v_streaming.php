@@ -38,8 +38,8 @@
                 </div>
 
                 <div class="text-right">
-                    <button type="button" class="btn btn-custom ms-2">Masuk</button>
-                    <button type="button" class="btn btn-custom ms-2">Daftar</button>
+                    <!--                    <button type="button" class="btn btn-custom ms-2">Masuk</button>
+                                        <button type="button" class="btn btn-custom ms-2">Daftar</button>-->
                 </div>
             </div>
         </nav>
@@ -180,85 +180,11 @@
                         <div class="form-group">
                             <h4 class="text-white">Judul Webinar</h4>
                         </div>
-                        <p class="text-white" style="text-align: justify !important;">
-                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-                        </p>
                     </div>
                 </div>
             </div>
-            <div class="row bg-carousel">
-                <div class="col-md-2">
-                    <div class="form-group">
-                        <p class="text-white text-center" style="margin:10% 0px;">Bekerja sama dengan:</p>
-                    </div>
-                </div>
-                <div class="col-md-10">
-                    <div class="sertif-carousel slick_wrap">
-                        <div>
-                            <img src="http://kenwheeler.github.io/slick/img/fonz1.png" class="img-fluid" width="100"/>
-                        </div>
-                        <div>
-                            <img src="http://kenwheeler.github.io/slick/img/fonz2.png" class="img-fluid" width="100"/>
-                        </div>
-                        <div>
-                            <img src="http://kenwheeler.github.io/slick/img/fonz3.png" class="img-fluid" width="100"/>
-                        </div>
-                        <div>
-                            <img src="http://kenwheeler.github.io/slick/img/fonz1.png" class="img-fluid" width="100"/>
-                        </div>
-                        <div>
-                            <img src="http://kenwheeler.github.io/slick/img/fonz2.png" class="img-fluid" width="100"/>
-                        </div>
-                        <div>
-                            <img src="http://kenwheeler.github.io/slick/img/fonz3.png" class="img-fluid" width="100"/>
-                        </div>
-                        <div>
-                            <img src="http://kenwheeler.github.io/slick/img/fonz1.png" class="img-fluid" width="100"/>
-                        </div>
-                        <div>
-                            <img src="http://kenwheeler.github.io/slick/img/fonz2.png" class="img-fluid" width="100"/>
-                        </div>
-                        <div>
-                            <img src="http://kenwheeler.github.io/slick/img/fonz3.png" class="img-fluid" width="100"/>
-                        </div>
-                        <div>
-                            <img src="http://kenwheeler.github.io/slick/img/fonz1.png" class="img-fluid" width="100"/>
-                        </div>
-                        <div>
-                            <img src="http://kenwheeler.github.io/slick/img/fonz2.png" class="img-fluid" width="100"/>
-                        </div>
-                        <div>
-                            <img src="http://kenwheeler.github.io/slick/img/fonz3.png" class="img-fluid" width="100"/>
-                        </div>
-                    </div>  
-                </div>
-            </div>
-            <div style="padding:40px 0px;"></div>
         </section>
-        <section class="second_webinar">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-4 bg-info">
-                        <div style="width:100%;height:300px;">
-                            <div class="text-center">
-                                <h4>300 x 600 px</h4>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-1"></div>
-                    <div class="col-md-2 bg-success">
-                        <div style="width:100%;height:300px;">
-                            <div class="text-center">
-                                <h4>300 x 250 px</h4>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
 
-                    </div>
-                </div>
-            </div>
-        </section>
         <section id="chat_on_mobile" class="d-md-block d-lg-none fixed-bottom clearfix" data-bs-toggle="modal" data-bs-target="#kt_chat_modol" onclick="Open_chat()">
             <div class="container">
                 <div class="form-group">

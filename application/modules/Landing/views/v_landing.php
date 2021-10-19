@@ -31,6 +31,16 @@
                 outline: 0;
                 box-shadow: none
             }
+            .send_otp{
+                background: #2B82ED;
+                width:100%;
+                border-radius: 8px;
+                color: #FFFFFF;
+                font-size: 14px;
+                line-height: 16px;
+                height: 44px;
+                font-family: 'Poppins-Semi-bold', sans-serif;
+            }
         </style>
     </head>
     <body>
@@ -48,7 +58,7 @@
 
                 <div class="text-right">
                     <button type="button" class="btn btn-custom ms-2" data-bs-toggle="modal" data-bs-target="#modal_login">Masuk</button>
-                    <button type="button" class="btn btn-custom ms-2">Daftar</button>
+                    
                 </div>
             </div>
         </nav>
@@ -81,85 +91,12 @@
                         <div class="form-group">
                             <h4 class="text-white">Judul Webinar</h4>
                         </div>
-                        <p class="text-white" style="text-align: justify !important;">
-                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-                        </p>
                     </div>
                 </div>
             </div>
-            <div class="row bg-carousel">
-                <div class="col-md-2">
-                    <div class="form-group">
-                        <p class="text-white text-center" style="margin:10% 0px;">Bekerja sama dengan:</p>
-                    </div>
-                </div>
-                <div class="col-md-10">
-                    <div class="sertif-carousel slick_wrap">
-                        <div>
-                            <img src="http://kenwheeler.github.io/slick/img/fonz1.png" class="img-fluid" width="100"/>
-                        </div>
-                        <div>
-                            <img src="http://kenwheeler.github.io/slick/img/fonz2.png" class="img-fluid" width="100"/>
-                        </div>
-                        <div>
-                            <img src="http://kenwheeler.github.io/slick/img/fonz3.png" class="img-fluid" width="100"/>
-                        </div>
-                        <div>
-                            <img src="http://kenwheeler.github.io/slick/img/fonz1.png" class="img-fluid" width="100"/>
-                        </div>
-                        <div>
-                            <img src="http://kenwheeler.github.io/slick/img/fonz2.png" class="img-fluid" width="100"/>
-                        </div>
-                        <div>
-                            <img src="http://kenwheeler.github.io/slick/img/fonz3.png" class="img-fluid" width="100"/>
-                        </div>
-                        <div>
-                            <img src="http://kenwheeler.github.io/slick/img/fonz1.png" class="img-fluid" width="100"/>
-                        </div>
-                        <div>
-                            <img src="http://kenwheeler.github.io/slick/img/fonz2.png" class="img-fluid" width="100"/>
-                        </div>
-                        <div>
-                            <img src="http://kenwheeler.github.io/slick/img/fonz3.png" class="img-fluid" width="100"/>
-                        </div>
-                        <div>
-                            <img src="http://kenwheeler.github.io/slick/img/fonz1.png" class="img-fluid" width="100"/>
-                        </div>
-                        <div>
-                            <img src="http://kenwheeler.github.io/slick/img/fonz2.png" class="img-fluid" width="100"/>
-                        </div>
-                        <div>
-                            <img src="http://kenwheeler.github.io/slick/img/fonz3.png" class="img-fluid" width="100"/>
-                        </div>
-                    </div>  
-                </div>
-            </div>
-            <div style="padding:40px 0px;"></div>
+            
         </section>
-        <section class="second_webinar">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-4 bg-info">
-                        <div style="width:100%;height:300px;">
-                            <div class="text-center">
-                                <h4>300 x 600 px</h4>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-1"></div>
-                    <div class="col-md-2 bg-success">
-                        <div style="width:100%;height:300px;">
-                            <div class="text-center">
-                                <h4>300 x 250 px</h4>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-
-                    </div>
-                </div>
-            </div>
-        </section>
+        
         <section id="chat_on_mobile" class="d-md-block d-lg-none fixed-bottom clearfix" data-bs-toggle="modal" data-bs-target="#kt_chat_modol" onclick="Open_chat()">
             <div class="container">
                 <div class="form-group">
@@ -201,57 +138,60 @@
             </div>
         </div>
         <div class="modal fade" id="modal_login" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-            <div class="modal-dialog modal-lg">
+            <div class="modal-dialog">
                 <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="staticBackdropLabel">Login Member</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="close_login()"></button>
-                    </div>
                     <div class="modal-body">
+                        <div class="mb-2" style="float: right;">
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="close_login()"></button>    
+                        </div>
+
                         <div id="form_mail">
                             <div class="text-center my-4">
-                                Masukkan email yang terdaftar.<br>Kami akan mengirimkan kode OTP ke email kamu.
+                                <img class="img-fluid" src="<?php echo base_url('assets/images/a9b7f6aefbae556e99a8f5ffbea66844.png'); ?>" alt="login-img" style="width:50%;"/>
                             </div>
-                            <div class="form-floating input-group input-group-lg">
+                            <div class="form-floating input-group">
                                 <input id="mailtxt" name="mailtxt" type="email" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" autocomplete="off">
                                 <label for="mailtxt">Email address</label>
-                                <span class="input-group-text" id="inputGroup-sizing-lg" onclick="send_otp()" style="cursor:pointer;">SEND OTP</span>
+<!--                                <span class="input-group-text" id="inputGroup-sizing-lg" onclick="send_otp()" style="cursor:pointer;">SEND OTP</span>-->
                             </div>
                             <div class="form-group">
                                 <span id="err_msg" class="text-danger"></span>
                             </div>
+                            <div class="clearfix my-4"></div>
+                            <div class="form-group text-center">
+                                <button type="button" class="btn btn-default send_otp" onclick="send_otp()">Selanjutnya</button>
+                            </div>
                         </div>
-<!--                        <div id="form_otp">
-                            <div class="text-center mt-4">
-                                Mohon cek kotak spam jika kode OTP tidak ada dalam kotak masuk.
-                            </div>
-                            <div class="row">
-                                <div class="col-md-3"></div>
-                                <div class="col-md-6">
-                                    <div class="d-flex flex-row mt-5" style="margin-left: 9%;">
-                                        <input name="otp1" type="text" class="form-control form-otp" autofocus="" maxlength="1" onkeypress="return isNumber(event)" autocomplete="off" style="width:50px;">
-                                        <input name="otp2" type="text" class="form-control form-otp" maxlength="1" onkeypress="return isNumber(event)" autocomplete="off" style="width:50px;">
-                                        <input name="otp3" type="text" class="form-control form-otp" maxlength="1" onkeypress="return isNumber(event)" autocomplete="off" style="width:50px;">
-                                        <input name="otp4" type="text" class="form-control form-otp" maxlength="1" onkeypress="return isNumber(event)" autocomplete="off" style="width:50px;">
-                                        <input name="otp5" type="text" class="form-control form-otp" maxlength="1" onkeypress="return isNumber(event)" autocomplete="off" style="width:50px;">
-                                    </div>
-                                </div>
-                                <div class="col-md-3"></div>
-                            </div>
-                            <div class="clearfix my-4"></div>
-                            <div class="text-center">
-                                <button type="button" class="btn btn-info" onclick="verify_otp()">Verifikasi</button>
-                            </div>
-                            <div class="clearfix my-4"></div>
-                            <div class="text-center">
-                                <div class="text-muted">
-                                    Don't receive the code?
-                                </div>
-                                <a id="otp_resend">Resend Code</a> <span id="otp_timer"></span>
-                            </div>
-                        </div>-->
+                        <!--                        <div id="form_otp">
+                                                    <div class="text-center mt-4">
+                                                        Mohon cek kotak spam jika kode OTP tidak ada dalam kotak masuk.
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-3"></div>
+                                                        <div class="col-md-6">
+                                                            <div class="d-flex flex-row mt-5" style="margin-left: 9%;">
+                                                                <input name="otp1" type="text" class="form-control form-otp" autofocus="" maxlength="1" onkeypress="return isNumber(event)" autocomplete="off" style="width:50px;">
+                                                                <input name="otp2" type="text" class="form-control form-otp" maxlength="1" onkeypress="return isNumber(event)" autocomplete="off" style="width:50px;">
+                                                                <input name="otp3" type="text" class="form-control form-otp" maxlength="1" onkeypress="return isNumber(event)" autocomplete="off" style="width:50px;">
+                                                                <input name="otp4" type="text" class="form-control form-otp" maxlength="1" onkeypress="return isNumber(event)" autocomplete="off" style="width:50px;">
+                                                                <input name="otp5" type="text" class="form-control form-otp" maxlength="1" onkeypress="return isNumber(event)" autocomplete="off" style="width:50px;">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-3"></div>
+                                                    </div>
+                                                    <div class="clearfix my-4"></div>
+                                                    <div class="text-center">
+                                                        <button type="button" class="btn btn-info" onclick="verify_otp()">Verifikasi</button>
+                                                    </div>
+                                                    <div class="clearfix my-4"></div>
+                                                    <div class="text-center">
+                                                        <div class="text-muted">
+                                                            Don't receive the code?
+                                                        </div>
+                                                        <a id="otp_resend">Resend Code</a> <span id="otp_timer"></span>
+                                                    </div>
+                                                </div>-->
                     </div>
-                    <div class="card-footer"></div>
                 </div>
             </div>
         </div>
