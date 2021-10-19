@@ -18,6 +18,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.1/js/bootstrap.min.js" integrity="sha512-ewfXo9Gq53e1q1+WDTjaHAGZ8UvCWq0eXONhwDuIoaH8xz2r96uoAYaQCm1oQhnBfRXrvJztNXFsTloJfgbL5Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js" integrity="sha512-XtmMtDEcNz2j7ekrtHvOVR4iwwaD6o/FUJe6+Zq+HgcCsk3kj4uSQQR8weQ2QVj1o0Pk6PwYLohm206ZzNfubg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.js" integrity="sha512-lbwH47l/tPXJYG9AcFNoJaTMhGvYWhVM9YI43CT+uteTRRaiLCui8snIgyAN8XWgNjNhCqlAUdzZptso6OCoFQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.countdown/2.2.0/jquery.countdown.min.js" integrity="sha512-lteuRD+aUENrZPTXWFRPTBcDDxIGWe5uu0apPEn+3ZKYDwDaEErIK9rvR0QzUGmUQ55KFE2RqGTVoZsKctGMVw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         <style>
             .form-otp {
                 margin-right: 12px
@@ -208,6 +209,9 @@
                     </div>
                     <div class="modal-body">
                         <div id="form_mail">
+                            <div class="text-center my-4">
+                                Masukkan email yang terdaftar.<br>Kami akan mengirimkan kode OTP ke email kamu.
+                            </div>
                             <div class="form-floating input-group input-group-lg">
                                 <input id="mailtxt" name="mailtxt" type="email" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" autocomplete="off">
                                 <label for="mailtxt">Email address</label>
@@ -218,6 +222,9 @@
                             </div>
                         </div>
                         <div id="form_otp">
+                            <div class="text-center mt-4">
+                                Mohon cek kotak spam jika kode OTP tidak ada dalam kotak masuk.
+                            </div>
                             <div class="row">
                                 <div class="col-md-3"></div>
                                 <div class="col-md-6">
@@ -240,7 +247,7 @@
                                 <div class="text-muted">
                                     Don't receive the code?
                                 </div>
-                                <a href="javascript:resend_code()">Resend Code</a>
+                                <a id="otp_resend">Resend Code</a> <span id="otp_timer"></span>
                             </div>
                         </div>
                     </div>
@@ -291,6 +298,18 @@
                             if (data.status === true) {
                                 $('#form_mail').hide();
                                 $('#form_otp').show();
+                                var fiveSeconds = new Date().getTime() + 30000;
+                                $('#otp_timer').countdown(fiveSeconds, {elapse: true})
+                                        .on('update.countdown', function (event) {
+                                            var $this = $(this);
+                                            if (event.elapsed) {
+                                                $('#otp_timer').empty();
+                                                $('#otp_resend').attr('href', 'javascript:send_otp()');
+                                            } else {
+                                                $this.html(event.strftime('%S'));
+                                                $('#otp_resend').removeAttr('href');
+                                            }
+                                        });
                             } else {
                                 document.getElementById('err_msg').innerHTML = 'email not registered!';
                             }
@@ -334,24 +353,28 @@
                     bodo_csrf_token: csrf,
                     mail_user: mail
                 };
-                $.ajax({
-                    type: "POST",
-                    url: "<?php echo base_url('Landing/verify_otp/'); ?>",
-                    data: dataString,
-                    dataType: "json",
-                    cache: false,
-                    success: function (data) {
-                        $('input[name="bodo_csrf_token"]').val(data.csrf);
-                        if (data.stat === true) {
-                            window.location.href = data.href_url;
-                        } else {
-                            toastr.warning('mohon masukkan kode OTP dengan benar, atau kirim ulang kode!');
+                if (a !== '' && b !== '' && c !== '' && d !== '' && e !== '') {
+                    $.ajax({
+                        type: "POST",
+                        url: "<?php echo base_url('Landing/verify_otp/'); ?>",
+                        data: dataString,
+                        dataType: "json",
+                        cache: false,
+                        success: function (data) {
+                            $('input[name="bodo_csrf_token"]').val(data.csrf);
+                            if (data.stat === true) {
+                                window.location.href = data.href_url;
+                            } else {
+                                toastr.warning('mohon masukkan kode OTP dengan benar, atau kirim ulang kode!');
+                            }
+                        },
+                        error: function (jqXHR) {
+                            toastr.error('error ' + jqXHR.status + ' ' + jqXHR.statusText);
                         }
-                    },
-                    error: function (jqXHR) {
-                        toastr.error('error ' + jqXHR.status + ' ' + jqXHR.statusText);
-                    }
-                });
+                    });
+                } else {
+                    return false;
+                }
             }
         </script>
     </body>
