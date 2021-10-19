@@ -18,7 +18,7 @@ class M_users extends CI_Model {
     private function _filter() {
         $role_id = $this->bodo->Dec($this->session->userdata('role_id'));
         $id_user = $this->bodo->Dec($this->session->userdata('id_user'));
-        if ($role_id == 1) {
+        if ($role_id == 1 or $role_id == 2) {
             $exec = $this->db->select('sys_users.id,sys_users.uname,sys_users.pwd,sys_users.role_id,sys_users.pict,sys_users.stat,sys_roles.name');
             $this->db->from($this->table)
                     ->join('sys_roles', '`sys_users`.`role_id` = `sys_roles`.`id`');
