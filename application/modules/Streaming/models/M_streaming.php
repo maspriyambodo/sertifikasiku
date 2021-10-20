@@ -90,4 +90,32 @@ class M_streaming extends CI_Model {
                 ->insert('tr_absensi');
     }
 
+    public function enable_login() {
+        $this->db->trans_begin();
+        $this->db->set('`sys_app`.`login_member`', 1, false)
+                ->update('sys_app');
+        if ($this->db->trans_status() === false) {
+            $this->db->trans_rollback();
+            $result = false;
+        } else {
+            $this->db->trans_commit();
+            $result = true;
+        }
+        return $result;
+    }
+    
+    public function disable_login() {
+        $this->db->trans_begin();
+        $this->db->set('`sys_app`.`login_member`', 0, false)
+                ->update('sys_app');
+        if ($this->db->trans_status() === false) {
+            $this->db->trans_rollback();
+            $result = false;
+        } else {
+            $this->db->trans_commit();
+            $result = true;
+        }
+        return $result;
+    }
+
 }

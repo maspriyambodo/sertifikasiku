@@ -57,8 +57,13 @@
                 </div>
 
                 <div class="text-right">
-                    <button type="button" class="btn btn-custom ms-2" data-bs-toggle="modal" data-bs-target="#modal_login">Masuk</button>
-                    
+                    <?php
+                    if ($this->bodo->Sys('logo') == 1) {
+                        echo '<button type="button" class="btn btn-custom ms-2" data-bs-toggle="modal" data-bs-target="#modal_login">Masuk</button>';
+                    } else {
+                        echo '<button type="button" class="btn btn-custom ms-2" data-bs-toggle="modal" data-bs-target="#coming_soon">Masuk</button>';
+                    }
+                    ?>
                 </div>
             </div>
         </nav>
@@ -97,9 +102,9 @@
                     <img class="img-fluid" src="<?php echo base_url('assets/images/51e9abcdaf16d7b14b64edf201d39993.png'); ?>" alt=""/>
                 </div>
             </div>
-            
+
         </section>
-        
+
         <section id="chat_on_mobile" class="d-md-block d-lg-none fixed-bottom clearfix" data-bs-toggle="modal" data-bs-target="#kt_chat_modol" onclick="Open_chat()">
             <div class="container">
                 <div class="form-group">
@@ -136,6 +141,18 @@
                             </div>
                         </div>
                         <!--begin::Compose-->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="coming_soon" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-xl">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <div class="mb-2" style="float: right;">
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="close_login()"></button>    
+                        </div>
+                        <img src="<?php echo base_url('assets/images/coming_soon.png');?>" alt="sertifikasiku mini class" class="img-fluid"/>
                     </div>
                 </div>
             </div>

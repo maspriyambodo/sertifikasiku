@@ -47,6 +47,15 @@
                             echo '<li class="nav-item">'
                             . '<a class="nav-link" href="javascript:absensi();">Absensi</a>'
                             . '</li>';
+                            if ($this->bodo->Sys('login_member') == 0) {
+                                echo '<li class="nav-item">'
+                                . '<a class="nav-link" href="javascript:enable_login();">Enable Login</a>'
+                                . '</li>';
+                            } else {
+                                echo '<li class="nav-item">'
+                                . '<a class="nav-link" href="javascript:disable_login();">Disable Login</a>'
+                                . '</li>';
+                            }
                         } else {
                             null;
                         }
@@ -67,9 +76,18 @@
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                         <?php
                         if (Dekrip($this->session->userdata('role_id')) == 1 or Dekrip($this->session->userdata('role_id')) == 2) {
-                            echo '<li class="nav-item mx-3">'
+                            echo '<li class="nav-item">'
                             . '<a class="nav-link btn btn-light" href="javascript:absensi();">Absensi</a>'
                             . '</li>';
+                            if ($this->bodo->Sys('login_member') == 0) {
+                                echo '<li id="login_control" class="nav-item mx-3">'
+                                . '<a class="nav-link btn btn-light" href="javascript:enable_login();">Enable Login</a>'
+                                . '</li>';
+                            } else {
+                                echo '<li id="login_control" class="nav-item mx-3">'
+                                . '<a class="nav-link btn btn-light" href="javascript:disable_login();">Disable Login</a>'
+                                . '</li>';
+                            }
                         } else {
                             null;
                         }
@@ -753,6 +771,76 @@
                     if (result.isConfirmed === true) {
                         socket.emit('absensi', {
 
+                        });
+                    } else {
+                        return true;
+                    }
+                });
+            }
+            function enable_login() {
+                Swal.fire({
+                    title: 'Enable Login',
+                    html: 'anda akan mengaktifkan tombol login pada halaman member!',
+                    icon: 'question',
+                    confirmButtonText: 'YES',
+                    cancelButtonText:'NO',
+                    showCancelButton: true,
+                    allowOutsideClick: false,
+                    allowEscapeKey: false,
+                    allowEnterKey: true
+                }).then((result) => {
+                    if (result.isConfirmed === true) {
+                        $.ajax({
+                            type: "GET",
+                            url: "<?php echo base_url('Streaming/enable_login/'); ?>",
+                            dataType: "json",
+                            cache: false,
+                            success: function (data) {
+                                if (data.stat === true) {
+                                    $('#login_control').empty();
+                                    $('#login_control').append('<a class="nav-link btn btn-light" href="javascript:disable_login();">Disable Login</a>');
+                                } else {
+                                    toastr.warning('error while changing status, please refresh page!');
+                                }
+                            },
+                            error: function (jqXHR) {
+                                toastr.error('error ' + jqXHR.status + ' ' + jqXHR.statusText);
+                            }
+                        });
+                    } else {
+                        return true;
+                    }
+                });
+            }
+            function disable_login() {
+                Swal.fire({
+                    title: 'Enable Login',
+                    html: 'anda akan me-nonaktifkan tombol login pada halaman member!',
+                    icon: 'question',
+                    confirmButtonText: 'YES',
+                    cancelButtonText:'NO',
+                    showCancelButton: true,
+                    allowOutsideClick: false,
+                    allowEscapeKey: false,
+                    allowEnterKey: true
+                }).then((result) => {
+                    if (result.isConfirmed === true) {
+                        $.ajax({
+                            type: "GET",
+                            url: "<?php echo base_url('Streaming/disable_login/'); ?>",
+                            dataType: "json",
+                            cache: false,
+                            success: function (data) {
+                                if (data.stat === true) {
+                                    $('#login_control').empty();
+                                    $('#login_control').append('<a class="nav-link btn btn-light" href="javascript:enable_login();">Enable Login</a>');
+                                } else {
+                                    toastr.warning('error while changing status, please refresh page!');
+                                }
+                            },
+                            error: function (jqXHR) {
+                                toastr.error('error ' + jqXHR.status + ' ' + jqXHR.statusText);
+                            }
                         });
                     } else {
                         return true;

@@ -99,8 +99,35 @@ class Streaming extends CI_Controller {
         $this->model->set_absensi($data);
         $response = [
             'stat' => true,
-            
         ];
+        return ToJson($response);
+    }
+
+    public function enable_login() {
+        $exec = $this->model->enable_login();
+        if ($exec) {
+            $response = [
+                'stat' => true
+            ];
+        } else {
+            $response = [
+                'stat' => false
+            ];
+        }
+        return ToJson($response);
+    }
+    
+    public function disable_login() {
+        $exec = $this->model->disable_login();
+        if ($exec) {
+            $response = [
+                'stat' => true
+            ];
+        } else {
+            $response = [
+                'stat' => false
+            ];
+        }
         return ToJson($response);
     }
 
