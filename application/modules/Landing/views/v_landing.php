@@ -113,6 +113,7 @@
                 </div>                
                 <div class="pb-4">
                     <img class="img-fluid" src="<?php echo base_url('assets/images/51e9abcdaf16d7b14b64edf201d39993.png'); ?>" alt=""/>
+                    <div class="clearfix my-4"></div>
                 </div>
             </div>
 
