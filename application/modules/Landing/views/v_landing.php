@@ -89,11 +89,11 @@
                 <div class="row py-4">
                     <div class="col-lg-8 d-xs-block col-xs-12 col-12 col-md-12">
                         <div class="form-group">
-                            <h4 class="text-white">Judul Webinar</h4>
+                            <h4 class="text-white">Introduction to fundamental Digital Marketing</h4>
                         </div>
                     </div>
                 </div>                
-                <div class="my-4 py-4">
+                <div class="pb-4">
                     <img class="img-fluid" src="<?php echo base_url('assets/images/51e9abcdaf16d7b14b64edf201d39993.png'); ?>" alt=""/>
                 </div>
             </div>

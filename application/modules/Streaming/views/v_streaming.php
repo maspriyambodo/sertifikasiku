@@ -74,6 +74,7 @@
         echo '<input type="hidden" name="tgl_stop" value="' . date('Y-m-d', strtotime($materi[0]->time_stop)) . '"/>';
         echo '<input type="hidden" name="jam_stop" value="' . date('H:i', strtotime($materi[0]->time_stop)) . '"/>';
         echo '<input type="hidden" name="nama_sesi" value="' . date('H:i', strtotime($materi[0]->nama_sesi)) . '"/>';
+        echo '<input type="hidden" name="fullname" value="' . $this->session->userdata('fullname') . '"/>';
         ?>
         <section id="main_webinar" class="clearfix main_webinar">
             <div class="container">
@@ -197,9 +198,12 @@
                 <div class="row py-4">
                     <div class="col-lg-8 d-xs-block col-xs-12 col-12 col-md-12">
                         <div class="form-group">
-                            <h4 class="text-white">Judul Webinar</h4>
+                            <h4 class="text-white">Introduction to fundamental Digital Marketing</h4>
                         </div>
                     </div>
+                </div>
+                <div class="pb-4">
+                    <img class="img-fluid" src="<?php echo base_url('assets/images/51e9abcdaf16d7b14b64edf201d39993.png'); ?>" alt=""/>
                 </div>
             </div>
         </section>
@@ -438,18 +442,19 @@
                 });
                 socket.on('absensi', function (data) {
                     var id_materi = $('input[name="id_materi"]').val();
+                    var fullname = $('input[name="fullname"]').val();
                     $.ajax({
                         type: "GET",
                         url: "<?php echo base_url('Streaming/absensi?id_materi='); ?>" + id_materi,
                         dataType: "json",
                         cache: false,
                         success: function (data) {
-                            
+
                         }
                     });
                     Swal.fire({
                         title: 'Absensi',
-                        text: 'pesan untuk absensi!',
+                        html: 'Halo, <b>' + fullname + '</b>, terimakasih telah mengikuti Digital Marketing Certification.',
                         icon: 'info',
                         confirmButtonText: 'TUTUP',
                         allowOutsideClick: false,
