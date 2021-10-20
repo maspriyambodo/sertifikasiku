@@ -92,8 +92,10 @@
                             <h4 class="text-white">Judul Webinar</h4>
                         </div>
                     </div>
+                </div>                
+                <div class="my-4 py-4">
+                    <img class="img-fluid" src="<?php echo base_url('assets/images/51e9abcdaf16d7b14b64edf201d39993.png'); ?>" alt=""/>
                 </div>
-                <img class="img-fluid" src="<?php echo base_url('assets/images/51e9abcdaf16d7b14b64edf201d39993.png'); ?>" alt=""/>
             </div>
             
         </section>
