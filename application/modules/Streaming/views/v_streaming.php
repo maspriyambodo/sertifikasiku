@@ -62,12 +62,18 @@
                         </li>
                     </ul>
                 </div>
-                
+
                 <div class="collapse navbar-collapse" style="margin-right:3%;">
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                        <li class="nav-item" style="margin-right:10px;">
-                            <a class="nav-link btn btn-light" href="javascript:absensi();">Absensi</a>
-                        </li>
+                        <?php
+                        if (Dekrip($this->session->userdata('role_id')) == 1 or Dekrip($this->session->userdata('role_id')) == 2) {
+                            echo '<li class="nav-item mx-3">'
+                            . '<a class="nav-link btn btn-light" href="javascript:absensi();">Absensi</a>'
+                            . '</li>';
+                        } else {
+                            null;
+                        }
+                        ?>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle btn btn-light" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 hi, <?php echo $this->session->userdata('fullname'); ?>
