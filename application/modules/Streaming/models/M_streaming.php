@@ -79,4 +79,15 @@ class M_streaming extends CI_Model {
         }
     }
 
+    public function set_absensi($data) {
+        $this->db->set([
+                    '`tr_absensi`.`user_id`' => $data['id_user'] + false,
+                    '`tr_absensi`.`materi_id`' => $data['id_materi'] + false,
+                    '`tr_absensi`.`stat`' => 1 + false,
+                    '`tr_absensi`.`sysupdateuser`' => $data['id_user'] + false,
+                    'tr_absensi.sysupdatedate' => date('Y-m-d H:i:s')
+                ])
+                ->insert('tr_absensi');
+    }
+
 }

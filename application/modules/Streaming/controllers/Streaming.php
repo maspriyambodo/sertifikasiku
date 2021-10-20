@@ -64,7 +64,7 @@ class Streaming extends CI_Controller {
     }
 
     public function Get_detail() {
-        $exec = $this->model->Get_detail(Post_get('token'));// Post_get('token') = id_chat
+        $exec = $this->model->Get_detail(Post_get('token')); // Post_get('token') = id_chat
         if (empty($exec)) {
             $data = [
                 'success' => false,
@@ -89,6 +89,19 @@ class Streaming extends CI_Controller {
         $this->model->Kick_user($this->id_user);
         $this->session->sess_destroy();
         blocked_account();
+    }
+
+    public function absensi() {
+        $data = [
+            'id_materi' => Post_get('id_materi'),
+            'id_user' => $this->id_user
+        ];
+        $this->model->set_absensi($data);
+        $response = [
+            'stat' => true,
+            
+        ];
+        return ToJson($response);
     }
 
 }

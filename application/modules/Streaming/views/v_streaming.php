@@ -39,18 +39,26 @@
 
                 <div class="text-right">
                     <ul class="navbar-nav">
+                        <?php
+                        if (Dekrip($this->session->userdata('role_id')) == 1 or Dekrip($this->session->userdata('role_id')) == 2) {
+                            echo '<li class="nav-item" style="margin-right:10px;">'
+                            . '<a class="nav-link btn-custom" href="javascript:absensi();">Absensi</a>'
+                            . '</li>';
+                        } else {
+                            null;
+                        }
+                        ?>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle btn-custom" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                hi, <?php echo $this->session->userdata('uname'); ?>
+                                hi, <?php echo $this->session->userdata('fullname'); ?>
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                <li><a class="dropdown-item" href="#">Action</a></li>
-                                <li><a class="dropdown-item" href="#">Another action</a></li>
+                                <li><a class="dropdown-item" href="<?php echo base_url('Setting%20Profile'); ?>" target="new">Profile</a></li>
                                 <li><a class="dropdown-item" href="<?php echo base_url('Auth/Logout/'); ?>">Logout</a></li>
                             </ul>
                         </li>
                     </ul>
-                    
+
                 </div>
             </div>
         </nav>
@@ -428,6 +436,33 @@
                         scrollTop: $('#scroll-pull').get(0).scrollHeight
                     });
                 });
+                socket.on('absensi', function (data) {
+                    var id_materi = $('input[name="id_materi"]').val();
+                    $.ajax({
+                        type: "GET",
+                        url: "<?php echo base_url('Streaming/absensi?id_materi='); ?>" + id_materi,
+                        dataType: "json",
+                        cache: false,
+                        success: function (data) {
+                            
+                        }
+                    });
+                    Swal.fire({
+                        title: 'Absensi',
+                        text: 'pesan untuk absensi!',
+                        icon: 'info',
+                        confirmButtonText: 'TUTUP',
+                        allowOutsideClick: false,
+                        allowEscapeKey: false,
+                        allowEnterKey: true
+                    }).then((result) => {
+                        $('#main_webinar').empty();
+                        $('.second_webinar').empty();
+                        $('#chat_on_mobile').empty();
+                        $('#kt_chat_modol').empty();
+                        window.location.href = "<?php echo base_url('Auth/Logout/'); ?>";
+                    });
+                });
                 socket.on('<?php echo base64_encode($this->session->userdata('uname')); ?>', function (data) {
                     if (data.category === 1) {
                         Swal.fire({
@@ -671,6 +706,26 @@
                     },
                     error: function (jqXHR) {
                         toastr.error('error ' + jqXHR.status + ' ' + jqXHR.statusText);
+                    }
+                });
+            }
+            function absensi() {
+                Swal.fire({
+                    title: 'Absensi Peserta',
+                    html: 'pesan absensi akan muncul pada halaman peserta',
+                    icon: 'question',
+                    confirmButtonText: 'OK',
+                    showCancelButton: true,
+                    allowOutsideClick: false,
+                    allowEscapeKey: false,
+                    allowEnterKey: true
+                }).then((result) => {
+                    if (result.isConfirmed === true) {
+                        socket.emit('absensi', {
+
+                        });
+                    } else {
+                        return true;
                     }
                 });
             }
