@@ -149,11 +149,11 @@ class M_users extends CI_Model {
     }
 
     public function Get_detail($mail) {
-        $exec = $this->db->select('sys_users.id AS sys_user_id,sys_users.uname,dt_users.nama AS fullname')
+        $exec = $this->db->select('sys_users.id AS sys_user_id,sys_users.uname,sys_users.login_stat,dt_users.nama AS fullname')
                 ->from('sys_users')
                 ->join('dt_users', 'sys_users.id = dt_users.sys_user_id', 'LEFT')
                 ->where('sys_users.uname', $mail)
-                ->where('`sys_users`.`login_stat`', 0, false) // fungsi untuk limit login hanya 1 device
+                // ->where('`sys_users`.`login_stat`', 0, false) // fungsi untuk limit login hanya 1 device
                 ->limit(1)
                 ->get()
                 ->result();

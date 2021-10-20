@@ -8,6 +8,7 @@
         <link href="https://fonts.googleapis.com" rel="preconnect"/>
         <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin/>
         <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Poppins:wght@100;200&display=swap" rel="stylesheet">
+        <link href="<?php echo base_url('assets/plugins/global/fonts/galano/style.css'); ?>" rel="stylesheet" type="text/css"/>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.1/css/bootstrap.min.css" integrity="sha512-6KY5s6UI5J7SVYuZB4S/CZMyPylqyyNZco376NM2Z8Sb8OxEdp02e1jkKk/wZxIEmjQ6DRCEBhni+gpr9c4tvA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css" integrity="sha512-yHknP1/AwR+yx26cB1y0cjvQUMvEa2PFzt1c9LlS4pRQ5NOTZFWbhBig+X9G9eYW/8m0/4OXNx8pxJ6z57x0dw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -23,7 +24,6 @@
             .form-otp {
                 margin-right: 12px
             }
-
             .form-otp:focus {
                 color: #495057;
                 background-color: #fff;
@@ -56,7 +56,7 @@
                 <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0 d-lg-none">
                         <?php
-                        if ($this->bodo->Sys('logo') == 1) {
+                        if ($this->bodo->Sys('login_member') == 1) {
                             echo '<button type="button" class="btn btn-custom ms-2" data-bs-toggle="modal" data-bs-target="#modal_login">Masuk</button>';
                         } else {
                             echo '<button type="button" class="btn btn-custom ms-2" data-bs-toggle="modal" data-bs-target="#coming_soon">Masuk</button>';
@@ -68,10 +68,10 @@
                 <div class="collapse navbar-collapse" style="margin-right:3%;">
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                         <?php
-                        if ($this->bodo->Sys('logo') == 1) {
-                            echo '<button type="button" class="btn btn-custom ms-2" data-bs-toggle="modal" data-bs-target="#modal_login">Masuk</button>';
+                        if ($this->bodo->Sys('login_member') == 1) {
+                            echo '<button type="button" class="btn btn-custom ms-2" data-bs-toggle="modal" data-bs-target="#modal_login" style="font-family:Galano Grotesque Alt SemiBold;color: #214980;">Masuk</button>';
                         } else {
-                            echo '<button type="button" class="btn btn-custom ms-2" data-bs-toggle="modal" data-bs-target="#coming_soon">Masuk</button>';
+                            echo '<button type="button" class="btn btn-custom ms-2" data-bs-toggle="modal" data-bs-target="#coming_soon" style="font-family:Galano Grotesque Alt SemiBold;color: #214980;">Masuk</button>';
                         }
                         ?>
                     </ul>
@@ -88,7 +88,7 @@
                         <div class="card live-chat-lg">
                             <div class="card-header">
                                 <div class="card-title">
-                                    <div class="form-group">
+                                    <div class="form-group" style="font-family:'Galano Grotesque Alt SemiBold';color: #848484;">
                                         <i class="fas fa-comments"></i>
                                         <b>Live Chat</b>
                                     </div>
@@ -105,7 +105,7 @@
                 <div class="row py-4">
                     <div class="col-lg-8 d-xs-block col-xs-12 col-12 col-md-12">
                         <div class="form-group">
-                            <h4 class="text-white">Introduction to fundamental Digital Marketing</h4>
+                            <h4 class="text-white" style="font-family: 'Galano Grotesque Alt Bold';">Introduction to fundamental Digital Marketing</h4>
                         </div>
                     </div>
                 </div>                
@@ -178,11 +178,16 @@
 
                         <div id="form_mail">
                             <div class="text-center my-4">
-                                <img class="img-fluid" src="<?php echo base_url('assets/images/a9b7f6aefbae556e99a8f5ffbea66844.png'); ?>" alt="login-img" style="width:50%;"/>
+                                <img class="img-fluid" src="<?php echo base_url('assets/images/a9b7f6aefbae556e99a8f5ffbea66844.png'); ?>" alt="login-img" style="width:286px;"/>
                             </div>
-                            <div class="form-floating input-group">
-                                <input id="mailtxt" name="mailtxt" type="email" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" autocomplete="off">
-                                <label for="mailtxt">Email address</label>
+                            <div class="form-group">
+                                <h3>Masuk</h3>
+                            </div>
+                            <div class="form-group">
+                                <label for="mailtxt" style="font-family: GalanoGrotesque-SemiBold;">E-mail</label>
+                            </div>
+                            <div class="input-group my-2">
+                                <input id="mailtxt" name="mailtxt" type="email" class="form-control" autocomplete="off" placeholder="Masukkan alamat e-mail kamu">
 <!--                                <span class="input-group-text" id="inputGroup-sizing-lg" onclick="send_otp()" style="cursor:pointer;">SEND OTP</span>-->
                             </div>
                             <div class="form-group">
@@ -190,7 +195,7 @@
                             </div>
                             <div class="clearfix my-4"></div>
                             <div class="form-group text-center">
-                                <button type="button" class="btn btn-default send_otp" onclick="send_otp()">Selanjutnya</button>
+                                <button type="button" class="btn btn-default send_otp" onclick="send_otp()">Masuk</button>
                             </div>
                         </div>
                         <!--                        <div id="form_otp">
@@ -268,6 +273,8 @@
                         success: function (data) {
                             if (data.status === true) {
                                 window.location.href = data.href_url;
+                            } else if (data.status === 'lagi_login') {
+                                document.getElementById('err_msg').innerHTML = 'anda telah masuk dengan perangkat lain';
                             } else {
                                 document.getElementById('err_msg').innerHTML = 'email not registered!';
                             }
