@@ -50,20 +50,31 @@
                 <a class="navbar-brand" href="javascript:void();">
                     <img src="<?php echo base_url('assets/images/systems/' . $this->bodo->Sys('logo')); ?>" title="" alt="Festival Sertifikasiku" style="width:50%;"/>
                 </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
                 <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0 d-lg-none">
+                        <?php
+                        if ($this->bodo->Sys('logo') == 1) {
+                            echo '<button type="button" class="btn btn-custom ms-2" data-bs-toggle="modal" data-bs-target="#modal_login">Masuk</button>';
+                        } else {
+                            echo '<button type="button" class="btn btn-custom ms-2" data-bs-toggle="modal" data-bs-target="#coming_soon">Masuk</button>';
+                        }
+                        ?>
                     </ul>
                 </div>
 
-                <div class="text-right">
-                    <?php
-                    if ($this->bodo->Sys('logo') == 1) {
-                        echo '<button type="button" class="btn btn-custom ms-2" data-bs-toggle="modal" data-bs-target="#modal_login">Masuk</button>';
-                    } else {
-                        echo '<button type="button" class="btn btn-custom ms-2" data-bs-toggle="modal" data-bs-target="#coming_soon">Masuk</button>';
-                    }
-                    ?>
+                <div class="collapse navbar-collapse" style="margin-right:3%;">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                        <?php
+                        if ($this->bodo->Sys('logo') == 1) {
+                            echo '<button type="button" class="btn btn-custom ms-2" data-bs-toggle="modal" data-bs-target="#modal_login">Masuk</button>';
+                        } else {
+                            echo '<button type="button" class="btn btn-custom ms-2" data-bs-toggle="modal" data-bs-target="#coming_soon">Masuk</button>';
+                        }
+                        ?>
+                    </ul>
                 </div>
             </div>
         </nav>
@@ -152,7 +163,7 @@
                         <div class="mb-2" style="float: right;">
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="close_login()"></button>    
                         </div>
-                        <img src="<?php echo base_url('assets/images/coming_soon.png');?>" alt="sertifikasiku mini class" class="img-fluid"/>
+                        <img src="<?php echo base_url('assets/images/coming_soon.png'); ?>" alt="sertifikasiku mini class" class="img-fluid"/>
                     </div>
                 </div>
             </div>
