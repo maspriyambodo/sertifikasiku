@@ -7,6 +7,7 @@ class Landing extends CI_Controller {
     public function __construct() {
         parent::__construct();
         $this->load->model('Systems/M_users', 'model');
+        $this->load->model('Streaming/M_streaming', 'model2');
         $this->load->model('Auth/M_auth');
         $this->load->helper('string');
     }
@@ -16,7 +17,8 @@ class Landing extends CI_Controller {
             $result = redirect(base_url('Streaming/index/'), 'refresh');
         } else {
             $data = [
-                'csrf' => $this->bodo->Csrf()
+                'csrf' => $this->bodo->Csrf(),
+                'materi' => $this->model2->Materi()
             ];
             $result = $this->parser->parse('v_landing', $data);
         }

@@ -241,7 +241,9 @@
                 <div class="row py-4">
                     <div class="col-lg-8 d-xs-block col-xs-12 col-12 col-md-12">
                         <div class="form-group">
-                            <h4 class="text-white">Introduction to fundamental Digital Marketing</h4>
+                            <h4 class="text-white" style="font-family: 'Galano Grotesque Alt Bold';">
+                                <?php echo $materi[0]->nama_materi; ?>
+                            </h4>
                         </div>
                     </div>
                 </div>
