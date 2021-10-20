@@ -80,7 +80,8 @@ class Auth extends CI_Controller {
     }
 
     public function Logout() {
-        $this->M_auth->set_loginstat($this->session->userdata('id_user'));
+        $id_user = Dekrip($this->session->userdata('id_user'));
+        $this->M_auth->set_loginstat($id_user);
         $this->session->sess_destroy();
         return redirect(base_url('Signin'), 'refresh');
     }
