@@ -44,4 +44,10 @@ class M_auth extends CI_Model {
         return $result;
     }
 
+    public function set_loginstat($id) {
+        $this->db->set('`sys_users`.`login_stat`', 0, false)
+                ->where('`sys_users`.`id`', $id, false)
+                ->update('sys_users');
+    }
+
 }
