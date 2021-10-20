@@ -456,7 +456,7 @@
                         title: 'Absensi',
                         html: 'Halo, <b>' + fullname + '</b>, terimakasih telah mengikuti Digital Marketing Certification.',
                         icon: 'info',
-                        confirmButtonText: 'TUTUP',
+                        confirmButtonText: 'OK',
                         allowOutsideClick: false,
                         allowEscapeKey: false,
                         allowEnterKey: true

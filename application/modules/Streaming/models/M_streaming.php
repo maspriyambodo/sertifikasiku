@@ -84,8 +84,8 @@ class M_streaming extends CI_Model {
                     '`tr_absensi`.`user_id`' => $data['id_user'] + false,
                     '`tr_absensi`.`materi_id`' => $data['id_materi'] + false,
                     '`tr_absensi`.`stat`' => 1 + false,
-                    '`tr_absensi`.`sysupdateuser`' => $data['id_user'] + false,
-                    'tr_absensi.sysupdatedate' => date('Y-m-d H:i:s')
+                    '`tr_absensi`.`syscreateuser`' => $data['id_user'] + false,
+                    'tr_absensi.syscreatedate' => date('Y-m-d H:i:s')
                 ])
                 ->insert('tr_absensi');
     }
