@@ -20,7 +20,7 @@ body{
 .main_webinar{
     background-image:url("./images/background_section_teaser-1.png");
     background-repeat: no-repeat;
-    background-size:cover;
+    background-size:auto;
 }
 .second_webinar{
     background-image:url("./images/background_section_teaser.png");

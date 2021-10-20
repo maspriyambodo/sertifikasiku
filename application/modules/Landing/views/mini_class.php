@@ -58,86 +58,18 @@
 
                 <div class="text-right">
                     <button type="button" class="btn btn-custom ms-2" data-bs-toggle="modal" data-bs-target="#modal_login">Masuk</button>
-                    
+
                 </div>
             </div>
         </nav>
         <section id="main_webinar" class="clearfix main_webinar">
+
             <div class="container">
-                <div class="row pt-5">
-                    <div class="col-lg-8 d-xs-block col-xs-12 col-12 col-md-12">
-                        <div id="bgndVideo" class="player" style="height: 456px;background-color: black;"></div>
-                    </div>
-                    <div class="col-lg-4 d-none d-xl-block"><!-- d-sm-none d-xl-block -->
-                        <div class="card live-chat-lg">
-                            <div class="card-header">
-                                <div class="card-title">
-                                    <div class="form-group">
-                                        <i class="fas fa-comments"></i>
-                                        <b>Live Chat</b>
-                                    </div>
-                                </div>
-                            </div>
-                            <div id="msg_dir" class="card-body"></div>
-                            <div class="card-footer input-group mb-3 chat_footer">
-                                <input type="text" class="form-control" name="msgtxt" autocomplete="off">
-                                <button type="button" class="input-group-text"><i class="fas fa-paper-plane"></i></button>                             
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row py-4">
-                    <div class="col-lg-8 d-xs-block col-xs-12 col-12 col-md-12">
-                        <div class="form-group">
-                            <h4 class="text-white">Judul Webinar</h4>
-                        </div>
-                    </div>
-                </div>
-                <img class="img-fluid" src="<?php echo base_url('assets/images/51e9abcdaf16d7b14b64edf201d39993.png'); ?>" alt=""/>
+                
             </div>
-            
+
         </section>
-        
-        <section id="chat_on_mobile" class="d-md-block d-lg-none fixed-bottom clearfix" data-bs-toggle="modal" data-bs-target="#kt_chat_modol" onclick="Open_chat()">
-            <div class="container">
-                <div class="form-group">
-                    <span class="title_txt">Live Chat</span>
-                </div>
-                <div class="form-group">
-                    <span id="title_icon" class="title_icon"><i class="fas fa-chevron-up"></i></span>
-                </div>
-            </div>
-            <div class="clearfix" style="border-bottom:1px solid #6c757d;width:100%;"></div>
-        </section>
-        <div class="modal fade kt_chat_modol" id="kt_chat_modol" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="staticBackdropLabel"><i class="fas fa-comments"></i><b> Live Chat</b></h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <div id="scroll-pull" class="scroll scroll-pull" data-height="375" data-mobile-height="300">
-                            <!--begin::Messages-->
-                            <div id="msg_dir2" class="messages"></div>
-                            <!--end::Messages-->
-                        </div>
-                    </div>
-                    <div class="card-footer align-items-center">
-                        <!--begin::Compose-->
-                        <textarea name="msgtxt2" class="form-control border-0 p-0" rows="4" placeholder="Type a message"></textarea>
-                        <div class="d-flex align-items-center justify-content-between mt-2">
-                            <div class="mr-3"></div>
-                            <div>
-                                <button type="button" class="btn btn-primary text-uppercase font-weight-bold chat-send py-2 px-6">Send</button>
-                                <button type="button" class="btn btn-secondary text-uppercase font-weight-bold chat-send py-2 px-6" data-bs-dismiss="modal" aria-label="Close">Close</button>
-                            </div>
-                        </div>
-                        <!--begin::Compose-->
-                    </div>
-                </div>
-            </div>
-        </div>
+
         <div class="modal fade" id="modal_login" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -163,35 +95,6 @@
                                 <button type="button" class="btn btn-default send_otp" onclick="send_otp()">Selanjutnya</button>
                             </div>
                         </div>
-                        <!--                        <div id="form_otp">
-                                                    <div class="text-center mt-4">
-                                                        Mohon cek kotak spam jika kode OTP tidak ada dalam kotak masuk.
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="col-md-3"></div>
-                                                        <div class="col-md-6">
-                                                            <div class="d-flex flex-row mt-5" style="margin-left: 9%;">
-                                                                <input name="otp1" type="text" class="form-control form-otp" autofocus="" maxlength="1" onkeypress="return isNumber(event)" autocomplete="off" style="width:50px;">
-                                                                <input name="otp2" type="text" class="form-control form-otp" maxlength="1" onkeypress="return isNumber(event)" autocomplete="off" style="width:50px;">
-                                                                <input name="otp3" type="text" class="form-control form-otp" maxlength="1" onkeypress="return isNumber(event)" autocomplete="off" style="width:50px;">
-                                                                <input name="otp4" type="text" class="form-control form-otp" maxlength="1" onkeypress="return isNumber(event)" autocomplete="off" style="width:50px;">
-                                                                <input name="otp5" type="text" class="form-control form-otp" maxlength="1" onkeypress="return isNumber(event)" autocomplete="off" style="width:50px;">
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-3"></div>
-                                                    </div>
-                                                    <div class="clearfix my-4"></div>
-                                                    <div class="text-center">
-                                                        <button type="button" class="btn btn-info" onclick="verify_otp()">Verifikasi</button>
-                                                    </div>
-                                                    <div class="clearfix my-4"></div>
-                                                    <div class="text-center">
-                                                        <div class="text-muted">
-                                                            Don't receive the code?
-                                                        </div>
-                                                        <a id="otp_resend">Resend Code</a> <span id="otp_timer"></span>
-                                                    </div>
-                                                </div>-->
                     </div>
                 </div>
             </div>

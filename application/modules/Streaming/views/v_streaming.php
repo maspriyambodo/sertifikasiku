@@ -38,8 +38,19 @@
                 </div>
 
                 <div class="text-right">
-                    <!--                    <button type="button" class="btn btn-custom ms-2">Masuk</button>
-                                        <button type="button" class="btn btn-custom ms-2">Daftar</button>-->
+                    <ul class="navbar-nav">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle btn-custom" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                hi, <?php echo $this->session->userdata('uname'); ?>
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <li><a class="dropdown-item" href="#">Action</a></li>
+                                <li><a class="dropdown-item" href="#">Another action</a></li>
+                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    
                 </div>
             </div>
         </nav>
