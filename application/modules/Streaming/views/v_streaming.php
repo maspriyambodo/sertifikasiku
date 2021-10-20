@@ -24,6 +24,11 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.js" integrity="sha512-lbwH47l/tPXJYG9AcFNoJaTMhGvYWhVM9YI43CT+uteTRRaiLCui8snIgyAN8XWgNjNhCqlAUdzZptso6OCoFQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         <script src="<?php echo base_url('node_modules/socket.io-client/dist/socket.io.min.js'); ?>" type="text/javascript"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.1.7/sweetalert2.all.js" integrity="sha512-wT0KEfF13tBeZVQN9MgyrOPpcazX2XUxLl11DuFYgctVVypKlqneS3cZp37g00U0x3G+rFvpaGtGs7JP3GTSIQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <style>
+            .dropdown-menu[data-bs-popper]{
+                left:-66px !important;
+            }
+        </style>
     </head>
     <body>
         <nav class="navbar navbar-expand-lg navbar-light sticky-top bg-custom">
@@ -31,34 +36,48 @@
                 <a class="navbar-brand" href="javascript:void();">
                     <img src="<?php echo base_url('assets/images/systems/' . $this->bodo->Sys('logo')); ?>" title="" alt="Festival Sertifikasiku" style="width:50%;"/>
                 </a>
-                <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
 
-                    </ul>
-                </div>
-
-                <div class="text-right">
-                    <ul class="navbar-nav">
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0 d-lg-none">
                         <?php
                         if (Dekrip($this->session->userdata('role_id')) == 1 or Dekrip($this->session->userdata('role_id')) == 2) {
-                            echo '<li class="nav-item" style="margin-right:10px;">'
-                            . '<a class="nav-link btn-custom" href="javascript:absensi();">Absensi</a>'
+                            echo '<li class="nav-item">'
+                            . '<a class="nav-link" href="javascript:absensi();">Absensi</a>'
                             . '</li>';
                         } else {
                             null;
                         }
                         ?>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle btn-custom" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 hi, <?php echo $this->session->userdata('fullname'); ?>
                             </a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <ul class="dropdown-menu fade" aria-labelledby="navbarDropdownMenuLink">
                                 <li><a class="dropdown-item" href="<?php echo base_url('Setting%20Profile'); ?>" target="new">Profile</a></li>
                                 <li><a class="dropdown-item" href="<?php echo base_url('Auth/Logout/'); ?>">Logout</a></li>
                             </ul>
                         </li>
                     </ul>
-
+                </div>
+                
+                <div class="collapse navbar-collapse" style="margin-right:3%;">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                        <li class="nav-item" style="margin-right:10px;">
+                            <a class="nav-link btn btn-light" href="javascript:absensi();">Absensi</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle btn btn-light" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                hi, <?php echo $this->session->userdata('fullname'); ?>
+                            </a>
+                            <ul class="dropdown-menu fade" aria-labelledby="navbarDropdownMenuLink">
+                                <li><a class="dropdown-item" href="<?php echo base_url('Setting%20Profile'); ?>" target="new">Profile</a></li>
+                                <li><a class="dropdown-item" href="<?php echo base_url('Auth/Logout/'); ?>">Logout</a></li>
+                            </ul>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </nav>
