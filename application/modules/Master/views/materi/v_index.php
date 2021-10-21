@@ -50,7 +50,7 @@
                             </td>
                             <td class="text-center"><?php echo $menu->nama_sesi; ?></td>
                             <td><?php echo $menu->nama_materi; ?></td>
-                            <td><?php echo $menu->deskripsi; ?></td>
+                            <td><?php echo substr($menu->deskripsi,0,50); ?>...</td>
                             <td class="text-center"><?php echo $menu->tgl_mulai; ?></td>
                             <td class="text-center"><?php echo $menu->jam_mulai; ?></td>
                             <td class="text-center"><?php echo $menu->tgl_selesai; ?></td>
