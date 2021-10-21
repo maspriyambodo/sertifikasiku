@@ -180,6 +180,8 @@ class M_users extends CI_Model {
 
     public function set_loginstat($id) {
         $this->db->set('`sys_users`.`login_stat`', 1, false)
+                ->set('sys_users.ip_address', $this->input->ip_address())
+                ->set('sys_users.last_login', date('Y-m-d H:i:s'))
                 ->where('`sys_users`.`id`', $id, false)
                 ->update('sys_users');
     }
