@@ -1,0 +1,40 @@
+{
+  "name": "sertifikasiku",
+  "version": "1.0.0",
+  "description": "--- rename folder `/application/config.production` to `config`",
+  "main": "index.js",
+  "dependencies": {
+    "accepts": "^1.3.7",
+    "connect": "^3.7.0",
+    "content-type": "^1.0.4",
+    "cookie": "^0.1.5",
+    "express": "^4.17.1",
+    "has-binary": "^0.1.7",
+    "has-cors": "^1.1.0",
+    "json3": "^3.3.3",
+    "merge-descriptors": "^1.0.1",
+    "methods": "^1.1.2",
+    "proxy-addr": "^1.1.5",
+    "serve-static": "^1.14.1",
+    "socket.io": "^4.2.0",
+    "type-is": "^1.6.18",
+    "vary": "^1.1.2",
+    "vhost": "^3.0.2",
+    "ws": "^8.2.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://maspriyambodo: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@github.com/maspriyambodo/sertifikasiku.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/maspriyambodo/sertifikasiku/issues"
+  },
+  "homepage": "https://github.com/maspriyambodo/sertifikasiku#readme"
+}

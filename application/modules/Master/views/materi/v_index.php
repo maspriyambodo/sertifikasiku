@@ -68,9 +68,9 @@
                             
                             <td class="text-center">
                                 <?php
-                                $editbtn = '<a href="'.base_url('Master/Materi/Edit/'.$id_materi).'" id="editbtn" type="button" class="btn btn-icon btn-warning btn-xs" title="Edit" value="' . $id_materi . '" ><i class="far fa-edit"></i></a>';
-                                $delbtn = '<button id="delbtn" type="button" class="btn btn-icon btn-danger btn-xs" title="Delete" value="' . $id_materi . '" onclick="Delete(this.value)"><i class="far fa-trash-alt"></i></button>';
-                                $activebtn = '<button id="actvbtn" type="button" class="btn btn-icon btn-default btn-xs" title="Set Active" value="' . $id_materi . '" onclick="Active(this.value)"><i class="fas fa-unlock text-success"></i></button>';
+                                $editbtn = '<a href="'.base_url('Master/Materi/Edit/'.$id_materi).'" id="editbtn" type="button" class="btn btn-icon btn-warning btn-xs" title="Edit" value="' . $id_materi . '" ><i class="far fa-edit fa-sm"></i></a>';
+                                $delbtn = '<button id="delbtn" type="button" class="btn btn-icon btn-default btn-xs" title="Set non-aktif" value="' . $id_materi . '" onclick="Delete(this.value)"><i class="fas fa-lock fa-sm text-danger"></i></button>';
+                                $activebtn = '<button id="actvbtn" type="button" class="btn btn-icon btn-default btn-xs" title="Set Active" value="' . $id_materi . '" onclick="Active(this.value)"><i class="fas fa-unlock fa-sm text-success"></i></button>';
 
                                 echo '<div class="btn-group">'; // open div btn-group
 
