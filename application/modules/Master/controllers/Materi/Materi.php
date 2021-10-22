@@ -72,9 +72,9 @@ class Materi extends CI_Controller {
             ];
             $exec = $this->model->update($data);
             if (!$exec) {
-               $result = redirect(base_url('Master/Materi/index/'), $this->session->set_flashdata('err_msg', 'error while update new group'));
+               $result = redirect(base_url('Master/Materi/index/'), $this->session->set_flashdata('err_msg', 'error while update Master Data Materi'));
             } else {
-                $result = redirect(base_url('Master/Materi/index/'), $this->session->set_flashdata('succ_msg', 'success, new group menu has been updated'));
+                $result = redirect(base_url('Master/Materi/index/'), $this->session->set_flashdata('succ_msg', 'success, Master Data Materi has been updated'));
             }
         return $result;
     }
@@ -85,9 +85,9 @@ class Materi extends CI_Controller {
     $exec = $this->model->delete($id_materi);
 
     if (!$exec) {
-        $result = redirect(base_url('Master/Materi/index/'), $this->session->set_flashdata('err_msg', 'error while insert data'));
+        $result = redirect(base_url('Master/Materi/index/'), $this->session->set_flashdata('err_msg', 'error while set non-active Master Data Materi'));
     } else {
-        $result = redirect(base_url('Master/Materi/index/'), $this->session->set_flashdata('succ_msg', 'success, new data has been added'));
+        $result = redirect(base_url('Master/Materi/index/'), $this->session->set_flashdata('succ_msg', 'success, Master Data Materi has non-actived'));
     }
     return $result;
 
@@ -98,9 +98,9 @@ class Materi extends CI_Controller {
         $exec = $this->model->active($id_materi);
     
         if (!$exec) {
-            $result = redirect(base_url('Master/Materi/index/'), $this->session->set_flashdata('err_msg', 'error while insert data'));
+            $result = redirect(base_url('Master/Materi/index/'), $this->session->set_flashdata('err_msg', 'error while activated Master Data Materi'));
         } else {
-            $result = redirect(base_url('Master/Materi/index/'), $this->session->set_flashdata('succ_msg', 'success, new data has been added'));
+            $result = redirect(base_url('Master/Materi/index/'), $this->session->set_flashdata('succ_msg', 'success, Master Data Materi has been Activated'));
         }
         return $result;
     
