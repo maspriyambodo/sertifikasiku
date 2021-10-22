@@ -162,7 +162,7 @@
                                                     <span class="font-size-sm"><i class="fas fa-user-shield text-danger"></i></span>
                                                 </div>
                                             </div>
-                                            <div class="p-1 bg-danger text-white font-size-lg text-left wrap-chat">
+                                            <div class="p-1 bg-danger text-white text-left wrap-chat">
                                                 <?php echo $txtchat->msg; ?>
                                             </div>
                                         </div>
@@ -188,7 +188,7 @@
                                                 }
                                                 ?>
                                             </div>
-                                            <div class="p-1 bg-light-success font-size-lg text-left wrap-chat">
+                                            <div class="p-1 bg-light-success text-left wrap-chat">
                                                 <?php echo $txtchat->msg; ?>
                                             </div>
                                         </div>
@@ -212,7 +212,7 @@
                                                 }
                                                 ?>
                                             </div>
-                                            <div class="p-1 bg-light text-dark-50 font-weight-bold font-size-lg text-left wrap-chat">
+                                            <div class="p-1 bg-light text-dark-50 font-weight-bold text-left wrap-chat">
                                                 <?php echo $txtchat->msg; ?>
                                             </div>
                                         </div>
@@ -236,7 +236,7 @@
                                                 }
                                                 ?>
                                             </div>
-                                            <div class="p-1 bg-light text-dark-50 font-weight-bold font-size-lg text-left wrap-chat">
+                                            <div class="p-1 bg-light text-dark-50 font-weight-bold text-left wrap-chat">
                                                 <?php echo $txtchat->msg; ?>
                                             </div>
                                         </div>
@@ -302,7 +302,7 @@
                                                     <span class="text-muted font-size-sm"><i class="fas fa-user-shield text-danger"></i></span>
                                                 </div>
                                             </div>
-                                            <div class="p-1 bg-danger text-white font-size-lg text-left wrap-chat">
+                                            <div class="p-1 bg-danger text-white text-left wrap-chat">
                                                 <?php echo $txtchat2->msg; ?>
                                             </div>
                                         </div>
@@ -327,7 +327,7 @@
                                                 }
                                                 ?>
                                             </div>
-                                            <div class="p-1 bg-light-success font-size-lg text-left wrap-chat">
+                                            <div class="p-1 bg-light-success text-left wrap-chat">
                                                 <?php echo $txtchat2->msg; ?>
                                             </div>
                                         </div>
@@ -351,7 +351,7 @@
                                                 }
                                                 ?>
                                             </div>
-                                            <div class="p-1 bg-light text-dark-50 font-weight-bold font-size-lg text-left wrap-chat">
+                                            <div class="p-1 bg-light text-dark-50 font-weight-bold text-left wrap-chat">
                                                 <?php echo $txtchat2->msg; ?>
                                             </div>
                                         </div>
@@ -375,7 +375,7 @@
                                                 }
                                                 ?>
                                             </div>
-                                            <div class="p-1 bg-light text-dark-50 font-weight-bold font-size-lg text-left wrap-chat">
+                                            <div class="p-1 bg-light text-dark-50 font-weight-bold text-left wrap-chat">
                                                 <?php echo $txtchat2->msg; ?>
                                             </div>
                                         </div>
@@ -444,7 +444,7 @@
                                                         + '<span class="font-size-sm"><i class="fas fa-user-shield text-danger"></i></span>'
                                                         + '</div>'
                                                         + '</div>'
-                                                        + '<div class="p-1 bg-danger text-white font-size-lg text-left wrap-chat"> ' + data.msgtxt + ' </div>'
+                                                        + '<div class="p-1 bg-danger text-white text-left wrap-chat"> ' + data.msgtxt + ' </div>'
                                                         + '</div>';
                                                 $('#msg_dir').append(txt1);
                                                 $('#msg_dir2').append(txt1);
@@ -460,7 +460,7 @@
                                                         + '</div>'
                                                         + '<div id="btn_control' + data.chat_id + '" class="btn-group"></div>'
                                                         + '</div>'
-                                                        + '<div class="p-1 bg-light-success font-size-lg text-left wrap-chat"> ' + data.msgtxt + ' </div>'
+                                                        + '<div class="p-1 bg-light-success text-left wrap-chat"> ' + data.msgtxt + ' </div>'
                                                         + '</div>';
                                                 $('#msg_dir').append(txt2);
                                                 $('#msg_dir2').append(txt2);
@@ -475,7 +475,7 @@
                                                         + '</div>'
                                                         + '<div id="btn_control' + data.chat_id + '" class="btn-group"></div>'
                                                         + '</div>'
-                                                        + '<div class="p-1 bg-light text-dark-50 font-weight-bold font-size-lg text-left wrap-chat"> ' + data.msgtxt + ' </div>'
+                                                        + '<div class="p-1 bg-light text-dark-50 font-weight-bold text-left wrap-chat"> ' + data.msgtxt + ' </div>'
                                                         + '</div>';
                                                 $('#msg_dir').append(txt3);
                                                 $('#msg_dir2').append(txt3);
@@ -490,7 +490,7 @@
                                                         + '</div>'
                                                         + '<div id="btn_control' + data.chat_id + '" class="btn-group"></div>'
                                                         + '</div>'
-                                                        + '<div class="p-1 bg-light text-dark-50 font-weight-bold font-size-lg text-left wrap-chat"> ' + data.msgtxt + ' </div>'
+                                                        + '<div class="p-1 bg-light text-dark-50 font-weight-bold text-left wrap-chat"> ' + data.msgtxt + ' </div>'
                                                         + '</div>';
                                                 $('#msg_dir').append(txt3);
                                                 $('#msg_dir2').append(txt3);

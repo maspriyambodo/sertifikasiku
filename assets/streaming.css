@@ -2,6 +2,8 @@ body{
     font-family:'Galano Grotesque Alt Regular' !important;
 }
 .wrap-chat{
+    font-family:'Galano Grotesque Alt Regular';
+    font-size:10px;
     width:90%;
     border-radius:10px;
     margin-left:45px;
