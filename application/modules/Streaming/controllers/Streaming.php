@@ -101,6 +101,7 @@ class Streaming extends CI_Controller {
         $response = [
             'stat' => true,
         ];
+        $this->session->sess_destroy();
         return ToJson($response);
     }
 
