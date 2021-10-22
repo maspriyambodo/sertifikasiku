@@ -58,7 +58,7 @@
                                 hi, <?php echo $this->session->userdata('fullname'); ?>
                             </a>
                             <ul class="dropdown-menu fade" aria-labelledby="navbarDropdownMenuLink">
-                                <li><a class="dropdown-item" href="<?php echo base_url('Dashboard/'); ?>" target="new">Profile</a></li>
+                                <li><a class="dropdown-item" href="<?php echo base_url('Dashboard/'); ?>" target="new">Dashboard</a></li>
                                 <li><a class="dropdown-item" href="<?php echo base_url('Setting%20Profile'); ?>" target="new">Profile</a></li>
                                 <li><a class="dropdown-item" href="<?php echo base_url('Auth/Logout/'); ?>">Logout</a></li>
                             </ul>
