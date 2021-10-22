@@ -142,7 +142,7 @@
                                 <?php foreach ($chat as $txtchat) { ?>
                                     <?php if ($txtchat->role_name == 'Administrator' or $txtchat->role_name == 'Super User'): ?>
 
-                                        <div class="d-flex flex-column mb-5 align-items-start">
+                                        <div class="d-flex flex-column mb-2 align-items-start">
                                             <div class="d-flex align-items-center" title="Administrator">
                                                 <div class="symbol symbol-40 mr-3">
                                                     <?php echo '<img src="' . base_url('assets/images/users/' . $txtchat->pict) . '" class="rounded-circle" alt="' . $txtchat->uname . '"/>'; ?>
@@ -152,13 +152,13 @@
                                                     <span class="font-size-sm"><i class="fas fa-user-shield text-danger"></i></span>
                                                 </div>
                                             </div>
-                                            <div class="mt-2 p-5 bg-danger text-white font-size-lg text-left wrap-chat">
+                                            <div class="p-1 bg-danger text-white font-size-lg text-left wrap-chat">
                                                 <?php echo $txtchat->msg; ?>
                                             </div>
                                         </div>
 
                                     <?php elseif ($txtchat->role_name == 'platinum') : ?>
-                                        <div class="d-flex flex-column mb-5 align-items-start">
+                                        <div class="d-flex flex-column mb-2 align-items-start">
                                             <div class="d-flex align-items-center">
                                                 <div class="symbol symbol-40 mr-3" title="Platinum Member">
                                                     <?php echo '<img src="' . base_url('assets/images/users/' . $txtchat->pict) . '" class="rounded-circle" alt="' . $txtchat->uname . '"/>'; ?>
@@ -178,12 +178,12 @@
                                                 }
                                                 ?>
                                             </div>
-                                            <div class="mt-2 p-5 bg-light-success font-size-lg text-left wrap-chat">
+                                            <div class="p-1 bg-light-success font-size-lg text-left wrap-chat">
                                                 <?php echo $txtchat->msg; ?>
                                             </div>
                                         </div>
                                     <?php elseif ($txtchat->role_name == 'silver' or $txtchat->role_name == 'basic') : ?>
-                                        <div class="d-flex flex-column mb-5 align-items-start">
+                                        <div class="d-flex flex-column mb-2 align-items-start">
                                             <div class="d-flex align-items-center">
                                                 <div class="symbol symbol-40 mr-3" title="<?php echo ucfirst($txtchat->role_name); ?> Member">
                                                     <?php echo '<img src="' . base_url('assets/images/users/' . $txtchat->pict) . '" class="rounded-circle" alt="' . $txtchat->uname . '"/>'; ?>
@@ -202,12 +202,12 @@
                                                 }
                                                 ?>
                                             </div>
-                                            <div class="mt-2 p-5 bg-light text-dark-50 font-weight-bold font-size-lg text-left wrap-chat">
+                                            <div class="p-1 bg-light text-dark-50 font-weight-bold font-size-lg text-left wrap-chat">
                                                 <?php echo $txtchat->msg; ?>
                                             </div>
                                         </div>
                                     <?php else : ?>
-                                        <div class="d-flex flex-column mb-5 align-items-start">
+                                        <div class="d-flex flex-column mb-2 align-items-start">
                                             <div class="d-flex align-items-center">
                                                 <div class="symbol symbol-40 mr-3" title="<?php echo ucfirst($txtchat->role_name); ?> Member">
                                                     <?php echo '<img src="' . base_url('assets/images/users/' . $txtchat->pict) . '" class="rounded-circle" alt="' . $txtchat->uname . '"/>'; ?>
@@ -226,7 +226,7 @@
                                                 }
                                                 ?>
                                             </div>
-                                            <div class="mt-2 p-5 bg-light text-dark-50 font-weight-bold font-size-lg text-left wrap-chat">
+                                            <div class="p-1 bg-light text-dark-50 font-weight-bold font-size-lg text-left wrap-chat">
                                                 <?php echo $txtchat->msg; ?>
                                             </div>
                                         </div>
@@ -282,7 +282,7 @@
 
                                 <?php foreach ($chat as $txtchat2) { ?>
                                     <?php if ($txtchat2->role_name == 'Administrator' or $txtchat2->role_name == 'Super User'): ?>
-                                        <div class="d-flex flex-column mb-5 align-items-start">
+                                        <div class="d-flex flex-column mb-2 align-items-start">
                                             <div class="d-flex align-items-center" title="Administrator">
                                                 <div class="symbol symbol-40 mr-3">
                                                     <img class="rounded-circle" alt="<?php echo $txtchat2->uname; ?>" src="<?php echo base_url('assets/images/users/' . $txtchat2->pict); ?>">
@@ -292,12 +292,12 @@
                                                     <span class="text-muted font-size-sm"><i class="fas fa-user-shield text-danger"></i></span>
                                                 </div>
                                             </div>
-                                            <div class="mt-2 p-5 bg-danger text-white font-size-lg text-left wrap-chat">
+                                            <div class="p-1 bg-danger text-white font-size-lg text-left wrap-chat">
                                                 <?php echo $txtchat2->msg; ?>
                                             </div>
                                         </div>
                                     <?php elseif ($txtchat2->role_name == 'platinum') : ?>
-                                        <div class="d-flex flex-column mb-5 align-items-start">
+                                        <div class="d-flex flex-column mb-2 align-items-start">
                                             <div class="d-flex align-items-center">
                                                 <div class="symbol symbol-40 mr-3" title="Platinum Member">
                                                     <img class="rounded-circle" alt="<?php echo $txtchat2->uname; ?>" src="<?php echo base_url('assets/images/users/' . $txtchat2->pict); ?>">
@@ -317,12 +317,12 @@
                                                 }
                                                 ?>
                                             </div>
-                                            <div class="mt-2 p-5 bg-light-success font-size-lg text-left wrap-chat">
+                                            <div class="p-1 bg-light-success font-size-lg text-left wrap-chat">
                                                 <?php echo $txtchat2->msg; ?>
                                             </div>
                                         </div>
                                     <?php elseif ($txtchat2->role_name == 'silver' or $txtchat2->role_name == 'basic') : ?>
-                                        <div class="d-flex flex-column mb-5 align-items-start">
+                                        <div class="d-flex flex-column mb-2 align-items-start">
                                             <div class="d-flex align-items-center">
                                                 <div class="symbol symbol-40 mr-3" title="Silver Member">
                                                     <img class="rounded-circle" alt="<?php echo $txtchat2->uname; ?>" src="<?php echo base_url('assets/images/users/' . $txtchat2->pict); ?>">
@@ -341,12 +341,12 @@
                                                 }
                                                 ?>
                                             </div>
-                                            <div class="mt-2 p-5 bg-light text-dark-50 font-weight-bold font-size-lg text-left wrap-chat">
+                                            <div class="p-1 bg-light text-dark-50 font-weight-bold font-size-lg text-left wrap-chat">
                                                 <?php echo $txtchat2->msg; ?>
                                             </div>
                                         </div>
                                     <?php else : ?>
-                                        <div class="d-flex flex-column mb-5 align-items-start">
+                                        <div class="d-flex flex-column mb-2 align-items-start">
                                             <div class="d-flex align-items-center">
                                                 <div class="symbol symbol-40 mr-3" title="Silver Member">
                                                     <img class="rounded-circle" alt="<?php echo $txtchat2->uname; ?>" src="<?php echo base_url('assets/images/users/' . $txtchat2->pict); ?>">
@@ -365,7 +365,7 @@
                                                 }
                                                 ?>
                                             </div>
-                                            <div class="mt-2 p-5 bg-light text-dark-50 font-weight-bold font-size-lg text-left wrap-chat">
+                                            <div class="p-1 bg-light text-dark-50 font-weight-bold font-size-lg text-left wrap-chat">
                                                 <?php echo $txtchat2->msg; ?>
                                             </div>
                                         </div>
@@ -424,7 +424,7 @@
                                             var btn_admin = '<button type="button" class="btn btn-sm btn-default" value="' + data.chat_id + '" title="Kick Member ' + data.username + '" onclick="Kick_user(this.value)"><i class="fas fa-times text-danger"></i></button>'
                                                     + '<button type="button" class="btn btn-sm btn-default" value="' + data.chat_id + '" title="Warning Member ' + data.username + '" onclick="Warning_user(this.value)"><i class="fas fa-exclamation text-warning"></i></button>';
                                             if (data.name_role === 'Administrator' || data.name_role === 'Super User') {
-                                                var txt1 = '<div class="d-flex flex-column mb-5 align-items-start">'
+                                                var txt1 = '<div class="d-flex flex-column mb-2 align-items-start">'
                                                         + '<div class="d-flex align-items-center" title="Administrator">'
                                                         + '<div class="symbol symbol-40 mr-3">'
                                                         + '<img src="' + data.avatar + '" class="rounded-circle" alt="' + data.username + '">'
@@ -434,12 +434,12 @@
                                                         + '<span class="font-size-sm"><i class="fas fa-user-shield text-danger"></i></span>'
                                                         + '</div>'
                                                         + '</div>'
-                                                        + '<div class="mt-2 p-5 bg-danger text-white font-size-lg text-left wrap-chat"> ' + data.msgtxt + ' </div>'
+                                                        + '<div class="p-1 bg-danger text-white font-size-lg text-left wrap-chat"> ' + data.msgtxt + ' </div>'
                                                         + '</div>';
                                                 $('#msg_dir').append(txt1);
                                                 $('#msg_dir2').append(txt1);
                                             } else if (data.name_role === 'platinum') {
-                                                var txt2 = '<div class="d-flex flex-column mb-5 align-items-start">'
+                                                var txt2 = '<div class="d-flex flex-column mb-2 align-items-start">'
                                                         + '<div class="d-flex align-items-center">'
                                                         + '<div class="symbol symbol-40 mr-3" title="Platinum Member">'
                                                         + '<img src="' + data.avatar + '" class="rounded-circle" alt="' + data.username + '">'
@@ -450,12 +450,12 @@
                                                         + '</div>'
                                                         + '<div id="btn_control' + data.chat_id + '" class="btn-group"></div>'
                                                         + '</div>'
-                                                        + '<div class="mt-2 p-5 bg-light-success font-size-lg text-left wrap-chat"> ' + data.msgtxt + ' </div>'
+                                                        + '<div class="p-1 bg-light-success font-size-lg text-left wrap-chat"> ' + data.msgtxt + ' </div>'
                                                         + '</div>';
                                                 $('#msg_dir').append(txt2);
                                                 $('#msg_dir2').append(txt2);
                                             } else if (data.name_role === 'silver' || data.name_role === 'basic') {
-                                                var txt3 = '<div class="d-flex flex-column mb-5 align-items-start">'
+                                                var txt3 = '<div class="d-flex flex-column mb-2 align-items-start">'
                                                         + '<div class="d-flex align-items-center">'
                                                         + '<div class="symbol symbol-40 mr-3" title="' + data.name_role + ' member">'
                                                         + '<img src="' + data.avatar + '" class="rounded-circle" alt="' + data.username + '">'
@@ -465,12 +465,12 @@
                                                         + '</div>'
                                                         + '<div id="btn_control' + data.chat_id + '" class="btn-group"></div>'
                                                         + '</div>'
-                                                        + '<div class="mt-2 p-5 bg-light text-dark-50 font-weight-bold font-size-lg text-left wrap-chat"> ' + data.msgtxt + ' </div>'
+                                                        + '<div class="p-1 bg-light text-dark-50 font-weight-bold font-size-lg text-left wrap-chat"> ' + data.msgtxt + ' </div>'
                                                         + '</div>';
                                                 $('#msg_dir').append(txt3);
                                                 $('#msg_dir2').append(txt3);
                                             } else {
-                                                var txt3 = '<div class="d-flex flex-column mb-5 align-items-start">'
+                                                var txt3 = '<div class="d-flex flex-column mb-2 align-items-start">'
                                                         + '<div class="d-flex align-items-center">'
                                                         + '<div class="symbol symbol-40 mr-3" title="' + data.name_role + ' member">'
                                                         + '<img src="' + data.avatar + '" class="rounded-circle" alt="' + data.username + '">'
@@ -480,7 +480,7 @@
                                                         + '</div>'
                                                         + '<div id="btn_control' + data.chat_id + '" class="btn-group"></div>'
                                                         + '</div>'
-                                                        + '<div class="mt-2 p-5 bg-light text-dark-50 font-weight-bold font-size-lg text-left wrap-chat"> ' + data.msgtxt + ' </div>'
+                                                        + '<div class="p-1 bg-light text-dark-50 font-weight-bold font-size-lg text-left wrap-chat"> ' + data.msgtxt + ' </div>'
                                                         + '</div>';
                                                 $('#msg_dir').append(txt3);
                                                 $('#msg_dir2').append(txt3);
