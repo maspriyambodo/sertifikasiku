@@ -401,503 +401,504 @@
         <script src="<?php echo base_url('node_modules/socket.io-client/dist/socket.io.min.js'); ?>" type="text/javascript"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.1.7/sweetalert2.all.js" integrity="sha512-wT0KEfF13tBeZVQN9MgyrOPpcazX2XUxLl11DuFYgctVVypKlqneS3cZp37g00U0x3G+rFvpaGtGs7JP3GTSIQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         <script>
-            var socket = io.connect('https://live-chat.mycapturer.com');
-            window.onload = function () {
-                toastr.options = {
-                    "closeButton": true,
-                    "debug": false,
-                    "newestOnTop": true,
-                    "progressBar": false,
-                    "positionClass": "toast-top-right",
-                    "preventDuplicates": true,
-                    "showDuration": "300",
-                    "hideDuration": "0",
-                    "timeOut": "0",
-                    "extendedTimeOut": "0",
-                    "showEasing": "swing",
-                    "hideEasing": "linear",
-                    "showMethod": "fadeIn",
-                    "hideMethod": "fadeOut"
-                };
-                socket.on('new_message', function (data) {
-                    var role_user = $('input[name="role_name"]').val();
-                    var btn_admin = '<button type="button" class="btn btn-sm btn-default" value="' + data.chat_id + '" title="Kick Member ' + data.username + '" onclick="Kick_user(this.value)"><i class="fas fa-times text-danger"></i></button>'
-                            + '<button type="button" class="btn btn-sm btn-default" value="' + data.chat_id + '" title="Warning Member ' + data.username + '" onclick="Warning_user(this.value)"><i class="fas fa-exclamation text-warning"></i></button>';
-                    if (data.name_role === 'Administrator' || data.name_role === 'Super User') {
-                        var txt1 = '<div class="d-flex flex-column mb-5 align-items-start">'
-                                + '<div class="d-flex align-items-center" title="Administrator">'
-                                + '<div class="symbol symbol-40 mr-3">'
-                                + '<img src="' + data.avatar + '" class="rounded-circle" alt="' + data.username + '">'
-                                + '</div>'
-                                + '<div class="mx-2">'
-                                + '<a href="javascript:void(0);" class="text-danger font-weight-bold font-size-h6" style="text-decoration:none;">' + data.username + ' </a>'
-                                + '<span class="font-size-sm"><i class="fas fa-user-shield text-danger"></i></span>'
-                                + '</div>'
-                                + '</div>'
-                                + '<div class="mt-2 p-5 bg-danger text-white font-size-lg text-left wrap-chat"> ' + data.msgtxt + ' </div>'
-                                + '</div>';
-                        $('#msg_dir').append(txt1);
-                        $('#msg_dir2').append(txt1);
-                    } else if (data.name_role === 'platinum') {
-                        var txt2 = '<div class="d-flex flex-column mb-5 align-items-start">'
-                                + '<div class="d-flex align-items-center">'
-                                + '<div class="symbol symbol-40 mr-3" title="Platinum Member">'
-                                + '<img src="' + data.avatar + '" class="rounded-circle" alt="' + data.username + '">'
-                                + '</div>'
-                                + '<div class="mx-2 bg-dark px-2 rounded" title="Platinum Member">'
-                                + '<a href="javascript:void(0);" class="text-white font-size-h6" style="text-decoration:none;">' + data.fullname + ' </a>'
-                                + '<span class="font-size-sm"><i class="fas fa-crown text-warning"></i></span>'
-                                + '</div>'
-                                + '<div id="btn_control' + data.chat_id + '" class="btn-group"></div>'
-                                + '</div>'
-                                + '<div class="mt-2 p-5 bg-light-success font-size-lg text-left wrap-chat"> ' + data.msgtxt + ' </div>'
-                                + '</div>';
-                        $('#msg_dir').append(txt2);
-                        $('#msg_dir2').append(txt2);
-                    } else if (data.name_role === 'silver' || data.name_role === 'basic') {
-                        var txt3 = '<div class="d-flex flex-column mb-5 align-items-start">'
-                                + '<div class="d-flex align-items-center">'
-                                + '<div class="symbol symbol-40 mr-3" title="' + data.name_role + ' member">'
-                                + '<img src="' + data.avatar + '" class="rounded-circle" alt="' + data.username + '">'
-                                + '</div>'
-                                + '<div class="mx-2" title="' + data.name_role + ' member">'
-                                + '<a href="javascript:void(0);" class="font-size-h6" style="text-decoration:none;">' + data.fullname + ' </a>'
-                                + '</div>'
-                                + '<div id="btn_control' + data.chat_id + '" class="btn-group"></div>'
-                                + '</div>'
-                                + '<div class="mt-2 p-5 bg-light text-dark-50 font-weight-bold font-size-lg text-left wrap-chat"> ' + data.msgtxt + ' </div>'
-                                + '</div>';
-                        $('#msg_dir').append(txt3);
-                        $('#msg_dir2').append(txt3);
-                    } else {
-                        var txt3 = '<div class="d-flex flex-column mb-5 align-items-start">'
-                                + '<div class="d-flex align-items-center">'
-                                + '<div class="symbol symbol-40 mr-3" title="' + data.name_role + ' member">'
-                                + '<img src="' + data.avatar + '" class="rounded-circle" alt="' + data.username + '">'
-                                + '</div>'
-                                + '<div class="mx-2" title="' + data.name_role + ' member">'
-                                + '<a href="javascript:void(0);" class="font-size-h6" style="text-decoration:none;">' + data.fullname + ' </a>'
-                                + '</div>'
-                                + '<div id="btn_control' + data.chat_id + '" class="btn-group"></div>'
-                                + '</div>'
-                                + '<div class="mt-2 p-5 bg-light text-dark-50 font-weight-bold font-size-lg text-left wrap-chat"> ' + data.msgtxt + ' </div>'
-                                + '</div>';
-                        $('#msg_dir').append(txt3);
-                        $('#msg_dir2').append(txt3);
-                    }
-                    if (role_user === 'Super User' || role_user === 'Administrator') {
-                        $('#btn_control' + data.chat_id).append(btn_admin);
-                    } else {
-                        null;
-                    }
-                    $('#msg_dir').animate({
-                        scrollTop: $('#msg_dir').get(0).scrollHeight
-                    });
-                    $('#scroll-pull').animate({
-                        scrollTop: $('#scroll-pull').get(0).scrollHeight
-                    });
-                });
-                socket.on('absensi', function (data) {
-                    var id_materi = $('input[name="id_materi"]').val();
-                    var fullname = $('input[name="fullname"]').val();
-                    $.ajax({
-                        type: "GET",
-                        url: "<?php echo base_url('Streaming/absensi?id_materi='); ?>" + id_materi,
-                        dataType: "json",
-                        cache: false,
-                        success: function (data) {
+                                    var socket = io.connect('https://live-chat.mycapturer.com');
+                                    window.onload = function () {
+                                        toastr.options = {
+                                            "closeButton": true,
+                                            "debug": false,
+                                            "newestOnTop": true,
+                                            "progressBar": false,
+                                            "positionClass": "toast-top-right",
+                                            "preventDuplicates": true,
+                                            "showDuration": "300",
+                                            "hideDuration": "0",
+                                            "timeOut": "0",
+                                            "extendedTimeOut": "0",
+                                            "showEasing": "swing",
+                                            "hideEasing": "linear",
+                                            "showMethod": "fadeIn",
+                                            "hideMethod": "fadeOut"
+                                        };
+                                        socket.on('new_message', function (data) {
+                                            var role_user = $('input[name="role_name"]').val();
+                                            var btn_admin = '<button type="button" class="btn btn-sm btn-default" value="' + data.chat_id + '" title="Kick Member ' + data.username + '" onclick="Kick_user(this.value)"><i class="fas fa-times text-danger"></i></button>'
+                                                    + '<button type="button" class="btn btn-sm btn-default" value="' + data.chat_id + '" title="Warning Member ' + data.username + '" onclick="Warning_user(this.value)"><i class="fas fa-exclamation text-warning"></i></button>';
+                                            if (data.name_role === 'Administrator' || data.name_role === 'Super User') {
+                                                var txt1 = '<div class="d-flex flex-column mb-5 align-items-start">'
+                                                        + '<div class="d-flex align-items-center" title="Administrator">'
+                                                        + '<div class="symbol symbol-40 mr-3">'
+                                                        + '<img src="' + data.avatar + '" class="rounded-circle" alt="' + data.username + '">'
+                                                        + '</div>'
+                                                        + '<div class="mx-2">'
+                                                        + '<a href="javascript:void(0);" class="text-danger font-weight-bold font-size-h6" style="text-decoration:none;">' + data.username + ' </a>'
+                                                        + '<span class="font-size-sm"><i class="fas fa-user-shield text-danger"></i></span>'
+                                                        + '</div>'
+                                                        + '</div>'
+                                                        + '<div class="mt-2 p-5 bg-danger text-white font-size-lg text-left wrap-chat"> ' + data.msgtxt + ' </div>'
+                                                        + '</div>';
+                                                $('#msg_dir').append(txt1);
+                                                $('#msg_dir2').append(txt1);
+                                            } else if (data.name_role === 'platinum') {
+                                                var txt2 = '<div class="d-flex flex-column mb-5 align-items-start">'
+                                                        + '<div class="d-flex align-items-center">'
+                                                        + '<div class="symbol symbol-40 mr-3" title="Platinum Member">'
+                                                        + '<img src="' + data.avatar + '" class="rounded-circle" alt="' + data.username + '">'
+                                                        + '</div>'
+                                                        + '<div class="mx-2 bg-dark px-2 rounded" title="Platinum Member">'
+                                                        + '<a href="javascript:void(0);" class="text-white font-size-h6" style="text-decoration:none;">' + data.fullname + ' </a>'
+                                                        + '<span class="font-size-sm"><i class="fas fa-crown text-warning"></i></span>'
+                                                        + '</div>'
+                                                        + '<div id="btn_control' + data.chat_id + '" class="btn-group"></div>'
+                                                        + '</div>'
+                                                        + '<div class="mt-2 p-5 bg-light-success font-size-lg text-left wrap-chat"> ' + data.msgtxt + ' </div>'
+                                                        + '</div>';
+                                                $('#msg_dir').append(txt2);
+                                                $('#msg_dir2').append(txt2);
+                                            } else if (data.name_role === 'silver' || data.name_role === 'basic') {
+                                                var txt3 = '<div class="d-flex flex-column mb-5 align-items-start">'
+                                                        + '<div class="d-flex align-items-center">'
+                                                        + '<div class="symbol symbol-40 mr-3" title="' + data.name_role + ' member">'
+                                                        + '<img src="' + data.avatar + '" class="rounded-circle" alt="' + data.username + '">'
+                                                        + '</div>'
+                                                        + '<div class="mx-2" title="' + data.name_role + ' member">'
+                                                        + '<a href="javascript:void(0);" class="font-size-h6" style="text-decoration:none;">' + data.fullname + ' </a>'
+                                                        + '</div>'
+                                                        + '<div id="btn_control' + data.chat_id + '" class="btn-group"></div>'
+                                                        + '</div>'
+                                                        + '<div class="mt-2 p-5 bg-light text-dark-50 font-weight-bold font-size-lg text-left wrap-chat"> ' + data.msgtxt + ' </div>'
+                                                        + '</div>';
+                                                $('#msg_dir').append(txt3);
+                                                $('#msg_dir2').append(txt3);
+                                            } else {
+                                                var txt3 = '<div class="d-flex flex-column mb-5 align-items-start">'
+                                                        + '<div class="d-flex align-items-center">'
+                                                        + '<div class="symbol symbol-40 mr-3" title="' + data.name_role + ' member">'
+                                                        + '<img src="' + data.avatar + '" class="rounded-circle" alt="' + data.username + '">'
+                                                        + '</div>'
+                                                        + '<div class="mx-2" title="' + data.name_role + ' member">'
+                                                        + '<a href="javascript:void(0);" class="font-size-h6" style="text-decoration:none;">' + data.fullname + ' </a>'
+                                                        + '</div>'
+                                                        + '<div id="btn_control' + data.chat_id + '" class="btn-group"></div>'
+                                                        + '</div>'
+                                                        + '<div class="mt-2 p-5 bg-light text-dark-50 font-weight-bold font-size-lg text-left wrap-chat"> ' + data.msgtxt + ' </div>'
+                                                        + '</div>';
+                                                $('#msg_dir').append(txt3);
+                                                $('#msg_dir2').append(txt3);
+                                            }
+                                            if (role_user === 'Super User' || role_user === 'Administrator') {
+                                                $('#btn_control' + data.chat_id).append(btn_admin);
+                                            } else {
+                                                null;
+                                            }
+                                            $('#msg_dir').animate({
+                                                scrollTop: $('#msg_dir').get(0).scrollHeight
+                                            });
+                                            $('#scroll-pull').animate({
+                                                scrollTop: $('#scroll-pull').get(0).scrollHeight
+                                            });
+                                        });
+                                        socket.on('absensi', function (data) {
+                                            var id_materi = $('input[name="id_materi"]').val();
+                                            var fullname = $('input[name="fullname"]').val();
+                                            $.ajax({
+                                                type: "GET",
+                                                url: "<?php echo base_url('Streaming/absensi?id_materi='); ?>" + id_materi,
+                                                dataType: "json",
+                                                cache: false,
+                                                success: function (data) {
 
-                        }
-                    });
-                    Swal.fire({
-                        title: 'Absensi',
-                        html: 'Halo, <b>' + fullname + '</b>, terimakasih telah mengikuti Digital Marketing Certification.',
-                        icon: 'info',
-                        confirmButtonText: 'HADIR',
-                        allowOutsideClick: false,
-                        allowEscapeKey: false,
-                        allowEnterKey: true
-                    }).then((result) => {
-                        $('#main_webinar').empty();
-                        $('.second_webinar').empty();
-                        $('#chat_on_mobile').empty();
-                        $('#kt_chat_modol').empty();
-                        window.location.href = "<?php echo base_url('Auth/Logout/'); ?>";
-                    });
-                });
-                socket.on('<?php echo base64_encode($this->session->userdata('uname')); ?>', function (data) {
-                    if (data.category === 1) {
-                        Swal.fire({
-                            title: 'Alert!',
-                            text: 'Anda mendapatkan hukuman karena telah melanggar peraturan!',
-                            icon: 'error',
-                            confirmButtonText: 'TUTUP',
-                            allowOutsideClick: false,
-                            allowEscapeKey: false,
-                            allowEnterKey: true
-                        }).then((result) => {
-                            $('#main_webinar').empty();
-                            $('.second_webinar').empty();
-                            $('#chat_on_mobile').empty();
-                            $('#kt_chat_modol').empty();
-                            window.location.href = "<?php echo base_url('Streaming/punishment/'); ?>";
-                        });
-                    } else {
-                        Swal.fire({
-                            title: 'Warning!',
-                            text: 'Anda mendapatkan peringatan karena telah melanggar peraturan!',
-                            icon: 'warning',
-                            confirmButtonText: 'TUTUP',
-                            allowOutsideClick: false,
-                            allowEscapeKey: false,
-                            allowEnterKey: true
-                        });
-                    }
-                });
-                document.getElementById("bgndVideo").addEventListener("contextmenu", function (event) {
-                    event.preventDefault();
-                    event.stopPropagation();
-                });
-                var is_mobile =$('input[name="is_mobile"]').val();
-                if(is_mobile === 0){
-                    $("#bgndVideo").YTPlayer({
-                        videoURL: $('input[name=url_video]').val(),
-                        containment: 'self',
-                        autoPlay: true,
-                        mute: false,
-                        startAt: 0,
-                        showControls: true,
-                        useOnMobile: true,
-                        vol: 100,
-                        opacity: 1,
-                        optimizeDisplay: false,
-                        loop: false,
-                        showYTLogo: false,
-                        remember_last_time: false,
-                        stopMovieOnBlur: true,
-                        useNoCookie: true
-                    });
-                } else {
-                    $("#bgndVideo").YTPlayer({
-                        videoURL: $('input[name=url_video]').val(),
-                        containment: 'self',
-                        autoPlay: true,
-                        ratio:'4/3',
-                        mobileFallbackImage: $('input[name=url_video]').val(),
-                        mute: false,
-                        startAt: 0,
-                        showControls: true,
-                        useOnMobile: true,
-                        vol: 100,
-                        opacity: 1,
-                        optimizeDisplay: true,
-                        loop: false,
-                        showYTLogo: false,
-                        remember_last_time: false,
-                        stopMovieOnBlur: true,
-                        useNoCookie: false
-                    });
-                }
-                $('.sertif-carousel').slick({
-                    slidesToScroll: 1,
-                    dots: false,
-                    infinite: false,
-                    cssEase: 'linear',
-                    lazyLoad: 'ondemand',
-                    arrows: true,
-                    centerMode: false,
-                    centerPadding: '60px'
-                });
-                $('#msg_dir').animate({
-                    scrollTop: $('#msg_dir').get(0).scrollHeight
-                });
-                $('#scroll-pull').animate({
-                    scrollTop: $('#scroll-pull').get(0).scrollHeight
-                });
-            };
-            function Open_chat() {
-                $('#scroll-pull').animate({
-                    scrollTop: $('#scroll-pull').get(0).scrollHeight
-                });
-            }
-            function Send_chat(id) {
-                if (id === 1) {
-                    var msgtxt = $('input[name="msgtxt"]').val();
-                    if (msgtxt.length <= 1) {
-                        toastr.warning('Message is too short! 15 characters minimum');
-                    } else {
-                        var dataString = {
-                            message: msgtxt,
-                            materi_id: $('input[name="id_materi"]').val()
-                        };
-                        $.ajax({
-                            type: "POST",
-                            url: "<?php echo base_url('Streaming/Chat_send/'); ?>",
-                            data: dataString,
-                            dataType: "json",
-                            cache: false,
-                            success: function (data) {
-                                $('input[name="msgtxt"]').val('');
-                                if (data.block_chat === true) {
-                                    toastr.warning('sistem kami mendeteksi kata-kata tidak pantas, anda akan mendapatkan hukuman jika ');
-                                }
-                                if (data.success === true) {
+                                                }
+                                            });
+                                            Swal.fire({
+                                                title: 'Absensi',
+                                                html: 'Halo, <b>' + fullname + '</b>, terimakasih telah mengikuti Digital Marketing Certification.',
+                                                icon: 'info',
+                                                confirmButtonText: 'HADIR',
+                                                allowOutsideClick: false,
+                                                allowEscapeKey: false,
+                                                allowEnterKey: true
+                                            }).then((result) => {
+                                                $('#main_webinar').empty();
+                                                $('.second_webinar').empty();
+                                                $('#chat_on_mobile').empty();
+                                                $('#kt_chat_modol').empty();
+                                                window.location.href = "<?php echo base_url('Auth/Logout/'); ?>";
+                                            });
+                                        });
+                                        socket.on('<?php echo base64_encode($this->session->userdata('uname')); ?>', function (data) {
+                                            if (data.category === 1) {
+                                                Swal.fire({
+                                                    title: 'Alert!',
+                                                    text: 'Anda mendapatkan hukuman karena telah melanggar peraturan!',
+                                                    icon: 'error',
+                                                    confirmButtonText: 'TUTUP',
+                                                    allowOutsideClick: false,
+                                                    allowEscapeKey: false,
+                                                    allowEnterKey: true
+                                                }).then((result) => {
+                                                    $('#main_webinar').empty();
+                                                    $('.second_webinar').empty();
+                                                    $('#chat_on_mobile').empty();
+                                                    $('#kt_chat_modol').empty();
+                                                    window.location.href = "<?php echo base_url('Streaming/punishment/'); ?>";
+                                                });
+                                            } else {
+                                                Swal.fire({
+                                                    title: 'Warning!',
+                                                    text: 'Anda mendapatkan peringatan karena telah melanggar peraturan!',
+                                                    icon: 'warning',
+                                                    confirmButtonText: 'TUTUP',
+                                                    allowOutsideClick: false,
+                                                    allowEscapeKey: false,
+                                                    allowEnterKey: true
+                                                });
+                                            }
+                                        });
+                                        document.getElementById("bgndVideo").addEventListener("contextmenu", function (event) {
+                                            event.preventDefault();
+                                            event.stopPropagation();
+                                        });
+                                        var is_mobile = $('input[name="is_mobile"]').val();
+                                        if (is_mobile === 0) {
+                                            $("#bgndVideo").YTPlayer({
+                                                videoURL: $('input[name=url_video]').val(),
+                                                containment: 'self',
+                                                autoPlay: true,
+                                                mute: false,
+                                                startAt: 0,
+                                                showControls: true,
+                                                useOnMobile: true,
+                                                vol: 100,
+                                                opacity: 1,
+                                                optimizeDisplay: false,
+                                                loop: false,
+                                                showYTLogo: false,
+                                                remember_last_time: false,
+                                                stopMovieOnBlur: true,
+                                                useNoCookie: true
+                                            });
+                                        } else {
+                                            $("#bgndVideo").YTPlayer({
+                                                videoURL: $('input[name=url_video]').val(),
+                                                containment: 'self',
+                                                autoPlay: true,
+                                                ratio: '4/3',
+                                                mobileFallbackImage: 'https://upload.wikimedia.org/wikipedia/commons/b/b9/Youtube_loading_symbol_1_%28wobbly%29.gif',
+                                                coverImage: 'https://upload.wikimedia.org/wikipedia/commons/b/b9/Youtube_loading_symbol_1_%28wobbly%29.gif',
+                                                mute: false,
+                                                startAt: 0,
+                                                showControls: true,
+                                                useOnMobile: true,
+                                                vol: 100,
+                                                opacity: 1,
+                                                optimizeDisplay: true,
+                                                loop: false,
+                                                showYTLogo: false,
+                                                remember_last_time: false,
+                                                stopMovieOnBlur: true,
+                                                useNoCookie: false
+                                            });
+                                        }
+                                        $('.sertif-carousel').slick({
+                                            slidesToScroll: 1,
+                                            dots: false,
+                                            infinite: false,
+                                            cssEase: 'linear',
+                                            lazyLoad: 'ondemand',
+                                            arrows: true,
+                                            centerMode: false,
+                                            centerPadding: '60px'
+                                        });
+                                        $('#msg_dir').animate({
+                                            scrollTop: $('#msg_dir').get(0).scrollHeight
+                                        });
+                                        $('#scroll-pull').animate({
+                                            scrollTop: $('#scroll-pull').get(0).scrollHeight
+                                        });
+                                    };
+                                    function Open_chat() {
+                                        $('#scroll-pull').animate({
+                                            scrollTop: $('#scroll-pull').get(0).scrollHeight
+                                        });
+                                    }
+                                    function Send_chat(id) {
+                                        if (id === 1) {
+                                            var msgtxt = $('input[name="msgtxt"]').val();
+                                            if (msgtxt.length <= 1) {
+                                                toastr.warning('Message is too short! 15 characters minimum');
+                                            } else {
+                                                var dataString = {
+                                                    message: msgtxt,
+                                                    materi_id: $('input[name="id_materi"]').val()
+                                                };
+                                                $.ajax({
+                                                    type: "POST",
+                                                    url: "<?php echo base_url('Streaming/Chat_send/'); ?>",
+                                                    data: dataString,
+                                                    dataType: "json",
+                                                    cache: false,
+                                                    success: function (data) {
+                                                        $('input[name="msgtxt"]').val('');
+                                                        if (data.block_chat === true) {
+                                                            toastr.warning('sistem kami mendeteksi kata-kata tidak pantas, anda akan mendapatkan hukuman jika ');
+                                                        }
+                                                        if (data.success === true) {
 
-                                    socket.emit('new_message', {
-                                        username: data.uname,
-                                        fullname: data.fullname,
-                                        key: data.key,
-                                        msgtxt: data.msg,
-                                        avatar: data.ava,
-                                        role_name: data.role_name,
-                                        id_user: data.user_id,
-                                        id_role: data.role_id,
-                                        id_chat: data.chat_id
-                                    });
-                                } else if (data.success === false) {
-                                    window.location.href = '';
-                                } else {
-                                    toastr.warning('error, your message not sent');
-                                }
-                            }, error: function (jqXHR) {
-                                toastr.error('error ' + jqXHR.status + ' ' + jqXHR.statusText);
-                            }
-                        });
-                    }
-                } else if (id === 2) {
-                    var msgtxt = $('textarea[name="msgtxt2"]').val();
-                    if (msgtxt.length <= 1) {
-                        toastr.warning('Message is too short! 15 characters minimum');
-                    } else {
-                        var dataString = {
-                            message: msgtxt,
-                            materi_id: $('input[name="id_materi"]').val()
-                        };
-                        $.ajax({
-                            type: "POST",
-                            url: "<?php echo base_url('Streaming/Chat_send/'); ?>",
-                            data: dataString,
-                            dataType: "json",
-                            cache: false,
-                            success: function (data) {
-                                $('textarea[name="msgtxt2"]').val('');
-                                if (data.block_chat === true) {
-                                    toastr.warning('sistem kami mendeteksi kata-kata tidak pantas, anda akan mendapatkan hukuman jika ');
-                                }
-                                if (data.success === true) {
+                                                            socket.emit('new_message', {
+                                                                username: data.uname,
+                                                                fullname: data.fullname,
+                                                                key: data.key,
+                                                                msgtxt: data.msg,
+                                                                avatar: data.ava,
+                                                                role_name: data.role_name,
+                                                                id_user: data.user_id,
+                                                                id_role: data.role_id,
+                                                                id_chat: data.chat_id
+                                                            });
+                                                        } else if (data.success === false) {
+                                                            window.location.href = '';
+                                                        } else {
+                                                            toastr.warning('error, your message not sent');
+                                                        }
+                                                    }, error: function (jqXHR) {
+                                                        toastr.error('error ' + jqXHR.status + ' ' + jqXHR.statusText);
+                                                    }
+                                                });
+                                            }
+                                        } else if (id === 2) {
+                                            var msgtxt = $('textarea[name="msgtxt2"]').val();
+                                            if (msgtxt.length <= 1) {
+                                                toastr.warning('Message is too short! 15 characters minimum');
+                                            } else {
+                                                var dataString = {
+                                                    message: msgtxt,
+                                                    materi_id: $('input[name="id_materi"]').val()
+                                                };
+                                                $.ajax({
+                                                    type: "POST",
+                                                    url: "<?php echo base_url('Streaming/Chat_send/'); ?>",
+                                                    data: dataString,
+                                                    dataType: "json",
+                                                    cache: false,
+                                                    success: function (data) {
+                                                        $('textarea[name="msgtxt2"]').val('');
+                                                        if (data.block_chat === true) {
+                                                            toastr.warning('sistem kami mendeteksi kata-kata tidak pantas, anda akan mendapatkan hukuman jika ');
+                                                        }
+                                                        if (data.success === true) {
 
-                                    socket.emit('new_message', {
-                                        username: data.uname,
-                                        fullname: data.fullname,
-                                        key: data.key,
-                                        msgtxt: data.msg,
-                                        avatar: data.ava,
-                                        role_name: data.role_name,
-                                        id_user: data.user_id,
-                                        id_role: data.role_id,
-                                        id_chat: data.chat_id
-                                    });
-                                } else if (data.success === false) {
-                                    window.location.href = '';
-                                } else {
-                                    toastr.warning('error, your message not sent');
-                                }
-                            }, error: function (jqXHR) {
-                                toastr.error('error ' + jqXHR.status + ' ' + jqXHR.statusText);
-                            }
-                        });
-                    }
-                }
-            }
-            function Kick_user(id_chat) {
-                $.ajax({
-                    type: "GET",
-                    url: "<?php echo base_url('Streaming/Get_detail?token='); ?>" + id_chat,
-                    dataType: "json",
-                    cache: false,
-                    success: function (data) {
-                        if (data.success === true) {
+                                                            socket.emit('new_message', {
+                                                                username: data.uname,
+                                                                fullname: data.fullname,
+                                                                key: data.key,
+                                                                msgtxt: data.msg,
+                                                                avatar: data.ava,
+                                                                role_name: data.role_name,
+                                                                id_user: data.user_id,
+                                                                id_role: data.role_id,
+                                                                id_chat: data.chat_id
+                                                            });
+                                                        } else if (data.success === false) {
+                                                            window.location.href = '';
+                                                        } else {
+                                                            toastr.warning('error, your message not sent');
+                                                        }
+                                                    }, error: function (jqXHR) {
+                                                        toastr.error('error ' + jqXHR.status + ' ' + jqXHR.statusText);
+                                                    }
+                                                });
+                                            }
+                                        }
+                                    }
+                                    function Kick_user(id_chat) {
+                                        $.ajax({
+                                            type: "GET",
+                                            url: "<?php echo base_url('Streaming/Get_detail?token='); ?>" + id_chat,
+                                            dataType: "json",
+                                            cache: false,
+                                            success: function (data) {
+                                                if (data.success === true) {
 
-                            Swal.fire({
-                                html: 'Member <b class="text-danger">' + data.uname + '</b> akan mendapatkan hukuman karena melanggar peraturan.',
-                                icon: 'question',
-                                confirmButtonText: 'OK',
-                                showCancelButton: true,
-                                allowOutsideClick: false,
-                                allowEscapeKey: false,
-                                allowEnterKey: true
-                            }).then((result) => {
-                                if (result.isConfirmed === true) {
-                                    socket.emit('kick_user', {
-                                        "uname": data.uname,
-                                        "key": data.key,
-                                        "msg": data.msg,
-                                        "ava": data.ava,
-                                        "role_name": data.role_name,
-                                        "user_id": data.user_id,
-                                        "role_id": data.role_id,
-                                        "chat_id": data.chat_id
-                                    });
-                                } else {
-                                    return true;
-                                }
-                            });
+                                                    Swal.fire({
+                                                        html: 'Member <b class="text-danger">' + data.uname + '</b> akan mendapatkan hukuman karena melanggar peraturan.',
+                                                        icon: 'question',
+                                                        confirmButtonText: 'OK',
+                                                        showCancelButton: true,
+                                                        allowOutsideClick: false,
+                                                        allowEscapeKey: false,
+                                                        allowEnterKey: true
+                                                    }).then((result) => {
+                                                        if (result.isConfirmed === true) {
+                                                            socket.emit('kick_user', {
+                                                                "uname": data.uname,
+                                                                "key": data.key,
+                                                                "msg": data.msg,
+                                                                "ava": data.ava,
+                                                                "role_name": data.role_name,
+                                                                "user_id": data.user_id,
+                                                                "role_id": data.role_id,
+                                                                "chat_id": data.chat_id
+                                                            });
+                                                        } else {
+                                                            return true;
+                                                        }
+                                                    });
 
-                        } else {
-                            toastr.error('error while getting user data!');
-                        }
-                    },
-                    error: function (jqXHR) {
-                        toastr.error('error ' + jqXHR.status + ' ' + jqXHR.statusText);
-                    }
-                });
-            }
-            function Warning_user(id_chat) {
-                $.ajax({
-                    type: "GET",
-                    url: "<?php echo base_url('Streaming/Get_detail?token='); ?>" + id_chat,
-                    dataType: "json",
-                    cache: false,
-                    success: function (data) {
-                        if (data.success === true) {
+                                                } else {
+                                                    toastr.error('error while getting user data!');
+                                                }
+                                            },
+                                            error: function (jqXHR) {
+                                                toastr.error('error ' + jqXHR.status + ' ' + jqXHR.statusText);
+                                            }
+                                        });
+                                    }
+                                    function Warning_user(id_chat) {
+                                        $.ajax({
+                                            type: "GET",
+                                            url: "<?php echo base_url('Streaming/Get_detail?token='); ?>" + id_chat,
+                                            dataType: "json",
+                                            cache: false,
+                                            success: function (data) {
+                                                if (data.success === true) {
 
-                            Swal.fire({
-                                html: 'Anda akan memberikan peringatan kepada: <b class="text-danger">' + data.uname + '</b> karena melanggar peraturan.',
-                                icon: 'question',
-                                confirmButtonText: 'OK',
-                                showCancelButton: true,
-                                allowOutsideClick: false,
-                                allowEscapeKey: false,
-                                allowEnterKey: true
-                            }).then((result) => {
-                                if (result.isConfirmed === true) {
-                                    socket.emit('warning_user', {
-                                        "uname": data.uname,
-                                        "key": data.key,
-                                        "msg": data.msg,
-                                        "ava": data.ava,
-                                        "role_name": data.role_name,
-                                        "user_id": data.user_id,
-                                        "role_id": data.role_id,
-                                        "chat_id": data.chat_id
-                                    });
-                                } else {
-                                    return true;
-                                }
-                            });
-                        } else {
-                            toastr.error('error while getting user data!');
-                        }
-                    },
-                    error: function (jqXHR) {
-                        toastr.error('error ' + jqXHR.status + ' ' + jqXHR.statusText);
-                    }
-                });
-            }
-            function absensi() {
-                Swal.fire({
-                    title: 'Absensi Peserta',
-                    html: 'pesan absensi akan muncul pada halaman peserta',
-                    icon: 'question',
-                    confirmButtonText: 'OK',
-                    showCancelButton: true,
-                    allowOutsideClick: false,
-                    allowEscapeKey: false,
-                    allowEnterKey: true
-                }).then((result) => {
-                    if (result.isConfirmed === true) {
-                        socket.emit('absensi', {
+                                                    Swal.fire({
+                                                        html: 'Anda akan memberikan peringatan kepada: <b class="text-danger">' + data.uname + '</b> karena melanggar peraturan.',
+                                                        icon: 'question',
+                                                        confirmButtonText: 'OK',
+                                                        showCancelButton: true,
+                                                        allowOutsideClick: false,
+                                                        allowEscapeKey: false,
+                                                        allowEnterKey: true
+                                                    }).then((result) => {
+                                                        if (result.isConfirmed === true) {
+                                                            socket.emit('warning_user', {
+                                                                "uname": data.uname,
+                                                                "key": data.key,
+                                                                "msg": data.msg,
+                                                                "ava": data.ava,
+                                                                "role_name": data.role_name,
+                                                                "user_id": data.user_id,
+                                                                "role_id": data.role_id,
+                                                                "chat_id": data.chat_id
+                                                            });
+                                                        } else {
+                                                            return true;
+                                                        }
+                                                    });
+                                                } else {
+                                                    toastr.error('error while getting user data!');
+                                                }
+                                            },
+                                            error: function (jqXHR) {
+                                                toastr.error('error ' + jqXHR.status + ' ' + jqXHR.statusText);
+                                            }
+                                        });
+                                    }
+                                    function absensi() {
+                                        Swal.fire({
+                                            title: 'Absensi Peserta',
+                                            html: 'pesan absensi akan muncul pada halaman peserta',
+                                            icon: 'question',
+                                            confirmButtonText: 'OK',
+                                            showCancelButton: true,
+                                            allowOutsideClick: false,
+                                            allowEscapeKey: false,
+                                            allowEnterKey: true
+                                        }).then((result) => {
+                                            if (result.isConfirmed === true) {
+                                                socket.emit('absensi', {
 
-                        });
-                    } else {
-                        return true;
-                    }
-                });
-            }
-            function enable_login() {
-                Swal.fire({
-                    title: 'Enable Login',
-                    html: 'anda akan mengaktifkan tombol login pada halaman member!',
-                    icon: 'question',
-                    confirmButtonText: 'YES',
-                    cancelButtonText: 'NO',
-                    showCancelButton: true,
-                    allowOutsideClick: false,
-                    allowEscapeKey: false,
-                    allowEnterKey: true
-                }).then((result) => {
-                    if (result.isConfirmed === true) {
-                        $.ajax({
-                            type: "GET",
-                            url: "<?php echo base_url('Streaming/enable_login/'); ?>",
-                            dataType: "json",
-                            cache: false,
-                            success: function (data) {
-                                if (data.stat === true) {
-                                    $('#login_control').empty();
-                                    $('#login_control').append('<a class="nav-link btn btn-light" href="javascript:disable_login();">Disable Login</a>');
-                                } else {
-                                    toastr.warning('error while changing status, please refresh page!');
-                                }
-                            },
-                            error: function (jqXHR) {
-                                toastr.error('error ' + jqXHR.status + ' ' + jqXHR.statusText);
-                            }
-                        });
-                    } else {
-                        return true;
-                    }
-                });
-            }
-            function disable_login() {
-                Swal.fire({
-                    title: 'Enable Login',
-                    html: 'anda akan me-nonaktifkan tombol login pada halaman member!',
-                    icon: 'question',
-                    confirmButtonText: 'YES',
-                    cancelButtonText: 'NO',
-                    showCancelButton: true,
-                    allowOutsideClick: false,
-                    allowEscapeKey: false,
-                    allowEnterKey: true
-                }).then((result) => {
-                    if (result.isConfirmed === true) {
-                        $.ajax({
-                            type: "GET",
-                            url: "<?php echo base_url('Streaming/disable_login/'); ?>",
-                            dataType: "json",
-                            cache: false,
-                            success: function (data) {
-                                if (data.stat === true) {
-                                    $('#login_control').empty();
-                                    $('#login_control').append('<a class="nav-link btn btn-light" href="javascript:enable_login();">Enable Login</a>');
-                                } else {
-                                    toastr.warning('error while changing status, please refresh page!');
-                                }
-                            },
-                            error: function (jqXHR) {
-                                toastr.error('error ' + jqXHR.status + ' ' + jqXHR.statusText);
-                            }
-                        });
-                    } else {
-                        return true;
-                    }
-                });
-            }
-            function clear_login() {
-                $.ajax({
-                    type: "GET",
-                    url: "<?php echo base_url('Streaming/clear_login/'); ?>",
-                    dataType: "json",
-                    cache: false,
-                    success: function (data) {
-                        toastr.success('status login berhasil diubah!');
-                    },
-                    error: function (jqXHR) {
-                        toastr.error('error ' + jqXHR.status + ' ' + jqXHR.statusText);
-                    }
-                });
-            }
+                                                });
+                                            } else {
+                                                return true;
+                                            }
+                                        });
+                                    }
+                                    function enable_login() {
+                                        Swal.fire({
+                                            title: 'Enable Login',
+                                            html: 'anda akan mengaktifkan tombol login pada halaman member!',
+                                            icon: 'question',
+                                            confirmButtonText: 'YES',
+                                            cancelButtonText: 'NO',
+                                            showCancelButton: true,
+                                            allowOutsideClick: false,
+                                            allowEscapeKey: false,
+                                            allowEnterKey: true
+                                        }).then((result) => {
+                                            if (result.isConfirmed === true) {
+                                                $.ajax({
+                                                    type: "GET",
+                                                    url: "<?php echo base_url('Streaming/enable_login/'); ?>",
+                                                    dataType: "json",
+                                                    cache: false,
+                                                    success: function (data) {
+                                                        if (data.stat === true) {
+                                                            $('#login_control').empty();
+                                                            $('#login_control').append('<a class="nav-link btn btn-light" href="javascript:disable_login();">Disable Login</a>');
+                                                        } else {
+                                                            toastr.warning('error while changing status, please refresh page!');
+                                                        }
+                                                    },
+                                                    error: function (jqXHR) {
+                                                        toastr.error('error ' + jqXHR.status + ' ' + jqXHR.statusText);
+                                                    }
+                                                });
+                                            } else {
+                                                return true;
+                                            }
+                                        });
+                                    }
+                                    function disable_login() {
+                                        Swal.fire({
+                                            title: 'Enable Login',
+                                            html: 'anda akan me-nonaktifkan tombol login pada halaman member!',
+                                            icon: 'question',
+                                            confirmButtonText: 'YES',
+                                            cancelButtonText: 'NO',
+                                            showCancelButton: true,
+                                            allowOutsideClick: false,
+                                            allowEscapeKey: false,
+                                            allowEnterKey: true
+                                        }).then((result) => {
+                                            if (result.isConfirmed === true) {
+                                                $.ajax({
+                                                    type: "GET",
+                                                    url: "<?php echo base_url('Streaming/disable_login/'); ?>",
+                                                    dataType: "json",
+                                                    cache: false,
+                                                    success: function (data) {
+                                                        if (data.stat === true) {
+                                                            $('#login_control').empty();
+                                                            $('#login_control').append('<a class="nav-link btn btn-light" href="javascript:enable_login();">Enable Login</a>');
+                                                        } else {
+                                                            toastr.warning('error while changing status, please refresh page!');
+                                                        }
+                                                    },
+                                                    error: function (jqXHR) {
+                                                        toastr.error('error ' + jqXHR.status + ' ' + jqXHR.statusText);
+                                                    }
+                                                });
+                                            } else {
+                                                return true;
+                                            }
+                                        });
+                                    }
+                                    function clear_login() {
+                                        $.ajax({
+                                            type: "GET",
+                                            url: "<?php echo base_url('Streaming/clear_login/'); ?>",
+                                            dataType: "json",
+                                            cache: false,
+                                            success: function (data) {
+                                                toastr.success('status login berhasil diubah!');
+                                            },
+                                            error: function (jqXHR) {
+                                                toastr.error('error ' + jqXHR.status + ' ' + jqXHR.statusText);
+                                            }
+                                        });
+                                    }
         </script>
     </body>
 </html>
