@@ -21,6 +21,8 @@ body{
     background-image:url("./images/background_section_teaser-1.png");
     background-repeat: no-repeat;
     background-size:auto;
+    position:absolute;
+    min-height:100%;
 }
 .second_webinar{
     background-image:url("./images/background_section_teaser.png");
