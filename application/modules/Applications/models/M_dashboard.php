@@ -33,6 +33,9 @@ class M_dashboard extends CI_Model {
                 ->join('sys_roles', 'sys_users.role_id = sys_roles.id', 'LEFT')
                 ->join('dt_users', 'sys_users.id = dt_users.sys_user_id', 'LEFT')
                 ->where('`sys_users`.`login_stat`', 1, false)
+                ->where('DAY(`sys_users`.`last_login`)', date('d'), false)
+                ->where('MONTH(`sys_users`.`last_login`)', date('m'), false)
+                ->where('YEAR(`sys_users`.`last_login`)', date('Y'), false)
                 ->group_by('sys_users.id')
                 ->get()
                 ->result();
