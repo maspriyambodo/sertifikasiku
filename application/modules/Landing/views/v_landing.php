@@ -178,7 +178,7 @@
                             <div class="text-center my-4">
                                 <img class="img-fluid" src="<?php echo base_url('assets/images/a9b7f6aefbae556e99a8f5ffbea66844.png'); ?>" alt="login-img" style="width:286px;"/>
                             </div>
-                            <div class="form-group">
+                            <div class="form-group text-center">
                                 <h3>Masuk</h3>
                             </div>
                             <div class="form-group">
