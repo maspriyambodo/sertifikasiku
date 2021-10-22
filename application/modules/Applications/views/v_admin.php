@@ -18,8 +18,8 @@
                     if (!$privilege['read']) { // jika memiliki privilege tambah atau create
                         $data = [];
                     }
-                    foreach ($data as $menu) {
-                        $id_user = Enkrip($menu->id);
+                    foreach ($data as $user) {
+                        $id_user = Enkrip($user->id);
                         ?>
                         <tr>
                             <td>
@@ -28,12 +28,12 @@
                                 echo $id++;
                                 ?>
                             </td>
-                            <td>field2</td>
-                            <td>field3</td>
-                            <td>field4</td>
-                            <td class="text-center">
-                                
-                            </td>
+                            <td><?php echo $user->fullname; ?></td>
+                            <td><?php echo $user->uname; ?></td>
+                            <td><?php echo $user->telp; ?></td>
+                            <td><?php echo $user->pekerjaan; ?></td>
+                            <td><?php echo $user->ip_address; ?></td>
+                            <td><?php echo $user->last_login; ?></td>
                         </tr>
                     <?php } ?>
                 </tbody>
