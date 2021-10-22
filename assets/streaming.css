@@ -48,7 +48,7 @@ body{
     pointer-events: none;
 }
 #bgndVideo{
-    background:rgba(0, 0, 0, 0) url("https://upload.wikimedia.org/wikipedia/commons/b/b9/Youtube_loading_symbol_1_%28wobbly%29.gif") no-repeat center / 50% !important;
+    background:rgba(0, 0, 0, 0) url("https://upload.wikimedia.org/wikipedia/commons/b/b9/Youtube_loading_symbol_1_%28wobbly%29.gif") no-repeat center / 100% !important;
 }
 .chat_footer{
     padding:0 !important;
