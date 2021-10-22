@@ -601,7 +601,6 @@
                                                 videoURL: $('input[name=url_video]').val(),
                                                 containment: 'self',
                                                 autoPlay: true,
-                                                ratio: '4/3',
                                                 mobileFallbackImage: 'https://upload.wikimedia.org/wikipedia/commons/b/b9/Youtube_loading_symbol_1_%28wobbly%29.gif',
                                                 coverImage: 'https://upload.wikimedia.org/wikipedia/commons/b/b9/Youtube_loading_symbol_1_%28wobbly%29.gif',
                                                 mute: false,
