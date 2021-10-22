@@ -94,7 +94,13 @@
                                 <li><a class="dropdown-item" href="<?php echo base_url('Dashboard/'); ?>" target="new">Dashboard</a></li>
                                 <li><a class="dropdown-item" href="<?php echo base_url('Setting%20Profile'); ?>" target="new">Profile</a></li>
                                 <li><a class="dropdown-item" href="<?php echo base_url('Auth/Logout/'); ?>">Logout</a></li>
-                                <li><a class="dropdown-item" href="javascript:clear_login();">Clear Login</a></li>
+                                <?php
+                                if (Dekrip($this->session->userdata('role_id')) == 1 or Dekrip($this->session->userdata('role_id')) == 2) {
+                                    echo '<li><a class="dropdown-item" href="javascript:clear_login();">Clear Login</a></li>';  
+                                } else {
+                                    null;
+                                }
+                                ?>
                             </ul>
                         </li>
                     </ul>
