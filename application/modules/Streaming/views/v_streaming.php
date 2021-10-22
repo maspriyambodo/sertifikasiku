@@ -61,6 +61,13 @@
                                 <li><a class="dropdown-item" href="<?php echo base_url('Dashboard/'); ?>" target="new">Dashboard</a></li>
                                 <li><a class="dropdown-item" href="<?php echo base_url('Setting%20Profile'); ?>" target="new">Profile</a></li>
                                 <li><a class="dropdown-item" href="<?php echo base_url('Auth/Logout/'); ?>">Logout</a></li>
+                                <?php
+                                if (Dekrip($this->session->userdata('role_id')) == 1 or Dekrip($this->session->userdata('role_id')) == 2) {
+                                    echo '<li><a class="dropdown-item" href="javascript:clear_login();">Clear Login</a></li>';
+                                } else {
+                                    null;
+                                }
+                                ?>
                             </ul>
                         </li>
                     </ul>
@@ -127,6 +134,9 @@
                 <div class="row pt-5">
                     <div class="col-lg-8 d-xs-block col-xs-12 col-12 col-md-12">
                         <div id="bgndVideo" class="player"></div>
+<!--                        <div class="form-group">
+                            <span id="viewers"></span> sedang menonton
+                        </div>-->
                     </div>
                     <div class="col-lg-4 d-none d-xl-block"><!-- d-sm-none d-xl-block -->
                         <div class="card live-chat-lg">
