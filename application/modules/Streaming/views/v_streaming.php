@@ -564,7 +564,7 @@
                     mute: false,
                     startAt: 0,
                     showControls: true,
-                    useOnMobile: true,
+                    useOnMobile: false,
                     vol: 100,
                     opacity: 1,
                     optimizeDisplay: false,
