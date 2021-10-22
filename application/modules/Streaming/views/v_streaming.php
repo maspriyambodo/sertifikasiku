@@ -58,6 +58,7 @@
                                 hi, <?php echo $this->session->userdata('fullname'); ?>
                             </a>
                             <ul class="dropdown-menu fade" aria-labelledby="navbarDropdownMenuLink">
+                                <li><a class="dropdown-item" href="<?php echo base_url('Dashboard/'); ?>" target="new">Profile</a></li>
                                 <li><a class="dropdown-item" href="<?php echo base_url('Setting%20Profile'); ?>" target="new">Profile</a></li>
                                 <li><a class="dropdown-item" href="<?php echo base_url('Auth/Logout/'); ?>">Logout</a></li>
                             </ul>
@@ -90,8 +91,10 @@
                                 hi, <?php echo $this->session->userdata('fullname'); ?>
                             </a>
                             <ul class="dropdown-menu fade" aria-labelledby="navbarDropdownMenuLink">
+                                <li><a class="dropdown-item" href="<?php echo base_url('Dashboard/'); ?>" target="new">Dashboard</a></li>
                                 <li><a class="dropdown-item" href="<?php echo base_url('Setting%20Profile'); ?>" target="new">Profile</a></li>
                                 <li><a class="dropdown-item" href="<?php echo base_url('Auth/Logout/'); ?>">Logout</a></li>
+                                <li><a class="dropdown-item" href="javascript:clear_login();">Clear Login</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -503,7 +506,7 @@
                         title: 'Absensi',
                         html: 'Halo, <b>' + fullname + '</b>, terimakasih telah mengikuti Digital Marketing Certification.',
                         icon: 'info',
-                        confirmButtonText: 'OK',
+                        confirmButtonText: 'HADIR',
                         allowOutsideClick: false,
                         allowEscapeKey: false,
                         allowEnterKey: true
@@ -848,6 +851,20 @@
                         });
                     } else {
                         return true;
+                    }
+                });
+            }
+            function clear_login(){
+                $.ajax({
+                    type: "GET",
+                    url: "<?php echo base_url('Streaming/clear_login/'); ?>",
+                    dataType: "json",
+                    cache: false,
+                    success: function (data) {
+                      toastr.success('status login berhasil diubah!');  
+                    },
+                    error: function (jqXHR) {
+                        toastr.error('error ' + jqXHR.status + ' ' + jqXHR.statusText);
                     }
                 });
             }

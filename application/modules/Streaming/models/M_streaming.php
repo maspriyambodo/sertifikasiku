@@ -103,7 +103,7 @@ class M_streaming extends CI_Model {
         }
         return $result;
     }
-    
+
     public function disable_login() {
         $this->db->trans_begin();
         $this->db->set('`sys_app`.`login_member`', 0, false)
@@ -116,6 +116,11 @@ class M_streaming extends CI_Model {
             $result = true;
         }
         return $result;
+    }
+
+    public function login_clear() {
+        $this->db->set('`sys_users`.`login_stat`', 0, false)
+                ->update('sys_users');
     }
 
 }

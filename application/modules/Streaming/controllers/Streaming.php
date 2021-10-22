@@ -116,7 +116,7 @@ class Streaming extends CI_Controller {
         }
         return ToJson($response);
     }
-    
+
     public function disable_login() {
         $exec = $this->model->disable_login();
         if ($exec) {
@@ -128,6 +128,18 @@ class Streaming extends CI_Controller {
                 'stat' => false
             ];
         }
+        return ToJson($response);
+    }
+
+    public function clear_login() {
+        $this->model->login_clear();
+    }
+
+    public function login_clear() {
+        $this->model->login_clear();
+        $response = [
+            'stat' => true
+        ];
         return ToJson($response);
     }
 
