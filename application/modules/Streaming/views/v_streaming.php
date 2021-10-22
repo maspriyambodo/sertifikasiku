@@ -134,9 +134,9 @@
                 <div class="row pt-5">
                     <div class="col-lg-8 d-xs-block col-xs-12 col-12 col-md-12">
                         <div id="bgndVideo" class="player"></div>
-<!--                        <div class="form-group">
-                            <span id="viewers"></span> sedang menonton
-                        </div>-->
+                        <!--                        <div class="form-group">
+                                                    <span id="viewers"></span> sedang menonton
+                                                </div>-->
                     </div>
                     <div class="col-lg-4 d-none d-xl-block"><!-- d-sm-none d-xl-block -->
                         <div class="card live-chat-lg">
@@ -543,7 +543,7 @@
                                                     dataType: "json",
                                                     cache: false,
                                                     success: function (data) {
-                                                        
+
                                                     }
                                                 });
                                                 Swal.fire({
@@ -577,46 +577,25 @@
                                             event.preventDefault();
                                             event.stopPropagation();
                                         });
-                                        var is_mobile = $('input[name="is_mobile"]').val();
-                                        if (is_mobile === 0) {
-                                            $("#bgndVideo").YTPlayer({
-                                                videoURL: $('input[name=url_video]').val(),
-                                                containment: 'self',
-                                                autoPlay: true,
-                                                mute: false,
-                                                startAt: 0,
-                                                showControls: true,
-                                                useOnMobile: true,
-                                                vol: 100,
-                                                opacity: 1,
-                                                optimizeDisplay: false,
-                                                loop: false,
-                                                showYTLogo: false,
-                                                remember_last_time: false,
-                                                stopMovieOnBlur: true,
-                                                useNoCookie: true
-                                            });
-                                        } else {
-                                            $("#bgndVideo").YTPlayer({
-                                                videoURL: $('input[name=url_video]').val(),
-                                                containment: 'self',
-                                                autoPlay: true,
-                                                mobileFallbackImage: 'https://upload.wikimedia.org/wikipedia/commons/b/b9/Youtube_loading_symbol_1_%28wobbly%29.gif',
-                                                coverImage: 'https://upload.wikimedia.org/wikipedia/commons/b/b9/Youtube_loading_symbol_1_%28wobbly%29.gif',
-                                                mute: false,
-                                                startAt: 0,
-                                                showControls: true,
-                                                useOnMobile: true,
-                                                vol: 100,
-                                                opacity: 1,
-                                                optimizeDisplay: true,
-                                                loop: false,
-                                                showYTLogo: false,
-                                                remember_last_time: false,
-                                                stopMovieOnBlur: true,
-                                                useNoCookie: false
-                                            });
-                                        }
+                                        $("#bgndVideo").YTPlayer({
+                                            videoURL: $('input[name=url_video]').val(),
+                                            containment: 'self',
+                                            autoPlay: true,
+                                            mobileFallbackImage: 'https://upload.wikimedia.org/wikipedia/commons/b/b9/Youtube_loading_symbol_1_%28wobbly%29.gif',
+                                            coverImage: 'https://upload.wikimedia.org/wikipedia/commons/b/b9/Youtube_loading_symbol_1_%28wobbly%29.gif',
+                                            mute: false,
+                                            startAt: 0,
+                                            showControls: true,
+                                            useOnMobile: true,
+                                            vol: 100,
+                                            opacity: 1,
+                                            optimizeDisplay: false,
+                                            loop: false,
+                                            showYTLogo: false,
+                                            remember_last_time: false,
+                                            stopMovieOnBlur: true,
+                                            useNoCookie: false
+                                        });
                                         $('.sertif-carousel').slick({
                                             slidesToScroll: 1,
                                             dots: false,
