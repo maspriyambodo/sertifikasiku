@@ -133,10 +133,6 @@ class Streaming extends CI_Controller {
 
     public function clear_login() {
         $this->model->login_clear();
-    }
-
-    public function login_clear() {
-        $this->model->login_clear();
         $response = [
             'stat' => true
         ];
