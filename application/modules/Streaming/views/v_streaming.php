@@ -96,7 +96,7 @@
                                 <li><a class="dropdown-item" href="<?php echo base_url('Auth/Logout/'); ?>">Logout</a></li>
                                 <?php
                                 if (Dekrip($this->session->userdata('role_id')) == 1 or Dekrip($this->session->userdata('role_id')) == 2) {
-                                    echo '<li><a class="dropdown-item" href="javascript:clear_login();">Clear Login</a></li>';  
+                                    echo '<li><a class="dropdown-item" href="javascript:clear_login();">Clear Login</a></li>';
                                 } else {
                                     null;
                                 }
@@ -108,6 +108,7 @@
             </div>
         </nav>
         <?php
+        echo '<input type="hidden" name="is_mobile" value="' . ($this->agent->is_mobile == 1 ? 1 : 0) . '"/>';
         echo '<input type="hidden" name="role_name" value="' . $this->session->userdata('role_name') . '"/>';
         echo '<input type="hidden" name="url_video" value="' . $materi[0]->link_video . '"/>';
         echo '<input type="hidden" name="id_materi" value="' . $materi[0]->id_materi . '"/>';
@@ -557,23 +558,45 @@
                     event.preventDefault();
                     event.stopPropagation();
                 });
-                $("#bgndVideo").YTPlayer({
-                    videoURL: $('input[name=url_video]').val(),
-                    containment: 'self',
-                    autoPlay: true,
-                    mute: false,
-                    startAt: 0,
-                    showControls: true,
-                    useOnMobile: true,
-                    vol: 100,
-                    opacity: 1,
-                    optimizeDisplay: false,
-                    loop: false,
-                    showYTLogo: false,
-                    remember_last_time: false,
-                    stopMovieOnBlur: true,
-                    useNoCookie: true
-                });
+                var is_mobile =$('input[name="is_mobile"]').val();
+                if(is_mobile === 0){
+                    $("#bgndVideo").YTPlayer({
+                        videoURL: $('input[name=url_video]').val(),
+                        containment: 'self',
+                        autoPlay: true,
+                        mute: false,
+                        startAt: 0,
+                        showControls: true,
+                        useOnMobile: true,
+                        vol: 100,
+                        opacity: 1,
+                        optimizeDisplay: false,
+                        loop: false,
+                        showYTLogo: false,
+                        remember_last_time: false,
+                        stopMovieOnBlur: true,
+                        useNoCookie: true
+                    });
+                } else {
+                    $("#bgndVideo").YTPlayer({
+                        videoURL: $('input[name=url_video]').val(),
+                        containment: 'self',
+                        autoPlay: true,
+                        ratio:'',
+                        mute: false,
+                        startAt: 0,
+                        showControls: true,
+                        useOnMobile: true,
+                        vol: 100,
+                        opacity: 1,
+                        optimizeDisplay: true,
+                        loop: false,
+                        showYTLogo: false,
+                        remember_last_time: false,
+                        stopMovieOnBlur: true,
+                        useNoCookie: false
+                    });
+                }
                 $('.sertif-carousel').slick({
                     slidesToScroll: 1,
                     dots: false,
@@ -860,14 +883,14 @@
                     }
                 });
             }
-            function clear_login(){
+            function clear_login() {
                 $.ajax({
                     type: "GET",
                     url: "<?php echo base_url('Streaming/clear_login/'); ?>",
                     dataType: "json",
                     cache: false,
                     success: function (data) {
-                      toastr.success('status login berhasil diubah!');  
+                        toastr.success('status login berhasil diubah!');
                     },
                     error: function (jqXHR) {
                         toastr.error('error ' + jqXHR.status + ' ' + jqXHR.statusText);

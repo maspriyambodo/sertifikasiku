@@ -9,6 +9,7 @@ class Streaming extends CI_Controller {
         $this->load->model('M_streaming', 'model');
         $this->id_user = Dekrip($this->session->userdata('id_user'));
         $this->role_id = Dekrip($this->session->userdata('role_id'));
+        $this->load->library('user_agent');
     }
 
     public function index() {
