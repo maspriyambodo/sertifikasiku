@@ -12,6 +12,7 @@ class Dashboard extends CI_Controller {
 
     public function index() {
         $data = [
+            'data'=> $this->model->report_login(),
             'csrf' => $this->bodo->Csrf(),
             'item_active' => 'Applications/Dashboard/index/',
             'privilege' => $this->bodo->Check_previlege('Applications/Dashboard/index/'),

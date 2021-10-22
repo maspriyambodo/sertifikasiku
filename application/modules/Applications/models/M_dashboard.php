@@ -27,4 +27,15 @@ class M_dashboard extends CI_Model {
         return $exec;
     }
 
+    public function report_login() {
+        $exec = $this->db->select('sys_users.id,sys_users.uname,sys_users.ip_address,sys_users.last_login,sys_roles.`name` AS role_name,dt_users.nama AS fullname,dt_users.telp,dt_users.pekerjaan')
+                ->from('sys_users')
+                ->join('sys_roles', 'sys_users.role_id = sys_roles.id', 'LEFT')
+                ->join('dt_users', 'sys_users.id = dt_users.sys_user_id', 'LEFT')
+                ->where('`sys_users`.`login_stat`', 1, false)
+                ->get()
+                ->result();
+        return $exec;
+    }
+
 }

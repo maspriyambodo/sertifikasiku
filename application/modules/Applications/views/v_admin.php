@@ -4,11 +4,13 @@
             <table class="table table-bordered table-hover table-striped" style="width:100%;">
                 <thead class="text-center text-uppercase">
                     <tr>
-                        <th>field1</th>
-                        <th>field2</th>
-                        <th>field3</th>
-                        <th>field4</th>
-                        <th>field5</th>
+                        <th>no</th>
+                        <th>nama</th>
+                        <th>email</th>
+                        <th>telepon</th>
+                        <th>pekerjaan</th>
+                        <th>ip address</th>
+                        <th>login<br>date</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -16,8 +18,8 @@
                     if (!$privilege['read']) { // jika memiliki privilege tambah atau create
                         $data = [];
                     }
-                    foreach ($data as $key => $menu) {
-                        $id_table = Enkrip($menu->id_country);
+                    foreach ($data as $menu) {
+                        $id_user = Enkrip($menu->id);
                         ?>
                         <tr>
                             <td>
@@ -30,24 +32,7 @@
                             <td>field3</td>
                             <td>field4</td>
                             <td class="text-center">
-                                <?php
-                                $editbtn = '<button id="editbtn" type="button" class="btn btn-icon btn-warning btn-xs" title="Edit Group Menu" value="' . $id_menu . '" onclick="Edit(this.value)"><i class="far fa-edit"></i></button>';
-                                $delbtn = '<button id="delbtn" type="button" class="btn btn-icon btn-danger btn-xs" title="Delete Group Menu" value="' . $id_menu . '" onclick="Delete(this.value)"><i class="far fa-trash-alt"></i></button>';
-                                $activebtn = '<button id="actvbtn" type="button" class="btn btn-icon btn-default btn-xs" title="Set Active" value="' . $id_menu . '" onclick="Active(this.value)"><i class="fas fa-unlock text-success"></i></button>';
-
-                                echo '<div class="btn-group">'; // open div btn-group
-
-                                if ($privilege['update']) { // jika memiliki privilege edit
-                                    echo $editbtn;
-                                }
-                                if (!$menu->stat and $privilege['delete']) { // jika memiliki privilege delete
-                                    echo $activebtn;
-                                } elseif ($menu->stat and $privilege['delete']) {
-                                    echo $delbtn;
-                                }
-
-                                echo '</div>'; //close div btn-group
-                                ?>
+                                
                             </td>
                         </tr>
                     <?php } ?>
