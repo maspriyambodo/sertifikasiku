@@ -521,7 +521,7 @@
                                             });
                                             Swal.fire({
                                                 title: 'Absensi',
-                                                html: 'Halo, <b>' + fullname + '</b>, terimakasih telah mengikuti Digital Marketing Certification.',
+                                                html: 'Halo, <b>' + fullname + '</b>, terimakasih telah mengikuti ' + $('input[name="nama_materi"]').val(),
                                                 icon: 'info',
                                                 confirmButtonText: 'HADIR',
                                                 allowOutsideClick: false,
