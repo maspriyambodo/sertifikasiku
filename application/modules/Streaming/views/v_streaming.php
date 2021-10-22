@@ -561,7 +561,7 @@
                     optimizeDisplay: false,
                     loop: false,
                     showYTLogo: false,
-                    remember_last_time: true,
+                    remember_last_time: false,
                     stopMovieOnBlur: true,
                     useNoCookie: true
                 });
