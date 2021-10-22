@@ -77,7 +77,7 @@
             <div class="container">
                 <div class="row pt-5">
                     <div class="col-lg-8 d-xs-block col-xs-12 col-12 col-md-12">
-                        <div id="bgndVideo" class="player" style="height: 456px;background-color: black;"></div>
+                        <div class="player" style="height: 456px;background-color: black;border-radius:15px;"></div>
                     </div>
                     <div class="col-lg-4 d-none d-xl-block"><!-- d-sm-none d-xl-block -->
                         <div class="card live-chat-lg">
