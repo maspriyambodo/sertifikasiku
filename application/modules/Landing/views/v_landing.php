@@ -276,6 +276,8 @@
                         success: function (data) {
                             if (data.status === true) {
                                 window.location.href = data.href_url;
+                            } else if (data.status === 'blokir_akun') {
+                                document.getElementById('err_msg').innerHTML = 'akun anda diblokir, harap hubungi admin!';
                             } else if (data.status === 'lagi_login') {
                                 document.getElementById('err_msg').innerHTML = 'anda telah masuk dengan perangkat lain';
                             } else {

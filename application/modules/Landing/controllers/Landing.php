@@ -28,7 +28,7 @@ class Landing extends CI_Controller {
     public function Get_mail() {
         $uname['uname'] = strtolower(Post_get('email'));
         $exec = $this->model->Get_detail($uname['uname']);
-        if (!empty($exec) and ($exec[0]->login_stat == 0)) {
+        if (!empty($exec) and ($exec[0]->login_stat == 0 and $exec[0]->login_attempt <> 3)) {
             $set_session = $this->M_auth->Signin($uname);
             $this->bodo->Set_session($set_session);
             $otp = random_string('numeric', 5);
@@ -44,6 +44,10 @@ class Landing extends CI_Controller {
             $this->model->set_loginstat($param['sys_user_id']);
 //            $this->model->set_password($param);
 //            $this->send_otp($exec, $otp);
+        } elseif ($exec[0]->login_attempt == 3) {
+            $data = [
+                'status' => 'blokir_akun' // diblokir karena admin klik tombol blokir akun pada live chat 
+            ];
         } elseif ($exec[0]->login_stat == 1) {
             $data = [
                 'status' => 'lagi_login'
