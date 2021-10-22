@@ -537,6 +537,15 @@
                                         });
                                         socket.on('<?php echo base64_encode($this->session->userdata('uname')); ?>', function (data) {
                                             if (data.category === 1) {
+                                                $.ajax({
+                                                    type: "GET",
+                                                    url: "<?php echo base_url('Streaming/punishment/'); ?>",
+                                                    dataType: "json",
+                                                    cache: false,
+                                                    success: function (data) {
+                                                        
+                                                    }
+                                                });
                                                 Swal.fire({
                                                     title: 'Alert!',
                                                     text: 'Anda mendapatkan hukuman karena telah melanggar peraturan!',
@@ -550,7 +559,7 @@
                                                     $('.second_webinar').empty();
                                                     $('#chat_on_mobile').empty();
                                                     $('#kt_chat_modol').empty();
-                                                    window.location.href = "<?php echo base_url('Streaming/punishment/'); ?>";
+                                                    window.location.href = "<?php echo base_url('Signin/'); ?>";
                                                 });
                                             } else {
                                                 Swal.fire({
