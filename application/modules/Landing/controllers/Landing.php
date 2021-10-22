@@ -28,7 +28,7 @@ class Landing extends CI_Controller {
     public function Get_mail() {
         $uname['uname'] = strtolower(Post_get('email'));
         $exec = $this->model->Get_detail($uname['uname']);
-        if (!empty($exec) and ($exec[0]->login_stat == 0 and $exec[0]->login_attempt <> 3)) {
+        if (!empty($exec) and $exec[0]->login_stat == 0 and $exec[0]->login_attempt <> 3 and !empty($exec[0]->user_id)) {
             $set_session = $this->M_auth->Signin($uname);
             $this->bodo->Set_session($set_session);
             $otp = random_string('numeric', 5);

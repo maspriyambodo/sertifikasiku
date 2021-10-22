@@ -149,7 +149,7 @@ class M_users extends CI_Model {
     }
 
     public function Get_detail($mail) {
-        $exec = $this->db->select('sys_users.id AS sys_user_id,sys_users.uname,sys_users.login_stat,sys_users.login_attempt,dt_users.nama AS fullname')
+        $exec = $this->db->select('sys_users.id AS sys_user_id,sys_users.uname,sys_users.login_stat,sys_users.login_attempt,dt_users.nama AS fullname,dt_users.sys_user_id AS user_id')
                 ->from('sys_users')
                 ->join('dt_users', 'sys_users.id = dt_users.sys_user_id', 'LEFT')
                 ->where('sys_users.uname', $mail)
