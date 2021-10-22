@@ -33,6 +33,7 @@ class M_dashboard extends CI_Model {
                 ->join('sys_roles', 'sys_users.role_id = sys_roles.id', 'LEFT')
                 ->join('dt_users', 'sys_users.id = dt_users.sys_user_id', 'LEFT')
                 ->where('`sys_users`.`login_stat`', 1, false)
+                ->group_by('sys_users.id')
                 ->get()
                 ->result();
         return $exec;
