@@ -133,7 +133,7 @@
             <div class="container">
                 <div class="row pt-5">
                     <div class="col-lg-8 d-xs-block col-xs-12 col-12 col-md-12">
-                        <div id="bgndVideo" class="player" data-property="{videoURL:'QUdihtOVruI',containment:'self',vol:100,optimizeDisplay:false,showYTLogo:false}"></div>
+                        <div id="bgndVideo" class="player" data-property="{videoURL:'<?php echo $materi[0]->link_video; ?>',containment:'self',vol:100,optimizeDisplay:false,showYTLogo:false}"></div>
                         <!--                        <div class="form-group">
                                                     <span id="viewers"></span> sedang menonton
                                                 </div>-->
