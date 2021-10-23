@@ -23,7 +23,7 @@ class Streaming extends CI_Controller {
     
     public function testing() {
         $data = [
-            'materi' => $this->model->Materi(),
+            'materi' => $this->model->Materi2(),
             'chat' => $this->model->Read_chat(),
             'privilege' => $this->bodo->Check_previlege('Streaming/index/')
         ];
