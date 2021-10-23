@@ -24,6 +24,19 @@ class Landing extends CI_Controller {
         }
         return $result;
     }
+    
+    public function testing() {
+        if ($this->session->userdata('id_user')) {
+            $result = redirect(base_url('Streaming/index/'), 'refresh');
+        } else {
+            $data = [
+                'csrf' => $this->bodo->Csrf(),
+                'materi' => $this->model2->Materi2()
+            ];
+            $result = $this->parser->parse('v_testing', $data);
+        }
+        return $result;
+    }
 
     public function Get_mail() {
         $uname['uname'] = strtolower(Post_get('email'));
