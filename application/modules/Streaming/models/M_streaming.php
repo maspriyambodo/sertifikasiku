@@ -66,7 +66,6 @@ class M_streaming extends CI_Model {
         $exec = $this->db->select('dt_materi.id AS id_materi,dt_materi.id_sesi,dt_materi.nama_materi,dt_materi.deskripsi,dt_materi.time_start,dt_materi.time_stop,dt_materi.link_video,mt_sesimateri.nama AS nama_sesi')
                 ->from('dt_materi')
                 ->join('mt_sesimateri', 'dt_materi.id_sesi = mt_sesimateri.id', 'LEFT')
-                ->where('`dt_materi`.`stat`', 1, false)
                 ->where('`dt_materi`.`id`', 3, false)
                 ->get()
                 ->result();
