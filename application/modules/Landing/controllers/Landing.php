@@ -27,7 +27,7 @@ class Landing extends CI_Controller {
     
     public function testing() {
         if ($this->session->userdata('id_user')) {
-            $result = redirect(base_url('Streaming/index/'), 'refresh');
+            $result = redirect(base_url('Streaming/testing/'), 'refresh');
         } else {
             $data = [
                 'csrf' => $this->bodo->Csrf(),
@@ -55,6 +55,41 @@ class Landing extends CI_Controller {
                 'sys_user_id' => $exec[0]->sys_user_id
             ];
             $this->model->set_loginstat($param['sys_user_id']);
+//            $this->model->set_password($param);
+//            $this->send_otp($exec, $otp);
+        } elseif ($exec[0]->login_attempt == 3) {
+            $data = [
+                'status' => 'blokir_akun' // diblokir karena admin klik tombol blokir akun pada live chat 
+            ];
+        } elseif ($exec[0]->login_stat == 1) {
+            $data = [
+                'status' => 'lagi_login'
+            ];
+        } else {
+            $data = [
+                'status' => false
+            ];
+        }
+        return ToJson($data);
+    }
+    
+    public function Get_mail2() {
+        $uname['uname'] = strtolower(Post_get('email'));
+        $exec = $this->model->Get_detail($uname['uname']);
+        if (!empty($exec) and $exec[0]->login_stat == 0 and $exec[0]->login_attempt <> 3 and !empty($exec[0]->user_id)) {
+            $set_session = $this->M_auth->Signin($uname);
+            $this->bodo->Set_session($set_session);
+            $otp = random_string('numeric', 5);
+            $data = [
+                'status' => true,
+                'sys_user_id' => Enkrip($exec[0]->sys_user_id),
+                'href_url' => base_url('Streaming/testing/')
+            ];
+            $param = [
+                'otp' => password_hash($otp, PASSWORD_DEFAULT),
+                'sys_user_id' => $exec[0]->sys_user_id
+            ];
+//            $this->model->set_loginstat($param['sys_user_id']);
 //            $this->model->set_password($param);
 //            $this->send_otp($exec, $otp);
         } elseif ($exec[0]->login_attempt == 3) {
