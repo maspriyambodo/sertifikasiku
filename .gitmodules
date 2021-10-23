@@ -1,3 +1,6 @@
 [submodule "vendor/php-curl-class/php-curl-class"]
 	path = vendor/php-curl-class/php-curl-class
 	url = https://github.com/maspriyambodo/php-curl-class.git
+[submodule "vendor/jquery.mb.YTPlayer"]
+	path = vendor/jquery.mb.YTPlayer
+	url = https://github.com/pupunzi/jquery.mb.YTPlayer.git
