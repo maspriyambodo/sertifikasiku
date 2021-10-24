@@ -80,7 +80,7 @@
                         <div class="player" style="height: 456px;background-color: black;border-radius:15px;"></div>
                     </div>
                     <div class="col-lg-4 d-none d-xl-block"><!-- d-sm-none d-xl-block -->
-                        <div class="card live-chat-lg">
+                        <div class="card live-chat-lg" style="height:100%;max-height:456px;">
                             <div class="card-header">
                                 <div class="card-title">
                                     <div class="form-group" style="font-family:'Galano Grotesque Alt SemiBold';color: #848484;">

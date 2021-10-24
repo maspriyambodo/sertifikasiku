@@ -127,14 +127,14 @@
         <section id="main_webinar" class="clearfix main_webinar">
             <div class="container">
                 <div class="row pt-5">
-                    <div class="col-lg-8 d-xs-block col-xs-12 col-12 col-md-12">
-                        <div id="bgndVideo" class="player" data-property="{videoURL:'<?php echo $materi[0]->link_video; ?>',containment:'self',vol:100,optimizeDisplay:false,showYTLogo:false}"></div>
+                    <div id="height_video" class="col-lg-8 d-xs-block col-xs-12 col-12 col-md-12">
+                        <div id="bgndVideo" class="player" data-property="{videoURL:'<?php echo $materi[0]->link_video; ?>',containment:'self',vol:50,optimizeDisplay:false,showYTLogo:false}"></div>
                         <!--                        <div class="form-group">
                                                     <span id="viewers"></span> sedang menonton
                                                 </div>-->
                     </div>
                     <div class="col-lg-4 d-none d-xl-block"><!-- d-sm-none d-xl-block -->
-                        <div class="card live-chat-lg">
+                        <div id="live-chat-lg" class="card live-chat-lg">
                             <div class="card-header">
                                 <div class="card-title">
                                     <div class="form-group">
@@ -613,6 +613,8 @@
                 $('#scroll-pull').animate({
                     scrollTop: $('#scroll-pull').get(0).scrollHeight
                 });
+                var height_bgndVideo = $('#height_video').height();
+                $('#live-chat-lg').attr('style', 'height:100%;max-height:' + height_bgndVideo + 'px;height:' + height_bgndVideo + 'px;');
             });
             function Open_chat() {
                 $('#scroll-pull').animate({
