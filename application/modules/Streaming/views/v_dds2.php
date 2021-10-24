@@ -18,9 +18,8 @@ and open the template in the editor.
         </style>
     </head>
     <body>
-        <div id="video-stream">
-            <iframe id="ytPlayer" src="https://www.youtube-nocookie.com/embed/OpibNCW8lB4?rel=0&?autoplay=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        </div>
+        <iframe id="iframe_bgndVideo" class="playerBox" src="https://www.youtube-nocookie.com/embed/DDmib3q9q4g" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" frameborder="0" style="width: 100%;height:600px;"></iframe>
+
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         <script>
             document.getElementById("ytPlayer").addEventListener("contextmenu", function (event) {

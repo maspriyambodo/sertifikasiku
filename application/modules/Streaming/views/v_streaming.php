@@ -9,8 +9,8 @@
         <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin/>
         <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Poppins:wght@100;200&display=swap" rel="stylesheet"> 
         <link href="<?php echo base_url('assets/plugins/global/fonts/galano/style.css'); ?>" rel="stylesheet" type="text/css"/>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery.mb.YTPlayer/3.3.9/css/jquery.mb.YTPlayer.min.css" integrity="sha512-+HWFHCZZfMe4XQRKS0bOzQ1r4+G2eknhMqP+FhFIkcmWPJlB4uFaIagSIRCKDOZI3IHc0t7z4+N/g2hIaO/JIw==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.1/css/bootstrap.min.css" integrity="sha512-6KY5s6UI5J7SVYuZB4S/CZMyPylqyyNZco376NM2Z8Sb8OxEdp02e1jkKk/wZxIEmjQ6DRCEBhni+gpr9c4tvA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link href="<?php echo base_url('vendor/jquery.mb.YTPlayer/dist/css/jquery.mb.YTPlayer.min.css'); ?>" rel="stylesheet" type="text/css"/>
+        <link href="<?php echo base_url('vendor/twbs/bootstrap/dist/css/bootstrap.min.css'); ?>" rel="stylesheet" type="text/css"/>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css" integrity="sha512-yHknP1/AwR+yx26cB1y0cjvQUMvEa2PFzt1c9LlS4pRQ5NOTZFWbhBig+X9G9eYW/8m0/4OXNx8pxJ6z57x0dw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css" integrity="sha512-17EgCFERpgZKcm0j0fEq1YCJuyAWdz9KUtv1EjVuaOz8pDnh/0nZxmU6BBXwaaxqoi9PQXnRWqlcDB027hgv9A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -279,7 +279,7 @@
             <div class="clearfix" style="border-bottom:1px solid #6c757d;width:100%;"></div>
         </section>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.1/js/bootstrap.min.js" integrity="sha512-ewfXo9Gq53e1q1+WDTjaHAGZ8UvCWq0eXONhwDuIoaH8xz2r96uoAYaQCm1oQhnBfRXrvJztNXFsTloJfgbL5Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="<?php echo base_url('vendor/twbs/bootstrap/dist/js/bootstrap.min.js'); ?>" type="text/javascript"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-migrate/3.3.2/jquery-migrate.min.js" integrity="sha512-3fMsI1vtU2e/tVxZORSEeuMhXnT9By80xlmXlsOku7hNwZSHJjwcOBpmy+uu+fyWwGCLkMvdVbHkeoXdAzBv+w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         <script src="<?php echo base_url('vendor/jquery.mb.YTPlayer/dist/jquery.mb.YTPlayer.js'); ?>" type="text/javascript"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js" integrity="sha512-XtmMtDEcNz2j7ekrtHvOVR4iwwaD6o/FUJe6+Zq+HgcCsk3kj4uSQQR8weQ2QVj1o0Pk6PwYLohm206ZzNfubg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -412,7 +412,7 @@
         </div>
         <script>
             var socket = io.connect('https://live-chat.mycapturer.com');
-            window.onload = function () {
+            $(document).ready(function () {
                 toastr.options = {
                     "closeButton": true,
                     "debug": false,
@@ -429,6 +429,14 @@
                     "showMethod": "fadeIn",
                     "hideMethod": "fadeOut"
                 };
+                $('#bgndVideo').YTPlayer({
+                    onReady: function (play) {
+                        $('#iframe_bgndVideo').attr('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture');
+                    },
+                    onError: function (play) {
+                        toastr.error('error while getting video');
+                    }
+                });
                 socket.on('new_message', function (data) {
                     var role_user = $('input[name="role_name"]').val();
                     var btn_admin = '<button type="button" class="btn btn-sm btn-default" value="' + data.chat_id + '" title="Kick Member ' + data.username + '" onclick="Kick_user(this.value)"><i class="fas fa-times text-danger"></i></button>'
@@ -582,14 +590,6 @@
                     event.preventDefault();
                     event.stopPropagation();
                 });
-                $('#bgndVideo').YTPlayer({
-                    onReady: function (play) {
-                        $('#iframe_bgndVideo').attr('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture');
-                    },
-                    onError: function (play) {
-                        toastr.error('error while getting video');
-                    }
-                });
                 $('.sertif-carousel').slick({
                     slidesToScroll: 1,
                     dots: false,
@@ -606,7 +606,7 @@
                 $('#scroll-pull').animate({
                     scrollTop: $('#scroll-pull').get(0).scrollHeight
                 });
-            };
+            });
             function Open_chat() {
                 $('#scroll-pull').animate({
                     scrollTop: $('#scroll-pull').get(0).scrollHeight
@@ -701,195 +701,13 @@
                     }
                 }
             }
-            function Kick_user(id_chat) {
-                $.ajax({
-                    type: "GET",
-                    url: "<?php echo base_url('Streaming/Get_detail?token='); ?>" + id_chat,
-                    dataType: "json",
-                    cache: false,
-                    success: function (data) {
-                        if (data.success === true) {
-
-                            Swal.fire({
-                                html: 'Member <b class="text-danger">' + data.uname + '</b> akan mendapatkan hukuman karena melanggar peraturan.',
-                                icon: 'question',
-                                confirmButtonText: 'OK',
-                                showCancelButton: true,
-                                allowOutsideClick: false,
-                                allowEscapeKey: false,
-                                allowEnterKey: true
-                            }).then((result) => {
-                                if (result.isConfirmed === true) {
-                                    socket.emit('kick_user', {
-                                        "uname": data.uname,
-                                        "key": data.key,
-                                        "msg": data.msg,
-                                        "ava": data.ava,
-                                        "role_name": data.role_name,
-                                        "user_id": data.user_id,
-                                        "role_id": data.role_id,
-                                        "chat_id": data.chat_id
-                                    });
-                                } else {
-                                    return true;
-                                }
-                            });
-
-                        } else {
-                            toastr.error('error while getting user data!');
-                        }
-                    },
-                    error: function (jqXHR) {
-                        toastr.error('error ' + jqXHR.status + ' ' + jqXHR.statusText);
-                    }
-                });
-            }
-            function Warning_user(id_chat) {
-                $.ajax({
-                    type: "GET",
-                    url: "<?php echo base_url('Streaming/Get_detail?token='); ?>" + id_chat,
-                    dataType: "json",
-                    cache: false,
-                    success: function (data) {
-                        if (data.success === true) {
-
-                            Swal.fire({
-                                html: 'Anda akan memberikan peringatan kepada: <b class="text-danger">' + data.uname + '</b> karena melanggar peraturan.',
-                                icon: 'question',
-                                confirmButtonText: 'OK',
-                                showCancelButton: true,
-                                allowOutsideClick: false,
-                                allowEscapeKey: false,
-                                allowEnterKey: true
-                            }).then((result) => {
-                                if (result.isConfirmed === true) {
-                                    socket.emit('warning_user', {
-                                        "uname": data.uname,
-                                        "key": data.key,
-                                        "msg": data.msg,
-                                        "ava": data.ava,
-                                        "role_name": data.role_name,
-                                        "user_id": data.user_id,
-                                        "role_id": data.role_id,
-                                        "chat_id": data.chat_id
-                                    });
-                                } else {
-                                    return true;
-                                }
-                            });
-                        } else {
-                            toastr.error('error while getting user data!');
-                        }
-                    },
-                    error: function (jqXHR) {
-                        toastr.error('error ' + jqXHR.status + ' ' + jqXHR.statusText);
-                    }
-                });
-            }
-            function absensi() {
-                Swal.fire({
-                    title: 'Absensi Peserta',
-                    html: 'pesan absensi akan muncul pada halaman peserta',
-                    icon: 'question',
-                    confirmButtonText: 'OK',
-                    showCancelButton: true,
-                    allowOutsideClick: false,
-                    allowEscapeKey: false,
-                    allowEnterKey: true
-                }).then((result) => {
-                    if (result.isConfirmed === true) {
-                        socket.emit('absensi', {
-
-                        });
-                    } else {
-                        return true;
-                    }
-                });
-            }
-            function enable_login() {
-                Swal.fire({
-                    title: 'Enable Login',
-                    html: 'anda akan mengaktifkan tombol login pada halaman member!',
-                    icon: 'question',
-                    confirmButtonText: 'YES',
-                    cancelButtonText: 'NO',
-                    showCancelButton: true,
-                    allowOutsideClick: false,
-                    allowEscapeKey: false,
-                    allowEnterKey: true
-                }).then((result) => {
-                    if (result.isConfirmed === true) {
-                        $.ajax({
-                            type: "GET",
-                            url: "<?php echo base_url('Streaming/enable_login/'); ?>",
-                            dataType: "json",
-                            cache: false,
-                            success: function (data) {
-                                if (data.stat === true) {
-                                    $('#login_control').empty();
-                                    $('#login_control').append('<a class="nav-link btn btn-light" href="javascript:disable_login();">Disable Login</a>');
-                                } else {
-                                    toastr.warning('error while changing status, please refresh page!');
-                                }
-                            },
-                            error: function (jqXHR) {
-                                toastr.error('error ' + jqXHR.status + ' ' + jqXHR.statusText);
-                            }
-                        });
-                    } else {
-                        return true;
-                    }
-                });
-            }
-            function disable_login() {
-                Swal.fire({
-                    title: 'Enable Login',
-                    html: 'anda akan me-nonaktifkan tombol login pada halaman member!',
-                    icon: 'question',
-                    confirmButtonText: 'YES',
-                    cancelButtonText: 'NO',
-                    showCancelButton: true,
-                    allowOutsideClick: false,
-                    allowEscapeKey: false,
-                    allowEnterKey: true
-                }).then((result) => {
-                    if (result.isConfirmed === true) {
-                        $.ajax({
-                            type: "GET",
-                            url: "<?php echo base_url('Streaming/disable_login/'); ?>",
-                            dataType: "json",
-                            cache: false,
-                            success: function (data) {
-                                if (data.stat === true) {
-                                    $('#login_control').empty();
-                                    $('#login_control').append('<a class="nav-link btn btn-light" href="javascript:enable_login();">Enable Login</a>');
-                                } else {
-                                    toastr.warning('error while changing status, please refresh page!');
-                                }
-                            },
-                            error: function (jqXHR) {
-                                toastr.error('error ' + jqXHR.status + ' ' + jqXHR.statusText);
-                            }
-                        });
-                    } else {
-                        return true;
-                    }
-                });
-            }
-            function clear_login() {
-                $.ajax({
-                    type: "GET",
-                    url: "<?php echo base_url('Streaming/clear_login/'); ?>",
-                    dataType: "json",
-                    cache: false,
-                    success: function (data) {
-                        toastr.success('status login berhasil diubah!');
-                    },
-                    error: function (jqXHR) {
-                        toastr.error('error ' + jqXHR.status + ' ' + jqXHR.statusText);
-                    }
-                });
-            }
         </script>
+        <?php
+        if ($this->session->userdata('role_name') === 'Super User' or $this->session->userdata('role_name') === 'Administrator') {
+            require_once 'admin_control.php';
+        } else {
+            null;
+        }
+        ?>
     </body>
 </html>
