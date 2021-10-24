@@ -84,6 +84,11 @@ body{
     box-shadow: 0px -6px 12px rgba(0, 0, 0, 0.1);
     border-radius: 10px 10px 0px 0px;
 }
+.tym-chat{
+    font-size: 12px;
+    position: absolute;
+    right: 15px;
+}
 .title_txt{
     float: left;
     margin:5px 0px;
@@ -107,6 +112,9 @@ body{
     overflow-y:auto;
     width:100%;
     max-width:100%;
+}
+.dropdown-menu[data-bs-popper]{
+    left:-66px !important;
 }
 .kt_chat_modol .modal-dialog{
     margin:0 !important;

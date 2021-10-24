@@ -17,11 +17,6 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.css" integrity="sha512-6S2HWzVFxruDlZxI3sXOZZ4/eJ8AcxkQH1+JjSe/ONCEqR9L4Ysq5JdT5ipqtzU7WHalNwzwBv+iE51gNHJNqQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         <link rel="stylesheet" href="<?php echo base_url('assets/streaming.css'); ?>"/>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.1.7/sweetalert2.min.css" integrity="sha512-cyIcYOviYhF0bHIhzXWJQ/7xnaBuIIOecYoPZBgJHQKFPo+TOBA+BY1EnTpmM8yKDU4ZdI3UGccNGCEUdfbBqw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-        <style>
-            .dropdown-menu[data-bs-popper]{
-                left:-66px !important;
-            }
-        </style>
     </head>
     <body>
         <nav class="navbar navbar-expand-lg navbar-light sticky-top bg-custom">
@@ -161,6 +156,7 @@
                                                     <a href="javascript:void(0);" class="text-danger font-weight-bold font-size-h6" style="text-decoration:none;"><?php echo $txtchat->uname; ?> </a>
                                                     <span class="font-size-sm"><i class="fas fa-user-shield text-danger"></i></span>
                                                 </div>
+                                                <div class="tym-chat"><?php echo $txtchat->syscreatedate; ?></div>
                                             </div>
                                             <div class="p-1 bg-danger text-white text-left wrap-chat">
                                                 <?php echo $txtchat->msg; ?>
@@ -187,6 +183,7 @@
                                                     null;
                                                 }
                                                 ?>
+                                                <div class="tym-chat"><?php echo $txtchat->syscreatedate; ?></div>
                                             </div>
                                             <div class="p-1 bg-light-success text-left wrap-chat">
                                                 <?php echo $txtchat->msg; ?>
@@ -211,6 +208,7 @@
                                                     null;
                                                 }
                                                 ?>
+                                                <div class="tym-chat"><?php echo $txtchat->syscreatedate; ?></div>
                                             </div>
                                             <div class="p-1 bg-light text-dark-50 font-weight-bold text-left wrap-chat">
                                                 <?php echo $txtchat->msg; ?>
@@ -235,6 +233,7 @@
                                                     null;
                                                 }
                                                 ?>
+                                                <div class="tym-chat"><?php echo $txtchat->syscreatedate; ?></div>
                                             </div>
                                             <div class="p-1 bg-light text-dark-50 font-weight-bold text-left wrap-chat">
                                                 <?php echo $txtchat->msg; ?>
@@ -309,6 +308,7 @@
                                                     <a href="javascript:void(0);" class="text-danger font-weight-bold font-size-h6" style="text-decoration:none;"><?php echo $txtchat2->uname; ?> </a>
                                                     <span class="text-muted font-size-sm"><i class="fas fa-user-shield text-danger"></i></span>
                                                 </div>
+                                                <div class="tym-chat"><?php echo $txtchat2->syscreatedate; ?></div>
                                             </div>
                                             <div class="p-1 bg-danger text-white text-left wrap-chat">
                                                 <?php echo $txtchat2->msg; ?>
@@ -334,6 +334,7 @@
                                                     null;
                                                 }
                                                 ?>
+                                                <div class="tym-chat"><?php echo $txtchat2->syscreatedate; ?></div>
                                             </div>
                                             <div class="p-1 bg-light-success text-left wrap-chat">
                                                 <?php echo $txtchat2->msg; ?>
@@ -358,6 +359,7 @@
                                                     null;
                                                 }
                                                 ?>
+                                                <div class="tym-chat"><?php echo $txtchat2->syscreatedate; ?></div>
                                             </div>
                                             <div class="p-1 bg-light text-dark-50 font-weight-bold text-left wrap-chat">
                                                 <?php echo $txtchat2->msg; ?>
@@ -382,6 +384,7 @@
                                                     null;
                                                 }
                                                 ?>
+                                                <div class="tym-chat"><?php echo $txtchat2->syscreatedate; ?></div>
                                             </div>
                                             <div class="p-1 bg-light text-dark-50 font-weight-bold text-left wrap-chat">
                                                 <?php echo $txtchat2->msg; ?>
@@ -451,6 +454,7 @@
                                 + '<a href="javascript:void(0);" class="text-danger font-weight-bold font-size-h6" style="text-decoration:none;">' + data.username + ' </a>'
                                 + '<span class="font-size-sm"><i class="fas fa-user-shield text-danger"></i></span>'
                                 + '</div>'
+                                + '<div class="tym-chat">' + data.tym_chat + '</div>'
                                 + '</div>'
                                 + '<div class="p-1 bg-danger text-white text-left wrap-chat"> ' + data.msgtxt + ' </div>'
                                 + '</div>';
@@ -467,6 +471,7 @@
                                 + '<span class="font-size-sm"><i class="fas fa-crown text-warning"></i></span>'
                                 + '</div>'
                                 + '<div id="btn_control' + data.chat_id + '" class="btn-group"></div>'
+                                + '<div class="tym-chat">' + data.tym_chat + '</div>'
                                 + '</div>'
                                 + '<div class="p-1 bg-light-success text-left wrap-chat"> ' + data.msgtxt + ' </div>'
                                 + '</div>';
@@ -482,6 +487,7 @@
                                 + '<a href="javascript:void(0);" class="font-size-h6" style="text-decoration:none;">' + data.fullname + ' </a>'
                                 + '</div>'
                                 + '<div id="btn_control' + data.chat_id + '" class="btn-group"></div>'
+                                + '<div class="tym-chat">' + data.tym_chat + '</div>'
                                 + '</div>'
                                 + '<div class="p-1 bg-light text-dark-50 font-weight-bold text-left wrap-chat"> ' + data.msgtxt + ' </div>'
                                 + '</div>';
@@ -497,6 +503,7 @@
                                 + '<a href="javascript:void(0);" class="font-size-h6" style="text-decoration:none;">' + data.fullname + ' </a>'
                                 + '</div>'
                                 + '<div id="btn_control' + data.chat_id + '" class="btn-group"></div>'
+                                + '<div class="tym-chat">' + data.tym_chat + '</div>'
                                 + '</div>'
                                 + '<div class="p-1 bg-light text-dark-50 font-weight-bold text-left wrap-chat"> ' + data.msgtxt + ' </div>'
                                 + '</div>';
@@ -644,7 +651,8 @@
                                         role_name: data.role_name,
                                         id_user: data.user_id,
                                         id_role: data.role_id,
-                                        id_chat: data.chat_id
+                                        id_chat: data.chat_id,
+                                        tym_chat: data.tym_chat
                                     });
                                 } else if (data.success === false) {
                                     window.location.href = '';
@@ -687,7 +695,8 @@
                                         role_name: data.role_name,
                                         id_user: data.user_id,
                                         id_role: data.role_id,
-                                        id_chat: data.chat_id
+                                        id_chat: data.chat_id,
+                                        tym_chat: data.tym_chat
                                     });
                                 } else if (data.success === false) {
                                     window.location.href = '';
