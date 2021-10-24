@@ -22,7 +22,7 @@
         <nav class="navbar navbar-expand-lg navbar-light sticky-top bg-custom">
             <div class="container-fluid">
                 <a class="navbar-brand" href="javascript:void();">
-                    <img src="<?php echo base_url('assets/images/systems/' . $this->bodo->Sys('logo')); ?>" title="" alt="Festival Sertifikasiku" style="width:50%;"/>
+                    <img class="img-thumbnail" src="<?php echo base_url('assets/images/systems/' . $this->bodo->Sys('logo')); ?>" title="" alt="Festival Sertifikasiku" style="width:50%;"/>
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" style="float:right;position:inherit;padding:1px;">
                     <span class="navbar-toggler-icon"></span>
@@ -49,7 +49,7 @@
                         }
                         ?>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color:#214980 !important;">
                                 hi, <?php echo $this->session->userdata('fullname'); ?>
                             </a>
                             <ul class="dropdown-menu fade" aria-labelledby="navbarDropdownMenuLink">
@@ -73,15 +73,15 @@
                         <?php
                         if (Dekrip($this->session->userdata('role_id')) == 1 or Dekrip($this->session->userdata('role_id')) == 2) {
                             echo '<li class="nav-item">'
-                            . '<a class="nav-link btn btn-light" href="javascript:absensi();">Absensi</a>'
+                            . '<a class="nav-link btn btn-light" href="javascript:absensi();" style="color:#214980 !important;">Absensi</a>'
                             . '</li>';
                             if ($this->bodo->Sys('login_member') == 0) {
                                 echo '<li id="login_control" class="nav-item mx-3">'
-                                . '<a class="nav-link btn btn-light" href="javascript:enable_login();">Enable Login</a>'
+                                . '<a class="nav-link btn btn-light" href="javascript:enable_login();" style="color:#214980 !important;">Enable Login</a>'
                                 . '</li>';
                             } else {
                                 echo '<li id="login_control" class="nav-item mx-3">'
-                                . '<a class="nav-link btn btn-light" href="javascript:disable_login();">Disable Login</a>'
+                                . '<a class="nav-link btn btn-light" href="javascript:disable_login();" style="color:#214980 !important;">Disable Login</a>'
                                 . '</li>';
                             }
                         } else {
@@ -89,7 +89,7 @@
                         }
                         ?>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle btn btn-light" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle btn btn-light" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color:#214980 !important;">
                                 hi, <?php echo $this->session->userdata('fullname'); ?>
                             </a>
                             <ul class="dropdown-menu fade" aria-labelledby="navbarDropdownMenuLink">
@@ -137,7 +137,7 @@
                         <div id="live-chat-lg" class="card live-chat-lg">
                             <div class="card-header">
                                 <div class="card-title">
-                                    <div class="form-group">
+                                    <div class="form-group text-muted">
                                         <i class="fas fa-comments"></i>
                                         <b>Live Chat</b>
                                     </div>
