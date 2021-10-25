@@ -9,7 +9,7 @@ class M_materi extends CI_Model {
         date_format(a.time_start, '%d-%m-%Y') as tgl_mulai,
         date_format(a.time_start, '%H:%i') as jam_mulai,
         date_format(a.time_stop, '%d-%m-%Y') as tgl_selesai,
-        date_format(a.time_stop, '%H:%i') as jam_selesai, b.nama as nama_sesi from dt_materi a left join mt_sesimateri b on a.id_sesi = b.id WHERE a.stat <> 3");
+        date_format(a.time_stop, '%H:%i') as jam_selesai, b.nama as nama_sesi from dt_materi a left join mt_sesimateri b on a.id_sesi = b.id WHERE a.stat <> 2");
         return $exec;
     }
 
@@ -32,12 +32,17 @@ class M_materi extends CI_Model {
 
 
     public function delete($id_materi){
-        $query = $this->db->query("update dt_materi set stat = '0' where id = '$id_materi' ");
+        $query = $this->db->query("update dt_materi set stat = 0 where id = '$id_materi' ");
+        return $query;
+    }
+    
+    public function delete2($id_materi){
+        $query = $this->db->query("update dt_materi set stat = 2 where id = '$id_materi' ");
         return $query;
     }
 
     public function active($id_materi){
-        $query = $this->db->query("update dt_materi set stat = '1' where id = '$id_materi' ");
+        $query = $this->db->query("update dt_materi set stat = 1 where id = '$id_materi' ");
         return $query;
     }
 

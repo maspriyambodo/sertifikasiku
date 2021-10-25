@@ -50,7 +50,7 @@
                             </td>
                             <td class="text-center"><?php echo $menu->nama_sesi; ?></td>
                             <td><?php echo $menu->nama_materi; ?></td>
-                            <td><?php echo substr($menu->deskripsi,0,50); ?>...</td>
+                            <td><?php echo substr($menu->deskripsi, 0, 50); ?>...</td>
                             <td class="text-center"><?php echo $menu->tgl_mulai; ?></td>
                             <td class="text-center"><?php echo $menu->jam_mulai; ?></td>
                             <td class="text-center"><?php echo $menu->tgl_selesai; ?></td>
@@ -59,30 +59,32 @@
                             <td class="text-center">
                                 <?php
                                 if ($menu->stat) {
-                                    echo '<span class="label label-xl label-dot label-success" title="active"></span>';
+                                    echo '<span class="label label-xl label-dot label-success" title="enable"></span>';
                                 } else {
-                                    echo '<span class="label label-xl label-dot label-danger" title="non-active"></span>';
+                                    echo '<span class="label label-xl label-dot label-danger" title="disable"></span>';
                                 }
                                 ?>
                             </td>
-                            
+
                             <td class="text-center">
                                 <?php
-                                $editbtn = '<a href="'.base_url('Master/Materi/Edit/'.$id_materi).'" id="editbtn" type="button" class="btn btn-icon btn-warning btn-xs" title="Edit" value="' . $id_materi . '" ><i class="far fa-edit fa-sm"></i></a>';
-                                $delbtn = '<button id="delbtn" type="button" class="btn btn-icon btn-default btn-xs" title="Set non-aktif" value="' . $id_materi . '" onclick="Delete(this.value)"><i class="fas fa-lock fa-sm text-danger"></i></button>';
-                                $activebtn = '<button id="actvbtn" type="button" class="btn btn-icon btn-default btn-xs" title="Set Active" value="' . $id_materi . '" onclick="Active(this.value)"><i class="fas fa-unlock fa-sm text-success"></i></button>';
-
+                                $editbtn = '<a href="' . base_url('Master/Materi/Edit/' . $id_materi) . '" id="editbtn" type="button" class="btn btn-icon btn-default btn-xs" title="Edit materi" value="' . $id_materi . '" ><i class="far fa-edit fa-sm text-warning"></i></a>';
+                                $delbtn = '<button id="delbtn" type="button" class="btn btn-icon btn-default btn-xs" title="Disable materi" value="' . $id_materi . '" onclick="Delete(this.value)"><i class="fas fa-lock fa-sm text-danger"></i></button>';
+                                $activebtn = '<button id="actvbtn" type="button" class="btn btn-icon btn-default btn-xs" title="Enable materi" value="' . $id_materi . '" onclick="Active(this.value)"><i class="fas fa-unlock fa-sm text-success"></i></button>';
+                                $destroybtn = '<button id="destroybtn" type="button" class="btn btn-icon btn-default btn-xs" title="Delete materi" value="' . $id_materi . '" onclick="Destroybtn(this.value)"><i class="far fa-trash-alt text-danger"></i></button>';
                                 echo '<div class="btn-group">'; // open div btn-group
-
                                 if ($privilege['update']) { // jika memiliki privilege edit
                                     echo $editbtn;
                                 }
                                 if (!$menu->stat and $privilege['delete']) { // jika memiliki privilege delete
                                     echo $activebtn;
+                                    echo $destroybtn;
                                 } elseif ($menu->stat and $privilege['delete']) {
                                     echo $delbtn;
+                                    echo $destroybtn;
+                                } else {
+                                    null;
                                 }
-
                                 echo '</div>'; //close div btn-group
                                 ?>
                             </td>
@@ -101,6 +103,7 @@ if ($privilege['update']) {
 }
 if ($privilege['delete']) {
     require_once 'modal_delete.php';
+    require_once 'modal_destroy.php';
     require_once 'modal_activate.php';
 } else {
     null;

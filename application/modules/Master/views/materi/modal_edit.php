@@ -50,7 +50,7 @@
 </div>
 <script>
     function Edit(val) {
-        $('input[name="id"]').val("");
+        $('input[name="e_id"]').val("");
         $.ajax({
             url: "<?php echo base_url('Master/Materi/Edit?id='); ?>" + val,
             type: 'GET',
@@ -75,6 +75,6 @@
         });
     }
     function Update() {
-            $('#form_edit').submit();
+        $('#form_edit').submit();
     }
 </script>
