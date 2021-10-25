@@ -49,7 +49,7 @@
                         }
                         ?>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color:#214980 !important;">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 hi, <?php echo $this->session->userdata('fullname'); ?>
                             </a>
                             <ul class="dropdown-menu fade" aria-labelledby="navbarDropdownMenuLink">
