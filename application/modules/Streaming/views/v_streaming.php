@@ -156,7 +156,7 @@
                                                     <a href="javascript:void(0);" class="text-danger font-weight-bold font-size-h6" style="text-decoration:none;"><?php echo $txtchat->uname; ?> </a>
                                                     <span class="font-size-sm"><i class="fas fa-user-shield text-danger"></i></span>
                                                 </div>
-                                                <div class="tym-chat"><?php echo $txtchat->syscreatedate; ?></div>
+                                                <div class="tym-chat"><?php echo date('H:i', strtotime($txtchat->syscreatedate)); ?></div>
                                             </div>
                                             <div class="p-1 bg-danger text-white text-left wrap-chat">
                                                 <?php echo $txtchat->msg; ?>
