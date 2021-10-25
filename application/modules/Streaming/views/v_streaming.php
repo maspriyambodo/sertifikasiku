@@ -434,7 +434,9 @@
                 };
                 $('#bgndVideo').YTPlayer({
                     onReady: function (play) {
-                        $('#iframe_bgndVideo').attr('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture');
+                        
+                        var height_bgndVideo = $('#height_video').height();
+                        $('#live-chat-lg').attr('style', 'height:100%;max-height:' + height_bgndVideo + 'px;height:' + height_bgndVideo + 'px;');
                     },
                     onError: function (play) {
                         toastr.error('error while getting video');
@@ -613,8 +615,6 @@
                 $('#scroll-pull').animate({
                     scrollTop: $('#scroll-pull').get(0).scrollHeight
                 });
-                var height_bgndVideo = $('#height_video').height();
-                $('#live-chat-lg').attr('style', 'height:100%;max-height:' + height_bgndVideo + 'px;height:' + height_bgndVideo + 'px;');
             });
             function Open_chat() {
                 $('#scroll-pull').animate({
