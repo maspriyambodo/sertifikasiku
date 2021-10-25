@@ -435,7 +435,7 @@
                 $('#bgndVideo').YTPlayer({
                     onReady: function (play) {
                         
-                        var height_bgndVideo = $('#height_video').height();
+                        var height_bgndVideo = $('.YTPOverlay').height();
                         $('#live-chat-lg').attr('style', 'height:100%;max-height:' + height_bgndVideo + 'px;height:' + height_bgndVideo + 'px;');
                     },
                     onError: function (play) {
