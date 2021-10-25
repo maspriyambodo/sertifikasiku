@@ -125,6 +125,11 @@
             </div>
             <div class="clearfix" style="border-bottom:1px solid #6c757d;width:100%;"></div>
         </section>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="<?php echo base_url('vendor/twbs/bootstrap/dist/js/bootstrap.bundle.min.js'); ?>" type="text/javascript"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js" integrity="sha512-XtmMtDEcNz2j7ekrtHvOVR4iwwaD6o/FUJe6+Zq+HgcCsk3kj4uSQQR8weQ2QVj1o0Pk6PwYLohm206ZzNfubg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.js" integrity="sha512-lbwH47l/tPXJYG9AcFNoJaTMhGvYWhVM9YI43CT+uteTRRaiLCui8snIgyAN8XWgNjNhCqlAUdzZptso6OCoFQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.countdown/2.2.0/jquery.countdown.min.js" integrity="sha512-lteuRD+aUENrZPTXWFRPTBcDDxIGWe5uu0apPEn+3ZKYDwDaEErIK9rvR0QzUGmUQ55KFE2RqGTVoZsKctGMVw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         <div class="modal fade kt_chat_modol" id="kt_chat_modol" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -178,15 +183,14 @@
                             <div class="text-center my-4">
                                 <img class="img-fluid" src="<?php echo base_url('assets/images/a9b7f6aefbae556e99a8f5ffbea66844.png'); ?>" alt="login-img" style="width:286px;"/>
                             </div>
-                            <div class="form-group text-center" style="color:#214980;">
+                            <div class="form-group text-center" style="font-family:'Galano Grotesque Alt Bold';">
                                 <h3>Masuk</h3>
                             </div>
                             <div class="form-group">
-                                <label for="mailtxt" style="font-family: GalanoGrotesque-SemiBold;">E-mail</label>
+                                <label for="mailtxt" style="font-family:'Galano Grotesque Alt SemiBold';">E-mail</label>
                             </div>
                             <div class="input-group my-2">
                                 <input id="mailtxt" name="mailtxt" type="email" class="form-control" autocomplete="off" placeholder="Masukkan alamat e-mail kamu">
-<!--                                <span class="input-group-text" id="inputGroup-sizing-lg" onclick="send_otp()" style="cursor:pointer;">SEND OTP</span>-->
                             </div>
                             <div class="form-group">
                                 <span id="err_msg" class="text-danger"></span>
@@ -196,44 +200,33 @@
                                 <button type="button" class="btn btn-default send_otp" onclick="send_otp()">Masuk</button>
                             </div>
                         </div>
-                        <!--                        <div id="form_otp">
-                                                    <div class="text-center mt-4">
-                                                        Mohon cek kotak spam jika kode OTP tidak ada dalam kotak masuk.
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="col-md-3"></div>
-                                                        <div class="col-md-6">
-                                                            <div class="d-flex flex-row mt-5" style="margin-left: 9%;">
-                                                                <input name="otp1" type="text" class="form-control form-otp" autofocus="" maxlength="1" onkeypress="return isNumber(event)" autocomplete="off" style="width:50px;">
-                                                                <input name="otp2" type="text" class="form-control form-otp" maxlength="1" onkeypress="return isNumber(event)" autocomplete="off" style="width:50px;">
-                                                                <input name="otp3" type="text" class="form-control form-otp" maxlength="1" onkeypress="return isNumber(event)" autocomplete="off" style="width:50px;">
-                                                                <input name="otp4" type="text" class="form-control form-otp" maxlength="1" onkeypress="return isNumber(event)" autocomplete="off" style="width:50px;">
-                                                                <input name="otp5" type="text" class="form-control form-otp" maxlength="1" onkeypress="return isNumber(event)" autocomplete="off" style="width:50px;">
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-3"></div>
-                                                    </div>
-                                                    <div class="clearfix my-4"></div>
-                                                    <div class="text-center">
-                                                        <button type="button" class="btn btn-info" onclick="verify_otp()">Verifikasi</button>
-                                                    </div>
-                                                    <div class="clearfix my-4"></div>
-                                                    <div class="text-center">
-                                                        <div class="text-muted">
-                                                            Don't receive the code?
-                                                        </div>
-                                                        <a id="otp_resend">Resend Code</a> <span id="otp_timer"></span>
-                                                    </div>
-                                                </div>-->
+                        <div id="form_otp">
+                            <div class="text-center my-4">
+                                Mohon cek kotak spam jika kode OTP tidak ada dalam kotak masuk.
+                            </div>
+                            <div class="row">
+                                <div class="col-md-2"></div>
+                                <div class="col-md-8">
+                                    <input type="text" name="otptxt" class="form-control text-center" required="" autocomplete="off" maxlength="5" onkeypress="return isNumber(event)"p/>
+                                </div>
+                                <div class="col-md-2"></div>
+                            </div>
+                            <div class="clearfix my-4"></div>
+                            <div class="text-center">
+                                <button type="button" class="btn btn-info" onclick="verify_otp()">Verifikasi</button>
+                            </div>
+                            <div class="clearfix my-4"></div>
+                            <div class="text-center">
+                                <div class="text-muted">
+                                    Don't receive the code?
+                                </div>
+                                <a id="otp_resend">Resend Code</a> <span id="otp_timer"></span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-        <script src="<?php echo base_url('vendor/twbs/bootstrap/dist/js/bootstrap.bundle.min.js'); ?>" type="text/javascript"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js" integrity="sha512-XtmMtDEcNz2j7ekrtHvOVR4iwwaD6o/FUJe6+Zq+HgcCsk3kj4uSQQR8weQ2QVj1o0Pk6PwYLohm206ZzNfubg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.js" integrity="sha512-lbwH47l/tPXJYG9AcFNoJaTMhGvYWhVM9YI43CT+uteTRRaiLCui8snIgyAN8XWgNjNhCqlAUdzZptso6OCoFQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.countdown/2.2.0/jquery.countdown.min.js" integrity="sha512-lteuRD+aUENrZPTXWFRPTBcDDxIGWe5uu0apPEn+3ZKYDwDaEErIK9rvR0QzUGmUQ55KFE2RqGTVoZsKctGMVw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         <script>
             window.onload = function () {
                 toastr.options = {
@@ -268,6 +261,7 @@
                 var mailtxt = $('input[name="mailtxt"]').val();
                 document.getElementById('err_msg').innerHTML = '';
                 if (mailtxt !== '') {
+                    $('.send_otp').attr('disabled', '');
                     $.ajax({
                         type: "GET",
                         url: "<?php echo base_url('Landing/Get_mail?email='); ?>" + mailtxt,
@@ -275,12 +269,28 @@
                         cache: false,
                         success: function (data) {
                             if (data.status === true) {
-                                window.location.href = data.href_url;
+                                $('#form_mail').hide();
+                                $('#form_otp').show();
+                                var fiveSeconds = new Date().getTime() + 30000;
+                                $('#otp_timer').countdown(fiveSeconds, {elapse: true})
+                                        .on('update.countdown', function (event) {
+                                            var $this = $(this);
+                                            if (event.elapsed) {
+                                                $('#otp_timer').empty();
+                                                $('#otp_resend').attr('href', 'javascript:send_otp()');
+                                            } else {
+                                                $this.html(event.strftime('%S'));
+                                                $('#otp_resend').removeAttr('href');
+                                            }
+                                        });
                             } else if (data.status === 'blokir_akun') {
+                                $('.send_otp').removeAttr('disabled');
                                 document.getElementById('err_msg').innerHTML = 'akun anda diblokir, harap hubungi admin!';
                             } else if (data.status === 'lagi_login') {
+                                $('.send_otp').removeAttr('disabled');
                                 document.getElementById('err_msg').innerHTML = 'anda telah masuk dengan perangkat lain';
                             } else {
+                                $('.send_otp').removeAttr('disabled');
                                 document.getElementById('err_msg').innerHTML = 'email not registered!';
                             }
                         },
@@ -290,32 +300,23 @@
                     });
                 } else {
                     document.getElementById('err_msg').innerHTML = 'please fill your email!';
+                    $('.send_otp').removeAttr('disabled');
                 }
             }
             function close_login() {
                 document.getElementById('err_msg').innerHTML = '';
+                $('.send_otp').removeAttr('disabled');
             }
             function isNumber(b) {
                 b = (b) ? b : window.event;
                 var a = (b.which) ? b.which : b.keyCode;
                 if (a > 31 && (a < 48 || a > 57)) {
                     return false;
-                } else {
-                    $(".form-otp").keyup(function () {
-                        if (this.value.length === this.maxLength) {
-                            $(this).next('.form-otp').focus();
-                        }
-                    });
                 }
             }
             function verify_otp() {
-                var a, b, c, d, e, otp, csrf, mail;
-                a = $('input[name="otp1"]').val();
-                b = $('input[name="otp2"]').val();
-                c = $('input[name="otp3"]').val();
-                d = $('input[name="otp4"]').val();
-                e = $('input[name="otp5"]').val();
-                otp = a + b + c + d + e;
+                var otp, csrf, mail;
+                otp = $('input[name="otptxt"]').val();
                 csrf = $('input[name="bodo_csrf_token"]').val();
                 mail = $('input[name="mailtxt"]').val();
                 var dataString = {
@@ -323,7 +324,7 @@
                     bodo_csrf_token: csrf,
                     mail_user: mail
                 };
-                if (a !== '' && b !== '' && c !== '' && d !== '' && e !== '') {
+                if (otp !== '' && otp.length > 0 && otp.length <= 5) {
                     $.ajax({
                         type: "POST",
                         url: "<?php echo base_url('Landing/verify_otp/'); ?>",

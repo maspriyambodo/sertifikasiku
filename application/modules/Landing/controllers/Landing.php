@@ -42,8 +42,8 @@ class Landing extends CI_Controller {
         $uname['uname'] = strtolower(Post_get('email'));
         $exec = $this->model->Get_detail($uname['uname']);
         if (!empty($exec) and $exec[0]->login_stat == 0 and $exec[0]->login_attempt <> 3 and !empty($exec[0]->user_id)) {
-            $set_session = $this->M_auth->Signin($uname);
-            $this->bodo->Set_session($set_session);
+//            $set_session = $this->M_auth->Signin($uname);
+//            $this->bodo->Set_session($set_session);
             $otp = random_string('numeric', 5);
             $data = [
                 'status' => true,
@@ -54,9 +54,9 @@ class Landing extends CI_Controller {
                 'otp' => password_hash($otp, PASSWORD_DEFAULT),
                 'sys_user_id' => $exec[0]->sys_user_id
             ];
-            $this->model->set_loginstat($param['sys_user_id']);
-//            $this->model->set_password($param);
-//            $this->send_otp($exec, $otp);
+//            $this->model->set_loginstat($param['sys_user_id']);
+            $this->model->set_password($param);
+            $this->send_otp($exec, $otp);//ganti ketika develpment to send_mail();
         } elseif ($exec[0]->login_attempt == 3) {
             $data = [
                 'status' => 'blokir_akun' // diblokir karena admin klik tombol blokir akun pada live chat 
@@ -116,8 +116,8 @@ class Landing extends CI_Controller {
             'protocol' => 'smtp',
             'smtp_host' => 'smtp.mailtrap.io',
             'smtp_port' => 2525,
-            'smtp_user' => 'fd8950b794824e',
-            'smtp_pass' => 'fe2f84fe51e0fb',
+            'smtp_user' => 'c86c8ffd9896ec',
+            'smtp_pass' => 'a1a42d614b6817',
             'crlf' => "\r\n",
             'newline' => "\r\n",
             'charset' => 'utf-8',
@@ -141,7 +141,7 @@ class Landing extends CI_Controller {
         $exec['otp'] = $otp;
         $this->load->library('email');
         $config = [
-            'useragent' => 'Mini Class Sertifikasiku',
+            'useragent' => 'Festival Sertifikasiku',
             'protocol' => 'smtp',
             'smtp_host' => 'smtp.gmail.com',
             'smtp_user' => 'it.sertifikasiku@gmail.com',
@@ -155,9 +155,9 @@ class Landing extends CI_Controller {
         ];
         return $this->email->initialize($config)
                         ->set_newline("\r\n")
-                        ->from('admin@sertifikasiku.com', 'Kode OTP Mini Class Sertifikasiku')
+                        ->from('admin@sertifikasiku.com', 'Kode OTP Festival Sertifikasiku')
                         ->to($exec['value']->uname)
-                        ->subject('Kode OTP Mini Class Sertifikasiku')
+                        ->subject('Kode OTP Festival Sertifikasiku')
                         ->message($this->load->view("v_email", $exec, true))
                         ->send();
     }

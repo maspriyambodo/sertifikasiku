@@ -21,7 +21,7 @@ and open the template in the editor.
                                 <tbody>
                                     <tr style="border-bottom: 1px solid black;">
                                         <td>
-                                            <img src="<?php echo base_url('assets/images/systems/logo.png'); ?>" alt="Festival Sertifikasiku">
+                                            <img src="<?php echo base_url('assets/images/systems/logo.png'); ?>" alt="Festival Sertifikasiku" style="width: 50%;">
                                         </td>
                                         <td style="width: 100%;">
                                             Festival Sertifikasiku
