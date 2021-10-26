@@ -1,7 +1,12 @@
 <div class="card card-custom">
     <div class="card-body">
+        <div class="text-right">
+            <div class="form-group">
+                <button class="btn btn-default" title="refresh data" onclick="refresh_dt()"><i class="fas fa-sync-alt text-info"></i></button>
+            </div>
+        </div>
         <div class="table-responsive">
-            <table class="table table-bordered table-hover table-striped" style="width:100%;">
+            <table id="table" class="table table-bordered table-hover table-striped" style="width:100%;">
                 <thead class="text-center text-uppercase">
                     <tr>
                         <th>no</th>
@@ -50,7 +55,7 @@ unset($_SESSION['err_msg']);
 unset($_SESSION['succ_msg']);
 ?>
 <script>
-    window.onload = function () {
+    $(document).ready(function () {
         toastr.options = {
             closeButton: true,
             debug: false,
@@ -77,7 +82,39 @@ unset($_SESSION['succ_msg']);
             toastr.success(b);
         }
         $('table').dataTable({
-            "ServerSide": true,
+            "ServerSide": false,
+            "order": [[0, "asc"]],
+            "paging": true,
+            "ordering": true,
+            "info": true,
+            "processing": true,
+            "deferRender": true,
+            "scrollCollapse": true,
+            "scrollX": true,
+            "scrollY": "400px",
+            dom: `<'row'<'col-sm-6 text-left'f><'col-sm-6 text-right'B>>
+                <'row'<'col-sm-12'tr>>
+                <'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7 dataTables_pager'lp>>`,
+            retrieve: true,
+            buttons: [
+                {extend: 'print', footer: true},
+                {extend: 'copyHtml5', footer: true},
+                {extend: 'excelHtml5', footer: true},
+                {extend: 'csvHtml5', footer: true},
+                {extend: 'pdfHtml5', footer: true}
+            ],
+            columnDefs: [
+                {
+                    targets: 0,
+                    className: 'text-center'
+                }
+            ]
+        });
+    });
+    function refresh_dt() {
+        $('#table').DataTable().clear().destroy();
+        $('#table').dataTable({
+            "serverSide": true,
             "order": [[0, "asc"]],
             "paging": true,
             "ordering": true,
@@ -96,7 +133,51 @@ unset($_SESSION['succ_msg']);
                 {extend: 'excelHtml5', footer: true},
                 {extend: 'csvHtml5', footer: true},
                 {extend: 'pdfHtml5', footer: true}
+            ],
+            "ajax": {
+                "url": "<?php echo site_url('Applications/Dashboard/refresh_dt/') ?>",
+                "type": "POST"
+            },
+            columnDefs: [
+                {
+                    targets: 0,
+                    className: 'text-center'
+                },
+                {
+                    targets: 1,
+                    className: 'text-center',
+                    orderable: false
+                },
+                {
+                    targets: 2,
+                    className: 'text-center',
+                    orderable: false
+                },
+                {
+                    targets: 3,
+                    className: 'text-center'
+                },
+                {
+                    targets: 4,
+                    className: 'text-center',
+                    orderable: false
+                },
+                {
+                    targets: 5,
+                    className: 'text-center',
+                    orderable: false
+                },
+                {
+                    targets: 6,
+                    className: 'text-center',
+                    orderable: false
+                },
+                {
+                    targets: 7,
+                    className: 'text-center',
+                    orderable: false
+                }
             ]
         });
-    };
+    }
 </script>
