@@ -341,19 +341,32 @@ class Users extends CI_Controller {
             $cek = $this->M_users->Cek_dulikat($value->uname);
             if ($cek > 0) {
                 unset($data[$key]);
+            } elseif (empty($data[$key]->uname)) {
+                unset($data[$key]);
             }
         }
-        $this->M_users->Import_m($data);
+        if (!empty($data)) {
+            $this->M_users->Import_m($data);
+            $result = $this->_dtuser($dt_user);
+        } else {
+            $result = redirect(base_url('Systems/Users/index/'), $this->session->set_flashdata('err_msg', 'error, data user not found!'));
+        }
+        return $result;
+    }
+
+    private function _dtuser($dt_user) {
         foreach ($dt_user as $key2 => $value2) {
             $sys_user_id = $this->M_users->Get_userid($value2->mail);
             if (!empty($sys_user_id)) {
                 $dt_user[$key2]->sys_user_id = $sys_user_id->sys_user_id;
+            } elseif (empty($dt_user[$key2]->nama)) {
+                unset($dt_user[$key2]);
             } else {
                 unset($dt_user[$key2]);
             }
         }
         $this->M_users->insert_dtuser($dt_user);
-        return redirect(base_url('Systems/Users/index/'), $this->session->set_flashdata('succ_msg', 'success, ' . count($data) . ' users has been added!'));
+        return redirect(base_url('Systems/Users/index/'), $this->session->set_flashdata('succ_msg', 'success, ' . count($dt_user) . ' users has been added!'));
     }
 
     public function Download() {
