@@ -10,6 +10,7 @@
                         <th>telepon</th>
                         <th>pekerjaan</th>
                         <th>ip address</th>
+                        <th>device</th>
                         <th>login<br>date</th>
                     </tr>
                 </thead>
@@ -33,6 +34,7 @@
                             <td><?php echo $user->telp; ?></td>
                             <td><?php echo $user->pekerjaan; ?></td>
                             <td><?php echo $user->ip_address; ?></td>
+                            <td><?php echo $user->user_agent; ?></td>
                             <td><?php echo $user->last_login; ?></td>
                         </tr>
                     <?php } ?>

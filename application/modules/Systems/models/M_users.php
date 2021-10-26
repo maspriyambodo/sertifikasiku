@@ -182,6 +182,7 @@ class M_users extends CI_Model {
         $this->db->set('`sys_users`.`login_stat`', 1, false)
                 ->set('sys_users.ip_address', $this->input->ip_address())
                 ->set('sys_users.last_login', date('Y-m-d H:i:s'))
+                ->set('sys_users.user_agent', $this->agent->platform() . ', ' . $this->agent->browser() . ', ' . $this->agent->version())
                 ->where('`sys_users`.`id`', $id, false)
                 ->update('sys_users');
     }

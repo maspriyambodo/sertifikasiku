@@ -204,9 +204,6 @@
                             <div class="text-center my-4">
                                 <img class="img-fluid" src="<?php echo base_url('assets/images/a9b7f6aefbae556e99a8f5ffbea66844.png'); ?>" alt="login-img" style="width:286px;"/>
                             </div>
-                            <div class="text-center my-4">
-                                Mohon cek kotak spam jika kode OTP tidak ada dalam kotak masuk.
-                            </div>
                             <div class="row">
                                 <div class="col-md-2"></div>
                                 <div class="col-md-8">
@@ -217,6 +214,9 @@
                             <div class="clearfix my-4"></div>
                             <div class="text-center">
                                 <button type="button" class="btn btn-info" onclick="verify_otp()">Verifikasi</button>
+                            </div>
+                            <div class="text-center my-4 font-size-xs">
+                                Mohon cek kotak spam jika kode OTP tidak ada dalam kotak masuk.
                             </div>
                             <div class="clearfix my-4"></div>
                             <div class="text-center">

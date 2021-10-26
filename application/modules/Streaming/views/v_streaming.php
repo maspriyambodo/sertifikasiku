@@ -243,8 +243,7 @@
                                 <?php } ?>
                             </div>
                             <div class="card-footer input-group mb-3 chat_footer">
-                                <input type="text" class="form-control" name="msgtxt" autocomplete="off" onkeypress="Javascript: if (event.keyCode === 13)
-                                            Send_chat(1);">
+                                <input type="text" class="form-control" name="msgtxt" autocomplete="off" onkeypress="Javascript: if (event.keyCode === 13) Send_chat(1);">
                                 <button type="button" class="input-group-text" onclick="Send_chat(1)"><i class="fas fa-paper-plane"></i></button>                             
                             </div>
                         </div>
@@ -399,8 +398,7 @@
                     </div>
                     <div class="card-footer align-items-center">
                         <!--begin::Compose-->
-                        <textarea name="msgtxt2" class="form-control border-0 p-0" rows="4" placeholder="Type a message" onkeypress="Javascript: if (event.keyCode === 13)
-                    Send_chat(2);"></textarea>
+                        <textarea name="msgtxt2" class="form-control border-0 p-0" rows="4" placeholder="Type a message" onkeypress="Javascript: if (event.keyCode === 13) Send_chat(2);"></textarea>
                         <div class="d-flex align-items-center justify-content-between mt-2">
                             <div class="mr-3"></div>
                             <div>
@@ -434,7 +432,7 @@
                 };
                 $('#bgndVideo').YTPlayer({
                     onReady: function (play) {
-                        
+
                         var height_bgndVideo = $('.YTPOverlay').height();
                         $('#live-chat-lg').attr('style', 'height:100%;max-height:' + height_bgndVideo + 'px;height:' + height_bgndVideo + 'px;');
                     },

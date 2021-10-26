@@ -10,6 +10,7 @@ class Landing extends CI_Controller {
         $this->load->model('Streaming/M_streaming', 'model2');
         $this->load->model('Auth/M_auth');
         $this->load->helper('string');
+        $this->load->library('user_agent');
     }
 
     public function index() {
@@ -24,7 +25,7 @@ class Landing extends CI_Controller {
         }
         return $result;
     }
-    
+
     public function testing() {
         if ($this->session->userdata('id_user')) {
             $result = redirect(base_url('Streaming/testing/'), 'refresh');
@@ -41,7 +42,7 @@ class Landing extends CI_Controller {
     public function Get_mail() {
         $uname['uname'] = strtolower(Post_get('email'));
         $exec = $this->model->Get_detail($uname['uname']);
-        if (!empty($exec) and $exec[0]->login_stat == 0 and $exec[0]->login_attempt <> 3 and !empty($exec[0]->user_id)) {
+        if (!empty($exec) and $exec[0]->login_stat == 0 and $exec[0]->login_attempt <> 3 and!empty($exec[0]->user_id)) {
 //            $set_session = $this->M_auth->Signin($uname);
 //            $this->bodo->Set_session($set_session);
             $otp = random_string('numeric', 5);
@@ -56,7 +57,7 @@ class Landing extends CI_Controller {
             ];
 //            $this->model->set_loginstat($param['sys_user_id']);
             $this->model->set_password($param);
-            $this->send_otp($exec, $otp);//ganti ketika develpment to send_mail(); and send_otp() while production
+            $this->send_mail($exec, $otp); //ganti ketika develpment to send_mail(); and send_otp() while production
         } elseif ($exec[0]->login_attempt == 3) {
             $data = [
                 'status' => 'blokir_akun' // diblokir karena admin klik tombol blokir akun pada live chat 
@@ -72,11 +73,11 @@ class Landing extends CI_Controller {
         }
         return ToJson($data);
     }
-    
+
     public function Get_mail2() {
         $uname['uname'] = strtolower(Post_get('email'));
         $exec = $this->model->Get_detail($uname['uname']);
-        if (!empty($exec) and $exec[0]->login_stat == 0 and $exec[0]->login_attempt <> 3 and !empty($exec[0]->user_id)) {
+        if (!empty($exec) and $exec[0]->login_stat == 0 and $exec[0]->login_attempt <> 3 and!empty($exec[0]->user_id)) {
             $set_session = $this->M_auth->Signin($uname);
             $this->bodo->Set_session($set_session);
             $otp = random_string('numeric', 5);
@@ -126,7 +127,6 @@ class Landing extends CI_Controller {
             'useragent' => 'Festival Sertifikasiku',
         ];
         $exec['value'] = $exec[0];
-        $exec['otp'] = random_string('numeric', 5);
         return $this->email->initialize($config)
                         ->set_newline("\r\n")
                         ->from('Festival Sertifikasiku', 'CODE OTP')
@@ -171,6 +171,7 @@ class Landing extends CI_Controller {
         $hashed = $exec->pwd;
         if (password_verify($data['pwd'], $hashed)) {
             $this->bodo->Set_session($exec);
+            $this->model->set_loginstat($exec->id_user);
             $result = [
                 'stat' => true,
                 'href_url' => base_url('Streaming/index/')
