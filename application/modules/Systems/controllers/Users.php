@@ -298,22 +298,15 @@ class Users extends CI_Controller {
                 $field2 = $sheetData[$i]['2']; //fullname
                 $field3 = $sheetData[$i]['3']; //telepon
                 $field4 = $sheetData[$i]['4']; //pekerjaan
-                if ($field1 === 'super user') {
-                    $role_name = 1;
-                } elseif ($field1 === 'administrator') {
-                    $role_name = 2;
-                } elseif ($field1 === 'platinum') {
-                    $role_name = 3;
-                } elseif ($field1 === 'silver') {
-                    $role_name = 4;
-                } elseif ($field1 === 'basic') {
-                    $role_name = 5;
+                $role_name = $this->M_users->_roleUser($field1);
+                if (empty($role_name)) {
+                    $id_role = 999;
                 } else {
-                    $role_name = 6;
+                    $id_role = $role_name;
                 }
                 $data[] = (object) [
                             'uname' => $field,
-                            'role_id' => $role_name + false,
+                            'role_id' => $id_role + false,
                             'stat' => 1 + false,
                             'pict' => 'blank.png',
                             'syscreateuser' => $this->user + false,

@@ -186,4 +186,13 @@ class M_users extends CI_Model {
                 ->update('sys_users');
     }
 
+    public function _roleUser($role_name) {
+        $exec = $this->db->select('sys_roles.id')
+                ->from('sys_roles')
+                ->where('sys_roles.name', $role_name)
+                ->get()
+                ->row();
+        return $exec->name;
+    }
+
 }
