@@ -202,6 +202,9 @@
                         </div>
                         <div id="form_otp">
                             <div class="text-center my-4">
+                                <img class="img-fluid" src="<?php echo base_url('assets/images/a9b7f6aefbae556e99a8f5ffbea66844.png'); ?>" alt="login-img" style="width:286px;"/>
+                            </div>
+                            <div class="text-center my-4">
                                 Mohon cek kotak spam jika kode OTP tidak ada dalam kotak masuk.
                             </div>
                             <div class="row">

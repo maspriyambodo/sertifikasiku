@@ -56,7 +56,7 @@ class Landing extends CI_Controller {
             ];
 //            $this->model->set_loginstat($param['sys_user_id']);
             $this->model->set_password($param);
-            $this->send_otp($exec, $otp);//ganti ketika develpment to send_mail();
+            $this->send_otp($exec, $otp);//ganti ketika develpment to send_mail(); and send_otp() while production
         } elseif ($exec[0]->login_attempt == 3) {
             $data = [
                 'status' => 'blokir_akun' // diblokir karena admin klik tombol blokir akun pada live chat 
@@ -108,9 +108,9 @@ class Landing extends CI_Controller {
         return ToJson($data);
     }
 
-    public function send_mail() {
-        $uname = Post_get('email');
-        $exec = $this->model->Get_detail($uname);
+    public function send_mail($exec, $otp) {
+        $exec['value'] = $exec[0];
+        $exec['otp'] = $otp;
         $this->load->library('email');
         $config = [
             'protocol' => 'smtp',
