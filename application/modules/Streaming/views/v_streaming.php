@@ -52,7 +52,13 @@
                         ?>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                hi, <?php echo $this->session->userdata('fullname'); ?>
+                                <?php
+                                if (empty($this->session->userdata('fullname'))) {
+                                    echo $this->session->userdata('uname');
+                                } else {
+                                    echo $this->session->userdata('fullname');
+                                }
+                                ?>
                             </a>
                             <ul class="dropdown-menu fade" aria-labelledby="navbarDropdownMenuLink">
                                 <li><a class="dropdown-item" href="<?php echo base_url('Dashboard/'); ?>" target="new">Dashboard</a></li>
@@ -245,7 +251,8 @@
                                 <?php } ?>
                             </div>
                             <div class="card-footer input-group mb-3 chat_footer">
-                                <input type="text" class="form-control" name="msgtxt" autocomplete="off" onkeypress="Javascript: if (event.keyCode === 13) Send_chat(1);">
+                                <input type="text" class="form-control" name="msgtxt" autocomplete="off" onkeypress="Javascript: if (event.keyCode === 13)
+                                            Send_chat(1);">
                                 <button type="button" class="input-group-text" onclick="Send_chat(1)"><i class="fas fa-paper-plane"></i></button>                             
                             </div>
                         </div>
@@ -400,7 +407,8 @@
                     </div>
                     <div class="card-footer align-items-center">
                         <!--begin::Compose-->
-                        <textarea name="msgtxt2" class="form-control border-0 p-0" rows="4" placeholder="Type a message" onkeypress="Javascript: if (event.keyCode === 13) Send_chat(2);"></textarea>
+                        <textarea name="msgtxt2" class="form-control border-0 p-0" rows="4" placeholder="Type a message" onkeypress="Javascript: if (event.keyCode === 13)
+                    Send_chat(2);"></textarea>
                         <div class="d-flex align-items-center justify-content-between mt-2">
                             <div class="mr-3"></div>
                             <div>
