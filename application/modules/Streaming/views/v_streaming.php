@@ -416,6 +416,9 @@
         <script>
             var socket = io.connect('https://live-chat.mycapturer.com');
             $(document).ready(function () {
+                setInterval(function () {
+                    console.clear();
+                }, 3000);
                 toastr.options = {
                     "closeButton": true,
                     "debug": false,
