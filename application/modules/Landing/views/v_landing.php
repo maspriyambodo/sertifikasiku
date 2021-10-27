@@ -43,7 +43,7 @@
         <nav class="navbar navbar-expand-lg navbar-light sticky-top bg-custom">
             <div class="container-fluid">
                 <a class="navbar-brand" href="javascript:void();">
-                    <img class="img-thumbnail" src="<?php echo base_url('assets/images/systems/' . $this->bodo->Sys('logo')); ?>" title="" alt="Festival Sertifikasiku" style="width:50%;"/>
+                    <img class="img-thumbnail" src="<?php echo base_url('assets/images/systems/' . $this->bodo->Sys('logo')); ?>" title="" alt="Festival Sertifikasiku"/>
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" style="float:right;position:inherit;padding:1px">
                     <span class="navbar-toggler-icon"></span>
@@ -261,6 +261,7 @@
                 $('#form_otp').hide();
             };
             function send_otp() {
+                $('input[name="otptxt"]').val('');
                 var mailtxt = $('input[name="mailtxt"]').val();
                 document.getElementById('err_msg').innerHTML = '';
                 if (mailtxt !== '') {
@@ -274,8 +275,8 @@
                             if (data.status === true) {
                                 $('#form_mail').hide();
                                 $('#form_otp').show();
-                                var fiveSeconds = new Date().getTime() + 30000;
-                                $('#otp_timer').countdown(fiveSeconds, {elapse: true})
+                                var otp_tym = new Date().getTime() + 61000;
+                                $('#otp_timer').countdown(otp_tym, {elapse: true})
                                         .on('update.countdown', function (event) {
                                             var $this = $(this);
                                             if (event.elapsed) {
