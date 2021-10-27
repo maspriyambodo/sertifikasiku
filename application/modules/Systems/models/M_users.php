@@ -193,7 +193,7 @@ class M_users extends CI_Model {
                 ->where('sys_roles.name', $role_name)
                 ->get()
                 ->row();
-        return $exec->name;
+        return $exec->id;
     }
 
 }
