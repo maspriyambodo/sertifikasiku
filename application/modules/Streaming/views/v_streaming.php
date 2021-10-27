@@ -574,19 +574,20 @@
                                 allowEnterKey: false,
                                 showLoaderOnConfirm: true,
                                 preConfirm: function (fullnametxt) {
-                                    return new Promise(function () {
-                                        $.ajax({
-                                            type: "GET",
-                                            url: "<?php echo base_url('Streaming/input_name?name='); ?>" + fullnametxt,
-                                            dataType: "json",
-                                            cache: false,
-                                            success: function (data) {
-                                                location.reload();
-                                            }
-                                        });
-                                    });
+                                    return fetch(`<?php echo base_url('Streaming/input_name?name='); ?>${fullnametxt}`)
+                                            .then(response => {
+                                                if (!response.ok) {
+                                                    throw new Error(response.statusText);
+                                                }
+                                                return response.json();
+                                            })
+                                            .catch(error => {
+                                                Swal.showValidationMessage(
+                                                        `Request failed: ${error}`
+                                                        );
+                                            });
                                 }
-                            }).then(() => {
+                            }).then((result) => {
                                 $('#main_webinar').empty();
                                 $('.second_webinar').empty();
                                 $('#chat_on_mobile').empty();

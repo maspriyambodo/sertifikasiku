@@ -138,6 +138,7 @@ class Streaming extends CI_Controller {
             'fullname' => $name
         ];
         $this->model->input_name($data);
+        return ToJson(['status' => true]);
     }
 
     public function enable_login() {
