@@ -5,16 +5,30 @@ defined('BASEPATH') OR exit('No direct script access allowed, are you trying to 
 class M_streaming extends CI_Model {
 
     public function Read_chat() {
+        $id_materi = $this->_getidMateri();
         $exec = $this->db->select('tr_chat.id, tr_chat.user_id, tr_chat.msg, tr_chat.syscreatedate, sys_users.uname,dt_users.nama AS fullname, sys_users.pict, sys_users.role_id,sys_roles.`name` AS role_name')
                 ->from('tr_chat')
                 ->join('sys_users', 'tr_chat.user_id = sys_users.id', 'LEFT')
                 ->join('dt_users', 'sys_users.id = dt_users.sys_user_id', 'LEFT')
                 ->join('sys_roles', 'sys_users.role_id = sys_roles.id', 'LEFT')
+                ->join('dt_materi', 'tr_chat.materi_id = dt_materi.id', 'LEFT')
                 ->where('DAY(tr_chat.syscreatedate)', 'DAY(CURDATE())', false)
+                ->where('`dt_materi`.`stat`', 1, false)
+                ->where('`tr_chat`.`materi_id`', $id_materi->id, false)
+                ->group_by('tr_chat.id')
                 ->order_by('tr_chat.id', 'ASC')
                 ->get()
                 ->result();
         return $exec;
+    }
+
+    private function _getidMateri() {
+        $id_materi = $this->db->select('dt_materi.id')
+                ->from('dt_materi')
+                ->where('`dt_materi`.`stat`', 1, false)
+                ->get()
+                ->row();
+        return $id_materi;
     }
 
     public function Insert_chat($data) {
@@ -61,7 +75,7 @@ class M_streaming extends CI_Model {
                 ->result();
         return $exec;
     }
-    
+
     public function Materi2() {
         $exec = $this->db->select('dt_materi.id AS id_materi,dt_materi.id_sesi,dt_materi.nama_materi,dt_materi.deskripsi,dt_materi.time_start,dt_materi.time_stop,dt_materi.link_video,mt_sesimateri.nama AS nama_sesi')
                 ->from('dt_materi')
