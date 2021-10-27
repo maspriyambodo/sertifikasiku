@@ -23,13 +23,7 @@
             <div class="container-fluid">
                 <a class="navbar-brand" href="javascript:void();">
                     <?php
-                    $img_brand = getimagesize(base_url('assets/images/systems/' . $this->bodo->Sys('logo')));
-                    // Array ( [0] => 167 [1] => 36 [2] => 3 [3] => width="167" height="36" [bits] => 8 [mime] => image/png );
-                    if ($img_brand[1] > 36) {
-                        echo '<img class="img-thumbnail" src="' . base_url('assets/images/systems/' . $this->bodo->Sys('logo')) . '" alt="Sertifikasiku logo" style="width:50%;"/>';
-                    } else {
-                        echo '<img class="img-thumbnail" src="' . base_url('assets/images/systems/' . $this->bodo->Sys('logo')) . '" alt="Sertifikasiku logo"/>';
-                    }
+                    echo '<img class="img-thumbnail" src="' . base_url('assets/images/systems/' . $this->bodo->Sys('logo')) . '" alt="Sertifikasiku logo"/>';
                     ?>
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" style="float:right;position:inherit;padding:1px;">
