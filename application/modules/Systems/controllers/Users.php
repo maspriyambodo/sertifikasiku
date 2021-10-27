@@ -334,8 +334,10 @@ class Users extends CI_Controller {
             $cek = $this->M_users->Cek_dulikat($value->uname);
             if ($cek > 0) {
                 unset($data[$key]);
+                unset($dt_user[$key]);
             } elseif (empty($data[$key]->uname)) {
                 unset($data[$key]);
+                unset($dt_user[$key]);
             }
         }
         if (!empty($data)) {

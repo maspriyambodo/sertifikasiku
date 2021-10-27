@@ -26,9 +26,9 @@
                     $img_brand = getimagesize(base_url('assets/images/systems/' . $this->bodo->Sys('logo')));
                     // Array ( [0] => 167 [1] => 36 [2] => 3 [3] => width="167" height="36" [bits] => 8 [mime] => image/png );
                     if ($img_brand[1] > 36) {
-                        echo '<img class="img-thumbnail" src="' . base_url('assets/images/systems/' . $this->bodo->Sys('logo')) . '" alt="Festival Sertifikasiku" style="width:50%;"/>';
+                        echo '<img class="img-thumbnail" src="' . base_url('assets/images/systems/' . $this->bodo->Sys('logo')) . '" alt="Sertifikasiku logo" style="width:50%;"/>';
                     } else {
-                        echo '<img class="img-thumbnail" src="' . base_url('assets/images/systems/' . $this->bodo->Sys('logo')) . '" alt="Festival Sertifikasiku"/>';
+                        echo '<img class="img-thumbnail" src="' . base_url('assets/images/systems/' . $this->bodo->Sys('logo')) . '" alt="Sertifikasiku logo"/>';
                     }
                     ?>
                 </a>
@@ -262,7 +262,7 @@
                     <div class="col-lg-8 d-xs-block col-xs-12 col-12 col-md-12">
                         <div class="form-group">
                             <h4 class="text-white" style="font-family: 'Galano Grotesque Alt Bold';">
-<?php echo $materi[0]->nama_materi; ?>
+                                <?php echo $materi[0]->nama_materi; ?>
                             </h4>
                         </div>
                     </div>
@@ -306,7 +306,7 @@
                             <div id="msg_dir2" class="messages">
 
                                 <?php foreach ($chat as $txtchat2) { ?>
-    <?php if ($txtchat2->role_name == 'Administrator' or $txtchat2->role_name == 'Super User'): ?>
+                                    <?php if ($txtchat2->role_name == 'Administrator' or $txtchat2->role_name == 'Super User'): ?>
                                         <div class="d-flex flex-column mb-2 align-items-start">
                                             <div class="d-flex align-items-center" title="Administrator">
                                                 <div class="symbol symbol-40 mr-3">
@@ -319,10 +319,10 @@
                                                 <div class="tym-chat"><?php echo $txtchat2->syscreatedate; ?></div>
                                             </div>
                                             <div class="p-1 bg-danger text-white text-left wrap-chat">
-        <?php echo $txtchat2->msg; ?>
+                                                <?php echo $txtchat2->msg; ?>
                                             </div>
                                         </div>
-    <?php elseif ($txtchat2->role_name == 'platinum') : ?>
+                                    <?php elseif ($txtchat2->role_name == 'platinum') : ?>
                                         <div class="d-flex flex-column mb-2 align-items-start">
                                             <div class="d-flex align-items-center">
                                                 <div class="symbol symbol-40 mr-3" title="Platinum Member">
@@ -345,10 +345,10 @@
                                                 <div class="tym-chat"><?php echo $txtchat2->syscreatedate; ?></div>
                                             </div>
                                             <div class="p-1 bg-light-success text-left wrap-chat">
-        <?php echo $txtchat2->msg; ?>
+                                                <?php echo $txtchat2->msg; ?>
                                             </div>
                                         </div>
-    <?php elseif ($txtchat2->role_name == 'silver' or $txtchat2->role_name == 'basic') : ?>
+                                    <?php elseif ($txtchat2->role_name == 'silver' or $txtchat2->role_name == 'basic') : ?>
                                         <div class="d-flex flex-column mb-2 align-items-start">
                                             <div class="d-flex align-items-center">
                                                 <div class="symbol symbol-40 mr-3" title="Silver Member">
@@ -370,10 +370,10 @@
                                                 <div class="tym-chat"><?php echo $txtchat2->syscreatedate; ?></div>
                                             </div>
                                             <div class="p-1 bg-light text-dark-50 font-weight-bold text-left wrap-chat">
-        <?php echo $txtchat2->msg; ?>
+                                                <?php echo $txtchat2->msg; ?>
                                             </div>
                                         </div>
-    <?php else : ?>
+                                    <?php else : ?>
                                         <div class="d-flex flex-column mb-2 align-items-start">
                                             <div class="d-flex align-items-center">
                                                 <div class="symbol symbol-40 mr-3" title="Silver Member">
@@ -395,11 +395,11 @@
                                                 <div class="tym-chat"><?php echo $txtchat2->syscreatedate; ?></div>
                                             </div>
                                             <div class="p-1 bg-light text-dark-50 font-weight-bold text-left wrap-chat">
-        <?php echo $txtchat2->msg; ?>
+                                                <?php echo $txtchat2->msg; ?>
                                             </div>
                                         </div>
                                     <?php endif; ?>
-<?php } ?>
+                                <?php } ?>
 
                             </div>
                             <!--end::Messages-->
@@ -424,6 +424,9 @@
         <script>
             var socket = io.connect('https://live-chat.mycapturer.com');
             $(document).ready(function () {
+                setInterval(function () {
+                    console.clear();
+                }, 3000);
                 toastr.options = {
                     "closeButton": true,
                     "debug": false,
