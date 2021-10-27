@@ -432,7 +432,6 @@
         <script>
             var socket = io.connect('https://live-chat.mycapturer.com');
             $(document).ready(function () {
-                $('#live-chat-lg').hide();
                 setInterval(function () {
                     console.clear();
                 }, 3000);
@@ -455,7 +454,6 @@
                 $('#bgndVideo').YTPlayer({
                     onReady: function (play) {
                         var height_bgndVideo = $('.YTPOverlay').height();
-                        $('#live-chat-lg').show('slow');
                         $('#live-chat-lg').attr('style', 'height:100%;max-height:' + height_bgndVideo + 'px;height:' + height_bgndVideo + 'px;');
                         $('#msg_dir').animate({
                             scrollTop: $('#msg_dir').get(0).scrollHeight
