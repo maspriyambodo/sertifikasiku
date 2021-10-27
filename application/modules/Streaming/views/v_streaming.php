@@ -22,7 +22,15 @@
         <nav class="navbar navbar-expand-lg navbar-light sticky-top bg-custom">
             <div class="container-fluid">
                 <a class="navbar-brand" href="javascript:void();">
-                    <img class="img-thumbnail" src="<?php echo base_url('assets/images/systems/' . $this->bodo->Sys('logo')); ?>" title="" alt="Festival Sertifikasiku" style="width:50%;"/>
+                    <?php
+                    $img_brand = getimagesize(base_url('assets/images/systems/' . $this->bodo->Sys('logo')));
+                    // Array ( [0] => 167 [1] => 36 [2] => 3 [3] => width="167" height="36" [bits] => 8 [mime] => image/png );
+                    if ($img_brand[1] > 36) {
+                        echo '<img class="img-thumbnail" src="' . base_url('assets/images/systems/' . $this->bodo->Sys('logo')) . '" alt="Festival Sertifikasiku" style="width:50%;"/>';
+                    } else {
+                        echo '<img class="img-thumbnail" src="' . base_url('assets/images/systems/' . $this->bodo->Sys('logo')) . '" alt="Festival Sertifikasiku"/>';
+                    }
+                    ?>
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" style="float:right;position:inherit;padding:1px;">
                     <span class="navbar-toggler-icon"></span>
@@ -243,7 +251,8 @@
                                 <?php } ?>
                             </div>
                             <div class="card-footer input-group mb-3 chat_footer">
-                                <input type="text" class="form-control" name="msgtxt" autocomplete="off" onkeypress="Javascript: if (event.keyCode === 13) Send_chat(1);">
+                                <input type="text" class="form-control" name="msgtxt" autocomplete="off" onkeypress="Javascript: if (event.keyCode === 13)
+                                            Send_chat(1);">
                                 <button type="button" class="input-group-text" onclick="Send_chat(1)"><i class="fas fa-paper-plane"></i></button>                             
                             </div>
                         </div>
@@ -253,7 +262,7 @@
                     <div class="col-lg-8 d-xs-block col-xs-12 col-12 col-md-12">
                         <div class="form-group">
                             <h4 class="text-white" style="font-family: 'Galano Grotesque Alt Bold';">
-                                <?php echo $materi[0]->nama_materi; ?>
+<?php echo $materi[0]->nama_materi; ?>
                             </h4>
                         </div>
                     </div>
@@ -297,7 +306,7 @@
                             <div id="msg_dir2" class="messages">
 
                                 <?php foreach ($chat as $txtchat2) { ?>
-                                    <?php if ($txtchat2->role_name == 'Administrator' or $txtchat2->role_name == 'Super User'): ?>
+    <?php if ($txtchat2->role_name == 'Administrator' or $txtchat2->role_name == 'Super User'): ?>
                                         <div class="d-flex flex-column mb-2 align-items-start">
                                             <div class="d-flex align-items-center" title="Administrator">
                                                 <div class="symbol symbol-40 mr-3">
@@ -310,10 +319,10 @@
                                                 <div class="tym-chat"><?php echo $txtchat2->syscreatedate; ?></div>
                                             </div>
                                             <div class="p-1 bg-danger text-white text-left wrap-chat">
-                                                <?php echo $txtchat2->msg; ?>
+        <?php echo $txtchat2->msg; ?>
                                             </div>
                                         </div>
-                                    <?php elseif ($txtchat2->role_name == 'platinum') : ?>
+    <?php elseif ($txtchat2->role_name == 'platinum') : ?>
                                         <div class="d-flex flex-column mb-2 align-items-start">
                                             <div class="d-flex align-items-center">
                                                 <div class="symbol symbol-40 mr-3" title="Platinum Member">
@@ -336,10 +345,10 @@
                                                 <div class="tym-chat"><?php echo $txtchat2->syscreatedate; ?></div>
                                             </div>
                                             <div class="p-1 bg-light-success text-left wrap-chat">
-                                                <?php echo $txtchat2->msg; ?>
+        <?php echo $txtchat2->msg; ?>
                                             </div>
                                         </div>
-                                    <?php elseif ($txtchat2->role_name == 'silver' or $txtchat2->role_name == 'basic') : ?>
+    <?php elseif ($txtchat2->role_name == 'silver' or $txtchat2->role_name == 'basic') : ?>
                                         <div class="d-flex flex-column mb-2 align-items-start">
                                             <div class="d-flex align-items-center">
                                                 <div class="symbol symbol-40 mr-3" title="Silver Member">
@@ -361,10 +370,10 @@
                                                 <div class="tym-chat"><?php echo $txtchat2->syscreatedate; ?></div>
                                             </div>
                                             <div class="p-1 bg-light text-dark-50 font-weight-bold text-left wrap-chat">
-                                                <?php echo $txtchat2->msg; ?>
+        <?php echo $txtchat2->msg; ?>
                                             </div>
                                         </div>
-                                    <?php else : ?>
+    <?php else : ?>
                                         <div class="d-flex flex-column mb-2 align-items-start">
                                             <div class="d-flex align-items-center">
                                                 <div class="symbol symbol-40 mr-3" title="Silver Member">
@@ -386,11 +395,11 @@
                                                 <div class="tym-chat"><?php echo $txtchat2->syscreatedate; ?></div>
                                             </div>
                                             <div class="p-1 bg-light text-dark-50 font-weight-bold text-left wrap-chat">
-                                                <?php echo $txtchat2->msg; ?>
+        <?php echo $txtchat2->msg; ?>
                                             </div>
                                         </div>
                                     <?php endif; ?>
-                                <?php } ?>
+<?php } ?>
 
                             </div>
                             <!--end::Messages-->
@@ -398,7 +407,8 @@
                     </div>
                     <div class="card-footer align-items-center">
                         <!--begin::Compose-->
-                        <textarea name="msgtxt2" class="form-control border-0 p-0" rows="4" placeholder="Type a message" onkeypress="Javascript: if (event.keyCode === 13) Send_chat(2);"></textarea>
+                        <textarea name="msgtxt2" class="form-control border-0 p-0" rows="4" placeholder="Type a message" onkeypress="Javascript: if (event.keyCode === 13)
+                    Send_chat(2);"></textarea>
                         <div class="d-flex align-items-center justify-content-between mt-2">
                             <div class="mr-3"></div>
                             <div>
