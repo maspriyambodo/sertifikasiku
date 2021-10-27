@@ -3,7 +3,7 @@
         <div class="card-body">
             <form action="<?php echo site_url('Master/Materi/Update/'); ?>" method="post">
                 <input type="hidden" name="<?php echo $csrf['name'] ?>" value="<?php echo $csrf['hash'] ?>"/>
-                <input type="hidden" name="id" value="<?= $id; ?>"/>
+                <input type="hidden" name="e_id" value="<?= $id; ?>"/>
                 <div class="row">
                     <div class="col-md-2">
                         <div class="form-group">
