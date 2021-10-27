@@ -216,7 +216,7 @@ class Systems extends CI_Controller {
             'pict' => $pict['file_name'],
             'provinsi' => $address_provinsi
         ];
-        $this->Save_profile($data);
+        return $this->Save_profile($data);
     }
 
     private function Save_profile($param) {
@@ -232,6 +232,7 @@ class Systems extends CI_Controller {
                 'nama' => Post_input('nama_lengkap'),
                 'jenis_kelamin' => Post_input('gender'),
                 'id_number' => Post_input('id_num'),
+                'pekerjaan' => Post_input('kerjatxt'),
                 'lahir_1' => Post_input('place_born'),
                 'lahir_2' => Post_input('date_birth'),
                 'address_1' => Post_input('alamat'),
