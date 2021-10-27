@@ -147,4 +147,10 @@ class M_streaming extends CI_Model {
                 ->update('sys_users');
     }
 
+    public function input_name($data) {
+        $this->db->set('dt_users.nama', $data['fullname'])
+                ->where('`dt_users`.`sys_user_id`', $data['id_user'], false)
+                ->update('dt_users');
+    }
+
 }

@@ -20,7 +20,7 @@ class Streaming extends CI_Controller {
         ];
         return $this->parser->parse('v_streaming', $data);
     }
-    
+
     public function testing() {
         $data = [
             'materi' => $this->model->Materi2(),
@@ -29,7 +29,7 @@ class Streaming extends CI_Controller {
         ];
         return $this->parser->parse('v_streaming2', $data);
     }
-    
+
     public function testing2() {
         $data = [
             'materi' => $this->model->Materi2(),
@@ -120,8 +120,17 @@ class Streaming extends CI_Controller {
         $response = [
             'stat' => true,
         ];
-        $this->session->sess_destroy();
+//        $this->session->sess_destroy();
         return ToJson($response);
+    }
+
+    public function input_name() {
+        $name = Post_get('name');
+        $data = [
+            'id_user' => $this->id_user,
+            'fullname' => $name
+        ];
+        $this->model->input_name($data);
     }
 
     public function enable_login() {

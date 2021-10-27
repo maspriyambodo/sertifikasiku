@@ -418,9 +418,6 @@
         <script>
             var socket = io.connect('https://live-chat.mycapturer.com');
             $(document).ready(function () {
-                setInterval(function () {
-                    console.clear();
-                }, 3000);
                 toastr.options = {
                     "closeButton": true,
                     "debug": false,
@@ -529,10 +526,10 @@
                         scrollTop: $('#scroll-pull').get(0).scrollHeight
                     });
                 });
-                socket.on('absensi', function (data) {
+                socket.on('absensi', function () {
                     var id_materi = $('input[name="id_materi"]').val();
-                    var fullname = $('input[name="fullname"]').val();
                     var role_name = $('input[name="role_name"]').val();
+                    var fullname = $('input[name="fullname"]').val();
                     if (role_name === 'Super User' || role_name === 'Administrator') {
 
                     } else {
@@ -545,26 +542,58 @@
 
                             }
                         });
-                        Swal.fire({
-                            title: 'Absensi',
-                            html: 'Halo, terimakasih telah mengikuti ' + $('input[name="nama_materi"]').val() + '.<br> <small class="text-info">harap masukkan nama lengkap untuk memperoleh e-sertifikat.</small><input name="fullnametxt" type="text" autofocus class="form-control mt-4" required="" placeholder="Nama Lengkap"/>',
-                            icon: 'info',
-                            confirmButtonText: 'HADIR',
-                            allowOutsideClick: false,
-                            allowEscapeKey: false,
-                            allowEnterKey: true
-                        }).then((result) => {
-                            $('#main_webinar').empty();
-                            $('.second_webinar').empty();
-                            $('#chat_on_mobile').empty();
-                            $('#kt_chat_modol').empty();
-                            var fullnametxt = $('input[name="fullnametxt"]').val();
-                            if (!fullnametxt) {
-                                return false;
-                            } else {
-                                window.location.href = "<?php echo base_url('Auth/Logout/'); ?>";
-                            }
-                        });
+                        if (fullname === '') {
+                            Swal.fire({
+                                title: 'Absensi',
+                                html: 'Halo, terimakasih telah mengikuti ' + $('input[name="nama_materi"]').val() + '.<br> <small class="text-info">harap masukkan nama lengkap untuk memperoleh e-sertifikat.</small>',
+                                icon: 'info',
+                                input: 'text',
+                                inputAttributes: {
+                                    placeholder: 'Nama Lengkap',
+                                    required: ''
+                                },
+                                confirmButtonText: 'HADIR',
+                                allowOutsideClick: false,
+                                allowEscapeKey: false,
+                                allowEnterKey: false,
+                                showLoaderOnConfirm: true,
+                                preConfirm: function (fullnametxt) {
+                                    return new Promise(function () {
+                                        $.ajax({
+                                            type: "GET",
+                                            url: "<?php echo base_url('Streaming/input_name?name='); ?>" + fullnametxt,
+                                            dataType: "json",
+                                            cache: false,
+                                            success: function (data) {
+
+                                            }
+                                        });
+                                    });
+                                }
+                            }).then(() => {
+                                $('#main_webinar').empty();
+                                $('.second_webinar').empty();
+                                $('#chat_on_mobile').empty();
+                                $('#kt_chat_modol').empty();
+                                location.reload();
+                            });
+                        } else {
+                            Swal.fire({
+                                title: 'Absensi',
+                                html: 'Halo, <b>' + fullname + '</b>, terimakasih telah mengikuti ' + $('input[name="nama_materi"]').val(),
+                                icon: 'info',
+                                confirmButtonText: 'HADIR',
+                                allowOutsideClick: false,
+                                allowEscapeKey: false,
+                                allowEnterKey: true
+                            }).then(() => {
+                                $('#main_webinar').empty();
+                                $('.second_webinar').empty();
+                                $('#chat_on_mobile').empty();
+                                $('#kt_chat_modol').empty();
+                                location.reload();
+                            });
+                        }
                     }
                 });
                 socket.on('<?php echo base64_encode($this->session->userdata('uname')); ?>', function (data) {
