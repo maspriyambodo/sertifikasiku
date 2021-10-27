@@ -452,9 +452,14 @@
                 };
                 $('#bgndVideo').YTPlayer({
                     onReady: function (play) {
-
                         var height_bgndVideo = $('.YTPOverlay').height();
                         $('#live-chat-lg').attr('style', 'height:100%;max-height:' + height_bgndVideo + 'px;height:' + height_bgndVideo + 'px;');
+                        $('#msg_dir').animate({
+                            scrollTop: $('#msg_dir').get(0).scrollHeight
+                        });
+                        $('#scroll-pull').animate({
+                            scrollTop: $('#scroll-pull').get(0).scrollHeight
+                        });
                     },
                     onError: function (play) {
                         toastr.error('error while getting video');
