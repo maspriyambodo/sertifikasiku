@@ -40,7 +40,7 @@
     </head>
     <body>
         <input type="hidden" name="<?php echo $csrf['name'] ?>" value="<?php echo $csrf['hash'] ?>"/>
-        <nav class="navbar navbar-expand-lg navbar-light sticky-top bg-custom">
+        <nav class="navbar navbar-expand-lg navbar-light fixed-top bg-custom">
             <div class="container-fluid">
                 <a class="navbar-brand" href="javascript:void();">
                     <img class="img-thumbnail" src="<?php echo base_url('assets/images/systems/' . $this->bodo->Sys('logo')); ?>" title="" alt="Festival Sertifikasiku"/>
