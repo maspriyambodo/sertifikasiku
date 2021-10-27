@@ -19,7 +19,7 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.1.7/sweetalert2.min.css" integrity="sha512-cyIcYOviYhF0bHIhzXWJQ/7xnaBuIIOecYoPZBgJHQKFPo+TOBA+BY1EnTpmM8yKDU4ZdI3UGccNGCEUdfbBqw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     </head>
     <body>
-        <nav class="navbar navbar-expand-lg navbar-light sticky-top bg-custom">
+        <nav class="navbar navbar-expand-lg navbar-light fixed-top bg-custom">
             <div class="container-fluid">
                 <a class="navbar-brand" href="javascript:void();">
                     <?php
