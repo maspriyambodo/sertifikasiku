@@ -15,9 +15,10 @@ body{
     max-width: 95% !important;
 }
 .main_webinar{
+    padding-top:8%;
     background-image:url("./images/background_section_teaser-1.png");
     background-repeat: no-repeat;
-    background-size:auto;
+    background-size:cover;
     position:absolute;
     min-height:100%;
 }
