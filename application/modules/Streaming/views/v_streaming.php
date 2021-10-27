@@ -17,6 +17,7 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.css" integrity="sha512-6S2HWzVFxruDlZxI3sXOZZ4/eJ8AcxkQH1+JjSe/ONCEqR9L4Ysq5JdT5ipqtzU7WHalNwzwBv+iE51gNHJNqQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         <link rel="stylesheet" href="<?php echo base_url('assets/streaming.css'); ?>"/>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.1.7/sweetalert2.min.css" integrity="sha512-cyIcYOviYhF0bHIhzXWJQ/7xnaBuIIOecYoPZBgJHQKFPo+TOBA+BY1EnTpmM8yKDU4ZdI3UGccNGCEUdfbBqw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" integrity="sha512-c42qTSw/wPZ3/5LBzD+Bw5f7bSF2oxou6wEb+I/lqeaKV5FDIfMvvRp772y4jcJLKuGUOpbJMdg/BTl50fJYAw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     </head>
     <body>
         <nav class="navbar navbar-expand-lg navbar-light fixed-top bg-custom">
@@ -107,7 +108,7 @@
                                 }
                                 ?>
                             </a>
-                            <ul class="dropdown-menu fade" aria-labelledby="navbarDropdownMenuLink">
+                            <ul class="dropdown-menu animate__fadeIn" aria-labelledby="navbarDropdownMenuLink">
                                 <li><a class="dropdown-item" href="<?php echo base_url('Dashboard/'); ?>" target="new">Dashboard</a></li>
                                 <li><a class="dropdown-item" href="<?php echo base_url('Setting%20Profile'); ?>" target="new">Profile</a></li>
                                 <li><a class="dropdown-item" href="<?php echo base_url('Auth/Logout/'); ?>">Logout</a></li>
@@ -143,13 +144,13 @@
             <div class="container">
                 <div class="row pt-5">
                     <div id="height_video" class="col-lg-8 d-xs-block col-xs-12 col-12 col-md-12">
-                        <div id="bgndVideo" class="player" data-property="{videoURL:'<?php echo $materi[0]->link_video; ?>',containment:'self',vol:50,optimizeDisplay:false,showYTLogo:false}"></div>
+                        <div id="bgndVideo" class="player animate__fadeInLeft" data-property="{videoURL:'<?php echo $materi[0]->link_video; ?>',containment:'self',vol:50,optimizeDisplay:false,showYTLogo:false}"></div>
                         <!--                        <div class="form-group">
                                                     <span id="viewers"></span> sedang menonton
                                                 </div>-->
                     </div>
                     <div class="col-lg-4 d-none d-xl-block"><!-- d-sm-none d-xl-block -->
-                        <div id="live-chat-lg" class="card live-chat-lg">
+                        <div id="live-chat-lg" class="card live-chat-lg animate__fadeInRight">
                             <div class="card-header">
                                 <div class="card-title">
                                     <div class="form-group text-muted">
@@ -431,7 +432,7 @@
         <script>
             var socket = io.connect('https://live-chat.mycapturer.com');
             $(document).ready(function () {
-                $('#live-chat-lg').attr('style', 'display:none;');
+                $('#live-chat-lg').hide();
                 setInterval(function () {
                     console.clear();
                 }, 3000);
@@ -454,7 +455,7 @@
                 $('#bgndVideo').YTPlayer({
                     onReady: function (play) {
                         var height_bgndVideo = $('.YTPOverlay').height();
-                        $('#live-chat-lg').removeAttr('style');
+                        $('#live-chat-lg').show('slow');
                         $('#live-chat-lg').attr('style', 'height:100%;max-height:' + height_bgndVideo + 'px;height:' + height_bgndVideo + 'px;');
                         $('#msg_dir').animate({
                             scrollTop: $('#msg_dir').get(0).scrollHeight
