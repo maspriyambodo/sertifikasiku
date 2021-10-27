@@ -54,9 +54,9 @@
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 <?php
                                 if (empty($this->session->userdata('fullname'))) {
-                                    echo $this->session->userdata('uname');
+                                    echo 'hi, ' . $this->session->userdata('uname');
                                 } else {
-                                    echo $this->session->userdata('fullname');
+                                    echo 'hi, ' . $this->session->userdata('fullname');
                                 }
                                 ?>
                             </a>
@@ -98,7 +98,13 @@
                         ?>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle btn btn-light" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color:#214980 !important;">
-                                hi, <?php echo $this->session->userdata('fullname'); ?>
+                                <?php
+                                if (empty($this->session->userdata('fullname'))) {
+                                    echo 'hi, ' . $this->session->userdata('uname');
+                                } else {
+                                    echo 'hi, ' . $this->session->userdata('fullname');
+                                }
+                                ?>
                             </a>
                             <ul class="dropdown-menu fade" aria-labelledby="navbarDropdownMenuLink">
                                 <li><a class="dropdown-item" href="<?php echo base_url('Dashboard/'); ?>" target="new">Dashboard</a></li>
