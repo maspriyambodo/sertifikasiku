@@ -5,7 +5,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class M_users extends CI_Model {
 
     var $table = 'sys_users';
-    var $column_order = array(null, 'uname', 'role_id', 'stat', 'name'); //set column field database for datatable orderable
+    var $column_order = array('id', 'uname', 'name', null, null); //set column field database for datatable orderable
     var $column_search = array('uname', 'name'); //set column field database for datatable searchable 
     var $order = array('id' => 'asc'); // default order 
 
