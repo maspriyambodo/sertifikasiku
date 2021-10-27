@@ -185,7 +185,7 @@
                                                     <?php echo '<img src="' . base_url('assets/images/users/' . $txtchat->pict) . '" class="rounded-circle" alt="' . $txtchat->uname . '"/>'; ?>
                                                 </div>
                                                 <div class="mx-2 bg-dark px-2 rounded" title="Platinum Member">
-                                                    <a href="javascript:void(0);" class="text-white font-weight-bold font-size-h6" style="text-decoration:none;"><?php echo $txtchat->fullname; ?> </a>
+                                                    <a href="javascript:rep_chat('<?php echo $txtchat->fullname; ?>');" class="text-white font-weight-bold font-size-h6" style="text-decoration:none;"><?php echo $txtchat->fullname; ?> </a>
                                                     <span class="font-size-md"><i class="fas fa-crown text-warning" style="font-size:13px;"></i></span>
                                                 </div>
                                                 <?php
@@ -211,7 +211,7 @@
                                                     <?php echo '<img src="' . base_url('assets/images/users/' . $txtchat->pict) . '" class="rounded-circle" alt="' . $txtchat->uname . '"/>'; ?>
                                                 </div>
                                                 <div class="mx-2" title="<?php echo ucfirst($txtchat->role_name); ?> Member">
-                                                    <a href="javascript:void(0);" class="font-weight-bold font-size-h6" style="text-decoration:none;"><?php echo $txtchat->fullname; ?> </a>
+                                                    <a href="javascript:rep_chat('<?php echo $txtchat->fullname; ?>');" class="font-weight-bold font-size-h6" style="text-decoration:none;"><?php echo $txtchat->fullname; ?> </a>
                                                 </div>
                                                 <?php
                                                 if ($this->session->userdata('role_name') === 'Super User' or $this->session->userdata('role_name') === 'Administrator') {
@@ -236,7 +236,7 @@
                                                     <?php echo '<img src="' . base_url('assets/images/users/' . $txtchat->pict) . '" class="rounded-circle" alt="' . $txtchat->uname . '"/>'; ?>
                                                 </div>
                                                 <div class="mx-2" title="<?php echo ucfirst($txtchat->role_name); ?> Member">
-                                                    <a href="javascript:void(0);" class="font-weight-bold font-size-h6" style="text-decoration:none;"><?php echo $txtchat->fullname; ?> </a>
+                                                    <a href="javascript:rep_chat('<?php echo $txtchat->fullname; ?>');" class="font-weight-bold font-size-h6" style="text-decoration:none;"><?php echo $txtchat->fullname; ?> </a>
                                                 </div>
                                                 <?php
                                                 if ($this->session->userdata('role_name') === 'Super User' or $this->session->userdata('role_name') === 'Administrator') {
@@ -336,7 +336,7 @@
                                                     <img class="rounded-circle" alt="<?php echo $txtchat2->uname; ?>" src="<?php echo base_url('assets/images/users/' . $txtchat2->pict); ?>">
                                                 </div>
                                                 <div class="mx-2 bg-dark px-2 rounded" title="Platinum Member">
-                                                    <a href="javascript:void(0);" class="text-white font-size-h6" style="text-decoration:none;"><?php echo $txtchat2->fullname; ?> </a>
+                                                    <a href="javascript:rep_chat('<?php echo $txtchat2->fullname; ?>');" class="text-white font-size-h6" style="text-decoration:none;"><?php echo $txtchat2->fullname; ?> </a>
                                                     <span class="font-size-md"><i class="fas fa-crown text-warning" style="font-size:14px;"></i></span>
                                                 </div>
                                                 <?php
@@ -362,7 +362,7 @@
                                                     <img class="rounded-circle" alt="<?php echo $txtchat2->uname; ?>" src="<?php echo base_url('assets/images/users/' . $txtchat2->pict); ?>">
                                                 </div>
                                                 <div class="mx-2" title="Silver Member">
-                                                    <a href="javascript:void(0);" class="font-size-h6" style="text-decoration:none;"><?php echo $txtchat2->fullname; ?> </a>
+                                                    <a href="javascript:rep_chat('<?php echo $txtchat2->fullname; ?>');" class="font-size-h6" style="text-decoration:none;"><?php echo $txtchat2->fullname; ?> </a>
                                                 </div>
                                                 <?php
                                                 if ($this->session->userdata('role_name') === 'Super User' or $this->session->userdata('role_name') === 'Administrator') {
@@ -387,7 +387,7 @@
                                                     <img class="rounded-circle" alt="<?php echo $txtchat2->uname; ?>" src="<?php echo base_url('assets/images/users/' . $txtchat2->pict); ?>">
                                                 </div>
                                                 <div class="mx-2" title="Silver Member">
-                                                    <a href="javascript:void(0);" class="font-size-h6" style="text-decoration:none;"><?php echo $txtchat2->fullname; ?> </a>
+                                                    <a href="javascript:rep_chat('<?php echo $txtchat2->fullname; ?>');" class="font-size-h6" style="text-decoration:none;"><?php echo $txtchat2->fullname; ?> </a>
                                                 </div>
                                                 <?php
                                                 if ($this->session->userdata('role_name') === 'Super User' or $this->session->userdata('role_name') === 'Administrator') {
@@ -431,6 +431,7 @@
         <script>
             var socket = io.connect('https://live-chat.mycapturer.com');
             $(document).ready(function () {
+                $('#live-chat-lg').attr('style', 'display:none;');
                 setInterval(function () {
                     console.clear();
                 }, 3000);
@@ -453,6 +454,7 @@
                 $('#bgndVideo').YTPlayer({
                     onReady: function (play) {
                         var height_bgndVideo = $('.YTPOverlay').height();
+                        $('#live-chat-lg').removeAttr('style');
                         $('#live-chat-lg').attr('style', 'height:100%;max-height:' + height_bgndVideo + 'px;height:' + height_bgndVideo + 'px;');
                         $('#msg_dir').animate({
                             scrollTop: $('#msg_dir').get(0).scrollHeight
@@ -771,6 +773,10 @@
                         });
                     }
                 }
+            }
+            function rep_chat(uname) {
+                $('input[name="msgtxt"]').val('@' + uname + ' ');
+                $('textarea[name="msgtxt2"]').val('@' + uname + ' ');
             }
         </script>
         <?php
