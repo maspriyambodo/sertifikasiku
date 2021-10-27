@@ -547,7 +547,7 @@
                         });
                         Swal.fire({
                             title: 'Absensi',
-                            html: 'Halo, <b>' + fullname + '</b>, terimakasih telah mengikuti ' + $('input[name="nama_materi"]').val(),
+                            html: 'Halo, terimakasih telah mengikuti ' + $('input[name="nama_materi"]').val() + '.<br> <small class="text-info">harap masukkan nama lengkap untuk memperoleh e-sertifikat.</small><input name="fullnametxt" type="text" autofocus class="form-control mt-4" required="" placeholder="Nama Lengkap"/>',
                             icon: 'info',
                             confirmButtonText: 'HADIR',
                             allowOutsideClick: false,
@@ -558,7 +558,12 @@
                             $('.second_webinar').empty();
                             $('#chat_on_mobile').empty();
                             $('#kt_chat_modol').empty();
-                            window.location.href = "<?php echo base_url('Auth/Logout/'); ?>";
+                            var fullnametxt = $('input[name="fullnametxt"]').val();
+                            if (!fullnametxt) {
+                                return false;
+                            } else {
+                                window.location.href = "<?php echo base_url('Auth/Logout/'); ?>";
+                            }
                         });
                     }
                 });
@@ -648,7 +653,6 @@
                                     toastr.warning('sistem kami mendeteksi kata-kata tidak pantas, anda akan mendapatkan hukuman jika ');
                                 }
                                 if (data.success === true) {
-
                                     socket.emit('new_message', {
                                         username: data.uname,
                                         fullname: data.fullname,

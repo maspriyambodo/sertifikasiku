@@ -286,7 +286,6 @@
                                                 $('#otp_resend').removeAttr('href');
                                             }
                                         });
-                                        $('input[name="otptxt"]').val('');
                             } else if (data.status === 'blokir_akun') {
                                 $('.send_otp').removeAttr('disabled');
                                 document.getElementById('err_msg').innerHTML = 'akun anda diblokir, harap hubungi admin!';
