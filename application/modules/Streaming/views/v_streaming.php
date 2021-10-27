@@ -185,7 +185,7 @@
                                                     null;
                                                 }
                                                 ?>
-                                                <div class="tym-chat"><?php echo $txtchat->syscreatedate; ?></div>
+                                                <div class="tym-chat"><?php echo date('H:i', strtotime($txtchat->syscreatedate)); ?></div>
                                             </div>
                                             <div class="p-1 bg-light-success text-left wrap-chat">
                                                 <?php echo $txtchat->msg; ?>
@@ -210,7 +210,7 @@
                                                     null;
                                                 }
                                                 ?>
-                                                <div class="tym-chat"><?php echo $txtchat->syscreatedate; ?></div>
+                                                <div class="tym-chat"><?php echo date('H:i', strtotime($txtchat->syscreatedate)); ?></div>
                                             </div>
                                             <div class="p-1 bg-light text-dark-50 font-weight-bold text-left wrap-chat">
                                                 <?php echo $txtchat->msg; ?>
@@ -235,7 +235,7 @@
                                                     null;
                                                 }
                                                 ?>
-                                                <div class="tym-chat"><?php echo $txtchat->syscreatedate; ?></div>
+                                                <div class="tym-chat"><?php echo date('H:i', strtotime($txtchat->syscreatedate)); ?></div>
                                             </div>
                                             <div class="p-1 bg-light text-dark-50 font-weight-bold text-left wrap-chat">
                                                 <?php echo $txtchat->msg; ?>
@@ -245,8 +245,7 @@
                                 <?php } ?>
                             </div>
                             <div class="card-footer input-group mb-3 chat_footer">
-                                <input type="text" class="form-control" name="msgtxt" autocomplete="off" onkeypress="Javascript: if (event.keyCode === 13)
-                                            Send_chat(1);">
+                                <input type="text" class="form-control" name="msgtxt" autocomplete="off" onkeypress="Javascript: if (event.keyCode === 13) Send_chat(1);">
                                 <button type="button" class="input-group-text" onclick="Send_chat(1)"><i class="fas fa-paper-plane"></i></button>                             
                             </div>
                         </div>
@@ -310,7 +309,7 @@
                                                     <a href="javascript:void(0);" class="text-danger font-weight-bold font-size-h6" style="text-decoration:none;"><?php echo $txtchat2->uname; ?> </a>
                                                     <span class="text-muted font-size-sm"><i class="fas fa-user-shield text-danger"></i></span>
                                                 </div>
-                                                <div class="tym-chat"><?php echo $txtchat2->syscreatedate; ?></div>
+                                                <div class="tym-chat"><?php echo date('H:i', strtotime($txtchat2->syscreatedate)); ?></div>
                                             </div>
                                             <div class="p-1 bg-danger text-white text-left wrap-chat">
                                                 <?php echo $txtchat2->msg; ?>
@@ -336,7 +335,7 @@
                                                     null;
                                                 }
                                                 ?>
-                                                <div class="tym-chat"><?php echo $txtchat2->syscreatedate; ?></div>
+                                                <div class="tym-chat"><?php echo date('H:i', strtotime($txtchat2->syscreatedate)); ?></div>
                                             </div>
                                             <div class="p-1 bg-light-success text-left wrap-chat">
                                                 <?php echo $txtchat2->msg; ?>
@@ -361,7 +360,7 @@
                                                     null;
                                                 }
                                                 ?>
-                                                <div class="tym-chat"><?php echo $txtchat2->syscreatedate; ?></div>
+                                                <div class="tym-chat"><?php echo date('H:i', strtotime($txtchat2->syscreatedate)); ?></div>
                                             </div>
                                             <div class="p-1 bg-light text-dark-50 font-weight-bold text-left wrap-chat">
                                                 <?php echo $txtchat2->msg; ?>
@@ -386,7 +385,7 @@
                                                     null;
                                                 }
                                                 ?>
-                                                <div class="tym-chat"><?php echo $txtchat2->syscreatedate; ?></div>
+                                                <div class="tym-chat"><?php echo date('H:i', strtotime($txtchat2->syscreatedate)); ?></div>
                                             </div>
                                             <div class="p-1 bg-light text-dark-50 font-weight-bold text-left wrap-chat">
                                                 <?php echo $txtchat2->msg; ?>
@@ -401,8 +400,7 @@
                     </div>
                     <div class="card-footer align-items-center">
                         <!--begin::Compose-->
-                        <textarea name="msgtxt2" class="form-control border-0 p-0" rows="4" placeholder="Type a message" onkeypress="Javascript: if (event.keyCode === 13)
-                    Send_chat(2);"></textarea>
+                        <textarea name="msgtxt2" class="form-control border-0 p-0" rows="4" placeholder="Type a message" onkeypress="Javascript: if (event.keyCode === 13) Send_chat(2);"></textarea>
                         <div class="d-flex align-items-center justify-content-between mt-2">
                             <div class="mr-3"></div>
                             <div>
