@@ -54,7 +54,8 @@
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 <?php
                                 if (empty($this->session->userdata('fullname'))) {
-                                    echo 'hi, ' . $this->session->userdata('uname');
+                                    $nickname = explode('@', $this->session->userdata('uname'));
+                                    echo 'hi, ' . $nickname[0];
                                 } else {
                                     echo 'hi, ' . $this->session->userdata('fullname');
                                 }
@@ -100,7 +101,7 @@
                             <a class="nav-link dropdown-toggle btn btn-light" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color:#214980 !important;">
                                 <?php
                                 if (empty($this->session->userdata('fullname'))) {
-                                    echo 'hi, ' . $this->session->userdata('uname');
+                                    echo 'hi, ' . $nickname[0];
                                 } else {
                                     echo 'hi, ' . $this->session->userdata('fullname');
                                 }
