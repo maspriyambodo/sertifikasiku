@@ -15,10 +15,22 @@ class Streaming extends CI_Controller {
     public function index() {
         $data = [
             'materi' => $this->model->Materi(),
-            'chat' => $this->model->Read_chat(),
+            'chat' => $this->load_chat(),
             'privilege' => $this->bodo->Check_previlege('Streaming/index/')
         ];
         return $this->parser->parse('v_streaming', $data);
+    }
+
+    private function load_chat() {
+        $exec = $this->model->Read_chat();
+        foreach ($exec as $key => $value) {
+            $nick_name = explode('@', $value->uname);
+            $exec[$key]->syscreatedate = date('H:i', strtotime($value->syscreatedate));
+            if (empty($exec[$key]->fullname)) {
+                $exec[$key]->fullname = $nick_name[0];
+            }
+        }
+        return $exec;
     }
 
     public function testing() {

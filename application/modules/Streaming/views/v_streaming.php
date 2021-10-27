@@ -168,10 +168,10 @@
                                                     <?php echo '<img src="' . base_url('assets/images/users/' . $txtchat->pict) . '" class="rounded-circle" alt="' . $txtchat->uname . '"/>'; ?>
                                                 </div>
                                                 <div class="mx-2">
-                                                    <a href="javascript:void(0);" class="text-danger font-weight-bold font-size-h6" style="text-decoration:none;"><?php echo $txtchat->uname; ?> </a>
+                                                    <a href="javascript:void(0);" class="text-danger font-weight-bold font-size-h6" style="text-decoration:none;"><?php echo $txtchat->fullname; ?> </a>
                                                     <span class="font-size-sm"><i class="fas fa-user-shield text-danger"></i></span>
                                                 </div>
-                                                <div class="tym-chat"><?php echo date('H:i', strtotime($txtchat->syscreatedate)); ?></div>
+                                                <div class="tym-chat"><?php echo $txtchat->syscreatedate; ?></div>
                                             </div>
                                             <div class="p-1 bg-danger text-white text-left wrap-chat">
                                                 <?php echo $txtchat->msg; ?>
@@ -185,7 +185,7 @@
                                                     <?php echo '<img src="' . base_url('assets/images/users/' . $txtchat->pict) . '" class="rounded-circle" alt="' . $txtchat->uname . '"/>'; ?>
                                                 </div>
                                                 <div class="mx-2 bg-dark px-2 rounded" title="Platinum Member">
-                                                    <a href="javascript:void(0);" class="text-white font-size-h6" style="text-decoration:none;font-size:14px;"><?php echo $txtchat->fullname; ?> </a>
+                                                    <a href="javascript:void(0);" class="text-white font-weight-bold font-size-h6" style="text-decoration:none;"><?php echo $txtchat->fullname; ?> </a>
                                                     <span class="font-size-md"><i class="fas fa-crown text-warning" style="font-size:13px;"></i></span>
                                                 </div>
                                                 <?php
@@ -198,7 +198,7 @@
                                                     null;
                                                 }
                                                 ?>
-                                                <div class="tym-chat"><?php echo date('H:i', strtotime($txtchat->syscreatedate)); ?></div>
+                                                <div class="tym-chat"><?php echo $txtchat->syscreatedate; ?></div>
                                             </div>
                                             <div class="p-1 bg-light-success text-left wrap-chat">
                                                 <?php echo $txtchat->msg; ?>
@@ -211,7 +211,7 @@
                                                     <?php echo '<img src="' . base_url('assets/images/users/' . $txtchat->pict) . '" class="rounded-circle" alt="' . $txtchat->uname . '"/>'; ?>
                                                 </div>
                                                 <div class="mx-2" title="<?php echo ucfirst($txtchat->role_name); ?> Member">
-                                                    <a href="javascript:void(0);" class="font-size-h6" style="text-decoration:none;font-size:1.150rem;"><?php echo $txtchat->fullname; ?> </a>
+                                                    <a href="javascript:void(0);" class="font-weight-bold font-size-h6" style="text-decoration:none;"><?php echo $txtchat->fullname; ?> </a>
                                                 </div>
                                                 <?php
                                                 if ($this->session->userdata('role_name') === 'Super User' or $this->session->userdata('role_name') === 'Administrator') {
@@ -223,7 +223,7 @@
                                                     null;
                                                 }
                                                 ?>
-                                                <div class="tym-chat"><?php echo date('H:i', strtotime($txtchat->syscreatedate)); ?></div>
+                                                <div class="tym-chat"><?php echo $txtchat->syscreatedate; ?></div>
                                             </div>
                                             <div class="p-1 bg-light text-dark-50 font-weight-bold text-left wrap-chat">
                                                 <?php echo $txtchat->msg; ?>
@@ -236,7 +236,7 @@
                                                     <?php echo '<img src="' . base_url('assets/images/users/' . $txtchat->pict) . '" class="rounded-circle" alt="' . $txtchat->uname . '"/>'; ?>
                                                 </div>
                                                 <div class="mx-2" title="<?php echo ucfirst($txtchat->role_name); ?> Member">
-                                                    <a href="javascript:void(0);" class="font-size-h6" style="text-decoration:none;font-size:1.150rem;"><?php echo $txtchat->fullname; ?> </a>
+                                                    <a href="javascript:void(0);" class="font-weight-bold font-size-h6" style="text-decoration:none;"><?php echo $txtchat->fullname; ?> </a>
                                                 </div>
                                                 <?php
                                                 if ($this->session->userdata('role_name') === 'Super User' or $this->session->userdata('role_name') === 'Administrator') {
@@ -248,7 +248,7 @@
                                                     null;
                                                 }
                                                 ?>
-                                                <div class="tym-chat"><?php echo date('H:i', strtotime($txtchat->syscreatedate)); ?></div>
+                                                <div class="tym-chat"><?php echo $txtchat->syscreatedate; ?></div>
                                             </div>
                                             <div class="p-1 bg-light text-dark-50 font-weight-bold text-left wrap-chat">
                                                 <?php echo $txtchat->msg; ?>
@@ -320,10 +320,10 @@
                                                     <img class="rounded-circle" alt="<?php echo $txtchat2->uname; ?>" src="<?php echo base_url('assets/images/users/' . $txtchat2->pict); ?>">
                                                 </div>
                                                 <div class="mx-2">
-                                                    <a href="javascript:void(0);" class="text-danger font-weight-bold font-size-h6" style="text-decoration:none;"><?php echo $txtchat2->uname; ?> </a>
+                                                    <a href="javascript:void(0);" class="text-danger font-weight-bold font-size-h6" style="text-decoration:none;"><?php echo $txtchat2->fullname; ?> </a>
                                                     <span class="text-muted font-size-sm"><i class="fas fa-user-shield text-danger"></i></span>
                                                 </div>
-                                                <div class="tym-chat"><?php echo date('H:i', strtotime($txtchat2->syscreatedate)); ?></div>
+                                                <div class="tym-chat"><?php echo $txtchat2->syscreatedate; ?></div>
                                             </div>
                                             <div class="p-1 bg-danger text-white text-left wrap-chat">
                                                 <?php echo $txtchat2->msg; ?>
@@ -336,7 +336,7 @@
                                                     <img class="rounded-circle" alt="<?php echo $txtchat2->uname; ?>" src="<?php echo base_url('assets/images/users/' . $txtchat2->pict); ?>">
                                                 </div>
                                                 <div class="mx-2 bg-dark px-2 rounded" title="Platinum Member">
-                                                    <a href="javascript:void(0);" class="text-white font-size-h6" style="text-decoration:none;font-size:14px;"><?php echo $txtchat2->fullname; ?> </a>
+                                                    <a href="javascript:void(0);" class="text-white font-size-h6" style="text-decoration:none;"><?php echo $txtchat2->fullname; ?> </a>
                                                     <span class="font-size-md"><i class="fas fa-crown text-warning" style="font-size:14px;"></i></span>
                                                 </div>
                                                 <?php
@@ -349,7 +349,7 @@
                                                     null;
                                                 }
                                                 ?>
-                                                <div class="tym-chat"><?php echo date('H:i', strtotime($txtchat2->syscreatedate)); ?></div>
+                                                <div class="tym-chat"><?php echo $txtchat2->syscreatedate; ?></div>
                                             </div>
                                             <div class="p-1 bg-light-success text-left wrap-chat">
                                                 <?php echo $txtchat2->msg; ?>
@@ -362,7 +362,7 @@
                                                     <img class="rounded-circle" alt="<?php echo $txtchat2->uname; ?>" src="<?php echo base_url('assets/images/users/' . $txtchat2->pict); ?>">
                                                 </div>
                                                 <div class="mx-2" title="Silver Member">
-                                                    <a href="javascript:void(0);" class="font-size-h6" style="text-decoration:none;font-size:1.150rem;"><?php echo $txtchat2->fullname; ?> </a>
+                                                    <a href="javascript:void(0);" class="font-size-h6" style="text-decoration:none;"><?php echo $txtchat2->fullname; ?> </a>
                                                 </div>
                                                 <?php
                                                 if ($this->session->userdata('role_name') === 'Super User' or $this->session->userdata('role_name') === 'Administrator') {
@@ -374,7 +374,7 @@
                                                     null;
                                                 }
                                                 ?>
-                                                <div class="tym-chat"><?php echo date('H:i', strtotime($txtchat2->syscreatedate)); ?></div>
+                                                <div class="tym-chat"><?php echo $txtchat2->syscreatedate; ?></div>
                                             </div>
                                             <div class="p-1 bg-light text-dark-50 font-weight-bold text-left wrap-chat">
                                                 <?php echo $txtchat2->msg; ?>
@@ -387,7 +387,7 @@
                                                     <img class="rounded-circle" alt="<?php echo $txtchat2->uname; ?>" src="<?php echo base_url('assets/images/users/' . $txtchat2->pict); ?>">
                                                 </div>
                                                 <div class="mx-2" title="Silver Member">
-                                                    <a href="javascript:void(0);" class="font-size-h6" style="text-decoration:none;font-size:1.150rem;"><?php echo $txtchat2->fullname; ?> </a>
+                                                    <a href="javascript:void(0);" class="font-size-h6" style="text-decoration:none;"><?php echo $txtchat2->fullname; ?> </a>
                                                 </div>
                                                 <?php
                                                 if ($this->session->userdata('role_name') === 'Super User' or $this->session->userdata('role_name') === 'Administrator') {
@@ -399,7 +399,7 @@
                                                     null;
                                                 }
                                                 ?>
-                                                <div class="tym-chat"><?php echo date('H:i', strtotime($txtchat2->syscreatedate)); ?></div>
+                                                <div class="tym-chat"><?php echo $txtchat2->syscreatedate; ?></div>
                                             </div>
                                             <div class="p-1 bg-light text-dark-50 font-weight-bold text-left wrap-chat">
                                                 <?php echo $txtchat2->msg; ?>
