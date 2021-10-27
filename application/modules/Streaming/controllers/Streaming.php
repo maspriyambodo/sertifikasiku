@@ -53,6 +53,13 @@ class Streaming extends CI_Controller {
     }
 
     private function _chatSend($string, $block_chat) {
+        $fullname = $this->session->userdata('fullname');
+        $nickname = explode('@', $this->session->userdata('uname'));
+        if (empty($fullname)) {
+            $fullname = $nickname[0];
+        } else {
+            $fullname = $this->session->userdata('fullname');
+        }
         if (empty($this->id_user) and empty($this->role_id) or ($this->session->userdata('chat_attempt') === 3)) {
             $this->session->sess_destroy();
             $data['success'] = false;
@@ -60,7 +67,7 @@ class Streaming extends CI_Controller {
         } else {
             $data = [
                 'uname' => $this->session->userdata('uname'),
-                'fullname' => $this->session->userdata('fullname'),
+                'fullname' => $fullname,
                 'key' => Enkrip($this->session->userdata('uname')),
                 'msg' => $string,
                 'ava' => base_url('assets/images/users/' . $this->session->userdata('avatar')),
