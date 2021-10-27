@@ -603,13 +603,33 @@
                         } else {
                             Swal.fire({
                                 title: 'Absensi',
-                                html: 'Halo, <b>' + fullname + '</b>, terimakasih telah mengikuti ' + $('input[name="nama_materi"]').val(),
+                                html: 'Halo, ' + fullname + ' terimakasih telah mengikuti ' + $('input[name="nama_materi"]').val() + '.<br> <small class="text-info">harap masukkan nama lengkap untuk memperoleh e-sertifikat.</small>',
                                 icon: 'info',
+                                input: 'text',
+                                inputAttributes: {
+                                    placeholder: 'Nama Lengkap',
+                                    required: ''
+                                },
                                 confirmButtonText: 'HADIR',
                                 allowOutsideClick: false,
                                 allowEscapeKey: false,
-                                allowEnterKey: true
-                            }).then(() => {
+                                allowEnterKey: false,
+                                showLoaderOnConfirm: true,
+                                preConfirm: function (fullnametxt) {
+                                    return fetch(`<?php echo base_url('Streaming/input_name?name='); ?>${fullnametxt}`)
+                                            .then(response => {
+                                                if (!response.ok) {
+                                                    throw new Error(response.statusText);
+                                                }
+                                                return response.json();
+                                            })
+                                            .catch(error => {
+                                                Swal.showValidationMessage(
+                                                        `Request failed: ${error}`
+                                                        );
+                                            });
+                                }
+                            }).then((result) => {
                                 $('#main_webinar').empty();
                                 $('.second_webinar').empty();
                                 $('#chat_on_mobile').empty();
