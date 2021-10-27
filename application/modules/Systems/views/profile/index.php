@@ -4,6 +4,7 @@
         <input name="kabtxt" type="hidden" value="<?php echo $data[0]->address_kabupaten; ?>" readonly=""/>
         <input name="kectxt" type="hidden" value="<?php echo $data[0]->address_kecamatan; ?>" readonly=""/>
         <input name="keltxt" type="hidden" value="<?php echo $data[0]->address_kelurahan; ?>" readonly=""/>
+        <input name="name_role" type="hidden" value="<?php echo $data[0]->name_role; ?>" readonly=""/>
         <div class="card-body">
             <input type="hidden" name="<?php echo $csrf['name'] ?>" value="<?php echo $csrf['hash'] ?>"/>
             <div class="form-group row">
@@ -44,11 +45,17 @@
                 <div class="col-md-6">
                     <div class="input-group">
                         <input type="hidden" name="old_uname" value="<?php echo $data[0]->uname; ?>"/>
-                        <input name="uname" class="form-control form-control-lg" type="text" value="<?php echo $data[0]->uname; ?>" autocomplete="off" onchange="Check_uname(this.value)"/>
+                        <input id="uname" name="uname" class="form-control form-control-lg" type="text" value="<?php echo $data[0]->uname; ?>" autocomplete="off" onchange="Check_uname(this.value)"/>
                         <div id="check_id" class="input-group-append"></div>
                     </div>
                     <input id="code_stat" type="hidden" name="code_stat" value=""/>
                     <div id="code_msg"></div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-form-label col-md-3 text-lg-right text-left" for="kerjatxt">Pekerjaan</label>
+                <div class="col-md-6">
+                    <input id="kerjatxt" name="kerjatxt" class="form-control form-control-lg" type="text" value="<?php echo $data[0]->pekerjaan; ?>" autocomplete="off"/>
                 </div>
             </div>
             <div class="form-group row">
@@ -211,12 +218,16 @@ unset($_SESSION['succ_msg']);
         $('.datepicker').datepicker({
             format: 'yyyy-mm-dd'
         });
-        var provtxt, kabtxt, kectxt, keltxt;
+        var provtxt, kabtxt, kectxt, keltxt, role_name;
         provtxt = $('input[name="provtxt"]').val();
         kabtxt = $('input[name="kabtxt"]').val();
         kectxt = $('input[name="kectxt"]').val();
         keltxt = $('input[name="keltxt"]').val();
         Provinsi(provtxt);
+        role_name = $('input[name="name_role"]').val();
+        if (role_name !== 'Super User' || role_name !== 'Administrator') {
+            $('#uname').attr('readonly', '');
+        }
     };
     function Cancel() {
         window.location.href = '<?php echo base_url('Setting%20Profile'); ?>';
@@ -279,7 +290,7 @@ unset($_SESSION['succ_msg']);
         });
     }
     function Kelurahan(id) {
-    $('#kelurahan').children('option').remove();
+        $('#kelurahan').children('option').remove();
         $.ajax({
             url: "<?php echo base_url('Systems/Getkel?id_kec='); ?>" + id,
             type: 'get',

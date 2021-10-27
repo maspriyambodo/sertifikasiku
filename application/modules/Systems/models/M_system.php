@@ -64,7 +64,7 @@ class M_system extends CI_Model {
     }
 
     public function Profile($id) {//query saved on navicat with name query_1
-        $exec = $this->db->select('sys_users.id,sys_users.uname,sys_users.role_id,sys_users.pict,sys_roles.`name` AS name_role,dt_users.id AS id_dt_users,dt_users.nama AS nama_lengkap,dt_users.jenis_kelamin,dt_users.id_number,dt_users.lahir_1,dt_users.lahir_2,dt_users.address_1,dt_users.address_provinsi,dt_users.address_kabupaten,dt_users.address_kecamatan,dt_users.address_kelurahan,dt_users.mail,dt_users.telp')
+        $exec = $this->db->select('sys_users.id,sys_users.uname,sys_users.role_id,sys_users.pict,sys_roles.`name` AS name_role,dt_users.id AS id_dt_users,dt_users.nama AS nama_lengkap,dt_users.jenis_kelamin,dt_users.id_number,dt_users.lahir_1,dt_users.lahir_2,dt_users.address_1,dt_users.address_provinsi,dt_users.address_kabupaten,dt_users.address_kecamatan,dt_users.address_kelurahan,dt_users.mail,dt_users.telp,dt_users.pekerjaan')
                 ->from('sys_users')
                 ->join('sys_roles', 'sys_users.role_id = sys_roles.id', 'INNER')
                 ->join('dt_users', 'sys_users.id = dt_users.sys_user_id', 'INNER')

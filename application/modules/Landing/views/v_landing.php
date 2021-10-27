@@ -197,7 +197,7 @@
                             </div>
                             <div class="clearfix my-4"></div>
                             <div class="form-group text-center">
-                                <button type="button" class="btn btn-default send_otp" onclick="send_otp()">Masuk</button>
+                                <button type="button" class="btn btn-default fw-bold send_otp" onclick="send_otp()">Masuk</button>
                             </div>
                         </div>
                         <div id="form_otp">
@@ -213,7 +213,7 @@
                             </div>
                             <div class="clearfix my-4"></div>
                             <div class="text-center">
-                                <button type="button" class="btn btn-info" onclick="verify_otp()">Verifikasi</button>
+                                <button type="button" class="btn btn-info fw-bold" onclick="verify_otp()">Verifikasi</button>
                             </div>
                             <div class="text-center my-4 font-size-xs">
                                 Mohon cek folder spam jika kode OTP tidak ada dalam folder masuk.
@@ -275,7 +275,7 @@
                             if (data.status === true) {
                                 $('#form_mail').hide();
                                 $('#form_otp').show();
-                                var otp_tym = new Date().getTime() + 61000;
+                                var otp_tym = new Date().getTime() + 59000;
                                 $('#otp_timer').countdown(otp_tym, {elapse: true})
                                         .on('update.countdown', function (event) {
                                             var $this = $(this);
