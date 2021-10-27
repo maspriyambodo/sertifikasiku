@@ -216,7 +216,7 @@
                                 <button type="button" class="btn btn-info" onclick="verify_otp()">Verifikasi</button>
                             </div>
                             <div class="text-center my-4 font-size-xs">
-                                Mohon cek kotak spam jika kode OTP tidak ada dalam kotak masuk.
+                                Mohon cek folder spam jika kode OTP tidak ada dalam folder masuk.
                             </div>
                             <div class="clearfix my-4"></div>
                             <div class="text-center">
