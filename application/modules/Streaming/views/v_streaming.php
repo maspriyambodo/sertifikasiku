@@ -12,8 +12,8 @@
         <link href="<?php echo base_url('vendor/jquery.mb.YTPlayer/dist/css/jquery.mb.YTPlayer.min.css'); ?>" rel="stylesheet" type="text/css"/>
         <link href="<?php echo base_url('vendor/twbs/bootstrap/dist/css/bootstrap.min.css'); ?>" rel="stylesheet" type="text/css"/>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css" integrity="sha512-yHknP1/AwR+yx26cB1y0cjvQUMvEa2PFzt1c9LlS4pRQ5NOTZFWbhBig+X9G9eYW/8m0/4OXNx8pxJ6z57x0dw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css" integrity="sha512-17EgCFERpgZKcm0j0fEq1YCJuyAWdz9KUtv1EjVuaOz8pDnh/0nZxmU6BBXwaaxqoi9PQXnRWqlcDB027hgv9A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css" integrity="sha512-sMXtMNL1zRzolHYKEujM2AqCLUR9F2C4/05cdbxjjLSRvMQIciEPCQZo++nk7go3BtSuK9kfa/s+a4f4i5pLkw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.css" integrity="sha512-6S2HWzVFxruDlZxI3sXOZZ4/eJ8AcxkQH1+JjSe/ONCEqR9L4Ysq5JdT5ipqtzU7WHalNwzwBv+iE51gNHJNqQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         <link rel="stylesheet" href="<?php echo base_url('assets/streaming.css'); ?>"/>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.1.7/sweetalert2.min.css" integrity="sha512-cyIcYOviYhF0bHIhzXWJQ/7xnaBuIIOecYoPZBgJHQKFPo+TOBA+BY1EnTpmM8yKDU4ZdI3UGccNGCEUdfbBqw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -275,9 +275,42 @@
                         </div>
                     </div>
                 </div>
-                <div class="pb-4">
-                    <img class="img-fluid" src="<?php echo base_url('assets/images/51e9abcdaf16d7b14b64edf201d39993.png'); ?>" alt=""/>
-                    <div class="clearfix my-4"></div>
+                <div class="col-lg-8 d-xs-block col-xs-12 col-12 col-md-12">
+                    <div class="text-white" style="font-family: Galano Grotesque Alt Bold;font-size: 16px;line-height: 19px;">Disponsori oleh:</div>
+                    <div id="owl-carousel" class="owl-carousel owl-theme mt-4 multiCarosel">
+                        <?php
+                        foreach ($sponsor as $key => $sponsor1) {
+                            if ($sponsor[$key]->kategori == 1) {
+                                echo '<div class="item">'
+                                . '<a href="' . $sponsor1->url_website . '" target="new">';
+                                echo '<img src="' . base_url('assets/images/sponsor/' . $sponsor1->path) . '" alt="' . $sponsor1->nama . '" class="img-fluid img-thumbnail" style="width:165px;"/>'
+                                . '</a>';
+                                echo '</div>';
+                            } else {
+                                null;
+                            }
+                        }
+                        ?>
+                    </div>
+                </div>
+                <div class="clearfix" style="margin:50px 0px;"></div>
+                <div class="col-lg-8 d-xs-block col-xs-12 col-12 col-md-12">
+                    <div class="text-white" style="font-family: Galano Grotesque Alt Bold;font-size: 16px;line-height: 19px;">Bekerja sama dengan:</div>
+                    <div id="owl-carousel2" class="owl-carousel owl-theme mt-4">
+                        <?php
+                        foreach ($sponsor as $key => $sponsor2) {
+                            if ($sponsor[$key]->kategori == 2) {
+                                echo '<div class="item">'
+                                . '<a href="' . $sponsor2->url_website . '" target="new">';
+                                echo '<img src="' . base_url('assets/images/media_partner/' . $sponsor2->path) . '" alt="' . $sponsor2->nama . '" class="img-fluid img-thumbnail" style="width:165px;"/>'
+                                . '</a>';
+                                echo '</div>';
+                            } else {
+                                null;
+                            }
+                        }
+                        ?>
+                    </div>
                 </div>
             </div>
         </section>
@@ -297,7 +330,7 @@
         <script src="<?php echo base_url('vendor/twbs/bootstrap/dist/js/bootstrap.min.js'); ?>" type="text/javascript"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-migrate/3.3.2/jquery-migrate.min.js" integrity="sha512-3fMsI1vtU2e/tVxZORSEeuMhXnT9By80xlmXlsOku7hNwZSHJjwcOBpmy+uu+fyWwGCLkMvdVbHkeoXdAzBv+w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         <script src="<?php echo base_url('vendor/jquery.mb.YTPlayer/dist/jquery.mb.YTPlayer.js'); ?>" type="text/javascript"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js" integrity="sha512-XtmMtDEcNz2j7ekrtHvOVR4iwwaD6o/FUJe6+Zq+HgcCsk3kj4uSQQR8weQ2QVj1o0Pk6PwYLohm206ZzNfubg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.js" integrity="sha512-lbwH47l/tPXJYG9AcFNoJaTMhGvYWhVM9YI43CT+uteTRRaiLCui8snIgyAN8XWgNjNhCqlAUdzZptso6OCoFQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         <script src="<?php echo base_url('node_modules/socket.io-client/dist/socket.io.min.js'); ?>" type="text/javascript"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.1.7/sweetalert2.all.js" integrity="sha512-wT0KEfF13tBeZVQN9MgyrOPpcazX2XUxLl11DuFYgctVVypKlqneS3cZp37g00U0x3G+rFvpaGtGs7JP3GTSIQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -432,9 +465,7 @@
         <script>
             var socket = io.connect('https://live-chat.mycapturer.com');
             $(document).ready(function () {
-                setInterval(function () {
-                    console.clear();
-                }, 3000);
+
                 toastr.options = {
                     "closeButton": true,
                     "debug": false,
@@ -681,15 +712,17 @@
                     event.preventDefault();
                     event.stopPropagation();
                 });
-                $('.sertif-carousel').slick({
-                    slidesToScroll: 1,
-                    dots: false,
-                    infinite: false,
-                    cssEase: 'linear',
-                    lazyLoad: 'ondemand',
-                    arrows: true,
-                    centerMode: false,
-                    centerPadding: '60px'
+                $('#owl-carousel').owlCarousel({
+                    autoplay: true,
+                    autoplayHoverPause: true,
+                    margin: 10,
+                    autoWidth: true
+                });
+                $('#owl-carousel2').owlCarousel({
+                    autoplay: true,
+                    autoplayHoverPause: true,
+                    margin: 10,
+                    autoWidth: true
                 });
                 $('#msg_dir').animate({
                     scrollTop: $('#msg_dir').get(0).scrollHeight

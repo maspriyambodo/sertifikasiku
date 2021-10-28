@@ -11,6 +11,7 @@
     "express": "^4.17.1",
     "has-binary": "^0.1.7",
     "has-cors": "^1.1.0",
+    "infinite-scroll": "^4.0.1",
     "json3": "^3.3.3",
     "merge-descriptors": "^1.0.1",
     "methods": "^1.1.2",

@@ -14,6 +14,7 @@ class Streaming extends CI_Controller {
 
     public function index() {
         $data = [
+            'sponsor' => $this->model->sponsor(),
             'materi' => $this->model->Materi(),
             'chat' => $this->load_chat(),
             'privilege' => $this->bodo->Check_previlege('Streaming/index/')

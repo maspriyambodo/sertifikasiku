@@ -153,4 +153,13 @@ class M_streaming extends CI_Model {
                 ->update('dt_users');
     }
 
+    public function sponsor() {
+        $exec = $this->db->select('dt_sponsor.id,dt_sponsor.kategori,dt_sponsor.nama,dt_sponsor.path,dt_sponsor.url_website,dt_sponsor.stat ')
+                ->from('dt_sponsor')
+                ->where('`dt_sponsor`.`stat`', 1, false)
+                ->get()
+                ->result();
+        return $exec;
+    }
+
 }
