@@ -251,7 +251,9 @@ class Users extends CI_Controller {
             'role_id' => $role_user,
             'pict' => $pict['file_name'],
             'stat' => $id_user, //jika fungsi update maka berubah jadi id user
-            'user_login' => $this->user
+            'user_login' => $this->user,
+            'fullname' => Post_input('fullnametxt'),
+            'telp' => Post_input('tlptxt')
         ];
         return $this->_Save($data);
     }

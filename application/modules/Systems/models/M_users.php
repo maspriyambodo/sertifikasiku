@@ -84,7 +84,7 @@ class M_users extends CI_Model {
     }
 
     public function Save($data) {
-        $exec = $this->db->query('CALL sys_users_insert("' . $data['uname'] . '","' . $data['pwd'] . '",' . $data['role_id'] . ',"' . $data['pict'] . '",' . $data['stat'] . ',' . $data['user_login'] . ');');
+        $exec = $this->db->query('CALL sys_users_insert("' . $data['uname'] . '","' . $data['pwd'] . '",' . $data['role_id'] . ',"' . $data['pict'] . '",' . $data['stat'] . ',' . $data['user_login'] . ',"' . $data['fullname'] . '","' . $data['telp'] . '");');
         if (empty($exec->conn_id->affected_rows) or $exec->conn_id->affected_rows == 0) {
             log_message('error', APPPATH . 'modules/Systems/models/M_users -> function Save ' . 'error ketika sys_users_insert');
             $result = redirect(base_url('Systems/Users/Add/'), $this->session->set_flashdata('err_msg', 'failed, error while processing user data!'));

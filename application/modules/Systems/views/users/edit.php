@@ -30,6 +30,10 @@
                         <input id="uname_stat" type="hidden" name="uname_stat" value="1"/>
                         <div id="uname_msg"></div>
                     </div>
+                    <div class="form-group">
+                        <label for="fullnametxt">Full Name</label>
+                        <input id="fullnametxt" type="text" name="fullnametxt" class="form-control" required="" autocomplete="off"/>
+                    </div>
                 </div>
                 <div class="col-md">
                     <div class="form-group">
@@ -48,6 +52,10 @@
                             }
                             ?>
                         </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="tlptxt">Phone</label>
+                        <input id="tlptxt" type="text" name="tlptxt" class="form-control" required="" autocomplete="off" onkeypress="return isNumber(event)" minlength="9"/>
                     </div>
                 </div>
             </div>
@@ -165,6 +173,13 @@ unset($_SESSION['succ_msg']);
             toastr.warning('please use other username!');
         } else {
             $('#modal_save').modal({show: true, backdrop: 'static', keyboard: false});
+        }
+    }
+    function isNumber(b) {
+        b = (b) ? b : window.event;
+        var a = (b.which) ? b.which : b.keyCode;
+        if (a > 31 && (a < 48 || a > 57)) {
+            return false;
         }
     }
 </script>
