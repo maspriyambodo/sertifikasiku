@@ -140,7 +140,7 @@
         echo '<input type="hidden" name="nama_sesi" value="' . date('H:i', strtotime($materi[0]->nama_sesi)) . '"/>';
         echo '<input type="hidden" name="fullname" value="' . $this->session->userdata('fullname') . '"/>';
         ?>
-        <section id="main_webinar" class="clearfix main_webinar">
+        <section id="main_webinar" class="clearfix main_webinar" style="padding-bottom:20px;">
             <div class="container">
                 <div class="row pt-5">
                     <div id="height_video" class="col-lg-8 d-xs-block col-xs-12 col-12 col-md-12">
@@ -273,15 +273,28 @@
                                 <?php echo $materi[0]->nama_materi; ?>
                             </h4>
                         </div>
-                    </div>
-                </div>
-                <div class="col-lg-8 d-xs-block col-xs-12 col-12 col-md-12">
-                    <div class="text-white" style="font-family: Galano Grotesque Alt Bold;font-size: 16px;line-height: 19px;">Disponsori oleh:</div>
-                    <div id="owl-carousel" class="owl-carousel owl-theme mt-4 multiCarosel">
+                        <div class="clearfix" style="margin:50px 0px;"></div>
+                        <div class="text-white mb-3" style="font-family: Galano Grotesque Alt Bold;font-size: 16px;line-height: 19px;">Disponsori oleh:</div>
+                        <!--                        <div id="owl-carousel" class="owl-carousel owl-theme mt-4 multiCarosel">
+                                                    //<?php
+//                            foreach ($sponsor as $key => $sponsor1) {
+//                                if ($sponsor[$key]->kategori == 1) {
+//                                    echo '<div class="item">'
+//                                    . '<a href="' . $sponsor1->url_website . '" target="new">';
+//                                    echo '<img src="' . base_url('assets/images/sponsor/' . $sponsor1->path) . '" alt="' . $sponsor1->nama . '" class="img-fluid img-thumbnail" style="width:165px;"/>'
+//                                    . '</a>';
+//                                    echo '</div>';
+//                                } else {
+//                                    null;
+//                                }
+//                            }
+//                            
+                        ?>
+                                                </div>-->
                         <?php
                         foreach ($sponsor as $key => $sponsor1) {
                             if ($sponsor[$key]->kategori == 1) {
-                                echo '<div class="item">'
+                                echo '<div style="width: -webkit-fit-content;height:-webkit-fit-content;width:-moz-fit-content;height:-moz-fit-content;float:left;margin-right:5px;margin-bottom:15px;">'
                                 . '<a href="' . $sponsor1->url_website . '" target="new">';
                                 echo '<img src="' . base_url('assets/images/sponsor/' . $sponsor1->path) . '" alt="' . $sponsor1->nama . '" class="img-fluid img-thumbnail" style="width:165px;"/>'
                                 . '</a>';
@@ -291,18 +304,30 @@
                             }
                         }
                         ?>
-                    </div>
-                </div>
-                <div class="clearfix" style="margin:50px 0px;"></div>
-                <div class="col-lg-8 d-xs-block col-xs-12 col-12 col-md-12">
-                    <div class="text-white" style="font-family: Galano Grotesque Alt Bold;font-size: 16px;line-height: 19px;">Bekerja sama dengan:</div>
-                    <div id="owl-carousel2" class="owl-carousel owl-theme mt-4">
+                        <div class="clearfix" style="margin:50px 0px;"></div>
+                        <div class="text-white mb-3" style="font-family: Galano Grotesque Alt Bold;font-size: 16px;line-height: 19px;">Bekerja sama dengan:</div>
+                        <!--                        <div id="owl-carousel2" class="owl-carousel owl-theme mt-4">
+                                                    //<?php
+//                            foreach ($sponsor as $key => $sponsor2) {
+//                                if ($sponsor[$key]->kategori == 2) {
+//                                    echo '<div class="item">'
+//                                    . '<a href="' . $sponsor2->url_website . '" target="new">';
+//                                    echo '<img src="' . base_url('assets/images/media_partner/' . $sponsor2->path) . '" alt="' . $sponsor2->nama . '" class="img-fluid img-thumbnail" style="width:165px;"/>'
+//                                    . '</a>';
+//                                    echo '</div>';
+//                                } else {
+//                                    null;
+//                                }
+//                            }
+//                            
+                        ?>
+                                                </div>-->
                         <?php
-                        foreach ($sponsor as $key => $sponsor2) {
+                        foreach ($sponsor as $key => $sponsor3) {
                             if ($sponsor[$key]->kategori == 2) {
-                                echo '<div class="item">'
-                                . '<a href="' . $sponsor2->url_website . '" target="new">';
-                                echo '<img src="' . base_url('assets/images/media_partner/' . $sponsor2->path) . '" alt="' . $sponsor2->nama . '" class="img-fluid img-thumbnail" style="width:165px;"/>'
+                                echo '<div style="width: -webkit-fit-content;height:-webkit-fit-content;width:-moz-fit-content;height:-moz-fit-content;float:left;margin-right:5px;margin-bottom:15px;">'
+                                . '<a href="' . $sponsor3->url_website . '" target="new">';
+                                echo '<img src="' . base_url('assets/images/media_partner/' . $sponsor3->path) . '" alt="' . $sponsor3->nama . '" class="img-fluid img-thumbnail" style="width:165px;"/>'
                                 . '</a>';
                                 echo '</div>';
                             } else {
@@ -311,6 +336,31 @@
                         }
                         ?>
                     </div>
+                    <!--                    <div class="col-lg-4">
+                                            <div class="card">
+                                                <div class="card-body">
+                                                    <div id="owl-carousel3" class="owl-carousel owl-theme">
+                                                        <div class="item">
+                                                            <div class="text-center">
+                                                                <div style="font-family: Galano Grotesque Alt Medium;font-size: 14px;line-height: 16px;">
+                                                                    Sabtu, 6 November 2021
+                                                                </div>
+                                                                <div style="padding:0px 10px;background: linear-gradient(90deg, #2C64A1 0%, #164579 51.56%, #2C64A1 100%);border-radius: 2px;">
+                                                                    Bisnis dan Keuangan
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="item">
+                                                            <div class="text-center">
+                                                                <div style="font-family: Galano Grotesque Alt Medium;font-size: 14px;line-height: 16px;">
+                                                                    Sabtu, 6 November 2021
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>-->
                 </div>
             </div>
         </section>
@@ -723,6 +773,13 @@
                     autoplayHoverPause: true,
                     margin: 10,
                     autoWidth: true
+                });
+                $('#owl-carousel3').owlCarousel({
+                    items: 1,
+                    autoplay: false,
+                    autoWidth: false,
+                    center: true,
+                    dots: false
                 });
                 $('#msg_dir').animate({
                     scrollTop: $('#msg_dir').get(0).scrollHeight
