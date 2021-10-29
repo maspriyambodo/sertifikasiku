@@ -179,7 +179,7 @@ ALTER TABLE `tr_chat`
 -- AUTO_INCREMENT for table `dt_materi`
 --
 ALTER TABLE `dt_materi`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=0;
 
 --
 -- AUTO_INCREMENT for table `dt_notif`
@@ -191,43 +191,43 @@ ALTER TABLE `dt_notif`
 -- AUTO_INCREMENT for table `dt_pwd`
 --
 ALTER TABLE `dt_pwd`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=226;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=0;
 
 --
 -- AUTO_INCREMENT for table `dt_sponsor`
 --
 ALTER TABLE `dt_sponsor`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=0;
 
 --
 -- AUTO_INCREMENT for table `dt_users`
 --
 ALTER TABLE `dt_users`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6539;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=0;
 
 --
 -- AUTO_INCREMENT for table `mt_country`
 --
 ALTER TABLE `mt_country`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=250;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=0;
 
 --
 -- AUTO_INCREMENT for table `mt_industri`
 --
 ALTER TABLE `mt_industri`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=0;
 
 --
 -- AUTO_INCREMENT for table `mt_klasifikasi`
 --
 ALTER TABLE `mt_klasifikasi`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=0;
 
 --
 -- AUTO_INCREMENT for table `mt_sesimateri`
 --
 ALTER TABLE `mt_sesimateri`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=0;
 
 --
 -- AUTO_INCREMENT for table `sys_menu`
@@ -257,19 +257,19 @@ ALTER TABLE `sys_roles`
 -- AUTO_INCREMENT for table `sys_users`
 --
 ALTER TABLE `sys_users`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15227;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=0;
 
 --
 -- AUTO_INCREMENT for table `tr_absensi`
 --
 ALTER TABLE `tr_absensi`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=98;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=0;
 
 --
 -- AUTO_INCREMENT for table `tr_chat`
 --
 ALTER TABLE `tr_chat`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=93;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=0;
 
 --
 -- Constraints for dumped tables
