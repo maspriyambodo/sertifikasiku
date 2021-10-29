@@ -274,9 +274,9 @@
                             <h4 class="text-white" style="font-family: 'Galano Grotesque Alt Bold';">
                                 <?php echo $materi[0]->nama_materi; ?>
                             </h4>
-                            <div class="text-white desc_materi text-start">
+<!--                            <div class="text-white desc_materi text-start">
                                 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-                            </div>
+                            </div>-->
                         </div>
                         <!--                        <div id="owl-carousel" class="owl-carousel owl-theme mt-4 multiCarosel">
                                                     //<?php
