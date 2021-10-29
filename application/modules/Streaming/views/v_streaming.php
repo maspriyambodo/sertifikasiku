@@ -143,11 +143,13 @@
         <section id="main_webinar" class="clearfix main_webinar" style="padding-bottom:20px;">
             <div class="container">
                 <div class="row pt-5">
-                    <div id="height_video" class="col-lg-8 d-xs-block col-xs-12 col-12 col-md-12">
-                        <div id="bgndVideo" class="player animate__fadeInLeft" data-property="{videoURL:'<?php echo $materi[0]->link_video; ?>',containment:'self',vol:50,optimizeDisplay:false,showYTLogo:false}"></div>
-                        <!--                        <div class="form-group">
-                                                    <span id="viewers"></span> sedang menonton
-                                                </div>-->
+                    <div class="col-lg-8 d-xs-block col-xs-12 col-12 col-md-12">
+                        <div id="height_video">
+                            <div id="bgndVideo" class="player animate__fadeInLeft" data-property="{videoURL:'<?php echo $materi[0]->link_video; ?>',containment:'self',vol:50,optimizeDisplay:false,showYTLogo:false}"></div>
+                            <!--                        <div class="form-group">
+                                                        <span id="viewers"></span> sedang menonton
+                                                    </div>-->
+                        </div>
                     </div>
                     <div class="col-lg-4 d-none d-xl-block"><!-- d-sm-none d-xl-block -->
                         <div id="live-chat-lg" class="card live-chat-lg animate__fadeInRight">
@@ -272,9 +274,10 @@
                             <h4 class="text-white" style="font-family: 'Galano Grotesque Alt Bold';">
                                 <?php echo $materi[0]->nama_materi; ?>
                             </h4>
+                            <div class="text-white desc_materi text-start">
+                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                            </div>
                         </div>
-                        <div class="clearfix" style="margin:50px 0px;"></div>
-                        <div class="text-white mb-3" style="font-family: Galano Grotesque Alt Bold;font-size: 16px;line-height: 19px;">Disponsori oleh:</div>
                         <!--                        <div id="owl-carousel" class="owl-carousel owl-theme mt-4 multiCarosel">
                                                     //<?php
 //                            foreach ($sponsor as $key => $sponsor1) {
@@ -291,6 +294,8 @@
 //                            
                         ?>
                                                 </div>-->
+                        <div class="clearfix" style="margin:50px 0px;"></div>
+                        <div class="text-white mb-3" style="font-family: Galano Grotesque Alt Bold;font-size: 16px;line-height: 19px;">Disponsori oleh:</div>
                         <?php
                         foreach ($sponsor as $key => $sponsor1) {
                             if ($sponsor[$key]->kategori == 1) {
@@ -304,8 +309,8 @@
                             }
                         }
                         ?>
-                        <div class="clearfix" style="margin:50px 0px;"></div>
-                        <div class="text-white mb-3" style="font-family: Galano Grotesque Alt Bold;font-size: 16px;line-height: 19px;">Bekerja sama dengan:</div>
+
+
                         <!--                        <div id="owl-carousel2" class="owl-carousel owl-theme mt-4">
                                                     //<?php
 //                            foreach ($sponsor as $key => $sponsor2) {
@@ -322,12 +327,14 @@
 //                            
                         ?>
                                                 </div>-->
+                        <div class="clearfix" style="margin:50px 0px;"></div>
+                        <div class="text-white mb-3" style="font-family: Galano Grotesque Alt Bold;font-size: 16px;line-height: 19px;">Bekerja sama dengan:</div>
                         <?php
-                        foreach ($sponsor as $key => $sponsor3) {
-                            if ($sponsor[$key]->kategori == 2) {
+                        foreach ($sponsor as $key3 => $sponsor3) {
+                            if ($sponsor[$key3]->kategori == 2) {
                                 echo '<div style="width: -webkit-fit-content;height:-webkit-fit-content;width:-moz-fit-content;height:-moz-fit-content;float:left;margin-right:5px;margin-bottom:15px;">'
                                 . '<a href="' . $sponsor3->url_website . '" target="new">';
-                                echo '<img src="' . base_url('assets/images/media_partner/' . $sponsor3->path) . '" alt="' . $sponsor3->nama . '" class="img-fluid img-thumbnail" style="width:165px;"/>'
+                                echo '<img src="' . base_url('assets/images/sponsor/' . $sponsor3->path) . '" alt="' . $sponsor3->nama . '" class="img-fluid img-thumbnail" style="width:165px;"/>'
                                 . '</a>';
                                 echo '</div>';
                             } else {
