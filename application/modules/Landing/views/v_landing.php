@@ -207,7 +207,7 @@
                             <div class="row">
                                 <div class="col-md-2"></div>
                                 <div class="col-md-8">
-                                    <input type="text" name="otptxt" class="form-control text-center" required="" autocomplete="off" maxlength="5" onkeypress="return isNumber(event)"p/>
+                                    <input type="text" name="otptxt" class="form-control text-center" required="" autocomplete="off" maxlength="5" onkeypress="return isNumber(event)"/>
                                 </div>
                                 <div class="col-md-2"></div>
                             </div>
