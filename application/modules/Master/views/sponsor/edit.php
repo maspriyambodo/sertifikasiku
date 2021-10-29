@@ -24,16 +24,16 @@
                         <div class="form-group">
                             <div class="image-input image-input-outline" id="kt_image_4" style="background-image:url('<?php echo site_url('assets/images/sponsor/' . $data->path); ?>');">
                                 <div class="image-input-wrapper"></div>
-                                <label class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow" data-action="change" data-toggle="tooltip" title="" data-original-title="Change avatar">
+                                <label class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow" data-action="change" data-toggle="tooltip" title="" data-original-title="Change picture">
                                     <i class="fa fa-pen icon-sm text-muted"></i>
                                     <input type="file" name="path" accept=".png, .jpg, .jpeg" value="<?php echo $data->path; ?>" />
                                     <input type="hidden" name="sponsor_remove" />
                                     <input type="hidden" name="old_ava" value="<?php echo $data->path; ?>" />
                                 </label>
-                                <span class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow" data-action="cancel" data-toggle="tooltip" title="Cancel avatar">
+                                <span class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow" data-action="cancel" data-toggle="tooltip" title="Cancel picture">
                                     <i class="fas fa-times icon-xs text-muted"></i>
                                 </span>
-                                <span class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow" data-action="remove" data-toggle="tooltip" title="Remove avatar">
+                                <span class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow" data-action="remove" data-toggle="tooltip" title="Remove picture">
                                     <i class="fas fa-times icon-xs text-muted"></i>
                                 </span>
                             </div>

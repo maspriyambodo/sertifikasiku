@@ -93,9 +93,9 @@ class Sponsor extends CI_Controller {
 
         $exec = $this->model->update($data);
         if (!$exec) {
-           $result = redirect(base_url('Master/Sponsor/index/'), $this->session->set_flashdata('err_msg', 'error while update new group'));
+           $result = redirect(base_url('Master/Sponsor/index/'), $this->session->set_flashdata('err_msg', 'error while update data'));
         } else {
-            $result = redirect(base_url('Master/Sponsor/index/'), $this->session->set_flashdata('succ_msg', 'success, new group menu has been updated'));
+            $result = redirect(base_url('Master/Sponsor/index/'), $this->session->set_flashdata('succ_msg', 'success, data has been updated'));
         }
         return $result;
     }
@@ -106,9 +106,9 @@ class Sponsor extends CI_Controller {
         $exec = $this->model->delete($id);
 
         if (!$exec) {
-            $result = redirect(base_url('Master/Sponsor/index/'), $this->session->set_flashdata('err_msg', 'error while insert data'));
+            $result = redirect(base_url('Master/Sponsor/index/'), $this->session->set_flashdata('err_msg', 'error while delete data'));
         } else {
-            $result = redirect(base_url('Master/Sponsor/index/'), $this->session->set_flashdata('succ_msg', 'success, new data has been added'));
+            $result = redirect(base_url('Master/Sponsor/index/'), $this->session->set_flashdata('succ_msg', 'success, data has been deleted'));
         }
         return $result;
     }
@@ -118,9 +118,9 @@ class Sponsor extends CI_Controller {
         $exec = $this->model->active($id);
 
         if (!$exec) {
-            $result = redirect(base_url('Master/Sponsor/index/'), $this->session->set_flashdata('err_msg', 'error while insert data'));
+            $result = redirect(base_url('Master/Sponsor/index/'), $this->session->set_flashdata('err_msg', 'error while enable data'));
         } else {
-            $result = redirect(base_url('Master/Sponsor/index/'), $this->session->set_flashdata('succ_msg', 'success, new data has been added'));
+            $result = redirect(base_url('Master/Sponsor/index/'), $this->session->set_flashdata('succ_msg', 'success, data has been enabled'));
         }
         return $result;
     }
