@@ -5,8 +5,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class M_users extends CI_Model {
 
     var $table = 'sys_users';
-    var $column_order = array('id', 'uname', 'name', null, null); //set column field database for datatable orderable
-    var $column_search = array('uname', 'name'); //set column field database for datatable searchable 
+    var $column_order = array('sys_users.id', 'sys_users.uname', 'dt_users.nama', 'sys_roles.name', null, null); //set column field database for datatable orderable
+    var $column_search = array('sys_users.uname', 'sys_roles.name', 'dt_users.nama'); //set column field database for datatable searchable 
     var $order = array('id' => 'asc'); // default order 
 
     public function index($param) {
@@ -19,13 +19,15 @@ class M_users extends CI_Model {
         $role_id = $this->bodo->Dec($this->session->userdata('role_id'));
         $id_user = $this->bodo->Dec($this->session->userdata('id_user'));
         if ($role_id == 1 or $role_id == 2) {
-            $exec = $this->db->select('sys_users.id,sys_users.uname,sys_users.pwd,sys_users.role_id,sys_users.pict,sys_users.stat,sys_roles.name');
-            $this->db->from($this->table)
-                    ->join('sys_roles', '`sys_users`.`role_id` = `sys_roles`.`id`');
-        } else {
-            $exec = $this->db->select('sys_users.id,sys_users.uname,sys_users.pwd,sys_users.role_id,sys_users.pict,sys_users.stat,sys_roles.name');
+            $exec = $this->db->select('sys_users.id,sys_users.uname,sys_users.pwd,sys_users.role_id,sys_users.pict,sys_users.stat,sys_roles.name, dt_users.nama AS fullname');
             $this->db->from($this->table)
                     ->join('sys_roles', '`sys_users`.`role_id` = `sys_roles`.`id`')
+                    ->join('dt_users', 'sys_users.id = dt_users.sys_user_id');
+        } else {
+            $exec = $this->db->select('sys_users.id,sys_users.uname,sys_users.pwd,sys_users.role_id,sys_users.pict,sys_users.stat,sys_roles.name, dt_users.nama AS fullname');
+            $this->db->from($this->table)
+                    ->join('sys_roles', '`sys_users`.`role_id` = `sys_roles`.`id`')
+                    ->join('dt_users', 'sys_users.id = dt_users.sys_user_id')
                     ->where('`sys_users`.`id`', $id_user, false)
                     ->or_where('`sys_roles`.`parent_id`', $role_id, false);
         }

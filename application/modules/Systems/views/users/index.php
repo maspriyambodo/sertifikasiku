@@ -19,6 +19,7 @@
                     <tr>
                         <th>no</th>
                         <th>username</th>
+                        <th>nama<br>lengkap</th>
                         <th>roles</th>
                         <th>status</th>
                         <th>action</th>
@@ -73,12 +74,12 @@ unset($_SESSION['succ_msg']);
                     className: 'text-center'
                 },
                 {
-                    targets: 3,
+                    targets: 4,
                     className: 'text-center',
                     orderable: false
                 },
                 {
-                    targets: 4,
+                    targets: 5,
                     className: 'text-center',
                     orderable: false
                 }

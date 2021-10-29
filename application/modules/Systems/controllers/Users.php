@@ -65,6 +65,7 @@ class Users extends CI_Controller {
             $row = [];
             $row[] = $no;
             $row[] = $users->uname;
+            $row[] = $users->fullname;
             $row[] = $users->name;
             $row[] = $stat;
             $row[] = '<div class="btn-group">' . $editbtn . $reset_pwd . $delbtn . $activebtn . '</div>';
