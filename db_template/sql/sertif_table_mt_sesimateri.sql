@@ -23,5 +23,4 @@ CREATE TABLE `mt_sesimateri` (
 --
 
 INSERT INTO `mt_sesimateri` (`id`, `nama`, `stat`, `syscreateuser`, `syscreatedate`, `sysupdateuser`, `sysupdatedate`, `sysdeleteuser`, `sysdeletedate`) VALUES
-(1, 'SESI I', 1, 1, '2021-10-12 10:33:20', NULL, NULL, NULL, NULL),
-(2, 'SESI II', 1, 1, '2021-10-12 10:33:25', NULL, NULL, NULL, NULL);
+(1, 'testing sesi', 1, 2, '2021-10-30 02:29:03', NULL, NULL, NULL, NULL);

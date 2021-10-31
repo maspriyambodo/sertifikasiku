@@ -34,7 +34,8 @@ ALTER TABLE `dt_pwd`
 -- Indexes for table `dt_sponsor`
 --
 ALTER TABLE `dt_sponsor`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `syscreateuser` (`syscreateuser`);
 
 --
 -- Indexes for table `dt_users`
@@ -111,7 +112,8 @@ ALTER TABLE `mt_wil_provinsi`
 --
 ALTER TABLE `sys_app`
   ADD PRIMARY KEY (`favico`) USING BTREE,
-  ADD KEY `favico` (`favico`) USING BTREE;
+  ADD KEY `favico` (`favico`) USING BTREE,
+  ADD KEY `syscreateuser` (`syscreateuser`);
 
 --
 -- Indexes for table `sys_menu`
@@ -150,24 +152,20 @@ ALTER TABLE `sys_roles`
 ALTER TABLE `sys_users`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `id` (`id`) USING BTREE,
-  ADD KEY `role_id` (`role_id`) USING BTREE,
-  ADD KEY `uname` (`uname`) USING BTREE;
+  ADD UNIQUE KEY `uname` (`uname`) USING BTREE,
+  ADD KEY `role_id` (`role_id`) USING BTREE;
 
 --
 -- Indexes for table `tr_absensi`
 --
 ALTER TABLE `tr_absensi`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `id` (`id`) USING BTREE,
-  ADD KEY `materi_id` (`materi_id`),
-  ADD KEY `tr_absensi_ibfk_1` (`user_id`);
+  ADD KEY `user_id` (`user_id`),
+  ADD KEY `materi_id` (`materi_id`);
 
 --
 -- Indexes for table `tr_chat`
 --
 ALTER TABLE `tr_chat`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `id` (`id`) USING BTREE,
   ADD KEY `user_id` (`user_id`),
   ADD KEY `materi_id` (`materi_id`);
 
@@ -179,7 +177,7 @@ ALTER TABLE `tr_chat`
 -- AUTO_INCREMENT for table `dt_materi`
 --
 ALTER TABLE `dt_materi`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=0;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `dt_notif`
@@ -191,43 +189,43 @@ ALTER TABLE `dt_notif`
 -- AUTO_INCREMENT for table `dt_pwd`
 --
 ALTER TABLE `dt_pwd`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=0;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `dt_sponsor`
 --
 ALTER TABLE `dt_sponsor`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=0;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `dt_users`
 --
 ALTER TABLE `dt_users`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=0;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `mt_country`
 --
 ALTER TABLE `mt_country`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=0;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `mt_industri`
 --
 ALTER TABLE `mt_industri`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=0;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `mt_klasifikasi`
 --
 ALTER TABLE `mt_klasifikasi`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=0;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `mt_sesimateri`
 --
 ALTER TABLE `mt_sesimateri`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=0;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `sys_menu`
@@ -245,31 +243,19 @@ ALTER TABLE `sys_menu_group`
 -- AUTO_INCREMENT for table `sys_permissions`
 --
 ALTER TABLE `sys_permissions`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=141;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=0;
 
 --
 -- AUTO_INCREMENT for table `sys_roles`
 --
 ALTER TABLE `sys_roles`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=0;
 
 --
 -- AUTO_INCREMENT for table `sys_users`
 --
 ALTER TABLE `sys_users`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=0;
-
---
--- AUTO_INCREMENT for table `tr_absensi`
---
-ALTER TABLE `tr_absensi`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=0;
-
---
--- AUTO_INCREMENT for table `tr_chat`
---
-ALTER TABLE `tr_chat`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=0;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Constraints for dumped tables
@@ -295,6 +281,12 @@ ALTER TABLE `dt_notif`
 --
 ALTER TABLE `dt_pwd`
   ADD CONSTRAINT `dt_pwd_ibfk_1` FOREIGN KEY (`syscreateuser`) REFERENCES `sys_users` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+--
+-- Constraints for table `dt_sponsor`
+--
+ALTER TABLE `dt_sponsor`
+  ADD CONSTRAINT `dt_sponsor_ibfk_1` FOREIGN KEY (`syscreateuser`) REFERENCES `sys_users` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
 
 --
 -- Constraints for table `dt_users`
@@ -326,6 +318,12 @@ ALTER TABLE `mt_wil_kelurahan`
   ADD CONSTRAINT `mt_wil_kelurahan_ibfk_1` FOREIGN KEY (`id_kecamatan`) REFERENCES `mt_wil_kecamatan` (`id_kecamatan`) ON DELETE RESTRICT ON UPDATE RESTRICT;
 
 --
+-- Constraints for table `sys_app`
+--
+ALTER TABLE `sys_app`
+  ADD CONSTRAINT `sys_app_ibfk_1` FOREIGN KEY (`syscreateuser`) REFERENCES `sys_users` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+--
 -- Constraints for table `sys_menu`
 --
 ALTER TABLE `sys_menu`
@@ -337,6 +335,12 @@ ALTER TABLE `sys_menu`
 ALTER TABLE `sys_permissions`
   ADD CONSTRAINT `sys_permissions_ibfk_1` FOREIGN KEY (`role_id`) REFERENCES `sys_roles` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   ADD CONSTRAINT `sys_permissions_ibfk_2` FOREIGN KEY (`id_menu`) REFERENCES `sys_menu` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+--
+-- Constraints for table `sys_users`
+--
+ALTER TABLE `sys_users`
+  ADD CONSTRAINT `sys_users_ibfk_1` FOREIGN KEY (`role_id`) REFERENCES `sys_roles` (`id`);
 
 --
 -- Constraints for table `tr_absensi`
