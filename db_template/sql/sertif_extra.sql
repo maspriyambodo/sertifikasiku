@@ -243,13 +243,13 @@ ALTER TABLE `sys_menu_group`
 -- AUTO_INCREMENT for table `sys_permissions`
 --
 ALTER TABLE `sys_permissions`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=0;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `sys_roles`
 --
 ALTER TABLE `sys_roles`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=0;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `sys_users`
