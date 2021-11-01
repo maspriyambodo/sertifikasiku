@@ -15,15 +15,15 @@
                             <div class="form-group">
                                 <label for="kategori">Kategori:</label>
                                 <select name="kategori" id="kategori" class="form-control" required>
-                                    <option value="1">Sponsor</option>
-                                    <option value="2">Media Patner</option>
+                                    <option value="<?php echo Enkrip(1); ?>">Sponsor</option>
+                                    <option value="<?php echo Enkrip(2); ?>">Media Patner</option>
                                 </select>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="nama">Nama:</label>
-                                <input id="nama" name="nama" type="text" class="form-control" required>
+                                <input id="nama" name="nama" type="text" class="form-control" required autocomplete="off"/>
                             </div>
                         </div>
                         <div class="col-md-6">
@@ -35,7 +35,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="url_website">Url Website:</label>
-                                <input id="url_website" name="url_website" type="text" class="form-control" required>
+                                <input id="url_website" name="url_website" type="text" class="form-control" required autocomplete="off"/>
                             </div>
                         </div>
                     </div>
@@ -52,16 +52,16 @@
 </div>
 
 <script type="text/javascript">
-            $(function () {
-            $("#start_date").datepicker({
-                    autoclose: true,
-                    todayHighlight: true
-            });
-            $("#end_date").datepicker({
-                    autoclose: true,
-                    todayHighlight: true
-            });
-            });
+    $(function () {
+        $("#start_date").datepicker({
+            autoclose: true,
+            todayHighlight: true
+        });
+        $("#end_date").datepicker({
+            autoclose: true,
+            todayHighlight: true
+        });
+    });
 </script>
 <script>
     function Close_add() {
@@ -69,7 +69,7 @@
 
     function Save() {
 
-            $("#form_add").submit();
+        $("#form_add").submit();
 
     }
 </script>

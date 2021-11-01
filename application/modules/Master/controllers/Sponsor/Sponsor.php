@@ -30,11 +30,16 @@ class Sponsor extends CI_Controller {
         return $this->parser->parse('Template/layout', $data);
     }
 
-
     public function Save() {
+        $kategori = Dekrip(Post_input('kategori'));
+        if ($kategori == 1) {
+            $upload_path = 'assets/images/sponsor/';
+        } else {
+            $upload_path = 'assets/images/media_partner/';
+        }
         $param = [
-            'upload_path' => 'assets/images/sponsor/',
-            'file_name' => 'sponsor' . date('d_His'),
+            'upload_path' => $upload_path,
+            'file_name' => md5(date('Y-m-d H:i:s')),
             'input_name' => "path",
             'allowed_types' => 'gif|jpg|png|gif|ico'
         ];
@@ -45,14 +50,13 @@ class Sponsor extends CI_Controller {
             $file_name = $pict['file_name'];
         }
         $data = [
-            'id' => Post_input("id"),
-            'kategori' => Post_input("kategori"),
+            'kategori' => $kategori,
             'nama' => Post_input("nama"),
             'url_website' => Post_input("url_website"),
             'path' => $file_name,
             'stat' => 1,
             'syscreateuser' => $this->user,
-            'syscreatedate' => date('Y-m-d h:i:sa')
+            'syscreatedate' => date('Y-m-d h:i:s')
         ];
         $exec = $this->model->pro_add($data);
 
@@ -65,41 +69,29 @@ class Sponsor extends CI_Controller {
     }
 
     public function Update() {
-        $id = $this->bodo->Dec(Post_input('id'));
-
-        $param = [
-            'upload_path' => 'assets/images/sponsor/',
-            'file_name' => 'sponsor' . date('d_His'),
-            'input_name' => "path",
-            'allowed_types' => 'gif|jpg|png|gif|ico'
-        ];
-        $pict = _Upload($param);
-        $old_ava = Post_input("old_ava");
-        if (!$pict['status'] or empty($pict['status'])) {
-            $pict['file_name'] = $old_ava;
+        $id = Dekrip(Post_input('id'));
+        $old_id = Dekrip(Post_input('old_id'));
+        if ($id == $old_id) {
+            $kategori = Dekrip(Post_input("kategori"));
+            $data = [
+                'id' => $id,
+                'nama' => Post_input("nama"),
+                'kategori' => $kategori,
+                'url_website' => Post_input("url_website"),
+                'sysupdateuser' => $this->user,
+                'sysupdatedate' => date('Y-m-d h:i:s')
+            ];
+            $exec = $this->model->update($data);
+            if (!$exec) {
+                $result = redirect(base_url('Master/Sponsor/index/'), $this->session->set_flashdata('err_msg', 'error while update data'));
+            } else {
+                $result = redirect(base_url('Master/Sponsor/index/'), $this->session->set_flashdata('succ_msg', 'success, data has been updated'));
+            }
         } else {
-            unlink('assets/images/sponsor/' . $old_ava);
-        }
-
-        $data = [
-            'id' => $id,
-            'nama' => Post_input("nama"),
-            'path' => $pict['file_name'],
-            'kategori' => Post_input("kategori"),
-            'url_website' => Post_input("url_website"),
-            'sysupdateuser' => $this->user,
-            'sysupdatedate' => date('Y-m-d h:i:sa')
-        ];
-
-        $exec = $this->model->update($data);
-        if (!$exec) {
-           $result = redirect(base_url('Master/Sponsor/index/'), $this->session->set_flashdata('err_msg', 'error while update data'));
-        } else {
-            $result = redirect(base_url('Master/Sponsor/index/'), $this->session->set_flashdata('succ_msg', 'success, data has been updated'));
+            $result = redirect(base_url('Master/Sponsor/index/'), $this->session->set_flashdata('err_msg', 'your token was invalid'));
         }
         return $result;
     }
-
 
     public function Delete() {
         $id = $this->bodo->Dec(Post_input('id'));
@@ -125,30 +117,72 @@ class Sponsor extends CI_Controller {
         return $result;
     }
 
-
-
     public function Edit($id) {
         $id_sponsor = $this->bodo->Dec($id);
+        $sponsor = $this->model->Get_id($id_sponsor);
         $data = [
-            'data' => $this->model->Get_id($id_sponsor)->result(),
             'csrf' => $this->bodo->Csrf(),
-            'id' => $id,
             'item_active' => 'Master/Sponsor/index/',
             'privilege' => $this->bodo->Check_previlege('Master/Sponsor/index/'),
-            'siteTitle' => 'Master Sponsor | ' . $this->bodo->Sys('app_name'),
-            'pagetitle' => 'Sponsor',
+            'siteTitle' => 'Data Sponsor | ' . $this->bodo->Sys('app_name'),
+            'pagetitle' => 'Edit data ' . $sponsor[0]->nama,
             'breadcrumb' => [
                 0 => [
                     'nama' => 'index',
+                    'link' => base_url('Master/Sponsor/index/'),
+                    'status' => false
+                ],
+                1 => [
+                    'nama' => 'edit',
                     'link' => null,
                     'status' => true
                 ]
             ]
         ];
-
+        $data['sponsor'] = $sponsor;
         $data['content'] = $this->parser->parse('sponsor/edit', $data, true);
         return $this->parser->parse('Template/layout', $data);
+    }
 
+    public function update_logo() {
+        $kategori = Dekrip(Post_input('kategori'));
+        $id_ = Dekrip(Post_input('old_id'));
+        if ($kategori == 1) {//sponsor
+            $upload_path = 'assets/images/sponsor/';
+        } else {//media partner
+            $upload_path = 'assets/images/media_partner/';
+        }
+        $param = [
+            'upload_path' => $upload_path,
+            'file_name' => md5(date('Y-m-d H:i:s')),
+            'input_name' => "favico",
+            'allowed_types' => 'gif|jpg|png|gif|ico'
+        ];
+        $fav = _Upload($param);
+        if (!$fav) {
+            $result = [
+                'status' => false,
+                'msg' => 'error while upload logo',
+                'csrf' => $this->bodo->Csrf()['hash']
+            ];
+        } else {
+            $exec = $this->model->update_logo($id_, $fav['file_name']);
+            if ($exec) {
+                $result = [
+                    'status' => true,
+                    'msg' => 'logo has been changed',
+                    'csrf' => $this->bodo->Csrf()['hash'],
+                    'new_img' => base_url($upload_path . $fav['file_name'])
+                ];
+            } else {
+                $result = [
+                    'status' => false,
+                    'msg' => 'error while change logo',
+                    'csrf' => $this->bodo->Csrf()['hash']
+                ];
+            }
+        }
+        ToJson($result);
     }
 
 }
