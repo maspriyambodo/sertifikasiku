@@ -197,16 +197,14 @@ class M_users extends CI_Model {
                 ->row();
         $role_id = $exec->id;
         if (empty($role_id)) {
-            $this->db->set([
-                        '`sys_roles`.`parent_id`' => 0 + false,
-                        'sys_roles.name' => $role_name,
-                        'description' => 'generate from import user',
-                        '`sys_roles`.`stat`' => 1 + false,
-                        '`sys_roles`.`syscreateuser`' => $this->bodo->Dec($this->session->userdata('id_user')),
-                        'syscreatedate' => date('Y-m-d H:i:s')
-                    ])
-                    ->insert('sys_roles');
-            $role_id = $this->db->insert_id();
+            $this->db->query('CALL sys_roles_insert("' . $role_name . '","generate from import user",0,' . $this->bodo->Dec($this->session->userdata('id_user')) . ');');
+            mysqli_next_result($this->db->conn_id);
+            $exec2 = $this->db->select('sys_roles.id')
+                    ->from('sys_roles')
+                    ->where('sys_roles.name', $role_name)
+                    ->get()
+                    ->row();
+            $role_id = $exec2->id;
         }
         return $role_id;
     }
