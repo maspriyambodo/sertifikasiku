@@ -20,11 +20,3 @@ CREATE TABLE `dt_sponsor` (
   `sysdeleteuser` int DEFAULT NULL,
   `sysdeletedate` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `dt_sponsor`
---
-
-INSERT INTO `dt_sponsor` (`id`, `kategori`, `nama`, `path`, `url_website`, `stat`, `syscreateuser`, `syscreatedate`, `sysupdateuser`, `sysupdatedate`, `sysdeleteuser`, `sysdeletedate`) VALUES
-(1, 1, 'google', 'sponsor30_023218.png', 'https://google.com', 1, 2, '2021-10-30 02:32:18', NULL, NULL, NULL, NULL),
-(2, 2, 'testing media partner', 'sponsor29_131740.png', 'https://sertifikasiku.com', 1, 2, '2021-10-30 02:32:54', NULL, NULL, NULL, NULL);

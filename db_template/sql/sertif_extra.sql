@@ -195,7 +195,7 @@ ALTER TABLE `dt_pwd`
 -- AUTO_INCREMENT for table `dt_sponsor`
 --
 ALTER TABLE `dt_sponsor`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
 
 --
 -- AUTO_INCREMENT for table `dt_users`
