@@ -195,7 +195,7 @@ ALTER TABLE `dt_pwd`
 -- AUTO_INCREMENT for table `dt_sponsor`
 --
 ALTER TABLE `dt_sponsor`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `dt_users`
@@ -207,7 +207,7 @@ ALTER TABLE `dt_users`
 -- AUTO_INCREMENT for table `mt_country`
 --
 ALTER TABLE `mt_country`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=250;
 
 --
 -- AUTO_INCREMENT for table `mt_industri`
