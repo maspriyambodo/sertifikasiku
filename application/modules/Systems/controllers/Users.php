@@ -304,14 +304,9 @@ class Users extends CI_Controller {
                 $field3 = $sheetData[$i]['3']; //telepon
                 $field4 = $sheetData[$i]['4']; //pekerjaan
                 $role_name = $this->M_users->_roleUser($field1);
-                if (empty($role_name)) {
-                    $id_role = 999;
-                } else {
-                    $id_role = $role_name;
-                }
                 $data[] = (object) [
                             'uname' => $field,
-                            'role_id' => $id_role + false,
+                            'role_id' => $role_name + false,
                             'stat' => 1 + false,
                             'pict' => 'blank.png',
                             'syscreateuser' => $this->user + false,
