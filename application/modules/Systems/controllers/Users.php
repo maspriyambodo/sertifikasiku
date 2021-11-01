@@ -303,7 +303,11 @@ class Users extends CI_Controller {
                 $field2 = $sheetData[$i]['2']; //fullname
                 $field3 = $sheetData[$i]['3']; //telepon
                 $field4 = $sheetData[$i]['4']; //pekerjaan
-                $role_name = $this->M_users->_roleUser($field1);
+                if (!empty($field1)) {
+                    $role_name = $this->M_users->_roleUser($field1);
+                } else {
+                    $role_name = $this->M_users->_roleUser('unknown');
+                }
                 $data[] = (object) [
                             'uname' => $field,
                             'role_id' => $role_name + false,
