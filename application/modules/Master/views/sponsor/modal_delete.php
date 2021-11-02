@@ -10,7 +10,7 @@
             <form action="<?php echo site_url('Master/Sponsor/Delete/'); ?>" method="post">
                 <div class="modal-body">
                     <input type="hidden" name="<?php echo $csrf['name'] ?>" value="<?php echo $csrf['hash'] ?>"/>
-                    <input type="hidden" name="id"/>
+                    <input type="hidden" name="d_id"/>
                     <p>Data that has been deleted cannot be returned</p>
                 </div>
                 <div class="modal-footer">
@@ -23,7 +23,7 @@
 </div>
 <script>
     function Delete(val) {
-        $('input[name="id"]').val(val);
+        $('input[name="d_id"]').val(val);
         $('#modal_delete').modal({show: true, backdrop: 'static', keyboard: false});
     }
 </script>

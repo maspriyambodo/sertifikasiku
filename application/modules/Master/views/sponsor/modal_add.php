@@ -17,7 +17,7 @@
                                 <select name="kategori" id="kategori" class="form-control" required="">
                                     <option value="">select category</option>
                                     <option value="<?php echo Enkrip(1); ?>">Sponsor</option>
-                                    <option value="<?php echo Enkrip(2); ?>">Media Patner</option>
+                                    <option value="<?php echo Enkrip(2); ?>">Media Partner</option>
                                 </select>
                             </div>
                         </div>

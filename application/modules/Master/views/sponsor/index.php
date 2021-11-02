@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css" integrity="sha512-+EoPw+Fiwh6eSeRK7zwIKG2MA8i3rV/DGa3tdttQGgWyatG/SkncT53KHQaS5Jh9MNOT3dmFL0FjTY08And/Cw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <div class="card card-custom">
     <div class="card-body">
         <?php
@@ -17,9 +18,10 @@
                 <thead class="text-center text-uppercase">
                     <tr>
                         <th>no</th>
-                        <th>Nama</th>
-                        <th>Kategori</th>
-                        <th>Status</th>
+                        <th>name</th>
+                        <th>category</th>
+                        <th>logo</th>
+                        <th>status</th>
                         <th>action</th>
                     </tr>
                 </thead>
@@ -42,27 +44,43 @@
                             <td class="text-center">
                                 <?php
                                 if ($menu->kategori == 1) {
-                                    echo  '<span class="badge badge-xl badge-success" title="sponsor">Sponsor</span>';
+                                    echo 'sponsor';
                                 } elseif ($menu->kategori == 2) {
-                                    echo '<span class="badge badge-xl badge-danger" title="media-patner">Media Patner</span>';
+                                    echo 'media partner';
                                 }
                                 ?>
                             </td>
                             <td class="text-center">
                                 <?php
-                                if ($menu->stat) {
-                                    echo '<span class="label label-xl label-dot label-success" title="active"></span>';
+                                if ($menu->kategori == 1) {
+                                    echo '<div class="gallery">'
+                                    . '<a href="' . base_url('assets/images/sponsor/' . $menu->path) . '" title="' . $menu->nama . '" class="image-link">'
+                                    . '<img class="img-fluid img-thumbnail" src="' . base_url('assets/images/sponsor/' . $menu->path) . '" onclick="Gallery()" style="max-width:50px;"/>'
+                                    . '</a>'
+                                    . '</div>';
                                 } else {
-                                    echo '<span class="label label-xl label-dot label-danger" title="non-active"></span>';
+                                    echo '<div class="gallery">'
+                                    . '<a href="' . base_url('assets/images/media_partner/' . $menu->path) . '" title="view image" class="image-link">'
+                                    . '<img class="img-fluid img-thumbnail" src="' . base_url('assets/images/media_partner/' . $menu->path) . '" onclick="Gallery()" style="max-width:50px;"/>'
+                                    . '</a>'
+                                    . '</div>';
                                 }
                                 ?>
                             </td>
-
                             <td class="text-center">
                                 <?php
-                                $editbtn = '<a href="'.base_url('Master/Sponsor/Edit/'.$id).'" id="editbtn" type="button" class="btn btn-icon btn-warning btn-xs" title="Edit" value="' . $id . '" ><i class="far fa-edit"></i></a>';
+                                if ($menu->stat == 1) {
+                                    echo '<span class="label label-xl label-dot label-success" title="enable"></span>';
+                                } else {
+                                    echo '<span class="label label-xl label-dot label-danger" title="disable"></span>';
+                                }
+                                ?>
+                            </td>
+                            <td class="text-center">
+                                <?php
+                                $editbtn = '<a href="' . base_url('Master/Sponsor/Edit/' . $id) . '" id="editbtn" type="button" class="btn btn-icon btn-warning btn-xs" title="Edit" value="' . $id . '" ><i class="far fa-edit"></i></a>';
                                 $delbtn = '<button id="delbtn" type="button" class="btn btn-icon btn-danger btn-xs" title="Delete" value="' . $id . '" onclick="Delete(this.value)"><i class="far fa-trash-alt"></i></button>';
-                                $activebtn = '<button id="actvbtn" type="button" class="btn btn-icon btn-default btn-xs" title="Set Active" value="' . $id . '" onclick="Active(this.value)"><i class="fas fa-unlock text-success"></i></button>';
+                                $activebtn = '<button id="actvbtn" type="button" class="btn btn-icon btn-default btn-xs" title="Enable" value="' . $id . '" onclick="Active(this.value)"><i class="fas fa-unlock text-success"></i></button>';
 
                                 echo '<div class="btn-group">'; // open div btn-group
 
@@ -74,7 +92,6 @@
                                 } elseif ($menu->stat and $privilege['delete']) {
                                     echo $delbtn;
                                 }
-
                                 echo '</div>'; //close div btn-group
                                 ?>
                             </td>
@@ -97,6 +114,7 @@ if ($privilege['delete']) {
 unset($_SESSION['err_msg']);
 unset($_SESSION['succ_msg']);
 ?>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js" integrity="sha512-IsNh5E3eYy3tr/JiX2Yx4vsCujtkhwl7SLqgnwLNgf04Hrt9BT9SXlLlZlWx+OK4ndzAoALhsMNcCmkggjZB1w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script>
     window.onload = function () {
         toastr.options = {
@@ -147,6 +165,11 @@ unset($_SESSION['succ_msg']);
             ]
         });
     };
+    function Gallery() {
+        $('.image-link').magnificPopup({
+            type: 'image'
+        });
+    }
     function isNumber(b) {
         b = (b) ? b : window.event;
         var a = (b.which) ? b.which : b.keyCode;

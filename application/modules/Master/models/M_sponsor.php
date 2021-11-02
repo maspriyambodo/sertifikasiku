@@ -5,8 +5,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class M_sponsor extends CI_Model {
 
     public function index() {
-        $exec = $this->db->query('select * from dt_sponsor');
-        mysqli_next_result($this->db->conn_id);
+        $exec = $this->db->select('dt_sponsor.id,dt_sponsor.kategori,dt_sponsor.nama,dt_sponsor.path,dt_sponsor.url_website,dt_sponsor.stat')
+                ->from('dt_sponsor')
+                ->where('`dt_sponsor`.`stat` <>', 2, false)
+                ->get()
+                ->result();
         return $exec;
     }
 
@@ -33,12 +36,12 @@ class M_sponsor extends CI_Model {
     }
 
     public function delete($id) {
-        $query = $this->db->query("update dt_sponsor set stat = '0' where id = '$id' ");
+        $query = $this->db->query("update dt_sponsor set stat = 2 where id = '$id' ");
         return $query;
     }
 
     public function active($id) {
-        $query = $this->db->query("update dt_sponsor set stat = '1' where id = '$id' ");
+        $query = $this->db->query("update dt_sponsor set stat = 1 where id = '$id' ");
         return $query;
     }
 

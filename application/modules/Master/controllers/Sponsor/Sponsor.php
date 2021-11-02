@@ -12,7 +12,7 @@ class Sponsor extends CI_Controller {
 
     public function index() {
         $data = [
-            'data' => $this->model->index()->result(),
+            'data' => $this->model->index(),
             'csrf' => $this->bodo->Csrf(),
             'item_active' => 'Master/Sponsor/index/',
             'privilege' => $this->bodo->Check_previlege('Master/Sponsor/index/'),
@@ -94,9 +94,8 @@ class Sponsor extends CI_Controller {
     }
 
     public function Delete() {
-        $id = $this->bodo->Dec(Post_input('id'));
+        $id = $this->bodo->Dec(Post_input('d_id'));
         $exec = $this->model->delete($id);
-
         if (!$exec) {
             $result = redirect(base_url('Master/Sponsor/index/'), $this->session->set_flashdata('err_msg', 'error while delete data'));
         } else {
@@ -106,9 +105,8 @@ class Sponsor extends CI_Controller {
     }
 
     public function Set_active() {
-        $id = $this->bodo->Dec(Post_input('id'));
+        $id = Dekrip(Post_input('act_id'));
         $exec = $this->model->active($id);
-
         if (!$exec) {
             $result = redirect(base_url('Master/Sponsor/index/'), $this->session->set_flashdata('err_msg', 'error while enable data'));
         } else {

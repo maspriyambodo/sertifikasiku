@@ -10,7 +10,7 @@
             <form action="<?php echo site_url('Master/Sponsor/Set_active/'); ?>" method="post">
                 <div class="modal-body">
                     <input type="hidden" name="<?php echo $csrf['name'] ?>" value="<?php echo $csrf['hash'] ?>"/>
-                    <input type="hidden" name="id"/>
+                    <input type="hidden" name="act_id"/>
                     <p>Activate Sponsor, making the sponsor accessible again</p>
                 </div>
                 <div class="modal-footer">
@@ -23,7 +23,7 @@
 </div>
 <script>
     function Active(val) {
-        $('input[name="id"]').val(val);
+        $('input[name="act_id"]').val(val);
         $('#modal_active').modal({show: true, backdrop: 'static', keyboard: false});
     }
 </script>
