@@ -3,7 +3,7 @@
 // crontab -e 
 // * 23 * * * /usr/bin/php /var/www/html/sertifikasiku/index.php Clear_session/index/
 
-defined('STDIN');
+defined('STDIN') OR die();
 
 class Clear_session extends CI_Controller {
 
