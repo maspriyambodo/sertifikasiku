@@ -98,9 +98,6 @@
 <input type="hidden" name="err_msg" value="<?php echo $this->session->flashdata('err_msg'); ?>"/>
 <input type="hidden" name="succ_msg" value="<?php echo $this->session->flashdata('succ_msg'); ?>"/>
 <?php
-if ($privilege['update']) {
-    require_once 'modal_edit.php'; // jika bisa mengubah data dengan modal, jika tidak maka button dibuat menjadi  href
-}
 if ($privilege['delete']) {
     require_once 'modal_delete.php';
     require_once 'modal_destroy.php';

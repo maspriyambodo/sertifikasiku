@@ -13,14 +13,14 @@
         }
         ?>
         <div class="table-responsive">
-            <table class="table table-bordered table-hover table-striped" style="width:100%;">
+            <table id="table" class="table table-bordered table-hover table-striped" style="width:100%;">
                 <thead class="text-center text-uppercase">
                     <tr>
                         <th>no</th>
-                        <th>field2</th>
-                        <th>field3</th>
-                        <th>field4</th>
-                        <th>field5</th>
+                        <th>nama</th>
+                        <th>deskripsi</th>
+                        <th>status</th>
+                        <th>actions</th>
                     </tr>
                 </thead>
                 <tbody></tbody>
@@ -36,6 +36,7 @@ if ($privilege['update']) {
 }
 if ($privilege['delete']) {
     require_once 'modal_delete.php';
+    require_once 'modal_disable.php';
     require_once 'modal_activate.php';
 } else {
     null;
@@ -70,8 +71,8 @@ unset($_SESSION['succ_msg']);
         } else if (b) {
             toastr.success(b);
         }
-        $('table').dataTable({
-            "ServerSide": true,
+        $('#table').dataTable({
+            "serverSide": true,
             "order": [[0, "asc"]],
             "paging": true,
             "ordering": true,
@@ -90,6 +91,30 @@ unset($_SESSION['succ_msg']);
                 {extend: 'excelHtml5', footer: true},
                 {extend: 'csvHtml5', footer: true},
                 {extend: 'pdfHtml5', footer: true}
+            ],
+            "ajax": {
+                "url": "<?php echo site_url('Master/Bidang/lists') ?>",
+                "type": "POST"
+            },
+            columnDefs: [
+                {
+                    targets: 0,
+                    className: 'text-center',
+                    orderable: false
+                },
+                {
+                    targets: 2,
+                    orderable: false
+                },
+                {
+                    targets: 3,
+                    className: 'text-center'
+                },
+                {
+                    targets: 4,
+                    className: 'text-center',
+                    orderable: false
+                }
             ]
         });
     };
