@@ -14,6 +14,8 @@ class Materi extends CI_Controller {
         $data = [
             'data' => $this->model->index()->result(),
             'sesi' => $this->model->sesi()->result(),
+            'bidang_industri' => $this->model->bidang_industri(),
+            'klasifikasi' => $this->model->klasifikasi(),
             'csrf' => $this->bodo->Csrf(),
             'item_active' => 'Master/Materi/index/',
             'privilege' => $this->bodo->Check_previlege('Master/Materi/index/'),
@@ -33,15 +35,19 @@ class Materi extends CI_Controller {
 
     public function Save() {
         $data = [
-            'id_sesi' => Post_input("id_sesi"),
-            'link_video' => Post_input("link_video"),
-            'nama_materi' => Post_input("nama_materi"),
-            'time_start' => Post_input("time_start"),
-            'time_stop' => Post_input("time_stop"),
-            'deskripsi' => Post_input("deskripsi"),
-            'stat' => 1,
-            'syscreateuser' => $this->user,
-            'syscreatedate' => date('Y-m-d h:i:sa')
+            '`dt_materi`.`id_sesi`' => Post_input("id_sesi") + false,
+            '`dt_materi`.`id_industri`' => Post_input("segmentxt") + false,
+            '`dt_materi`.`id_klasifikasi`' => Post_input("leveltxt") + false,
+            'dt_materi.narasumber' => Post_input('narsumtxt'),
+            'dt_materi.title_narsum' => Post_input('narsumtitle'),
+            'dt_materi.link_video' => Post_input("link_video"),
+            'dt_materi.nama_materi' => Post_input("nama_materi"),
+            'dt_materi.time_start' => Post_input("time_start"),
+            'dt_materi.time_stop' => Post_input("time_stop"),
+            'dt_materi.deskripsi' => Post_input("deskripsi"),
+            '`dt_materi`.`stat`' => 1 + false,
+            '`dt_materi`.`syscreateuser`' => $this->user + false,
+            'dt_materi.syscreatedate' => date('Y-m-d h:i:s')
         ];
         $exec = $this->model->pro_add($data);
         if (!$exec) {
