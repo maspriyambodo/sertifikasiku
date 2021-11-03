@@ -19,3 +19,28 @@
 .select2-container--default .select2-selection--single .select2-selection__arrow{
     top: 5px;
 }
+.DTFC_ScrollWrapper{
+    height:auto !important;
+}
+th, td { white-space: nowrap; }
+.dataTables_wrapper .dataTable {
+    width: 100% !important;
+    border-collapse: initial !important;
+    border-spacing: 0 !important;
+    margin:0 !important;
+    border-radius: .42rem;
+}
+/*.DTFC_LeftFootWrapper{
+    top:15px !important;
+}*/
+.text-wraps{
+    white-space:normal !important;
+    width:400px;
+}
+.text-wrap{
+    white-space:normal !important;
+    width:600px;
+}
+.dt-buttons{
+    margin-bottom: 0px !important;
+}
