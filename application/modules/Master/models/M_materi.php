@@ -15,8 +15,7 @@ class M_materi extends CI_Model {
 
     public function sesi() {
         $exec = $this->db->query('select * from mt_sesimateri');
-        mysqli_next_result($this->db->conn_id);
-        return $exec;
+        return $exec->result();
     }
 
     public function pro_add($data) {
@@ -25,8 +24,8 @@ class M_materi extends CI_Model {
     }
 
     public function Get_id($id_materi) {
-        $exec = $this->db->query(" select * from dt_materi where id = '$id_materi' ");
-        return $exec;
+        $exec = $this->db->query("select * from dt_materi where id = '$id_materi' ");
+        return $exec->result();
     }
 
     public function delete($id_materi) {
@@ -44,16 +43,23 @@ class M_materi extends CI_Model {
         return $query;
     }
 
-    public function update($data) {
-        $query = $this->db->query("update dt_materi set id_sesi = '$data[id_sesi]',
-        link_video = '$data[link_video]',
-        nama_materi = '$data[nama_materi]',
-        time_start = '$data[time_start]',
-        time_stop = '$data[time_stop]',
-        deskripsi = '$data[deskripsi]',		
-        sysupdateuser = '$data[sysupdateuser]',
-        sysupdatedate = '$data[sysupdatedate]'
-        where id = '$data[id]' ");
+    public function update($data, $id) {
+        $query = $this->db->set([
+                    '`dt_materi`.`id_sesi`' => $data['id_sesi'],
+                    '`dt_materi`.`id_industri`' => $data['id_industri'],
+                    '`dt_materi`.`id_klasifikasi`' => $data['id_klasifikasi'],
+                    'dt_materi.narasumber' => $data['narasumber'],
+                    'dt_materi.title_narsum' => $data['title_narsum'],
+                    'dt_materi.nama_materi' => $data['nama_materi'],
+                    'dt_materi.deskripsi' => $data['deskripsi'],
+                    'dt_materi.time_start' => $data['time_start'],
+                    'dt_materi.time_stop' => $data['time_stop'],
+                    'dt_materi.link_video' => $data['link_video'],
+                    '`dt_materi`.`sysupdateuser`' => $data['sysupdateuser'],
+                    'dt_materi.sysupdatedate' => $data['sysupdatedate']
+                ])
+                ->where('`dt_materi`.`id`', $id, false)
+                ->update('dt_materi');
         return $query;
     }
 

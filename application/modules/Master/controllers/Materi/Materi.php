@@ -13,7 +13,7 @@ class Materi extends CI_Controller {
     public function index() {
         $data = [
             'data' => $this->model->index()->result(),
-            'sesi' => $this->model->sesi()->result(),
+            'sesi' => $this->model->sesi(),
             'bidang_industri' => $this->model->bidang_industri(),
             'klasifikasi' => $this->model->klasifikasi(),
             'csrf' => $this->bodo->Csrf(),
@@ -59,19 +59,21 @@ class Materi extends CI_Controller {
     }
 
     public function Update() {
-        $id = $this->bodo->Dec(Post_input('e_id'));
         $data = [
-            'id' => $id,
-            'id_sesi' => Post_input("id_sesi"),
-            'link_video' => Post_input("link_video"),
-            'nama_materi' => Post_input("nama_materi"),
-            'time_start' => Post_input("time_start"),
-            'time_stop' => Post_input("time_stop"),
-            'deskripsi' => Post_input("deskripsi"),
+            'id_sesi' => Post_input('id_sesi'),
+            'id_industri' => Dekrip(Post_input('segmentxt')),
+            'id_klasifikasi' => Dekrip(Post_input('leveltxt')),
+            'narasumber' => Post_input('narsumtxt'),
+            'title_narsum' => Post_input('narsumtitle'),
+            'nama_materi' => Post_input('nama_materi'),
+            'deskripsi' => Post_input('deskripsi'),
+            'time_start' => Post_input('time_start'),
+            'time_stop' => Post_input('time_stop'),
+            'link_video' => Post_input('link_video'),
             'sysupdateuser' => $this->user,
-            'sysupdatedate' => date('Y-m-d h:i:sa')
+            'sysupdatedate' => date('Y-m-d H:i:s')
         ];
-        $exec = $this->model->update($data);
+        $exec = $this->model->update($data, Post_input('e_id'));
         if (!$exec) {
             $result = redirect(base_url('Master/Materi/index/'), $this->session->set_flashdata('err_msg', 'error while update Master Data Materi'));
         } else {
@@ -114,12 +116,13 @@ class Materi extends CI_Controller {
     }
 
     public function Edit($id) {
-        $id_materi = $this->bodo->Dec($id);
+        $id_materi = Dekrip($id);
         $data = [
-            'data' => $this->model->Get_id($id_materi)->result(),
-            'sesi' => $this->model->sesi()->result(),
+            'data' => $this->model->Get_id($id_materi),
+            'sesi' => $this->model->sesi(),
+            'bidang_industri' => $this->model->bidang_industri(),
+            'klasifikasi' => $this->model->klasifikasi(),
             'csrf' => $this->bodo->Csrf(),
-            'id' => $id,
             'item_active' => 'Master/Materi/index/',
             'privilege' => $this->bodo->Check_previlege('Master/Materi/index/'),
             'siteTitle' => 'Master Data Materi | ' . $this->bodo->Sys('app_name'),

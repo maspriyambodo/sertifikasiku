@@ -3,12 +3,12 @@
     <div class="card-body">
         <form action="<?php echo site_url('Master/Sesi/Update/'); ?>" method="post">
             <input type="hidden" name="<?php echo $csrf['name'] ?>" value="<?php echo $csrf['hash'] ?>"/>
-            <input type="hidden" name="id" value="<?= $id; ?>"/>
+            <input type="hidden" name="id" value="<?php echo $id; ?>"/>
             <div class="row">        
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="nama">Nama Sesi:</label>
-                        <input id="nama" name="nama" type="text" class="form-control" autocomplete="off" required="" value="<?= $data->nama; ?>" />
+                        <input id="nama" name="nama" type="text" class="form-control" autocomplete="off" required="" value="<?php echo $data->nama; ?>" />
                     </div>
                 </div>
             </div>
