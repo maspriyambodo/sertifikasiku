@@ -1,4 +1,5 @@
 <?php
+
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class M_klasifikasi extends CI_Model {
@@ -10,7 +11,8 @@ class M_klasifikasi extends CI_Model {
 
     private function _get_datatables_query() {
         $this->db->select()
-                ->from($this->table);
+                ->from($this->table)
+                ->where('`mt_klasifikasi`.`stat` <>', 2, false);
         $i = 0;
         foreach ($this->column_search as $item) { // loop column
             if ($_POST['search']['value']) { // if datatable send POST for search
@@ -51,7 +53,8 @@ class M_klasifikasi extends CI_Model {
 
     public function count_all() {
         $this->db->select()
-                ->from($this->table);
+                ->from($this->table)
+                ->where('`mt_klasifikasi`.`stat` <>', 2, false);
         return $this->db->count_all_results();
     }
 
