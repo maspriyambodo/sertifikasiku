@@ -45,7 +45,7 @@ class Materi extends CI_Controller {
             'dt_materi.time_start' => Post_input("time_start"),
             'dt_materi.time_stop' => Post_input("time_stop"),
             'dt_materi.deskripsi' => Post_input("deskripsi"),
-            '`dt_materi`.`stat`' => 1 + false,
+            '`dt_materi`.`stat`' => 0 + false,
             '`dt_materi`.`syscreateuser`' => $this->user + false,
             'dt_materi.syscreatedate' => date('Y-m-d h:i:s')
         ];
