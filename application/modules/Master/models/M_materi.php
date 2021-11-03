@@ -5,11 +5,28 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class M_materi extends CI_Model {
 
     public function index() {
-        $exec = $this->db->query("select a.*,
-        date_format(a.time_start, '%d-%m-%Y') as tgl_mulai,
-        date_format(a.time_start, '%H:%i') as jam_mulai,
-        date_format(a.time_stop, '%d-%m-%Y') as tgl_selesai,
-        date_format(a.time_stop, '%H:%i') as jam_selesai, b.nama as nama_sesi from dt_materi a left join mt_sesimateri b on a.id_sesi = b.id WHERE a.stat <> 2");
+        $exec = $this->db->select('date_format( dt_materi.time_start, "%d-%m-%Y" ) AS tgl_mulai,
+	date_format( dt_materi.time_start, "%H:%i" ) AS jam_mulai,
+	date_format( dt_materi.time_stop, "%d-%m-%Y" ) AS tgl_selesai,
+	date_format( dt_materi.time_stop, "%H:%i" ) AS jam_selesai,
+	mt_sesimateri.nama AS nama_sesi,
+	dt_materi.id_sesi,
+	dt_materi.id_industri,
+	dt_materi.id_klasifikasi,
+	dt_materi.narasumber,
+	dt_materi.title_narsum,
+	dt_materi.nama_materi,
+	dt_materi.deskripsi,
+	dt_materi.link_video,
+	mt_industri.nama AS nama_industri,
+	mt_klasifikasi.nama AS nama_level')
+                ->from('dt_materi')
+                ->join('mt_sesimateri', 'dt_materi.id_sesi = mt_sesimateri.id')
+                ->join('mt_industri', 'dt_materi.id_industri = mt_industri.id')
+                ->join('mt_klasifikasi', 'dt_materi.id_klasifikasi = mt_klasifikasi.id')
+                ->where('`dt_materi`.`stat` <>', 2, false)
+                ->get()
+                ->result();
         return $exec;
     }
 

@@ -17,16 +17,21 @@
                 <thead class="text-center text-uppercase">
                     <tr>
                         <th rowspan="2">no</th>
-                        <th rowspan="2">Sesi</th>
+                        <th rowspan="2">sesi</th>
                         <th rowspan="2">nama materi</th>
-                        <th rowspan="2">Deskripsi</th>
-                        <th colspan="2">Waktu Mulai</th>
-                        <th colspan="2">Waktu Selesai</th>
-                        <th rowspan="2">Link Video</th>
-                        <th rowspan="2">Status</th>
+                        <th rowspan="2">deskripsi</th>
+                        <th colspan="2">narasumber</th>
+                        <th rowspan="2">segment</th>
+                        <th rowspan="2">klasifikasi</th>
+                        <th colspan="2">waktu mulai</th>
+                        <th colspan="2">waktu selesai</th>
+                        <th rowspan="2">link video</th>
+                        <th rowspan="2">status</th>
                         <th rowspan="2">action</th>
                     </tr>
                     <tr>
+                        <th>nama</th>
+                        <th>title</th>
                         <th>Tanggal</th>
                         <th>Jam</th>
                         <th>Tanggal</th>
@@ -51,6 +56,10 @@
                             <td class="text-center"><?php echo $menu->nama_sesi; ?></td>
                             <td><?php echo $menu->nama_materi; ?></td>
                             <td><?php echo substr($menu->deskripsi, 0, 50); ?>...</td>
+                            <td><?php echo $menu->narasumber; ?></td>
+                            <td><?php echo $menu->title_narsum; ?></td>
+                            <td><?php echo $menu->nama_industri; ?></td>
+                            <td><?php echo $menu->nama_level; ?></td>
                             <td class="text-center"><?php echo $menu->tgl_mulai; ?></td>
                             <td class="text-center"><?php echo $menu->jam_mulai; ?></td>
                             <td class="text-center"><?php echo $menu->tgl_selesai; ?></td>
@@ -155,7 +164,22 @@ unset($_SESSION['succ_msg']);
                 {extend: 'excelHtml5', footer: true},
                 {extend: 'csvHtml5', footer: true},
                 {extend: 'pdfHtml5', footer: true}
-            ]
+            ],
+            columnDefs: [
+                {
+                    targets: 3,
+                    orderable: false
+                },
+                {
+                    targets: 12,
+                    orderable: false
+                },
+                {
+                    targets: 14,
+                    orderable: false
+                }
+            ],
+            fixedColumns: true
         });
     };
     function isNumber(b) {

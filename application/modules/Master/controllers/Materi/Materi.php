@@ -12,7 +12,7 @@ class Materi extends CI_Controller {
 
     public function index() {
         $data = [
-            'data' => $this->model->index()->result(),
+            'data' => $this->model->index(),
             'sesi' => $this->model->sesi(),
             'bidang_industri' => $this->model->bidang_industri(),
             'klasifikasi' => $this->model->klasifikasi(),
