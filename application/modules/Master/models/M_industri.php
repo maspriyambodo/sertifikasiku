@@ -50,7 +50,8 @@ class M_industri extends CI_Model {
     }
 
     public function count_all() {
-        $this->db->from($this->table);
+        $this->db->from($this->table)
+                ->where('`mt_industri`.`stat` <>', 2, false);
         return $this->db->count_all_results();
     }
 
