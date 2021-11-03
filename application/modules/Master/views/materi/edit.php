@@ -19,7 +19,7 @@
                             <option value="">Choose Segment</option>
                             <?php
                             foreach ($bidang_industri as $bidang_industri1) {
-                                if (Dekrip($bidang_industri1->id_industri) == $data[0]->id) {
+                                if (Dekrip($bidang_industri1->id_industri) == $data[0]->id_industri) {
                                     echo '<option value="' . $bidang_industri1->id_industri . '" selected="">' . $bidang_industri1->nama_industri . '</option>';
                                 } else {
                                     echo '<option value="' . $bidang_industri1->id_industri . '">' . $bidang_industri1->nama_industri . '</option>';

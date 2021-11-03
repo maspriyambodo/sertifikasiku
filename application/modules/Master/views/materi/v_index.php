@@ -67,7 +67,7 @@
                             <td class="text-center"><?php echo $materi->link_video; ?></td>
                             <td class="text-center">
                                 <?php
-                                if ($materi->stat) {
+                                if ($materi->stat == 1) {
                                     echo '<span class="label label-xl label-dot label-success" title="enable"></span>';
                                 } else {
                                     echo '<span class="label label-xl label-dot label-danger" title="disable"></span>';

@@ -5,8 +5,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class M_sesimateri extends CI_Model {
 
     public function index() {
-        $exec = $this->db->query('select * from mt_sesimateri');
-        mysqli_next_result($this->db->conn_id);
+        $exec = $this->db->query('select * from mt_sesimateri where mt_sesimateri.stat = 1');
         return $exec;
     }
 
@@ -23,12 +22,12 @@ class M_sesimateri extends CI_Model {
 
 
     public function delete($id){
-        $query = $this->db->query("update mt_sesimateri set stat = '0' where id = '$id' ");
+        $query = $this->db->query("update mt_sesimateri set stat = 2 where id = '$id' ");
         return $query;
     }
 
     public function active($id){
-        $query = $this->db->query("update mt_sesimateri set stat = '1' where id = '$id' ");
+        $query = $this->db->query("update mt_sesimateri set stat = 1 where id = '$id' ");
         return $query;
     }
 

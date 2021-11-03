@@ -11,6 +11,7 @@ class M_materi extends CI_Model {
 	date_format( dt_materi.time_stop, "%H:%i" ) AS jam_selesai,
 	mt_sesimateri.nama AS nama_sesi,
         dt_materi.id,
+        dt_materi.stat,
 	dt_materi.id_sesi,
 	dt_materi.id_industri,
 	dt_materi.id_klasifikasi,

@@ -74,9 +74,9 @@ $id = $this->bodo->Dec(Post_input('id'));
 $exec = $this->model->delete($id);
 
 if (!$exec) {
-    $result = redirect(base_url('Master/Sesi/index/'), $this->session->set_flashdata('err_msg', 'error while insert data'));
+    $result = redirect(base_url('Master/Sesi/index/'), $this->session->set_flashdata('err_msg', 'error while deleting data'));
 } else {
-    $result = redirect(base_url('Master/Sesi/index/'), $this->session->set_flashdata('succ_msg', 'success, new data has been added'));
+    $result = redirect(base_url('Master/Sesi/index/'), $this->session->set_flashdata('succ_msg', 'success, data has been deleted'));
 }
 return $result;
 
