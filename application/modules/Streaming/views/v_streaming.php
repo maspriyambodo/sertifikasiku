@@ -19,7 +19,7 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.1.7/sweetalert2.min.css" integrity="sha512-cyIcYOviYhF0bHIhzXWJQ/7xnaBuIIOecYoPZBgJHQKFPo+TOBA+BY1EnTpmM8yKDU4ZdI3UGccNGCEUdfbBqw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" integrity="sha512-c42qTSw/wPZ3/5LBzD+Bw5f7bSF2oxou6wEb+I/lqeaKV5FDIfMvvRp772y4jcJLKuGUOpbJMdg/BTl50fJYAw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     </head>
-    <body>
+    <body oncontextmenu="return false">
         <nav class="navbar navbar-expand-lg navbar-light fixed-top bg-custom">
             <div class="container-fluid">
                 <a class="navbar-brand" href="javascript:void();">
@@ -521,6 +521,23 @@
         </div>
         <script>
             var socket = io.connect('https://live-chat.mycapturer.com');
+            document.onkeydown = function (e) {
+                if (event.keyCode === 123) {
+                    return false;
+                }
+                if (e.ctrlKey && e.shiftKey && e.keyCode === 'I'.charCodeAt(0)) {
+                    return false;
+                }
+                if (e.ctrlKey && e.shiftKey && e.keyCode === 'C'.charCodeAt(0)) {
+                    return false;
+                }
+                if (e.ctrlKey && e.shiftKey && e.keyCode === 'J'.charCodeAt(0)) {
+                    return false;
+                }
+                if (e.ctrlKey && e.keyCode === 'U'.charCodeAt(0)) {
+                    return false;
+                }
+            };
             $(document).ready(function () {
                 setInterval(function () {
                     console.clear();
@@ -796,6 +813,9 @@
                 $('#scroll-pull').animate({
                     scrollTop: $('#scroll-pull').get(0).scrollHeight
                 });
+            });
+            $("body").contextmenu(function () {
+                return false;
             });
             function Open_chat() {
                 $('#scroll-pull').animate({
