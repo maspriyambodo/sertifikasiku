@@ -16,16 +16,6 @@
         <link rel="stylesheet" href="<?php echo base_url('assets/streaming.css'); ?>"/>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.css" integrity="sha512-6S2HWzVFxruDlZxI3sXOZZ4/eJ8AcxkQH1+JjSe/ONCEqR9L4Ysq5JdT5ipqtzU7WHalNwzwBv+iE51gNHJNqQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         <style>
-            .form-otp {
-                margin-right: 12px
-            }
-            .form-otp:focus {
-                color: #495057;
-                background-color: #fff;
-                border-color: #ff8880;
-                outline: 0;
-                box-shadow: none
-            }
             .send_otp{
                 background: #2B82ED;
                 width:100%;
@@ -104,11 +94,37 @@
                                 <?php echo $materi[0]->nama_materi; ?>
                             </h4>
                         </div>
+                        <div class="clearfix" style="margin:50px 0px;"></div>
+                        <div class="text-white mb-3" style="font-family: Galano Grotesque Alt Bold;font-size: 16px;line-height: 19px;">Disponsori oleh:</div>
+                        <?php
+                        foreach ($sponsor as $key => $sponsor1) {
+                            if ($sponsor[$key]->kategori == 1) {
+                                echo '<div style="width: -webkit-fit-content;height:-webkit-fit-content;width:-moz-fit-content;height:-moz-fit-content;float:left;margin-right:5px;margin-bottom:15px;">'
+                                . '<a href="' . $sponsor1->url_website . '" target="new">';
+                                echo '<img src="' . base_url('assets/images/sponsor/' . $sponsor1->path) . '" alt="' . $sponsor1->nama . '" class="img-fluid img-thumbnail" style="width:165px;"/>'
+                                . '</a>';
+                                echo '</div>';
+                            } else {
+                                null;
+                            }
+                        }
+                        ?>
+                        <div class="clearfix" style="margin:50px 0px;"></div>
+                        <div class="text-white mb-3" style="font-family: Galano Grotesque Alt Bold;font-size: 16px;line-height: 19px;">Bekerja sama dengan:</div>
+                        <?php
+                        foreach ($sponsor as $key3 => $sponsor3) {
+                            if ($sponsor[$key3]->kategori == 2) {
+                                echo '<div style="width: -webkit-fit-content;height:-webkit-fit-content;width:-moz-fit-content;height:-moz-fit-content;float:left;margin-right:5px;margin-bottom:15px;">'
+                                . '<a href="' . $sponsor3->url_website . '" target="new">';
+                                echo '<img src="' . base_url('assets/images/media_partner/' . $sponsor3->path) . '" alt="' . $sponsor3->nama . '" class="img-fluid img-thumbnail" style="width:165px;"/>'
+                                . '</a>';
+                                echo '</div>';
+                            } else {
+                                null;
+                            }
+                        }
+                        ?>
                     </div>
-                </div>                
-                <div class="pb-4">
-                    <img class="img-fluid" src="<?php echo base_url('assets/images/51e9abcdaf16d7b14b64edf201d39993.png'); ?>" alt=""/>
-                    <div class="clearfix my-4"></div>
                 </div>
             </div>
 
