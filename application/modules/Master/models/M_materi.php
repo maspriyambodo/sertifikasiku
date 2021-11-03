@@ -10,6 +10,7 @@ class M_materi extends CI_Model {
 	date_format( dt_materi.time_stop, "%d-%m-%Y" ) AS tgl_selesai,
 	date_format( dt_materi.time_stop, "%H:%i" ) AS jam_selesai,
 	mt_sesimateri.nama AS nama_sesi,
+        dt_materi.id,
 	dt_materi.id_sesi,
 	dt_materi.id_industri,
 	dt_materi.id_klasifikasi,
@@ -41,7 +42,7 @@ class M_materi extends CI_Model {
     }
 
     public function Get_id($id_materi) {
-        $exec = $this->db->query("select * from dt_materi where id = '$id_materi' ");
+        $exec = $this->db->query("select * from dt_materi where id = '$id_materi'");
         return $exec->result();
     }
 

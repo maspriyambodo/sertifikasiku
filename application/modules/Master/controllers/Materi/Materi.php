@@ -36,8 +36,8 @@ class Materi extends CI_Controller {
     public function Save() {
         $data = [
             '`dt_materi`.`id_sesi`' => Post_input("id_sesi") + false,
-            '`dt_materi`.`id_industri`' => Post_input("segmentxt") + false,
-            '`dt_materi`.`id_klasifikasi`' => Post_input("leveltxt") + false,
+            '`dt_materi`.`id_industri`' => Dekrip(Post_input("segmentxt")) + false,
+            '`dt_materi`.`id_klasifikasi`' => Dekrip(Post_input("leveltxt")) + false,
             'dt_materi.narasumber' => Post_input('narsumtxt'),
             'dt_materi.title_narsum' => Post_input('narsumtitle'),
             'dt_materi.link_video' => Post_input("link_video"),

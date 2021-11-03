@@ -43,8 +43,8 @@
                     if (!$privilege['read']) { // jika memiliki privilege tambah atau create
                         $data = [];
                     }
-                    foreach ($data as $key => $menu) {
-                        $id_materi = Enkrip($menu->id);
+                    foreach ($data as $key => $materi) {
+                        $id_materi = Enkrip($materi->id);
                         ?>
                         <tr>
                             <td class="text-center">
@@ -53,21 +53,21 @@
                                 echo $id++;
                                 ?>
                             </td>
-                            <td class="text-center"><?php echo $menu->nama_sesi; ?></td>
-                            <td><?php echo $menu->nama_materi; ?></td>
-                            <td><?php echo substr($menu->deskripsi, 0, 50); ?>...</td>
-                            <td><?php echo $menu->narasumber; ?></td>
-                            <td><?php echo $menu->title_narsum; ?></td>
-                            <td><?php echo $menu->nama_industri; ?></td>
-                            <td><?php echo $menu->nama_level; ?></td>
-                            <td class="text-center"><?php echo $menu->tgl_mulai; ?></td>
-                            <td class="text-center"><?php echo $menu->jam_mulai; ?></td>
-                            <td class="text-center"><?php echo $menu->tgl_selesai; ?></td>
-                            <td class="text-center"><?php echo $menu->jam_selesai; ?></td>
-                            <td class="text-center"><?php echo $menu->link_video; ?></td>
+                            <td class="text-center"><?php echo $materi->nama_sesi; ?></td>
+                            <td><?php echo $materi->nama_materi; ?></td>
+                            <td><?php echo substr($materi->deskripsi, 0, 50); ?>...</td>
+                            <td><?php echo $materi->narasumber; ?></td>
+                            <td><?php echo $materi->title_narsum; ?></td>
+                            <td><?php echo $materi->nama_industri; ?></td>
+                            <td><?php echo $materi->nama_level; ?></td>
+                            <td class="text-center"><?php echo $materi->tgl_mulai; ?></td>
+                            <td class="text-center"><?php echo $materi->jam_mulai; ?></td>
+                            <td class="text-center"><?php echo $materi->tgl_selesai; ?></td>
+                            <td class="text-center"><?php echo $materi->jam_selesai; ?></td>
+                            <td class="text-center"><?php echo $materi->link_video; ?></td>
                             <td class="text-center">
                                 <?php
-                                if ($menu->stat) {
+                                if ($materi->stat) {
                                     echo '<span class="label label-xl label-dot label-success" title="enable"></span>';
                                 } else {
                                     echo '<span class="label label-xl label-dot label-danger" title="disable"></span>';
@@ -84,11 +84,13 @@
                                 echo '<div class="btn-group">'; // open div btn-group
                                 if ($privilege['update']) { // jika memiliki privilege edit
                                     echo $editbtn;
+                                } else {
+                                    null;
                                 }
-                                if (!$menu->stat and $privilege['delete']) { // jika memiliki privilege delete
+                                if (!$materi->stat and $privilege['delete']) { // jika memiliki privilege delete
                                     echo $activebtn;
                                     echo $destroybtn;
-                                } elseif ($menu->stat and $privilege['delete']) {
+                                } elseif ($materi->stat and $privilege['delete']) {
                                     echo $delbtn;
                                     echo $destroybtn;
                                 } else {
