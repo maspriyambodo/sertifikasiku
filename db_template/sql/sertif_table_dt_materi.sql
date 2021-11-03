@@ -26,10 +26,3 @@ CREATE TABLE `dt_materi` (
   `sysdeleteuser` int DEFAULT NULL,
   `sysdeletedate` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `dt_materi`
---
-
-INSERT INTO `dt_materi` (`id`, `id_sesi`, `id_industri`, `id_klasifikasi`, `narasumber`, `title_narsum`, `nama_materi`, `deskripsi`, `time_start`, `time_stop`, `link_video`, `stat`, `syscreateuser`, `syscreatedate`, `sysupdateuser`, `sysupdatedate`, `sysdeleteuser`, `sysdeletedate`) VALUES
-(1, 1, NULL, NULL, NULL, NULL, 'TESTING MATERI', 'TESTING MATERI', '2021-01-01 01:00:00', '2021-01-01 01:00:00', 'https://www.youtube.com/watch?v=ACOshGZKtXE', 1, 2, '2021-10-30 02:30:45', NULL, NULL, NULL, NULL);

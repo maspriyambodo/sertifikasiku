@@ -31,7 +31,7 @@ CREATE TABLE `sys_menu` (
 INSERT INTO `sys_menu` (`id`, `menu_parent`, `nama`, `link`, `order_no`, `group_menu`, `icon`, `description`, `stat`, `syscreateuser`, `syscreatedate`, `sysupdateuser`, `sysupdatedate`, `sysdeleteuser`, `sysdeletedate`) VALUES
 (1, NULL, 'Dashboard', 'Applications/Dashboard/index/', 100, 1, 'fas fa-tachometer-alt', 'menu default systems', 1, 1, '2021-03-11 04:07:27', 1, '2021-09-12 05:22:21', 0, '2021-07-07 23:54:26'),
 (2, NULL, 'Master Wilayah', 'javascrip:;', 300, 3, 'fas fa-globe-asia', 'menu untuk master data wilayah indonesia', 1, 1, '2021-03-13 12:29:43', 1, '2021-10-11 16:09:42', 0, '0000-00-00 00:00:00'),
-(3, NULL, 'Master Country', 'Master/Country/index/', 309, 3, 'fas fa-globe', 'menu untuk master data negara /country', 0, 1, '2021-03-13 19:35:02', 1, '2021-10-11 16:04:33', 1, '2021-10-17 15:01:03'),
+(3, NULL, 'Master Country', 'Master/Country/index/', 310, 3, 'fas fa-globe', 'menu untuk master data negara /country', 0, 1, '2021-03-13 19:35:02', 1, '2021-10-11 16:04:33', 1, '2021-10-17 15:01:03'),
 (4, 2, 'Provinsi', 'Master/Wilayah/Provinsi/index/', 301, 3, '', 'menu untuk master data provinsi indonesia', 1, 1, '2021-03-13 12:31:34', 1, '2021-10-11 16:10:47', 0, '0000-00-00 00:00:00'),
 (5, 2, 'Kabupaten', 'Master/Wilayah/Kabupaten/index/', 302, 3, '', 'menu untuk master data kabupaten indonesia', 1, 1, '2021-03-13 19:21:17', 1, '2021-10-11 16:11:28', 0, '0000-00-00 00:00:00'),
 (6, 2, 'Kecamatan', 'Master/Wilayah/Kecamatan/index/', 303, 3, '', 'menu untuk master data kecamatan indonesia', 1, 1, '2021-03-13 19:22:00', 1, '2021-10-11 16:12:03', 0, '0000-00-00 00:00:00'),
@@ -48,4 +48,5 @@ INSERT INTO `sys_menu` (`id`, `menu_parent`, `nama`, `link`, `order_no`, `group_
 (17, NULL, 'Master Sesi', 'Master/Sesi/index/', 306, 3, 'far fa-clock', 'menu untuk master data sesi materi', 1, 1, '2021-10-12 10:39:27', 1, '2021-10-12 11:20:56', NULL, NULL),
 (18, NULL, 'Signin', 'Signin/', 101, 1, '', 'sdklj', 2, 1, '2021-10-22 17:06:34', 1, '2021-10-22 20:03:39', NULL, NULL),
 (19, NULL, 'Bidang Industri', 'Master/Bidang/index/', 307, 3, 'fas fa-book', 'menu untuk jenis bidang industri', 1, 1, '2021-10-28 19:15:26', NULL, NULL, NULL, NULL),
-(20, NULL, 'Sponsor', 'Master/Sponsor/index/', 308, 3, 'fas fa-dollar-sign', 'menu untuk data sponsor acara', 1, 1, '2021-10-29 13:20:28', NULL, NULL, NULL, NULL);
+(20, NULL, 'Sponsor', 'Master/Sponsor/index/', 308, 3, 'fas fa-dollar-sign', 'menu untuk data sponsor acara', 1, 1, '2021-10-29 13:20:28', NULL, NULL, NULL, NULL),
+(21, NULL, 'Klasifikasi Materi', 'Master/Klasifikasi/index/', 309, 3, 'fas fa-certificate', 'menu untuk master data klasifikasi level materi', 1, 1, '2021-11-03 19:01:14', NULL, NULL, NULL, NULL);

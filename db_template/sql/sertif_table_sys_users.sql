@@ -31,5 +31,5 @@ CREATE TABLE `sys_users` (
 --
 
 INSERT INTO `sys_users` (`id`, `uname`, `pwd`, `role_id`, `pict`, `stat`, `last_login`, `ip_address`, `login_stat`, `login_attempt`, `user_agent`, `syscreateuser`, `syscreatedate`, `sysupdateuser`, `sysupdatedate`, `sysdeleteuser`, `sysdeletedate`) VALUES
-(1, 'bod', '$2y$10$BE6bAPmNz0Hh1g5yL3Tk6Ov4j1HYs55ngBwSH8FHpyUY4Go7zVx6i', 1, 'blank', 1, '2021-10-31 17:02:43', '127.0.0.1', 0, 0, NULL, 1, '1970-01-01 01:40:28', NULL, NULL, NULL, NULL),
+(1, 'bod', '$2y$10$BE6bAPmNz0Hh1g5yL3Tk6Ov4j1HYs55ngBwSH8FHpyUY4Go7zVx6i', 1, 'blank', 1, '2021-11-03 01:09:52', '::1', 0, 0, NULL, 1, '1970-01-01 01:40:28', NULL, NULL, NULL, NULL),
 (2, 'administrator', '$2y$10$gqFEWNPKRJOUfSrpsvJSg.iW.xpWJQuV0x1akfVlWz2yNLAVyEoQ.', 1, 'users30_022620.jpg', 1, '2021-10-30 02:26:39', '127.0.0.1', 0, 0, NULL, 1, '2021-10-30 02:15:51', 2, '2021-10-30 02:26:20', NULL, NULL);

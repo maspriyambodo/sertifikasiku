@@ -195,7 +195,7 @@ ALTER TABLE `dt_pwd`
 -- AUTO_INCREMENT for table `dt_sponsor`
 --
 ALTER TABLE `dt_sponsor`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
 
 --
 -- AUTO_INCREMENT for table `dt_users`
@@ -207,19 +207,19 @@ ALTER TABLE `dt_users`
 -- AUTO_INCREMENT for table `mt_country`
 --
 ALTER TABLE `mt_country`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=250;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `mt_industri`
 --
 ALTER TABLE `mt_industri`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
 
 --
 -- AUTO_INCREMENT for table `mt_klasifikasi`
 --
 ALTER TABLE `mt_klasifikasi`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
 
 --
 -- AUTO_INCREMENT for table `mt_sesimateri`
@@ -231,7 +231,7 @@ ALTER TABLE `mt_sesimateri`
 -- AUTO_INCREMENT for table `sys_menu`
 --
 ALTER TABLE `sys_menu`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `sys_menu_group`
@@ -243,7 +243,7 @@ ALTER TABLE `sys_menu_group`
 -- AUTO_INCREMENT for table `sys_permissions`
 --
 ALTER TABLE `sys_permissions`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `sys_roles`
