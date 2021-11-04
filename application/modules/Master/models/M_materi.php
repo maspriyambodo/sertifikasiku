@@ -29,6 +29,7 @@ class M_materi extends CI_Model {
                 ->where('`dt_materi`.`stat` <>', 2, false)
                 ->get()
                 ->result();
+        log_message('error', $this->db->last_query());
         return $exec;
     }
 

@@ -45,6 +45,9 @@
                     }
                     foreach ($data as $key => $materi) {
                         $id_materi = Enkrip($materi->id);
+                        if ($materi->id_sesi == 1) {
+                            echo '<tr><td colspan="15" class="text-center"></td><td style="display: none;"></td><td style="display: none;"></td><td style="display: none;"></td><td style="display: none;"></td><td style="display: none;"></td><td style="display: none;"></td><td style="display: none;"></td><td style="display: none;"></td><td style="display: none;"></td><td style="display: none;"></td><td style="display: none;"></td><td style="display: none;"></td><td style="display: none;"></td><td style="display: none;"></td></tr>';
+                        }
                         ?>
                         <tr>
                             <td class="text-center">
