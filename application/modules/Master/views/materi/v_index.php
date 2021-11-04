@@ -146,6 +146,7 @@ unset($_SESSION['succ_msg']);
         } else if (b) {
             toastr.success(b);
         }
+        var groupColumn = 8;
         $('table').dataTable({
             "ServerSide": true,
             "order": [[0, "asc"]],
@@ -184,6 +185,21 @@ unset($_SESSION['succ_msg']);
             fixedColumns: {
                 left: 1,
                 right: 1
+            },
+            "drawCallback": function (settings) {
+                var api = this.api();
+                var rows = api.rows({page: 'current'}).nodes();
+                var last = null;
+
+                api.column(groupColumn, {page: 'current'}).data().each(function (group, i) {
+                    if (last !== group) {
+                        $(rows).eq(i).before(
+                                '<tr class="group text-center"><td colspan="14">' + group + '</td></tr>'
+                                );
+
+                        last = group;
+                    }
+                });
             }
         });
     };
