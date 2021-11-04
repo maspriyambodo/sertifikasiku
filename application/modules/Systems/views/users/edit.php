@@ -32,7 +32,7 @@
                     </div>
                     <div class="form-group">
                         <label for="fullnametxt">Full Name</label>
-                        <input id="fullnametxt" type="text" name="fullnametxt" class="form-control" required="" autocomplete="off"/>
+                        <input id="fullnametxt" type="text" name="fullnametxt" class="form-control" required="" autocomplete="off" value="<?php echo $data[0]->fullname; ?>"/>
                     </div>
                 </div>
                 <div class="col-md">
@@ -55,7 +55,7 @@
                     </div>
                     <div class="form-group">
                         <label for="tlptxt">Phone</label>
-                        <input id="tlptxt" type="text" name="tlptxt" class="form-control" required="" autocomplete="off" onkeypress="return isNumber(event)" minlength="9"/>
+                        <input id="tlptxt" type="text" name="tlptxt" class="form-control" required="" autocomplete="off" onkeypress="return isNumber(event)" minlength="9" value="<?php echo $data[0]->telp; ?>"/>
                     </div>
                 </div>
             </div>
