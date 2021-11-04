@@ -147,7 +147,7 @@ unset($_SESSION['succ_msg']);
             toastr.success(b);
         }
         var groupColumn = 8;
-        var table = $('table').dataTable({
+        $('table').dataTable({
             "ServerSide": true,
             "order": [[0, "asc"]],
             "paging": true,
@@ -198,14 +198,6 @@ unset($_SESSION['succ_msg']);
                         last = group;
                     }
                 });
-            }
-        });
-        $('#table tbody').on('click', 'tr.group', function () {
-            var currentOrder = table.order()[0];
-            if (currentOrder[0] === groupColumn && currentOrder[1] === 'asc') {
-                table.order([groupColumn, 'desc']).draw();
-            } else {
-                table.order([groupColumn, 'asc']).draw();
             }
         });
     };
