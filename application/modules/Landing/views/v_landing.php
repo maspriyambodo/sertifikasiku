@@ -54,7 +54,7 @@
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                         <?php
                         if ($this->bodo->Sys('login_member') == 1) {
-                            echo '<button type="button" class="btn btn-custom ms-2" data-bs-toggle="modal" data-bs-target="#modal_login" style="font-family:Galano Grotesque Alt SemiBold;color: #214980;">Masuk</button>';
+                            echo '<button id="loginbtn" type="button" class="btn btn-custom ms-2" data-bs-toggle="modal" data-bs-target="#modal_login" style="font-family:Galano Grotesque Alt SemiBold;color: #214980;">Masuk</button>';
                         } else {
                             echo '<button type="button" class="btn btn-custom ms-2" data-bs-toggle="modal" data-bs-target="#coming_soon" style="font-family:Galano Grotesque Alt SemiBold;color: #214980;">Masuk</button>';
                         }
@@ -248,6 +248,7 @@
         </div>
         <script>
             window.onload = function () {
+                $('#loginbtn').trigger('click');
                 toastr.options = {
                     "closeButton": true,
                     "debug": false,
