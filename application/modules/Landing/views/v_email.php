@@ -1,59 +1,286 @@
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title>CODE OTP</title>
-        <style>*,::after,::before{box-sizing:border-box}@media(min-width:1200px){.container,.container-lg,.container-md,.container-sm,.container-xl{max-width:1140px}}.container{width:100%;padding-right:15px;padding-left:15px;margin-right:auto;margin-left:auto}.row{display:-ms-flexbox;display:flex;-ms-flex-wrap:wrap;flex-wrap:wrap;margin-right:-15px;margin-left:-15px}.bg-light{background-color:#f8f9fa!important}.col-md-3{-ms-flex:0 0 25%;flex:0 0 25%;max-width:25%;position:relative;width:100%;padding-right:15px;padding-left:15px}.col-md-6{-ms-flex:0 0 50%;flex:0 0 50%;max-width:50%;position:relative;width:100%;padding-right:15px;padding-left:15px}.card{position:relative;display:-ms-flexbox;display:flex;-ms-flex-direction:column;flex-direction:column;min-width:0;word-wrap:break-word;background-color:#fff;background-clip:border-box;border:1px solid rgba(0,0,0,.125);border-radius:.25rem}.card-body{-ms-flex:1 1 auto;flex:1 1 auto;min-height:1px;padding:1.25rem}.table{width:100%;margin-bottom:1rem;color:#212529;border-collapse:collapse}.table-borderless tbody+tbody,.table-borderless td,.table-borderless th,.table-borderless thead th{border:0}.table td,.table th{padding:.75rem;vertical-align:top}.form-group{margin-bottom:1rem}.bg-secondary{background-color:#6c757d!important}.text-center{text-align:center!important}.h1,h1{font-size:2.5rem}.h1,.h2,.h3,.h4,.h5,.h6,h1,h2,h3,h4,h5,h6{margin-bottom:.5rem;font-weight:500;line-height:1.2}h1,h2,h3,h4,h5,h6{margin-top:0}.card-footer:last-child{border-radius:0 0 calc(.25rem - 1px) calc(.25rem - 1px)}.card-footer{padding:.75rem 1.25rem;background-color:rgba(0,0,0,.03);border-top:1px solid rgba(0,0,0,.125)}a{color:#007bff;text-decoration:none;background-color:transparent}a:hover{color:#0056b3;text-decoration:underline}.img-fluid{max-width: 100%;height: auto;width: 50%;}</style>
-    </head>
-    <body class="bg-light">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-3"></div>
-                <div class="col-md-6">
-                    <div class="card">
-                        <div class="card-body">
-                            <table class="table table-borderless" style="width: 100%;">
-                                <tbody>
-                                    <tr style="border-bottom: 1px solid black;">
-                                        <td>
-                                            <img class="img-fluid" src="<?php echo base_url('assets/images/systems/logo.png'); ?>" alt="Festival Sertifikasiku"/>
-                                        </td>
-                                        <td style="width: 100%;">
-                                            Festival Sertifikasiku
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                            <div class="form-group">
-                                Halo <?php echo $value->fullname;?>,
-                            </div>
-                            <div class="form-group">
-                                masukkan kode OTP berikut:
-                            </div>
-                            <div class="form-group">
-                                <div class="bg-secondary">
-                                    <div style="clear: both;margin: 15px 0px;padding:15px 0px;">
-                                        <h1 class="text-center"><?php echo $otp; ?></h1>
-                                    </div>
-                                </div>
-                            </div>
-                            <div style="clear: both;margin: 20px 0px;border-bottom: 1px solid black;"></div>
-                            <div class="form-group">
-                                Pesan ini dikirim ke <a href="mailto:{<?php echo $value->uname;?>}"><?php echo $value->uname;?></a> atas permintaan anda.
-                            </div>
-                            <div class="form-group">
-                                sertifikasiku.com, Wisma GKBI, Jl. Jend. Sudirman No.6, RT.14/RW.1, Bend. Hilir, Kecamatan Tanah Abang, Jakarta
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3"></div>
-            </div>
-        </div>
-    </body>
+
+<html lang="en" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:v="urn:schemas-microsoft-com:vml">
+
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <!--[if mso]><xml><o:OfficeDocumentSettings><o:PixelsPerInch>96</o:PixelsPerInch><o:AllowPNG/></o:OfficeDocumentSettings></xml><![endif]-->
+    <!--[if !mso]><!-->
+    <link href="https://fonts.googleapis.com/css?family=Merriweather" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css" />
+    <!--<![endif]-->
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        th.column {
+            padding: 0
+        }
+
+        a[x-apple-data-detectors] {
+            color: inherit !important;
+            text-decoration: inherit !important;
+        }
+
+        #MessageViewBody a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        p {
+            line-height: inherit
+        }
+
+        @media (max-width:620px) {
+            .icons-inner {
+                text-align: center;
+            }
+
+            .icons-inner td {
+                margin: 0 auto;
+            }
+
+            .row-content {
+                width: 100% !important;
+            }
+
+            .image_block img.big {
+                width: auto !important;
+            }
+
+            .stack .column {
+                width: 100%;
+                display: block;
+            }
+        }
+    </style>
+</head>
+
+<body style="background-color: #e1e4e9; margin: 0; padding: 0; -webkit-text-size-adjust: none; text-size-adjust: none;">
+    <table border="0" cellpadding="0" cellspacing="0" class="nl-container" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-color: #e1e4e9;" width="100%">
+        <tbody>
+            <tr>
+                <td>
+                    <table align="center" border="0" cellpadding="0" cellspacing="0" class="row row-1" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;" width="100%">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <table align="center" border="0" cellpadding="0" cellspacing="0" class="row-content" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-color: #ffffff;" width="600">
+                                        <tbody>
+                                            <tr>
+                                                <th class="column" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; font-weight: 400; text-align: left; vertical-align: top; padding-left: 20px; padding-right: 20px;" width="33.333333333333336%">
+                                                    <table border="0" cellpadding="0" cellspacing="0" class="image_block" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;" width="100%">
+                                                        <tr>
+                                                            <td style="padding-bottom:15px;padding-top:15px;width:100%;padding-right:0px;padding-left:0px;">
+                                                                <div style="line-height:10px"><img alt="Festival Sertifikasiku" src="<?= base_url() . '/assets/images/systems/logo.png'?>" style="display: block; height: auto; border: 0; width: 100px; max-width: 100%;" title="Festival Sertifikasiku" width="100" /></div>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </th>
+                                                <th class="column" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; font-weight: 400; text-align: left; vertical-align: top; padding-left: 20px; padding-right: 20px;" width="66.66666666666667%">
+                                                    <table border="0" cellpadding="0" cellspacing="0" class="empty_block" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;" width="100%">
+                                                        <tr>
+                                                            <td style="padding-right:0px;padding-bottom:5px;padding-left:0px;padding-top:5px;">
+                                                                <div></div>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </th>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table align="center" border="0" cellpadding="0" cellspacing="0" class="row row-2" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;" width="100%">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <table align="center" border="0" cellpadding="0" cellspacing="0" class="row-content stack" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-color: #ffffff;" width="600">
+                                        <tbody>
+                                            <tr>
+                                                <th class="column" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; font-weight: 400; text-align: left; vertical-align: top; padding-top: 20px; padding-bottom: 30px;" width="100%">
+                                                    <table border="0" cellpadding="0" cellspacing="0" class="image_block" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;" width="100%">
+                                                        <tr>
+                                                            <td style="width:100%;padding-right:0px;padding-left:0px;">
+                                                                <div align="center" style="line-height:10px"><img alt="Flying Airplane Illustration" class="big" src="<?= base_url() . '/assets/images/emails/Airplane_2nd_Image.png'?>" style="display: block; height: auto; border: 0; width: 600px; max-width: 100%;" title="Flying Airplane Illustration" width="600" /></div>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                    <table border="0" cellpadding="10" cellspacing="0" class="text_block" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word;" width="100%">
+                                                        <tr>
+                                                            <td>
+                                                                <div style="font-family: serif">
+                                                                    <div style="font-size: 14px; font-family: 'Merriwheater', 'Georgia', serif; color: #00255b; line-height: 1.2;">
+                                                                        <p style="margin: 0; font-size: 14px; text-align: left;"><span style="font-size:20px;">[<?= $otp ?>] Halo <?= $value->fullname;?>, Ini Adalah Kode Verifikasi OTP Kamu</span></p>
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                    <table border="0" cellpadding="10" cellspacing="0" class="text_block" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word;" width="100%">
+                                                        <tr>
+                                                            <td>
+                                                                <div style="font-family: serif">
+                                                                    <div style="font-size: 14px; font-family: 'Merriwheater', 'Georgia', serif; color: #00255b; line-height: 1.8;">
+                                                                        <p style="margin: 0;">Berikut adalah kode verifikasi yang dapat digunakan untuk login ke Sertifikasiku:</p>
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                    <table border="0" cellpadding="10" cellspacing="0" class="text_block" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word;" width="100%">
+                                                        <tr>
+                                                            <td>
+                                                                <div style="font-family: Tahoma, Verdana, sans-serif">
+                                                                    <div style="font-size: 14px; font-family: 'Roboto', Tahoma, Verdana, Segoe, sans-serif; color: #00255b; line-height: 1.8;">
+                                                                        <p style="margin: 0; font-size: 14px; text-align: center; mso-line-height-alt: 46.800000000000004px;"><span style="font-size:26px;"><strong><span style=""><?= $kodeOtp ?></span></strong></span></p>
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                    <table border="0" cellpadding="0" cellspacing="0" class="divider_block" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;" width="100%">
+                                                        <tr>
+                                                            <td style="padding-left:10px;padding-right:10px;">
+                                                                <div align="center">
+                                                                    <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;" width="30%">
+                                                                        <tr>
+                                                                            <td class="divider_inner" style="font-size: 1px; line-height: 1px; border-top: 4px solid #FFDB29;"><span></span></td>
+                                                                        </tr>
+                                                                    </table>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                    <table border="0" cellpadding="0" cellspacing="0" class="text_block" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word;" width="100%">
+                                                        <tr>
+                                                            <td style="padding-bottom:10px;padding-left:30px;padding-right:30px;padding-top:10px;">
+                                                                <div style="font-family: sans-serif">
+                                                                    <div style="font-size: 14px; color: #66787f; line-height: 1.2; font-family: Arial, Helvetica Neue, Helvetica, sans-serif;">
+                                                                        <p style="margin: 0; font-size: 14px; text-align: center;">Pesan ini dikirim ke <a href="mailto:{<?php echo $value->uname;?>}"><?php echo $value->uname;?></a> atas permintaan anda. Jangan memberitahukan kode tersebut ke siapapun, termasuk pihak Sertifikasiku.</p>
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                    <table border="0" cellpadding="0" cellspacing="0" class="text_block" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word;" width="100%">
+                                                        <tr>
+                                                            <td style="padding-bottom:10px;padding-left:30px;padding-right:30px;padding-top:10px;">
+                                                                <div style="font-family: sans-serif">
+                                                                    <div style="font-size: 14px; color: #66787f; line-height: 1.2; font-family: Arial, Helvetica Neue, Helvetica, sans-serif;">
+                                                                        <p style="margin: 0; mso-line-height-alt: 16.8px;"> </p>
+                                                                        <p style="margin: 0;">Bila ada pertanyaan, silahkan hubungi kami</p>
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </th>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table align="center" border="0" cellpadding="0" cellspacing="0" class="row row-3" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;" width="100%">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <table align="center" border="0" cellpadding="0" cellspacing="0" class="row-content stack" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-color: #ffffff;" width="600">
+                                        <tbody>
+                                            <tr>
+                                                <th class="column" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; font-weight: 400; text-align: left; vertical-align: top;" width="50%">
+                                                    <table border="0" cellpadding="0" cellspacing="0" class="button_block" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;" width="100%">
+                                                        <tr>
+                                                            <td style="padding-bottom:15px;padding-left:10px;padding-right:10px;padding-top:15px;text-align:center;">
+                                                                <div align="center">
+                                                                    <!--[if mso]><v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" style="height:41px;width:251px;v-text-anchor:middle;" arcsize="10%" stroke="false" fillcolor="#3AAEE0"><w:anchorlock/><v:textbox inset="0px,0px,0px,0px"><center style="color:#ffffff; font-family:Arial, sans-serif; font-size:15px"><![endif]-->
+                                                                    <div style="text-decoration:none;display:block;color:#ffffff;background-color:#3AAEE0;border-radius:4px;width:90%; width:calc(90% - 2px);border-top:1px solid #3AAEE0;border-right:1px solid #3AAEE0;border-bottom:1px solid #3AAEE0;border-left:1px solid #3AAEE0;padding-top:5px;padding-bottom:5px;font-family:Arial, Helvetica Neue, Helvetica, sans-serif;text-align:center;mso-border-alt:none;word-break:keep-all;"><span style="padding-left:20px;padding-right:20px;font-size:15px;display:inline-block;letter-spacing:normal;"><span style="font-size: 16px; line-height: 2; word-break: break-word; mso-line-height-alt: 32px;">📱 <span data-mce-style="font-size: 15px; line-height: 30px;" style="font-size: 15px; line-height: 30px;">+622150864230</span></span></span></div>
+                                                                    <!--[if mso]></center></v:textbox></v:roundrect><![endif]-->
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </th>
+                                                <th class="column" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; font-weight: 400; text-align: left; vertical-align: top;" width="50%">
+                                                    <table border="0" cellpadding="0" cellspacing="0" class="button_block" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;" width="100%">
+                                                        <tr>
+                                                            <td style="padding-bottom:15px;padding-left:10px;padding-right:10px;padding-top:15px;text-align:center;">
+                                                                <div align="center">
+                                                                    <!--[if mso]><v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" style="height:41px;width:251px;v-text-anchor:middle;" arcsize="10%" stroke="false" fillcolor="#3AAEE0"><w:anchorlock/><v:textbox inset="0px,0px,0px,0px"><center style="color:#ffffff; font-family:Arial, sans-serif; font-size:15px"><![endif]-->
+                                                                    <div style="text-decoration:none;display:block;color:#ffffff;background-color:#3AAEE0;border-radius:4px;width:90%; width:calc(90% - 2px);border-top:1px solid #3AAEE0;border-right:1px solid #3AAEE0;border-bottom:1px solid #3AAEE0;border-left:1px solid #3AAEE0;padding-top:5px;padding-bottom:5px;font-family:Arial, Helvetica Neue, Helvetica, sans-serif;text-align:center;mso-border-alt:none;word-break:keep-all;"><span style="padding-left:20px;padding-right:20px;font-size:15px;display:inline-block;letter-spacing:normal;"><span style="font-size: 16px; line-height: 2; word-break: break-word; mso-line-height-alt: 32px;">✉️ <span data-mce-style="font-size: 15px; line-height: 30px;" style="font-size: 15px; line-height: 30px;">support@sertifikasiku.com</span></span></span></div>
+                                                                    <!--[if mso]></center></v:textbox></v:roundrect><![endif]-->
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </th>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table align="center" border="0" cellpadding="0" cellspacing="0" class="row row-4" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;" width="100%">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <table align="center" border="0" cellpadding="0" cellspacing="0" class="row-content stack" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-color: #ffffff;" width="600">
+                                        <tbody>
+                                            <tr>
+                                                <th class="column" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; font-weight: 400; text-align: left; vertical-align: top; padding-top: 5px; padding-bottom: 5px;" width="100%">
+                                                    <table border="0" cellpadding="10" cellspacing="0" class="divider_block" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;" width="100%">
+                                                        <tr>
+                                                            <td>
+                                                                <div align="center">
+                                                                    <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;" width="100%">
+                                                                        <tr>
+                                                                            <td class="divider_inner" style="font-size: 1px; line-height: 1px; border-top: 1px solid #BBBBBB;"><span></span></td>
+                                                                        </tr>
+                                                                    </table>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                    <table border="0" cellpadding="10" cellspacing="0" class="social_block" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;" width="100%">
+                                                        <tr>
+                                                            <td>
+                                                                <table align="center" border="0" cellpadding="0" cellspacing="0" class="social-table" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;" width="144px">
+                                                                    <tr>
+                                                                        <td style="padding:0 2px 0 2px;"><a href="https://www.facebook.com/" target="_blank"><img alt="Facebook" height="32" src="<?= base_url() . '/assets/images/emails/facebook2x.png'?>" style="display: block; height: auto; border: 0;" title="Facebook" width="32" /></a></td>
+                                                                        <td style="padding:0 2px 0 2px;"><a href="https://twitter.com/" target="_blank"><img alt="Twitter" height="32" src="<?= base_url() . '/assets/images/emails/twitter2x.png'?>" style="display: block; height: auto; border: 0;" title="Twitter" width="32" /></a></td>
+                                                                        <td style="padding:0 2px 0 2px;"><a href="https://instagram.com/" target="_blank"><img alt="Instagram" height="32" src="<?= base_url() . '/assets/images/emails/instagram2x.png'?>" style="display: block; height: auto; border: 0;" title="Instagram" width="32" /></a></td>
+                                                                        <td style="padding:0 2px 0 2px;"><a href="https://www.linkedin.com/" target="_blank"><img alt="LinkedIn" height="32" src="<?= base_url() . '/assets/images/emails/linkedin2x.png'?>" style="display: block; height: auto; border: 0;" title="LinkedIn" width="32" /></a></td>
+                                                                    </tr>
+                                                                </table>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </th>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+        </tbody>
+    </table><!-- End -->
+</body>
+
 </html>
