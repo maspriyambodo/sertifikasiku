@@ -171,7 +171,6 @@ function word_block() {
         "choad",
         "cooter",
         "cornhole",
-        "dong",
         "douche",
         "fart",
         "foreskin",
