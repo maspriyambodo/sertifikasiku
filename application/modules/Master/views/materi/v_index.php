@@ -147,7 +147,7 @@ unset($_SESSION['succ_msg']);
             toastr.success(b);
         }
         var groupColumn = 8;
-        $('table').dataTable({
+        var table = $('table').dataTable({
             "ServerSide": true,
             "order": [[0, "asc"]],
             "paging": true,
