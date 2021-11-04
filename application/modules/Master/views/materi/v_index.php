@@ -60,9 +60,9 @@
                             <td><?php echo $materi->title_narsum; ?></td>
                             <td><?php echo $materi->nama_industri; ?></td>
                             <td><?php echo $materi->nama_level; ?></td>
-                            <td class="text-center"><?php echo $materi->tgl_mulai; ?></td>
+                            <td class="text-center"><?php echo date('d F Y', strtotime($materi->tgl_mulai)); ?></td>
                             <td class="text-center"><?php echo $materi->jam_mulai; ?></td>
-                            <td class="text-center"><?php echo $materi->tgl_selesai; ?></td>
+                            <td class="text-center"><?php echo date('d F Y', strtotime($materi->tgl_selesai)); ?></td>
                             <td class="text-center"><?php echo $materi->jam_selesai; ?></td>
                             <td class="text-center"><?php echo $materi->link_video; ?></td>
                             <td class="text-center">
