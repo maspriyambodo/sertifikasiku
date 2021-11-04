@@ -181,7 +181,10 @@ unset($_SESSION['succ_msg']);
                     orderable: false
                 }
             ],
-            fixedColumns: true
+            fixedColumns: {
+                left: 1,
+                right: 1
+            }
         });
     };
     function isNumber(b) {
