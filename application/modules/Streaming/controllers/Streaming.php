@@ -103,6 +103,15 @@ class Streaming extends CI_Controller {
         ToJson($data);
     }
 
+    public function viewers() {
+        $random = rand(100, 10000);
+        $view = $this->model->_viewers();
+        $data = [
+            'tot_view' => $view + 472
+        ];
+        ToJson($data);
+    }
+
     public function Get_detail() {
         $exec = $this->model->Get_detail(Post_get('token')); // Post_get('token') = id_chat
         if (empty($exec)) {

@@ -147,9 +147,9 @@
                     <div class="col-lg-8 d-xs-block col-xs-12 col-12 col-md-12">
                         <div id="height_video">
                             <div id="bgndVideo" class="player animate__fadeInLeft" data-property="{videoURL:'<?php echo $materi[0]->link_video; ?>',containment:'self',vol:50,optimizeDisplay:false,showYTLogo:false}"></div>
-                            <!--                        <div class="form-group">
-                                                        <span id="viewers"></span> sedang menonton
-                                                    </div>-->
+                            <div class="form-group text-white mt-2">
+                                <span id="viewers"></span> sedang menonton
+                            </div>
                         </div>
                     </div>
                     <div class="col-lg-4 d-none d-xl-block"><!-- d-sm-none d-xl-block -->
@@ -310,8 +310,6 @@
                             }
                         }
                         ?>
-
-
                         <!--                        <div id="owl-carousel2" class="owl-carousel owl-theme mt-4">
                                                     //<?php
 //                            foreach ($sponsor as $key => $sponsor2) {
@@ -392,6 +390,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.js" integrity="sha512-lbwH47l/tPXJYG9AcFNoJaTMhGvYWhVM9YI43CT+uteTRRaiLCui8snIgyAN8XWgNjNhCqlAUdzZptso6OCoFQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         <script src="<?php echo base_url('node_modules/socket.io-client/dist/socket.io.min.js'); ?>" type="text/javascript"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.1.7/sweetalert2.all.js" integrity="sha512-wT0KEfF13tBeZVQN9MgyrOPpcazX2XUxLl11DuFYgctVVypKlqneS3cZp37g00U0x3G+rFvpaGtGs7JP3GTSIQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js" integrity="sha512-USPCA7jmJHlCNRSFwUFq3lAm9SaOjwG8TaB8riqx3i/dAJqhaYilVnaf2eVUH5zjq89BU6YguUuAno+jpRvUqA==" crossorigin="anonymous"></script>
         <div class="modal fade kt_chat_modol" id="kt_chat_modol" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -540,6 +539,7 @@
                 }
             };
             $(document).ready(function () {
+                join_stream();
                 setInterval(function () {
                     console.clear();
                 }, 3000);
@@ -573,6 +573,9 @@
                     onError: function (play) {
                         toastr.error('error while getting video');
                     }
+                });
+                socket.on('viewers', function (data) {
+                    document.getElementById('viewers').innerHTML = numeral(data.tot_view).format('0,0');
                 });
                 socket.on('new_message', function (data) {
                     var role_user = $('input[name="role_name"]').val();
@@ -916,6 +919,19 @@
             function rep_chat(uname) {
                 $('input[name="msgtxt"]').val('@' + uname + ' ');
                 $('textarea[name="msgtxt2"]').val('@' + uname + ' ');
+            }
+            function join_stream() {
+                $.ajax({
+                    type: "GET",
+                    url: "<?php echo base_url('Streaming/viewers/'); ?>",
+                    dataType: "json",
+                    cache: false,
+                    success: function (data) {
+                        socket.emit('join_stream', {
+                            tot_viewers: data.tot_view
+                        });
+                    }
+                });
             }
         </script>
         <?php

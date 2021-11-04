@@ -162,4 +162,12 @@ class M_streaming extends CI_Model {
         return $exec;
     }
 
+    public function _viewers() {
+        $exec = $this->db->select()
+                ->from('sys_users')
+                ->where('`sys_users`.`login_stat`', 1, false)
+                ->count_all_results();
+        return $exec;
+    }
+
 }
