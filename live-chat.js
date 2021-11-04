@@ -3,8 +3,8 @@ var socket = require('socket.io')(server, {
     wsEngine: require("eiows").Server,
     transports: ["websocket", "polling"],
     cors: {
-        origin: ["https://event.sertifikasiku.com", "http://localhost"],
-        default: "https://event.sertifikasiku.com",
+        origin: ["https://mc.alfabet.io", "https://mc.sertifikasiku.com", "http://localhost"],
+        default: "https:mc.sertifikasiku.com",
         methods: ["GET", "POST"]
     }
 });
@@ -57,6 +57,12 @@ io.on('connection', function (socket) {
             'user_id': data.user_id,
             'msg': data.msg,
             'category': 2
+        });
+    });
+
+    socket.on('absensi', function (data) {
+        return io.sockets.emit('absensi', {
+
         });
     });
 
