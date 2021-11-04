@@ -13,7 +13,7 @@
         }
         ?>
         <div class="table-responsive">
-            <table class="table table-bordered table-hover table-striped" style="width:100%;">
+            <table id="table" class="table table-bordered table-hover table-striped" style="width:100%;">
                 <thead class="text-center text-uppercase">
                     <tr>
                         <th rowspan="2">no</th>
@@ -190,16 +190,22 @@ unset($_SESSION['succ_msg']);
                 var api = this.api();
                 var rows = api.rows({page: 'current'}).nodes();
                 var last = null;
-
                 api.column(groupColumn, {page: 'current'}).data().each(function (group, i) {
                     if (last !== group) {
                         $(rows).eq(i).before(
                                 '<tr class="group text-center"><td colspan="14">' + group + '</td></tr>'
                                 );
-
                         last = group;
                     }
                 });
+            }
+        });
+        $('#table tbody').on('click', 'tr.group', function () {
+            var currentOrder = table.order()[0];
+            if (currentOrder[0] === groupColumn && currentOrder[1] === 'asc') {
+                table.order([groupColumn, 'desc']).draw();
+            } else {
+                table.order([groupColumn, 'asc']).draw();
             }
         });
     };
