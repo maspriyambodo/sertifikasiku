@@ -14,7 +14,7 @@ class Klasifikasi extends CI_Controller {
         $data = [
             'csrf' => $this->bodo->Csrf(),
             'item_active' => 'Master/Klasifikasi/index/',
-            'privilege' => $this->bodo->Check_previlege('Applications/Password_management/index/'),
+            'privilege' => $this->bodo->Check_previlege('Master/Klasifikasi/index/'),
             'siteTitle' => 'Klasifikasi | ' . $this->bodo->Sys('app_name'),
             'pagetitle' => 'Klasifikasi',
             'breadcrumb' => [
@@ -33,7 +33,7 @@ class Klasifikasi extends CI_Controller {
         $list = $this->model->lists();
         $data = [];
         $no = Post_input("start");
-        $privilege = $this->bodo->Check_previlege('Applications/Password_management/index/');
+        $privilege = $this->bodo->Check_previlege('Master/Klasifikasi/index/');
         foreach ($list as $value) {
             $id = Enkrip($value->id);
             $detilbtn = '<button id="detilbtn" type="button" class="btn btn-icon btn-default btn-xs" title="Detail" value="' . $id . '" onclick="Detail_pwd(this.value)"><i class="fas fa-eye text-primary"></i></button>';
