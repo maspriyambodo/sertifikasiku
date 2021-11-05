@@ -1009,8 +1009,9 @@
                         dataType: "json",
                         cache: false,
                         success: function (data) {
-                            location.reload();
+
                         }
+                        location.reload();
                     });
                 }
             }
