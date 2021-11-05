@@ -710,8 +710,8 @@
                         scrollTop: $('#scroll-pull').get(0).scrollHeight
                     });
                 });
+
                 socket.on('absensi', function () {
-                    var id_materi = $('input[name="id_materi"]').val();
                     var role_name = $('input[name="role_name"]').val();
                     var fullname = $('input[name="fullname"]').val();
                     var absenmsg = document.getElementById('absenmsg');
@@ -720,15 +720,6 @@
                     if (role_name === 'Super User' || role_name === 'Administrator') {
                         null;
                     } else {
-                        $.ajax({
-                            type: "GET",
-                            url: "<?php echo base_url('Streaming/absensi?id_materi='); ?>" + id_materi,
-                            dataType: "json",
-                            cache: false,
-                            success: function (data) {
-                                id_absensi.val(data.absensi_id);
-                            }
-                        });
                         if (fullname === '') {
                             absenmsg.innerHTML = 'Halo, terimakasih telah mengikuti ' + nama_materi.val();
                             $('#modal_absen').modal('show');
@@ -738,6 +729,7 @@
                         }
                     }
                 });
+
                 socket.on('<?php echo base64_encode($this->session->userdata('uname')); ?>', function (data) {
                     if (data.category === 1) {
                         $.ajax({
@@ -997,7 +989,6 @@
                 var namatxt = $('input[name="absentxt"]');
                 var ratingtxt = $('input[name="ratingtxt"]');
                 var id_materi = $('input[name="id_materi"]');
-                var id_absensi = $('input[name="id_absensi"]');
                 if (namatxt.val() === '') {
                     toastr.warning('please fill your fullname!');
                 } else if (ratingtxt.val() === '0') {
@@ -1005,7 +996,7 @@
                 } else {
                     $.ajax({
                         type: "GET",
-                        url: "<?php echo base_url('Streaming/set_rating?fullname='); ?>" + namatxt.val() + '&rating=' + ratingtxt.val() + '&id_materi=' + id_materi.val() + '&id_absensi=' + id_absensi.val(),
+                        url: "<?php echo base_url('Streaming/set_rating?user_nama='); ?>" + $('input[name="absentxt"]').val() + '&rating=' + ratingtxt.val() + '&id_materi=' + id_materi.val(),
                         dataType: "json",
                         cache: false,
                         success: function (data) {

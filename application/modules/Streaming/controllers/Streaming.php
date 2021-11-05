@@ -141,30 +141,27 @@ class Streaming extends CI_Controller {
         blocked_account();
     }
 
-    public function absensi() {
-        $data = [
-            'id_materi' => Post_get('id_materi'),
-            'id_user' => $this->id_user
-        ];
-        $id_absensi = $this->model->set_absensi($data);
-        $response = [
-            'stat' => true,
-            'absensi_id' => $id_absensi
-        ];
-//        $this->session->sess_destroy();
-        return ToJson($response);
-    }
+//    public function absensi() {
+//        $data = [
+//            'id_materi' => Post_get('id_materi'),
+//            'id_user' => $this->id_user
+//        ];
+//        $id_absensi = $this->model->set_absensi($data);
+//        $response = [
+//            'stat' => true,
+//            'absensi_id' => $id_absensi
+//        ];
+//        return ToJson($response);
+//    }
 
     public function set_rating() {
-        $fullname = Post_get('fullname');
+        $fullname = Post_get('user_nama');
         $rating = Post_get('rating');
         $id_materi = Post_get('id_materi');
-        $id_absensi = Post_get('id_absensi');
         $data = [
             'fullname' => $fullname, // untuk table dt_users
             'rating' => $rating, // untuk table tr_absensi
             'id_materi' => $id_materi, // untuk table tr_absensi
-            'id_absensi' => $id_absensi, // untuk table tr_absensi
             'id_users' => $this->id_user // untuk table tr_absensi
         ];
         $this->model->input_name($data);

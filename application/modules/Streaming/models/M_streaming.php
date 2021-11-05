@@ -127,24 +127,29 @@ class M_streaming extends CI_Model {
         }
     }
 
-    public function set_absensi($data) {
-        $this->db->set([
-                    '`tr_absensi`.`user_id`' => $data['id_user'] + false,
-                    '`tr_absensi`.`materi_id`' => $data['id_materi'] + false,
-                    '`tr_absensi`.`stat`' => 1 + false,
-                    '`tr_absensi`.`syscreateuser`' => $data['id_user'] + false,
-                    'tr_absensi.syscreatedate' => date('Y-m-d H:i:s')
-                ])
-                ->insert('tr_absensi');
-        $exec = $this->db->select('tr_absensi.id AS id_absensi')
-                ->from('tr_absensi')
-                ->where('`tr_absensi`.`user_id`', $data['id_user'], false)
-                ->where('`tr_absensi`.`materi_id`', $data['id_materi'], false)
-                ->where('`tr_absensi`.`stat`', 1, false)
-                ->get()
-                ->row();
-        return $exec->id_absensi;
-    }
+//    public function set_absensi($data) {
+//        $exec = $this->db->select('tr_absensi.id AS id_absensi')
+//                ->from('tr_absensi')
+//                ->where('`tr_absensi`.`user_id`', $data['id_user'], false)
+//                ->where('`tr_absensi`.`materi_id`', $data['id_materi'], false)
+//                ->where('`tr_absensi`.`stat`', 1, false)
+//                ->get()
+//                ->row();
+//        if (!empty($exec)) {
+//            $result = $exec->id_absensi;
+//        } else {
+//            $this->db->set([
+//                        '`tr_absensi`.`user_id`' => $data['id_user'] + false,
+//                        '`tr_absensi`.`materi_id`' => $data['id_materi'] + false,
+//                        '`tr_absensi`.`stat`' => 1 + false,
+//                        '`tr_absensi`.`syscreateuser`' => $data['id_user'] + false,
+//                        'tr_absensi.syscreatedate' => date('Y-m-d H:i:s')
+//                    ])
+//                    ->insert('tr_absensi');
+//            $result = $this->db->insert_id();
+//        }
+//        return $exec->id_absensi;
+//    }
 
     public function enable_login() {
         $this->db->trans_begin();
@@ -181,17 +186,21 @@ class M_streaming extends CI_Model {
 
     public function input_name($data) {
         $this->db->set('dt_users.nama', $data['fullname'])
-                ->where('`dt_users`.`sys_user_id`', $data['id_user'], false)
+                ->where('`dt_users`.`sys_user_id`', $data['id_users'])
                 ->update('dt_users');
-        return $this->update_absensi($data);
+        return $this->insert_absensi($data);
     }
 
-    private function update_absensi($data) {//untuk set rating materi
+    private function insert_absensi($data) {//untuk set rating materi
         $this->db->set([
-                    'tr_absensi.rating_materi' => $data['rating']
+                    '`tr_absensi`.`user_id`' => $data['id_users'] + false,
+                    '`tr_absensi`.`materi_id`' => $data['id_materi'] + false,
+                    '`tr_absensi`.`rating_materi`' => $data['rating'] + false,
+                    '`tr_absensi`.`stat`' => 1 + false,
+                    '`tr_absensi`.`syscreateuser`' => $data['id_users'] + false,
+                    'tr_absensi.syscreatedate' => date('Y-m-d H:i:s')
                 ])
-                ->where('tr_absensi.id', $data['id_absensi'])
-                ->update('tr_absensi');
+                ->insert('tr_absensi');
         return true;
     }
 
