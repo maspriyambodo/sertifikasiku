@@ -300,7 +300,7 @@
                         <?php
                         foreach ($sponsor as $key => $sponsor1) {
                             if ($sponsor[$key]->kategori == 1) {
-                                echo '<div style="width: -webkit-fit-content;height:-webkit-fit-content;width:-moz-fit-content;height:-moz-fit-content;float:left;margin-right:5px;margin-bottom:15px;width:165px;height:96px;" class="text-center align-middle">'
+                                echo '<div style="width: -webkit-fit-content;height:-webkit-fit-content;width:-moz-fit-content;height:-moz-fit-content;float:left;margin-right:5px;margin-bottom:15px;">'
                                 . '<a href="' . $sponsor1->url_website . '" class="align-middle" target="new">';
                                 echo '<img src="' . base_url('assets/images/sponsor/' . $sponsor1->path) . '" alt="' . $sponsor1->nama . '" class="img-fluid img-thumbnail text-center align-middle" style="max-width:165px;max-height:96px;"/>'
                                 . '</a>';
