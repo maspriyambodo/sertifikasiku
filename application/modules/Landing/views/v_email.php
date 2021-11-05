@@ -144,7 +144,7 @@
                                                             <td>
                                                                 <div style="font-family: Tahoma, Verdana, sans-serif">
                                                                     <div style="font-size: 14px; font-family: 'Roboto', Tahoma, Verdana, Segoe, sans-serif; color: #00255b; line-height: 1.8;">
-                                                                        <p style="margin: 0; font-size: 14px; text-align: center; mso-line-height-alt: 46.800000000000004px;"><span style="font-size:26px;"><strong><span style=""><?= $kodeOtp ?></span></strong></span></p>
+                                                                        <p style="margin: 0; font-size: 14px; text-align: center; mso-line-height-alt: 46.800000000000004px;"><span style="font-size:26px;"><strong><span style=""><?= $otp ?></span></strong></span></p>
                                                                     </div>
                                                                 </div>
                                                             </td>
