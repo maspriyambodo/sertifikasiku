@@ -62,7 +62,8 @@ class M_Locked extends CI_Model {
     public function Unlock($id) {
         $this->db->trans_begin();
         $this->db->set([
-                    '`sys_users`.`login_attempt`' => 0 + false
+                    '`sys_users`.`login_attempt`' => 0 + false,
+                    '`sys_users`.`login_stat`' => 0 + false
                 ])
                 ->where('`sys_users`.`id`', $id, false)
                 ->update('sys_users');

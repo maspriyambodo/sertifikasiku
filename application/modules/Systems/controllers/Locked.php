@@ -74,7 +74,7 @@ class Locked extends CI_Controller {
     }
 
     public function Unlock() {
-        $id_user = $this->bodo->Dec(Post_input('id_user'));
+        $id_user = Dekrip(Post_input('id_user'));
         $this->M_Locked->Unlock($id_user);
     }
 
