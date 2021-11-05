@@ -571,7 +571,7 @@
         </div>
 
         <script>
-            var socket = io.connect('https://chat.alfabet.io');
+            var socket = io.connect('https://live-chat.mycapturer.com');
             document.onkeydown = function (e) {
                 if (event.keyCode === 123) {
                     return false;
