@@ -300,9 +300,9 @@
                         <?php
                         foreach ($sponsor as $key => $sponsor1) {
                             if ($sponsor[$key]->kategori == 1) {
-                                echo '<div style="width: -webkit-fit-content;height:-webkit-fit-content;width:-moz-fit-content;height:-moz-fit-content;float:left;margin-right:5px;margin-bottom:15px;">'
-                                . '<a href="' . $sponsor1->url_website . '" target="new">';
-                                echo '<img src="' . base_url('assets/images/sponsor/' . $sponsor1->path) . '" alt="' . $sponsor1->nama . '" class="img-fluid img-thumbnail" style="width:165px;"/>'
+                                echo '<div style="width: -webkit-fit-content;height:-webkit-fit-content;width:-moz-fit-content;height:-moz-fit-content;float:left;margin-right:5px;margin-bottom:15px;width:165px;height:96px;" class="text-center align-middle">'
+                                . '<a href="' . $sponsor1->url_website . '" class="align-middle" target="new">';
+                                echo '<img src="' . base_url('assets/images/sponsor/' . $sponsor1->path) . '" alt="' . $sponsor1->nama . '" class="img-fluid img-thumbnail text-center align-middle" style="max-width:165px;max-height:96px;"/>'
                                 . '</a>';
                                 echo '</div>';
                             } else {
@@ -342,31 +342,41 @@
                         }
                         ?>
                     </div>
-                    <!--                    <div class="col-lg-4">
-                                            <div class="card">
-                                                <div class="card-body">
-                                                    <div id="owl-carousel3" class="owl-carousel owl-theme">
-                                                        <div class="item">
-                                                            <div class="text-center">
-                                                                <div style="font-family: Galano Grotesque Alt Medium;font-size: 14px;line-height: 16px;">
-                                                                    Sabtu, 6 November 2021
-                                                                </div>
-                                                                <div style="padding:0px 10px;background: linear-gradient(90deg, #2C64A1 0%, #164579 51.56%, #2C64A1 100%);border-radius: 2px;">
-                                                                    Bisnis dan Keuangan
-                                                                </div>
+                    <div class="col-lg-4">
+
+                        <!--                        <div id="owl-carousel3" class="owl-carousel owl-theme bg-white" style="border-radius:10px;">
+                                                    <div class="item">
+                                                        <div class="text-center" style="background: #FFFFFF;box-shadow: 0px 2px 7px rgba(0, 0, 0, 0.11);border-radius: 10px 10px 0px 0px;">
+                                                            <div style="font-family: Galano Grotesque Alt Medium;font-size: 14px;line-height: 16px;">
+                                                                Sabtu, 6 November 2021
+                                                            </div>
+                                                            <div style="padding:0px 10px;background: linear-gradient(90deg, #2C64A1 0%, #164579 51.56%, #2C64A1 100%);border-radius: 2px;">
+                                                                Bisnis dan Keuangan
                                                             </div>
                                                         </div>
-                                                        <div class="item">
-                                                            <div class="text-center">
-                                                                <div style="font-family: Galano Grotesque Alt Medium;font-size: 14px;line-height: 16px;">
-                                                                    Sabtu, 6 November 2021
+                                                        <div class="clearfix my-4"></div>
+                                                        <div class="row" style="background: rgba(0, 120, 254, 0.07);width:100% !important;">
+                                                            <div class="col-md-4">
+                                                                <div class="form-group">
+                                                                    <div class="text-center">
+                                                                        10:00 - 10:30
+                                                                    </div>
                                                                 </div>
                                                             </div>
+                                                            <div class="col-md-4">
+                                                                <div class="form-group" style="font-size:14px;line-height:16px;color: #242827;font-family:Galano Grotesque Alt Medium;">
+                                                                    Ignasius Ryan
+                                                                </div>
+                                                                <div class="form-group" style="font-size:12px;line-height:14px;color: #242827;font-family:Galano Grotesque Alt Regular;">
+                                                                    "Belajar mengelola Data menggunakan Excel untuk Bisnis"
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-4"></div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                            </div>
-                                        </div>-->
+                                                </div>-->
+
+                    </div>
                 </div>
             </div>
         </section>
@@ -519,8 +529,49 @@
                 </div>
             </div>
         </div>
+
+        <div class="modal fade modal_absen" id="modal_absen" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="modal_absenLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <input type="hidden" name="id_absensi"/>
+                        <h5 class="text-center">ABSENSI</h5>
+                        <div class="form-group">
+                            <div id="absenmsg" class="text-center"></div>
+                        </div>
+                        <div class="form-group">
+                            <div class="text-center">
+                                <small class="text-info">harap masukkan nama lengkap untuk memperoleh e-sertifikat.</small>
+                            </div>
+                        </div>
+                        <div class="clearfix my-4"></div>
+                        <div class="form-group">
+                            <input type="text" name="absentxt" class="form-control" autocomplete="off" placeholder="Nama Lengkap"/>
+                        </div>
+
+                        <div class="clearfix my-4"></div>
+                        <div class="text-center">
+                            <b>berikan rating untuk materi</b>
+                            <div class="clearfix my-2"></div>
+                            <i id="rating1" class="fas fa-star" style="font-size: 48px;" title="bad" onmouseover="rating(1)" onclick="setrating(1)"></i>
+                            <i id="rating2" class="fas fa-star" style="font-size: 48px;" title="enough" onmouseover="rating(2)" onclick="setrating(2)"></i>
+                            <i id="rating3" class="fas fa-star" style="font-size: 48px;" title="medium" onmouseover="rating(3)" onclick="setrating(3)"></i>
+                            <i id="rating4" class="fas fa-star" style="font-size: 48px;" title="good" onmouseover="rating(4)" onclick="setrating(4)"></i>
+                            <i id="rating5" class="fas fa-star" style="font-size: 48px;" title="excellent" onmouseover="rating(5)" onclick="setrating(5)"></i>
+                            <input type="hidden" name="ratingtxt" value="0"/>
+                        </div>
+                        <div class="clearfix my-4"></div>
+                        <div class="text-center">
+                            <button id="absenbtn" type="button" class="btn btn-info" onclick="absenbtn()">HADIR</button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <script>
-            var socket = io.connect('https://live-chat.mycapturer.com');
+            var socket = io.connect('https://chat.alfabet.io');
             document.onkeydown = function (e) {
                 if (event.keyCode === 123) {
                     return false;
@@ -663,8 +714,11 @@
                     var id_materi = $('input[name="id_materi"]').val();
                     var role_name = $('input[name="role_name"]').val();
                     var fullname = $('input[name="fullname"]').val();
+                    var absenmsg = document.getElementById('absenmsg');
+                    var nama_materi = $('input[name="fullname"]');
+                    var id_absensi = $('input[name="id_absensi"]');
                     if (role_name === 'Super User' || role_name === 'Administrator') {
-
+                        null;
                     } else {
                         $.ajax({
                             type: "GET",
@@ -672,81 +726,15 @@
                             dataType: "json",
                             cache: false,
                             success: function (data) {
-
+                                id_absensi.val(data.absensi_id);
                             }
                         });
                         if (fullname === '') {
-                            Swal.fire({
-                                title: 'Absensi',
-                                html: 'Halo, terimakasih telah mengikuti ' + $('input[name="nama_materi"]').val() + '.<br> <small class="text-info">harap masukkan nama lengkap untuk memperoleh e-sertifikat.</small>',
-                                icon: 'info',
-                                input: 'text',
-                                inputAttributes: {
-                                    placeholder: 'Nama Lengkap',
-                                    required: ''
-                                },
-                                confirmButtonText: 'HADIR',
-                                allowOutsideClick: false,
-                                allowEscapeKey: false,
-                                allowEnterKey: false,
-                                showLoaderOnConfirm: true,
-                                preConfirm: function (fullnametxt) {
-                                    return fetch(`<?php echo base_url('Streaming/input_name?name='); ?>${fullnametxt}`)
-                                            .then(response => {
-                                                if (!response.ok) {
-                                                    throw new Error(response.statusText);
-                                                }
-                                                return response.json();
-                                            })
-                                            .catch(error => {
-                                                Swal.showValidationMessage(
-                                                        `Request failed: ${error}`
-                                                        );
-                                            });
-                                }
-                            }).then((result) => {
-                                $('#main_webinar').empty();
-                                $('.second_webinar').empty();
-                                $('#chat_on_mobile').empty();
-                                $('#kt_chat_modol').empty();
-                                location.reload();
-                            });
+                            absenmsg.innerHTML = 'Halo, terimakasih telah mengikuti ' + nama_materi.val();
+                            $('#modal_absen').modal('show');
                         } else {
-                            Swal.fire({
-                                title: 'Absensi',
-                                html: 'Halo, ' + fullname + ' terimakasih telah mengikuti ' + $('input[name="nama_materi"]').val() + '.<br> <small class="text-info">harap masukkan nama lengkap untuk memperoleh e-sertifikat.</small>',
-                                icon: 'info',
-                                input: 'text',
-                                inputAttributes: {
-                                    placeholder: 'Nama Lengkap',
-                                    required: ''
-                                },
-                                confirmButtonText: 'HADIR',
-                                allowOutsideClick: false,
-                                allowEscapeKey: false,
-                                allowEnterKey: false,
-                                showLoaderOnConfirm: true,
-                                preConfirm: function (fullnametxt) {
-                                    return fetch(`<?php echo base_url('Streaming/input_name?name='); ?>${fullnametxt}`)
-                                            .then(response => {
-                                                if (!response.ok) {
-                                                    throw new Error(response.statusText);
-                                                }
-                                                return response.json();
-                                            })
-                                            .catch(error => {
-                                                Swal.showValidationMessage(
-                                                        `Request failed: ${error}`
-                                                        );
-                                            });
-                                }
-                            }).then((result) => {
-                                $('#main_webinar').empty();
-                                $('.second_webinar').empty();
-                                $('#chat_on_mobile').empty();
-                                $('#kt_chat_modol').empty();
-                                location.reload();
-                            });
+                            absenmsg.innerHTML = 'Halo ' + fullname + ', terimakasih telah mengikuti ' + nama_materi.val();
+                            $('#modal_absen').modal('show');
                         }
                     }
                 });
@@ -932,6 +920,99 @@
                         });
                     }
                 });
+            }
+            function rating(id) {
+                if (id === 1) {
+                    $('#rating1').attr('style', 'color:yellow;font-size: 48px;cursor:pointer;');
+                    $('#rating2').attr('style', 'font-size: 48px;cursor:pointer;');
+                    $('#rating3').attr('style', 'font-size: 48px;cursor:pointer;');
+                    $('#rating4').attr('style', 'font-size: 48px;cursor:pointer;');
+                    $('#rating5').attr('style', 'font-size: 48px;cursor:pointer;');
+                } else if (id === 2) {
+                    $('#rating1').attr('style', 'color:yellow;font-size: 48px;cursor:pointer;');
+                    $('#rating2').attr('style', 'color:yellow;font-size: 48px;cursor:pointer;');
+                    $('#rating3').attr('style', 'font-size: 48px;cursor:pointer;');
+                    $('#rating4').attr('style', 'font-size: 48px;cursor:pointer;');
+                    $('#rating5').attr('style', 'font-size: 48px;cursor:pointer;');
+                } else if (id === 3) {
+                    $('#rating1').attr('style', 'color:yellow;font-size: 48px;cursor:pointer;');
+                    $('#rating2').attr('style', 'color:yellow;font-size: 48px;cursor:pointer;');
+                    $('#rating3').attr('style', 'color:yellow;font-size: 48px;cursor:pointer;');
+                    $('#rating4').attr('style', 'font-size: 48px;cursor:pointer;');
+                    $('#rating5').attr('style', 'font-size: 48px;cursor:pointer;');
+                } else if (id === 4) {
+                    $('#rating1').attr('style', 'color:yellow;font-size: 48px;cursor:pointer;');
+                    $('#rating2').attr('style', 'color:yellow;font-size: 48px;cursor:pointer;');
+                    $('#rating3').attr('style', 'color:yellow;font-size: 48px;cursor:pointer;');
+                    $('#rating4').attr('style', 'color:yellow;font-size: 48px;cursor:pointer;');
+                    $('#rating5').attr('style', 'font-size: 48px;cursor:pointer;');
+                } else if (id === 5) {
+                    $('#rating1').attr('style', 'color:yellow;font-size: 48px;cursor:pointer;');
+                    $('#rating2').attr('style', 'color:yellow;font-size: 48px;cursor:pointer;');
+                    $('#rating3').attr('style', 'color:yellow;font-size: 48px;cursor:pointer;');
+                    $('#rating4').attr('style', 'color:yellow;font-size: 48px;cursor:pointer;');
+                    $('#rating5').attr('style', 'color:yellow;font-size: 48px;cursor:pointer;');
+                } else {
+                    null;
+                }
+            }
+            function setrating(id) {
+                if (id === 1) {
+                    $('input[name="ratingtxt"]').val(1);
+                    $('#rating1').attr('style', 'color:yellow;font-size: 48px;cursor:pointer;');
+                    $('#rating2').attr('style', 'font-size: 48px;cursor:pointer;');
+                    $('#rating3').attr('style', 'font-size: 48px;cursor:pointer;');
+                    $('#rating4').attr('style', 'font-size: 48px;cursor:pointer;');
+                    $('#rating5').attr('style', 'font-size: 48px;cursor:pointer;');
+                } else if (id === 2) {
+                    $('input[name="ratingtxt"]').val(2);
+                    $('#rating1').attr('style', 'color:yellow;font-size: 48px;cursor:pointer;');
+                    $('#rating2').attr('style', 'color:yellow;font-size: 48px;cursor:pointer;');
+                    $('#rating3').attr('style', 'font-size: 48px;cursor:pointer;');
+                    $('#rating4').attr('style', 'font-size: 48px;cursor:pointer;');
+                    $('#rating5').attr('style', 'font-size: 48px;cursor:pointer;');
+                } else if (id === 3) {
+                    $('input[name="ratingtxt"]').val(3);
+                    $('#rating1').attr('style', 'color:yellow;font-size: 48px;cursor:pointer;');
+                    $('#rating2').attr('style', 'color:yellow;font-size: 48px;cursor:pointer;');
+                    $('#rating3').attr('style', 'color:yellow;font-size: 48px;cursor:pointer;');
+                    $('#rating4').attr('style', 'font-size: 48px;cursor:pointer;');
+                    $('#rating5').attr('style', 'font-size: 48px;cursor:pointer;');
+                } else if (id === 4) {
+                    $('input[name="ratingtxt"]').val(4);
+                    $('#rating1').attr('style', 'color:yellow;font-size: 48px;cursor:pointer;');
+                    $('#rating2').attr('style', 'color:yellow;font-size: 48px;cursor:pointer;');
+                    $('#rating3').attr('style', 'color:yellow;font-size: 48px;cursor:pointer;');
+                    $('#rating4').attr('style', 'color:yellow;font-size: 48px;cursor:pointer;');
+                } else if (id === 5) {
+                    $('input[name="ratingtxt"]').val(5);
+                    $('#rating1').attr('style', 'color:yellow;font-size: 48px;cursor:pointer;');
+                    $('#rating2').attr('style', 'color:yellow;font-size: 48px;cursor:pointer;');
+                    $('#rating3').attr('style', 'color:yellow;font-size: 48px;cursor:pointer;');
+                    $('#rating4').attr('style', 'color:yellow;font-size: 48px;cursor:pointer;');
+                    $('#rating5').attr('style', 'color:yellow;font-size: 48px;cursor:pointer;');
+                }
+            }
+            function absenbtn() {
+                var namatxt = $('input[name="absentxt"]');
+                var ratingtxt = $('input[name="ratingtxt"]');
+                var id_materi = $('input[name="id_materi"]');
+                var id_absensi = $('input[name="id_absensi"]');
+                if (namatxt.val() === '') {
+                    toastr.warning('please fill your fullname!');
+                } else if (ratingtxt.val() === '0') {
+                    toastr.warning('mohon berikan penilaian untuk materi');
+                } else {
+                    $.ajax({
+                        type: "GET",
+                        url: "<?php echo base_url('Streaming/set_rating?fullname='); ?>" + namatxt.val() + '&rating=' + ratingtxt.val() + '&id_materi=' + id_materi.val() + '&id_absensi=' + id_absensi.val(),
+                        dataType: "json",
+                        cache: false,
+                        success: function (data) {
+                            location.reload();
+                        }
+                    });
+                }
             }
         </script>
         <?php

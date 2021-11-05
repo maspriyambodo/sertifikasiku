@@ -66,11 +66,35 @@ class M_streaming extends CI_Model {
     }
 
     public function Materi() {
-        $exec = $this->db->select('dt_materi.id AS id_materi,dt_materi.id_sesi,dt_materi.nama_materi,dt_materi.deskripsi,dt_materi.time_start,dt_materi.time_stop,dt_materi.link_video,mt_sesimateri.nama AS nama_sesi')
+        $exec = $this->db->select('`dt_materi`.`id` AS `id_materi`,
+	`dt_materi`.`id_sesi`,
+	`dt_materi`.`nama_materi`,
+	`dt_materi`.`deskripsi`,
+	`dt_materi`.`time_start`,
+	`dt_materi`.`time_stop`,
+	`dt_materi`.`link_video`,
+	`mt_sesimateri`.`nama` AS `nama_sesi`')
                 ->from('dt_materi')
                 ->join('mt_sesimateri', 'dt_materi.id_sesi = mt_sesimateri.id', 'LEFT')
                 ->where('`dt_materi`.`stat`', 1, false)
                 ->limit(1)
+                ->get()
+                ->result();
+        return $exec;
+    }
+
+    public function dir_materi() {
+        $exec = $this->db->select('dt_materi.id AS id_materi,
+	dt_materi.narasumber,
+	dt_materi.nama_materi,
+	dt_materi.time_start,
+	dt_materi.time_stop,
+	mt_industri.nama AS nama_segment ')
+                ->from('dt_materi')
+                ->join('mt_industri', 'dt_materi.id_industri = mt_industri.id')
+                ->where('`dt_materi`.`stat` <>', 2, false)
+                ->order_by('DAY ( dt_materi.time_start ) ASC')
+                ->order_by('dt_materi.id_sesi ASC')
                 ->get()
                 ->result();
         return $exec;
@@ -112,6 +136,14 @@ class M_streaming extends CI_Model {
                     'tr_absensi.syscreatedate' => date('Y-m-d H:i:s')
                 ])
                 ->insert('tr_absensi');
+        $exec = $this->db->select('tr_absensi.id AS id_absensi')
+                ->from('tr_absensi')
+                ->where('`tr_absensi`.`user_id`', $data['id_user'], false)
+                ->where('`tr_absensi`.`materi_id`', $data['id_materi'], false)
+                ->where('`tr_absensi`.`stat`', 1, false)
+                ->get()
+                ->row();
+        return $exec->id_absensi;
     }
 
     public function enable_login() {
@@ -151,6 +183,16 @@ class M_streaming extends CI_Model {
         $this->db->set('dt_users.nama', $data['fullname'])
                 ->where('`dt_users`.`sys_user_id`', $data['id_user'], false)
                 ->update('dt_users');
+        return $this->update_absensi($data);
+    }
+
+    private function update_absensi($data) {//untuk set rating materi
+        $this->db->set([
+                    'tr_absensi.rating_materi' => $data['rating']
+                ])
+                ->where('tr_absensi.id', $data['id_absensi'])
+                ->update('tr_absensi');
+        return true;
     }
 
     public function sponsor() {

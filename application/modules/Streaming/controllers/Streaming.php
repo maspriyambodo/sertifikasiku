@@ -16,6 +16,7 @@ class Streaming extends CI_Controller {
         $data = [
             'sponsor' => $this->model->sponsor(),
             'materi' => $this->model->Materi(),
+            'dir_materi' => $this->model->dir_materi(),
             'chat' => $this->load_chat(),
             'privilege' => $this->bodo->Check_previlege('Streaming/index/')
         ];
@@ -145,23 +146,39 @@ class Streaming extends CI_Controller {
             'id_materi' => Post_get('id_materi'),
             'id_user' => $this->id_user
         ];
-        $this->model->set_absensi($data);
+        $id_absensi = $this->model->set_absensi($data);
         $response = [
             'stat' => true,
+            'absensi_id' => $id_absensi
         ];
 //        $this->session->sess_destroy();
         return ToJson($response);
     }
 
-    public function input_name() {
-        $name = Post_get('name');
+    public function set_rating() {
+        $fullname = Post_get('fullname');
+        $rating = Post_get('rating');
+        $id_materi = Post_get('id_materi');
+        $id_absensi = Post_get('id_absensi');
         $data = [
-            'id_user' => $this->id_user,
-            'fullname' => $name
+            'fullname' => $fullname, // untuk table dt_users
+            'rating' => $rating, // untuk table tr_absensi
+            'id_materi' => $id_materi, // untuk table tr_absensi
+            'id_absensi' => $id_absensi, // untuk table tr_absensi
+            'id_users' => $this->id_user // untuk table tr_absensi
         ];
         $this->model->input_name($data);
-        return ToJson(['status' => true]);
     }
+
+//    public function input_name() {
+//        $name = Post_get('name');
+//        $data = [
+//            'id_user' => $this->id_user,
+//            'fullname' => $name
+//        ];
+//        $this->model->input_name($data);
+//        return ToJson(['status' => true]);
+//    }
 
     public function enable_login() {
         $exec = $this->model->enable_login();
