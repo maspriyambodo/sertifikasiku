@@ -715,7 +715,7 @@
                     var role_name = $('input[name="role_name"]').val();
                     var fullname = $('input[name="fullname"]').val();
                     var absenmsg = document.getElementById('absenmsg');
-                    var nama_materi = $('input[name="fullname"]');
+                    var nama_materi = $('input[name="nama_materi"]');
                     var id_absensi = $('input[name="id_absensi"]');
                     if (role_name === 'Super User' || role_name === 'Administrator') {
                         null;
