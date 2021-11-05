@@ -333,7 +333,7 @@
                             if ($sponsor[$key3]->kategori == 2) {
                                 echo '<div style="width: -webkit-fit-content;height:-webkit-fit-content;width:-moz-fit-content;height:-moz-fit-content;float:left;margin-right:5px;margin-bottom:15px;">'
                                 . '<a href="' . $sponsor3->url_website . '" target="new">';
-                                echo '<img src="' . base_url('assets/images/media_partner/' . $sponsor3->path) . '" alt="' . $sponsor3->nama . '" class="img-fluid img-thumbnail" style="width:165px;"/>'
+                                echo '<img src="' . base_url('assets/images/media_partner/' . $sponsor3->path) . '" alt="' . $sponsor3->nama . '" class="img-fluid img-thumbnail" style="max-width:165px;max-height:96px;"/>'
                                 . '</a>';
                                 echo '</div>';
                             } else {
