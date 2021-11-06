@@ -591,6 +591,7 @@
                 }
             };
             $(document).ready(function () {
+                join_stream();
                 $([document.documentElement, document.body]).animate({
                     scrollTop: $("#scrolTo_webinar").offset().top
                 }, 2000);
