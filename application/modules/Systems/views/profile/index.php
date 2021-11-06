@@ -35,13 +35,13 @@
                 </div>
             </div>
             <div class="form-group row">
-                <label class="col-form-label col-md-3 text-lg-right text-left">Fullname</label>
+                <label class="col-form-label col-md-3 text-lg-right text-left">Fullname<small class="text-danger">*</small></label>
                 <div class="col-md-6">
-                    <input name="nama_lengkap" class="form-control form-control-lg" type="text" value="<?php echo $data[0]->nama_lengkap; ?>" autocomplete="off"/>
+                    <input name="nama_lengkap" class="form-control form-control-lg" type="text" value="<?php echo $data[0]->nama_lengkap; ?>" autocomplete="off" required=""/>
                 </div>
             </div>
             <div class="form-group row">
-                <label class="col-form-label col-md-3 text-lg-right text-left">Username</label>
+                <label class="col-form-label col-md-3 text-lg-right text-left">Username<small class="text-danger">*</small></label>
                 <div class="col-md-6">
                     <div class="input-group">
                         <input type="hidden" name="old_uname" value="<?php echo $data[0]->uname; ?>"/>
@@ -53,9 +53,20 @@
                 </div>
             </div>
             <div class="form-group row">
-                <label class="col-form-label col-md-3 text-lg-right text-left" for="kerjatxt">Pekerjaan</label>
+                <label class="col-form-label col-md-3 text-lg-right text-left" for="kerjatxt">Pekerjaan<small class="text-danger">*</small></label>
                 <div class="col-md-6">
-                    <input id="kerjatxt" name="kerjatxt" class="form-control form-control-lg" type="text" value="<?php echo $data[0]->pekerjaan; ?>" autocomplete="off"/>
+                    <select id="kerjatxt" name="kerjatxt" class="form-control form-control-lg">
+                        <option value="">pilih pekerjaan</option>
+                        <option value="Belum/Tidak Bekerja/Sedang Mencari Pekerjaan">Belum/Tidak Bekerja/Sedang Mencari Pekerjaan</option>
+                        <option value="Pelajar/Mahasiswa">Pelajar/Mahasiswa</option>
+                        <option value="Wiraswasta">Wiraswasta</option>
+                        <option value="Pegawai Swasta">Pegawai Swasta</option>
+                        <option value="Pegawai Negeri">Pegawai Negeri</option>
+                        <option value="Pegawai BUMN/BUMD">Pegawai BUMN/BUMD</option>
+                        <option value="Mengurus Rumah Tangga">Mengurus Rumah Tangga</option>
+                        <option value="Pensiunan">Pensiunan</option>
+                        <option value="Lainnya">Lainnya</option>
+                    </select>
                 </div>
             </div>
             <div class="form-group row">
@@ -328,8 +339,7 @@ unset($_SESSION['succ_msg']);
         return emailReg.test($email);
     }
     function Save() {
-        var a, b, c, d, e, f, g, h, i, j, k, l, m, n;
-        a = $('input[name="id_num"]').val();
+        var b, c, d, e, f, g, h, i, j, k, l, m, n, o;
         b = $('input[name="nama_lengkap"]').val();
         c = $('input[name="uname"]').val();
         d = $('input[name="mail_user"]').val();
@@ -341,11 +351,9 @@ unset($_SESSION['succ_msg']);
         j = $('select[name="kabupaten"]').val();
         k = $('select[name="kelurahan"]').val();
         m = $('select[name="kecamatan"]').val();
-        l = $('textarea[name="alamat"]').val();
         n = $('input[name="code_stat"]').val();
-        if (!a | a.length <= 15) {
-            toastr.warning('please fill valid ID Number');
-        } else if (!b) {
+        o = $('select[name="kerjatxt"]').val();
+        if (!b) {
             toastr.warning('please fill Fullname');
         } else if (!c) {
             toastr.warning('please fill username');
@@ -365,12 +373,12 @@ unset($_SESSION['succ_msg']);
             toastr.warning('please select your kabupaten');
         } else if (!k) {
             toastr.warning('please select your kelurahan');
-        } else if (!l) {
-            toastr.warning('please fill your address');
         } else if (!m) {
             toastr.warning('please select your kecamatan');
         } else if (n === 0) {
             toastr.warning('please use another username!');
+        } else if (!o) {
+            toastr.warning('silahkan pilih pekerjaa anda!');
         } else {
             $('#modal_save').modal({show: true, backdrop: 'static', keyboard: false});
         }
