@@ -73,6 +73,7 @@ class M_streaming extends CI_Model {
 	`dt_materi`.`time_start`,
 	`dt_materi`.`time_stop`,
 	`dt_materi`.`link_video`,
+        `dt_materi`.`narasumber`,
 	`mt_sesimateri`.`nama` AS `nama_sesi`')
                 ->from('dt_materi')
                 ->join('mt_sesimateri', 'dt_materi.id_sesi = mt_sesimateri.id', 'LEFT')

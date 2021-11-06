@@ -142,6 +142,7 @@
         echo '<input type="hidden" name="fullname" value="' . $this->session->userdata('fullname') . '"/>';
         ?>
         <section id="main_webinar" class="clearfix main_webinar" style="padding-bottom:20px;">
+            <div id="scrolTo_webinar" class="pb-3"></div>
             <div class="container">
                 <div class="row pt-5">
                     <div class="col-lg-8 d-xs-block col-xs-12 col-12 col-md-12">
@@ -273,7 +274,7 @@
                     <div class="col-lg-8 d-xs-block col-xs-12 col-12 col-md-12">
                         <div class="form-group">
                             <h4 class="text-white" style="font-family: 'Galano Grotesque Alt Bold';">
-                                <?php echo $materi[0]->nama_materi; ?>
+                                <?php echo $materi[0]->nama_materi . ' - ' . $materi[0]->narasumber; ?>
                             </h4>
                             <!--                            <div class="text-white desc_materi text-start">
                                                             Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
@@ -590,7 +591,10 @@
                 }
             };
             $(document).ready(function () {
-                join_stream();
+                $([document.documentElement, document.body]).animate({
+                    scrollTop: $("#scrolTo_webinar").offset().top
+                }, 2000);
+
                 setInterval(function () {
                     console.clear();
                 }, 3000);
@@ -801,6 +805,19 @@
             $("body").contextmenu(function () {
                 return false;
             });
+            function join_stream() {
+                $.ajax({
+                    type: "GET",
+                    url: "<?php echo base_url('Streaming/viewers/'); ?>",
+                    dataType: "json",
+                    cache: false,
+                    success: function (data) {
+                        socket.emit('join_stream', {
+                            tot_viewers: data.tot_view
+                        });
+                    }
+                });
+            }
             function Open_chat() {
                 $('#scroll-pull').animate({
                     scrollTop: $('#scroll-pull').get(0).scrollHeight
@@ -900,19 +917,7 @@
                 $('input[name="msgtxt"]').val('@' + uname + ' ');
                 $('textarea[name="msgtxt2"]').val('@' + uname + ' ');
             }
-            function join_stream() {
-                $.ajax({
-                    type: "GET",
-                    url: "<?php echo base_url('Streaming/viewers/'); ?>",
-                    dataType: "json",
-                    cache: false,
-                    success: function (data) {
-                        socket.emit('join_stream', {
-                            tot_viewers: data.tot_view
-                        });
-                    }
-                });
-            }
+
             function rating(id) {
                 if (id === 1) {
                     $('#rating1').attr('style', 'color:yellow;font-size: 48px;cursor:pointer;');
