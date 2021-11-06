@@ -302,7 +302,7 @@
                             if ($sponsor[$key]->kategori == 1) {
                                 echo '<div style="width: -webkit-fit-content;height:-webkit-fit-content;width:-moz-fit-content;height:-moz-fit-content;float:left;margin-right:5px;margin-bottom:15px;">'
                                 . '<a href="' . $sponsor1->url_website . '" class="align-middle" target="new">';
-                                echo '<img src="' . base_url('assets/images/sponsor/' . $sponsor1->path) . '" alt="' . $sponsor1->nama . '" class="img-fluid img-thumbnail text-center align-middle" style="max-width:165px;max-height:96px;"/>'
+                                echo '<img src="' . base_url('assets/images/sponsor/' . $sponsor1->path) . '" alt="' . $sponsor1->nama . '" class="img-fluid text-center align-middle" style="max-width:165px;max-height:96px;"/>'
                                 . '</a>';
                                 echo '</div>';
                             } else {
@@ -333,7 +333,7 @@
                             if ($sponsor[$key3]->kategori == 2) {
                                 echo '<div style="width: -webkit-fit-content;height:-webkit-fit-content;width:-moz-fit-content;height:-moz-fit-content;float:left;margin-right:5px;margin-bottom:15px;">'
                                 . '<a href="' . $sponsor3->url_website . '" target="new">';
-                                echo '<img src="' . base_url('assets/images/media_partner/' . $sponsor3->path) . '" alt="' . $sponsor3->nama . '" class="img-fluid img-thumbnail" style="max-width:165px;max-height:96px;"/>'
+                                echo '<img src="' . base_url('assets/images/media_partner/' . $sponsor3->path) . '" alt="' . $sponsor3->nama . '" class="img-fluid" style="max-width:165px;max-height:96px;"/>'
                                 . '</a>';
                                 echo '</div>';
                             } else {
@@ -344,37 +344,37 @@
                     </div>
                     <div class="col-lg-4">
 
-                        <!--                        <div id="owl-carousel3" class="owl-carousel owl-theme bg-white" style="border-radius:10px;">
-                                                    <div class="item">
-                                                        <div class="text-center" style="background: #FFFFFF;box-shadow: 0px 2px 7px rgba(0, 0, 0, 0.11);border-radius: 10px 10px 0px 0px;">
-                                                            <div style="font-family: Galano Grotesque Alt Medium;font-size: 14px;line-height: 16px;">
-                                                                Sabtu, 6 November 2021
-                                                            </div>
-                                                            <div style="padding:0px 10px;background: linear-gradient(90deg, #2C64A1 0%, #164579 51.56%, #2C64A1 100%);border-radius: 2px;">
-                                                                Bisnis dan Keuangan
-                                                            </div>
-                                                        </div>
-                                                        <div class="clearfix my-4"></div>
-                                                        <div class="row" style="background: rgba(0, 120, 254, 0.07);width:100% !important;">
-                                                            <div class="col-md-4">
-                                                                <div class="form-group">
-                                                                    <div class="text-center">
-                                                                        10:00 - 10:30
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-md-4">
-                                                                <div class="form-group" style="font-size:14px;line-height:16px;color: #242827;font-family:Galano Grotesque Alt Medium;">
-                                                                    Ignasius Ryan
-                                                                </div>
-                                                                <div class="form-group" style="font-size:12px;line-height:14px;color: #242827;font-family:Galano Grotesque Alt Regular;">
-                                                                    "Belajar mengelola Data menggunakan Excel untuk Bisnis"
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-md-4"></div>
-                                                        </div>
-                                                    </div>
-                                                </div>-->
+                        <!--                                                <div id="owl-carousel3" class="owl-carousel owl-theme bg-white" style="border-radius:10px;">
+                                                                            <div class="item">
+                                                                                <div class="text-center" style="background: #FFFFFF;box-shadow: 0px 2px 7px rgba(0, 0, 0, 0.11);border-radius: 10px 10px 0px 0px;">
+                                                                                    <div style="font-family: Galano Grotesque Alt Medium;font-size: 14px;line-height: 16px;">
+                                                                                        Sabtu, 6 November 2021
+                                                                                    </div>
+                                                                                    <div style="padding:0px 10px;background: linear-gradient(90deg, #2C64A1 0%, #164579 51.56%, #2C64A1 100%);border-radius: 2px;">
+                                                                                        Bisnis dan Keuangan
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="clearfix my-4"></div>
+                                                                                <div class="row" style="background: rgba(0, 120, 254, 0.07);width:100% !important;">
+                                                                                    <div class="col-md-4">
+                                                                                        <div class="form-group">
+                                                                                            <div class="text-center">
+                                                                                                10:00 - 10:30
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="col-md-4">
+                                                                                        <div class="form-group" style="font-size:14px;line-height:16px;color: #242827;font-family:Galano Grotesque Alt Medium;">
+                                                                                            Ignasius Ryan
+                                                                                        </div>
+                                                                                        <div class="form-group" style="font-size:12px;line-height:14px;color: #242827;font-family:Galano Grotesque Alt Regular;">
+                                                                                            "Belajar mengelola Data menggunakan Excel untuk Bisnis"
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="col-md-4"></div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>-->
 
                     </div>
                 </div>
