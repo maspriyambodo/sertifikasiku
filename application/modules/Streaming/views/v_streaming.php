@@ -435,6 +435,20 @@
                                             </div>
                                         </div>
                                         <?php
+                                        if ($schedule_materi->stat_schedule == 1) {
+                                            $btn_schedule = '<div class="text-center" style="float:right;">'
+                                                    . '<div id="btn_reminder' . $schedule_materi->id_materi . '" style="width: 83px;background: #878787;box-shadow:0px 2px 2px rgba(0, 0, 0, 0.1);border-radius: 4px;cursor:pointer;" title="unset reminder" onclick="unset_reminder(' . $schedule_materi->id_materi . ')">'
+                                                    . '<div style="font-family: Galano Grotesque Alt Medium;font-size: 8px;line-height: 9px;color: #FFFFFF;padding:4px 0px;"><i class="fas fa-bell"></i> set reminder</div>'
+                                                    . '</div>'
+                                                    . '</div>';
+                                        } else {
+                                            $btn_schedule = '<div class="text-center" style="float:right;">'
+                                                    . '<div id="btn_reminder' . $schedule_materi->id_materi . '" style="width: 83px;background: #459CCF;box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.1);border-radius: 4px;cursor:pointer;" title="set reminder" onclick="set_reminder(' . $schedule_materi->id_materi . ')">'
+                                                    . '<div style="font-family: Galano Grotesque Alt Medium;font-size: 8px;line-height: 9px;color: #FFFFFF;padding:4px 0px;"><i class="fas fa-bell"></i> set reminder</div>'
+                                                    . '</div>'
+                                                    . '</div>';
+                                        }
+
                                         if ($schedule_materi->stat == 1) {
                                             echo '<div style="font-family: Galano Grotesque Alt Medium;font-size: 12px;line-height: 14px;color: #242827;" class="col-8 col-xs-8">'
                                             . '<div class="form-group">'
@@ -445,7 +459,8 @@
                                             . '</div>'
                                             . '</div>';
                                         } else {
-                                            echo '<div style="font-family: Galano Grotesque Alt Medium;font-size: 12px;line-height: 14px;color: #242827;" class="col-4 col-xs-4">'
+                                            echo '<div style="font-family: Galano Grotesque Alt Medium;font-size: 12px;line-height: 14px;color: #242827;" class="col-8 col-xs-8">'
+                                            . $btn_schedule
                                             . '<div class="form-group">'
                                             . $schedule_materi->narasumber
                                             . '</div>'
@@ -453,27 +468,6 @@
                                             . $schedule_materi->nama_materi
                                             . '</div>'
                                             . '</div>';
-                                            if ($schedule_materi->stat_schedule == 1) {
-                                                echo '<div class="col-4 col-xs-4">'
-                                                . '<center style="margin-top:15px;">'
-                                                . '<div class="text-center">'
-                                                . '<div id="btn_reminder' . $schedule_materi->id_materi . '" style="width: 83px;background: #878787;box-shadow:0px 2px 2px rgba(0, 0, 0, 0.1);border-radius: 4px;cursor:pointer;" title="unset reminder" onclick="unset_reminder(' . $schedule_materi->id_materi . ')">'
-                                                . '<div style="font-family: Galano Grotesque Alt Medium;font-size: 8px;line-height: 9px;color: #FFFFFF;padding:4px 0px;"><i class="fas fa-bell"></i> set reminder</div>'
-                                                . '</div>'
-                                                . '</div>'
-                                                . '</center>'
-                                                . '</div>';
-                                            } else {
-                                                echo '<div class="col-4 col-xs-4">'
-                                                . '<center style="margin-top:15px;">'
-                                                . '<div class="text-center">'
-                                                . '<div id="btn_reminder' . $schedule_materi->id_materi . '" style="width: 83px;background: #459CCF;box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.1);border-radius: 4px;cursor:pointer;" title="set reminder" onclick="set_reminder(' . $schedule_materi->id_materi . ')">'
-                                                . '<div style="font-family: Galano Grotesque Alt Medium;font-size: 8px;line-height: 9px;color: #FFFFFF;padding:4px 0px;"><i class="fas fa-bell"></i> set reminder</div>'
-                                                . '</div>'
-                                                . '</div>'
-                                                . '</center>'
-                                                . '</div>';
-                                            }
                                         }
                                         ?>
                                     </div>
