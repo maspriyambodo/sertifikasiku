@@ -54,9 +54,9 @@
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                         <?php
                         if ($this->bodo->Sys('login_member') == 1) {
-                            echo '<button id="loginbtn" type="button" class="btn btn-custom ms-2" data-bs-toggle="modal" data-bs-target="#modal_login" style="font-family:Galano Grotesque Alt SemiBold;color: #214980;">Masuk</button>';
+                            echo '<button id="loginbtn" type="button" class="btn btn-custom ms-2" data-bs-toggle="modal" data-bs-target="#modal_login" style="font-family:Galano Grotesque SemiBold;color: #214980;">Masuk</button>';
                         } else {
-                            echo '<button type="button" class="btn btn-custom ms-2" data-bs-toggle="modal" data-bs-target="#coming_soon" style="font-family:Galano Grotesque Alt SemiBold;color: #214980;">Masuk</button>';
+                            echo '<button type="button" class="btn btn-custom ms-2" data-bs-toggle="modal" data-bs-target="#coming_soon" style="font-family:Galano Grotesque SemiBold;color: #214980;">Masuk</button>';
                         }
                         ?>
                     </ul>
@@ -73,7 +73,7 @@
                         <div class="card live-chat-lg" style="height:100%;max-height:456px;">
                             <div class="card-header">
                                 <div class="card-title">
-                                    <div class="form-group" style="font-family:'Galano Grotesque Alt SemiBold';color: #848484;">
+                                    <div class="form-group" style="font-family:'Galano Grotesque SemiBold';color: #848484;">
                                         <i class="fas fa-comments"></i>
                                         <b>Live Chat</b>
                                     </div>
@@ -90,12 +90,12 @@
                 <div class="row py-4">
                     <div class="col-lg-8 d-xs-block col-xs-12 col-12 col-md-12">
                         <div class="form-group">
-                            <h4 class="text-white" style="font-family: 'Galano Grotesque Alt Bold';">
+                            <h4 class="text-white" style="font-family: 'Galano Grotesque Bold';">
                                 <?php echo $materi[0]->nama_materi; ?>
                             </h4>
                         </div>
                         <div class="clearfix" style="margin:50px 0px;"></div>
-                        <div class="text-white mb-3" style="font-family: Galano Grotesque Alt Bold;font-size: 16px;line-height: 19px;">Disponsori oleh:</div>
+                        <div class="text-white mb-3" style="font-family: Galano Grotesque Bold;font-size: 16px;line-height: 19px;">Disponsori oleh:</div>
                         <?php
                         foreach ($sponsor as $key => $sponsor1) {
                             if ($sponsor[$key]->kategori == 1) {
@@ -110,7 +110,7 @@
                         }
                         ?>
                         <div class="clearfix" style="margin:50px 0px;"></div>
-                        <div class="text-white mb-3" style="font-family: Galano Grotesque Alt Bold;font-size: 16px;line-height: 19px;">Bekerja sama dengan:</div>
+                        <div class="text-white mb-3" style="font-family: Galano Grotesque Bold;font-size: 16px;line-height: 19px;">Bekerja sama dengan:</div>
                         <?php
                         foreach ($sponsor as $key3 => $sponsor3) {
                             if ($sponsor[$key3]->kategori == 2) {
@@ -199,11 +199,11 @@
                             <div class="text-center my-4">
                                 <img class="img-fluid" src="<?php echo base_url('assets/images/a9b7f6aefbae556e99a8f5ffbea66844.png'); ?>" alt="login-img" style="width:286px;"/>
                             </div>
-                            <div class="form-group text-center" style="font-family:'Galano Grotesque Alt Bold';">
+                            <div class="form-group text-center" style="font-family:'Galano Grotesque Bold';">
                                 <h3>Masuk</h3>
                             </div>
                             <div class="form-group">
-                                <label for="mailtxt" style="font-family:'Galano Grotesque Alt SemiBold';">E-mail</label>
+                                <label for="mailtxt" style="font-family:'Galano Grotesque SemiBold';">E-mail</label>
                             </div>
                             <div class="input-group my-2">
                                 <input id="mailtxt" name="mailtxt" type="email" class="form-control" autocomplete="off" placeholder="Masukkan alamat e-mail kamu">
