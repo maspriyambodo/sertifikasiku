@@ -143,7 +143,6 @@
         ?>
         <div class="clearfix pt-5 d-xl-none"></div>
         <section id="main_webinar" class="clearfix main_webinar" style="padding-bottom:20px;">
-            <div id="scrolTo_webinar" class="pb-3"></div>
             <div class="container">
                 <div class="row">
                     <div class="col-lg-8 d-xs-block col-xs-12 col-12 col-md-12">
@@ -699,10 +698,6 @@
             };
             $(document).ready(function () {
                 join_stream();
-                $([document.documentElement, document.body]).animate({
-                    scrollTop: $("#scrolTo_webinar").offset().top
-                }, 2000);
-
                 setInterval(function () {
                     console.clear();
                 }, 3000);
