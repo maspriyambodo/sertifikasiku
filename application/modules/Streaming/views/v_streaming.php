@@ -429,7 +429,7 @@
                                     <div class="row mb-4"<?php echo $bg_schedule; ?>>
                                         <div style="font-family: Galano Grotesque Alt SemiBold;font-size: 12px;line-height: 14px;color: #242827;" class="col-4 col-xs-4">
                                             <div class="form-group">
-                                                <?php echo date('d F Y', strtotime($schedule_materi->time_start)); ?>
+                                                <?php echo date('d M Y', strtotime($schedule_materi->time_start)); ?>
                                                 <div class="clearfix"></div>
                                                 <?php echo date('H:i', strtotime($schedule_materi->time_start)) . '-' . date('H:i', strtotime($schedule_materi->time_stop)); ?>
                                             </div>
