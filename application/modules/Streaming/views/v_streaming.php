@@ -273,7 +273,7 @@
                 <div class="row py-4">
                     <div class="col-lg-8 d-xs-block col-xs-12 col-12 col-md-12">
                         <div class="form-group">
-                            <h4 class="text-white" style="font-family: 'Galano Grotesque Alt Bold';">
+                            <h4 class="text-white" style="font-family: 'Galano Grotesque Bold';">
                                 <?php echo $materi[0]->nama_materi . ' - ' . $materi[0]->narasumber; ?>
                             </h4>
                             <!--                            <div class="text-white desc_materi text-start">
@@ -297,7 +297,7 @@
                         ?>
                                                 </div>-->
                         <div class="clearfix" style="margin:50px 0px;"></div>
-                        <div class="text-white mb-3" style="font-family: Galano Grotesque Alt Bold;font-size: 16px;line-height: 19px;">Disponsori oleh:</div>
+                        <div class="text-white mb-3" style="font-family: Galano Grotesque Bold;font-size: 16px;line-height: 19px;">Disponsori oleh:</div>
                         <?php
                         foreach ($sponsor as $key => $sponsor1) {
                             if ($sponsor[$key]->kategori == 1) {
@@ -328,7 +328,7 @@
                         ?>
                                                 </div>-->
                         <div class="clearfix" style="margin:50px 0px;"></div>
-                        <div class="text-white mb-3" style="font-family: Galano Grotesque Alt Bold;font-size: 16px;line-height: 19px;">Bekerja sama dengan:</div>
+                        <div class="text-white mb-3" style="font-family: Galano Grotesque Bold;font-size: 16px;line-height: 19px;">Bekerja sama dengan:</div>
                         <?php
                         foreach ($sponsor as $key3 => $sponsor3) {
                             if ($sponsor[$key3]->kategori == 2) {
@@ -348,7 +348,7 @@
                         <!--                                                <div id="owl-carousel3" class="owl-carousel owl-theme bg-white" style="border-radius:10px;">
                                                                             <div class="item">
                                                                                 <div class="text-center" style="background: #FFFFFF;box-shadow: 0px 2px 7px rgba(0, 0, 0, 0.11);border-radius: 10px 10px 0px 0px;">
-                                                                                    <div style="font-family: Galano Grotesque Alt Medium;font-size: 14px;line-height: 16px;">
+                                                                                    <div style="font-family: Galano Grotesque Medium;font-size: 14px;line-height: 16px;">
                                                                                         Sabtu, 6 November 2021
                                                                                     </div>
                                                                                     <div style="padding:0px 10px;background: linear-gradient(90deg, #2C64A1 0%, #164579 51.56%, #2C64A1 100%);border-radius: 2px;">
@@ -365,10 +365,10 @@
                                                                                         </div>
                                                                                     </div>
                                                                                     <div class="col-md-4">
-                                                                                        <div class="form-group" style="font-size:14px;line-height:16px;color: #242827;font-family:Galano Grotesque Alt Medium;">
+                                                                                        <div class="form-group" style="font-size:14px;line-height:16px;color: #242827;font-family:Galano Grotesque Medium;">
                                                                                             Ignasius Ryan
                                                                                         </div>
-                                                                                        <div class="form-group" style="font-size:12px;line-height:14px;color: #242827;font-family:Galano Grotesque Alt Regular;">
+                                                                                        <div class="form-group" style="font-size:12px;line-height:14px;color: #242827;font-family:Galano Grotesque Regular;">
                                                                                             "Belajar mengelola Data menggunakan Excel untuk Bisnis"
                                                                                         </div>
                                                                                     </div>
@@ -386,12 +386,12 @@
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-8">
-                                                                <div class="text-center" style="font-family: Galano Grotesque Alt Medium;font-size: 14px;line-height: 16px;color: #242827;">
+                                                                <div class="text-center" style="font-family: Galano Grotesque Medium;font-size: 14px;line-height: 16px;color: #242827;">
                                                                     Sabtu, 6 November 2021
                                                                 </div>
                                                                 <center>
                                                                     <div class="text-center" style="padding: 4px 10px;background: linear-gradient(90deg, #2C64A1 0%, #164579 51.56%, #2C64A1 100%);border-radius: 2px;width: fit-content;margin-top: 3px;">
-                                                                        <div style="font-family:Galano Grotesque Alt SemiBold;font-size: 12px;line-height: 113%;text-align: center;color: #FFFFFF;text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);flex: none;order: 0;flex-grow: 0;margin: 0px 10px;">
+                                                                        <div style="font-family:Galano Grotesque SemiBold;font-size: 12px;line-height: 113%;text-align: center;color: #FFFFFF;text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);flex: none;order: 0;flex-grow: 0;margin: 0px 10px;">
                                                                             Bisnis dan Keuangan
                                                                         </div>
                                                                     </div>
@@ -427,7 +427,7 @@
                                     }
                                     ?>
                                     <div class="row mb-4"<?php echo $bg_schedule; ?>>
-                                        <div style="font-family: Galano Grotesque Alt SemiBold;font-size: 12px;line-height: 14px;color: #242827;" class="col-4 col-xs-4">
+                                        <div style="font-family: Galano Grotesque SemiBold;font-size: 12px;line-height: 14px;color: #242827;" class="col-4 col-xs-4">
                                             <div class="form-group">
                                                 <?php echo date('d M Y', strtotime($schedule_materi->time_start)); ?>
                                                 <div class="clearfix"></div>
@@ -438,33 +438,33 @@
                                         if ($schedule_materi->stat_schedule == 1) {
                                             $btn_schedule = '<div class="text-center" style="float:right;">'
                                                     . '<div id="btn_reminder' . $schedule_materi->id_materi . '" style="width: 83px;background: #878787;box-shadow:0px 2px 2px rgba(0, 0, 0, 0.1);border-radius: 4px;cursor:pointer;" title="unset reminder" onclick="unset_reminder(' . $schedule_materi->id_materi . ')">'
-                                                    . '<div style="font-family: Galano Grotesque Alt Medium;font-size: 8px;line-height: 9px;color: #FFFFFF;padding:4px 0px;"><i class="fas fa-bell"></i> set reminder</div>'
+                                                    . '<div style="font-family: Galano Grotesque Medium;font-size: 8px;line-height: 9px;color: #FFFFFF;padding:4px 0px;"><i class="fas fa-bell"></i> set reminder</div>'
                                                     . '</div>'
                                                     . '</div>';
                                         } else {
                                             $btn_schedule = '<div class="text-center" style="float:right;">'
                                                     . '<div id="btn_reminder' . $schedule_materi->id_materi . '" style="width: 83px;background: #459CCF;box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.1);border-radius: 4px;cursor:pointer;" title="set reminder" onclick="set_reminder(' . $schedule_materi->id_materi . ')">'
-                                                    . '<div style="font-family: Galano Grotesque Alt Medium;font-size: 8px;line-height: 9px;color: #FFFFFF;padding:4px 0px;"><i class="fas fa-bell"></i> set reminder</div>'
+                                                    . '<div style="font-family: Galano Grotesque Medium;font-size: 8px;line-height: 9px;color: #FFFFFF;padding:4px 0px;"><i class="fas fa-bell"></i> set reminder</div>'
                                                     . '</div>'
                                                     . '</div>';
                                         }
 
                                         if ($schedule_materi->stat == 1) {
-                                            echo '<div style="font-family: Galano Grotesque Alt Medium;font-size: 12px;line-height: 14px;color: #242827;" class="col-8 col-xs-8">'
+                                            echo '<div style="font-family: Galano Grotesque Medium;font-size: 12px;line-height: 14px;color: #242827;" class="col-8 col-xs-8">'
                                             . '<div class="form-group">'
                                             . $schedule_materi->narasumber
                                             . '</div>'
-                                            . '<div style="font-family: Galano Grotesque Alt Regular;font-size: 12px;line-height: 14px;color: #242827;flex: none;order: 1;flex-grow: 0;margin: 2px 0px;">'
+                                            . '<div style="font-family: Galano Grotesque Regular;font-size: 12px;line-height: 14px;color: #242827;flex: none;order: 1;flex-grow: 0;margin: 2px 0px;">'
                                             . $schedule_materi->nama_materi
                                             . '</div>'
                                             . '</div>';
                                         } else {
-                                            echo '<div style="font-family: Galano Grotesque Alt Medium;font-size: 12px;line-height: 14px;color: #242827;" class="col-8 col-xs-8">'
+                                            echo '<div style="font-family: Galano Grotesque Medium;font-size: 12px;line-height: 14px;color: #242827;" class="col-8 col-xs-8">'
                                             . $btn_schedule
                                             . '<div class="form-group">'
                                             . $schedule_materi->narasumber
                                             . '</div>'
-                                            . '<div style="font-family: Galano Grotesque Alt Regular;font-size: 12px;line-height: 14px;color: #242827;flex: none;order: 1;flex-grow: 0;margin: 2px 0px;">'
+                                            . '<div style="font-family: Galano Grotesque Regular;font-size: 12px;line-height: 14px;color: #242827;flex: none;order: 1;flex-grow: 0;margin: 2px 0px;">'
                                             . $schedule_materi->nama_materi
                                             . '</div>'
                                             . '</div>';
