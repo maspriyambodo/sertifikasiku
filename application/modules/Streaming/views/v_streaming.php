@@ -141,10 +141,11 @@
         echo '<input type="hidden" name="nama_sesi" value="' . date('H:i', strtotime($materi[0]->nama_sesi)) . '"/>';
         echo '<input type="hidden" name="fullname" value="' . $this->session->userdata('fullname') . '"/>';
         ?>
+        <div class="clearfix pt-5 d-xl-none"></div>
         <section id="main_webinar" class="clearfix main_webinar" style="padding-bottom:20px;">
             <div id="scrolTo_webinar" class="pb-3"></div>
             <div class="container">
-                <div class="row pt-5">
+                <div class="row">
                     <div class="col-lg-8 d-xs-block col-xs-12 col-12 col-md-12">
                         <div id="height_video">
                             <div id="bgndVideo" class="player animate__fadeInLeft" data-property="{videoURL:'<?php echo $materi[0]->link_video; ?>',containment:'self',vol:50,optimizeDisplay:false,showYTLogo:false}"></div>
@@ -377,6 +378,111 @@
                                                                             </div>
                                                                         </div>-->
 
+                        <!--                        <div class="card">
+                                                    <div class="card-body">
+                                                        <div class="row">
+                                                            <div class="col-md-2">
+                                                                <div class="text-center">
+                                                                    <button type="button" id="prev_schedule" class="btn btn-default"><i class="fas fa-chevron-left"></i></button>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-8">
+                                                                <div class="text-center" style="font-family: Galano Grotesque Alt Medium;font-size: 14px;line-height: 16px;color: #242827;">
+                                                                    Sabtu, 6 November 2021
+                                                                </div>
+                                                                <center>
+                                                                    <div class="text-center" style="padding: 4px 10px;background: linear-gradient(90deg, #2C64A1 0%, #164579 51.56%, #2C64A1 100%);border-radius: 2px;width: fit-content;margin-top: 3px;">
+                                                                        <div style="font-family:Galano Grotesque Alt SemiBold;font-size: 12px;line-height: 113%;text-align: center;color: #FFFFFF;text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);flex: none;order: 0;flex-grow: 0;margin: 0px 10px;">
+                                                                            Bisnis dan Keuangan
+                                                                        </div>
+                                                                    </div>
+                                                                </center>
+                                                            </div>
+                                                            <div class="col-md-2">
+                                                                <div class="text-center">
+                                                                    <button type="button" id="next_schedule" class="btn btn-default"><i class="fas fa-chevron-right"></i></button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="">
+                                                            
+                                                        </div>
+                                                    </div>
+                                                </div>-->
+
+                        <div class="card">
+                            <div class="card-header">
+                                <div class="card-title">
+                                    <div class="text-center">
+                                        Schedule Webinar
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-body" style="max-height:393.05px;overflow: auto;">
+                                <?php
+                                foreach ($dir_materi as $schedule_materi) {
+                                    if ($schedule_materi->stat == 1) {
+                                        $bg_schedule = ' style="background: rgba(0, 120, 254, 0.07);"';
+                                    } else {
+                                        $bg_schedule = null;
+                                    }
+                                    ?>
+                                    <div class="row mb-4"<?php echo $bg_schedule; ?>>
+                                        <div style="font-family: Galano Grotesque Alt SemiBold;font-size: 12px;line-height: 14px;color: #242827;" class="col-4 col-xs-4">
+                                            <div class="form-group">
+                                                <?php echo date('d F Y', strtotime($schedule_materi->time_start)); ?>
+                                                <div class="clearfix"></div>
+                                                <?php echo date('H:i', strtotime($schedule_materi->time_start)) . '-' . date('H:i', strtotime($schedule_materi->time_stop)); ?>
+                                            </div>
+                                        </div>
+                                        <?php
+                                        if ($schedule_materi->stat == 1) {
+                                            echo '<div style="font-family: Galano Grotesque Alt Medium;font-size: 12px;line-height: 14px;color: #242827;" class="col-8 col-xs-8">'
+                                            . '<div class="form-group">'
+                                            . $schedule_materi->narasumber
+                                            . '</div>'
+                                            . '<div style="font-family: Galano Grotesque Alt Regular;font-size: 12px;line-height: 14px;color: #242827;flex: none;order: 1;flex-grow: 0;margin: 2px 0px;">'
+                                            . $schedule_materi->nama_materi
+                                            . '</div>'
+                                            . '</div>';
+                                        } else {
+                                            echo '<div style="font-family: Galano Grotesque Alt Medium;font-size: 12px;line-height: 14px;color: #242827;" class="col-4 col-xs-4">'
+                                            . '<div class="form-group">'
+                                            . $schedule_materi->narasumber
+                                            . '</div>'
+                                            . '<div style="font-family: Galano Grotesque Alt Regular;font-size: 12px;line-height: 14px;color: #242827;flex: none;order: 1;flex-grow: 0;margin: 2px 0px;">'
+                                            . $schedule_materi->nama_materi
+                                            . '</div>'
+                                            . '</div>';
+                                            if ($schedule_materi->stat_schedule == 1) {
+                                                echo '<div class="col-4 col-xs-4">'
+                                                . '<center style="margin-top:15px;">'
+                                                . '<div class="text-center">'
+                                                . '<div id="btn_reminder' . $schedule_materi->id_materi . '" style="width: 83px;background: #878787;box-shadow:0px 2px 2px rgba(0, 0, 0, 0.1);border-radius: 4px;cursor:pointer;" title="unset reminder" onclick="unset_reminder(' . $schedule_materi->id_materi . ')">'
+                                                . '<div style="font-family: Galano Grotesque Alt Medium;font-size: 8px;line-height: 9px;color: #FFFFFF;padding:4px 0px;"><i class="fas fa-bell"></i> set reminder</div>'
+                                                . '</div>'
+                                                . '</div>'
+                                                . '</center>'
+                                                . '</div>';
+                                            } else {
+                                                echo '<div class="col-4 col-xs-4">'
+                                                . '<center style="margin-top:15px;">'
+                                                . '<div class="text-center">'
+                                                . '<div id="btn_reminder' . $schedule_materi->id_materi . '" style="width: 83px;background: #459CCF;box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.1);border-radius: 4px;cursor:pointer;" title="set reminder" onclick="set_reminder(' . $schedule_materi->id_materi . ')">'
+                                                . '<div style="font-family: Galano Grotesque Alt Medium;font-size: 8px;line-height: 9px;color: #FFFFFF;padding:4px 0px;"><i class="fas fa-bell"></i> set reminder</div>'
+                                                . '</div>'
+                                                . '</div>'
+                                                . '</center>'
+                                                . '</div>';
+                                            }
+                                        }
+                                        ?>
+                                    </div>
+                                <?php } ?>
+
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>
@@ -517,7 +623,8 @@
                     <div class="card-footer align-items-center">
                         <!--begin::Compose-->
                         <textarea name="msgtxt2" class="form-control border-0 p-0" rows="4" placeholder="Type a message" onkeypress="Javascript: if (event.keyCode === 13)
-                    Send_chat(2);"></textarea>
+                    Send_chat(
+                            2);"></textarea>
                         <div class="d-flex align-items-center justify-content-between mt-2">
                             <div class="mr-3"></div>
                             <div>
@@ -777,20 +884,8 @@
                     event.preventDefault();
                     event.stopPropagation();
                 });
-                $('#owl-carousel').owlCarousel({
-                    autoplay: true,
-                    autoplayHoverPause: true,
-                    margin: 10,
-                    autoWidth: true
-                });
-                $('#owl-carousel2').owlCarousel({
-                    autoplay: true,
-                    autoplayHoverPause: true,
-                    margin: 10,
-                    autoWidth: true
-                });
                 $('#owl-carousel3').owlCarousel({
-                    items: 1,
+                    items: 4,
                     autoplay: false,
                     autoWidth: false,
                     center: true,
@@ -1011,6 +1106,58 @@
                     });
                     location.reload();
                 }
+            }
+            function set_reminder(id_materi) {
+                var btn_reminder = $('#btn_reminder' + id_materi);
+                btn_reminder.removeAttr('onclick');
+                btn_reminder.removeAttr('style');
+                $.ajax({
+                    type: "GET",
+                    url: "<?php echo base_url('Streaming/set_reminder?id_materi='); ?>" + id_materi,
+                    dataType: "json",
+                    cache: false,
+                    success: function (data) {
+                        if (data.stat === true) {
+                            btn_reminder.attr('onclick', 'unset_reminder(' + id_materi + ')');
+                            btn_reminder.attr('style', 'width: 83px;background: #878787;box-shadow:0px 2px 2px rgba(0, 0, 0, 0.1);border-radius: 4px;cursor:pointer;');
+                            toastr.success(data.msg);
+                        } else {
+                            btn_reminder.attr('onclick', 'set_reminder(' + id_materi + ')');
+                            btn_reminder.attr('style', 'width: 83px;background: #459CCF;box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.1);border-radius: 4px;cursor:pointer;');
+                            toastr.error(data.msg);
+                        }
+                    }, error: function (jqXHR) {
+                        btn_reminder.attr('onclick', 'set_reminder(' + id_materi + ')');
+                        btn_reminder.attr('style', 'width: 83px;background: #459CCF;box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.1);border-radius: 4px;cursor:pointer;');
+                        toastr.error('error ' + jqXHR.status + ' ' + jqXHR.statusText);
+                    }
+                });
+            }
+            function unset_reminder(id_materi) {
+                var btn_reminder = $('#btn_reminder' + id_materi);
+                btn_reminder.removeAttr('onclick');
+                btn_reminder.removeAttr('style');
+                $.ajax({
+                    type: "GET",
+                    url: "<?php echo base_url('Streaming/unset_reminder?id_materi='); ?>" + id_materi,
+                    dataType: "json",
+                    cache: false,
+                    success: function (data) {
+                        if (data.stat === true) {
+                            btn_reminder.attr('onclick', 'set_reminder(' + id_materi + ')');
+                            btn_reminder.attr('style', 'width: 83px;background: #459CCF;box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.1);border-radius: 4px;cursor:pointer;');
+                            toastr.success(data.msg);
+                        } else {
+                            btn_reminder.attr('onclick', 'unset_reminder(' + id_materi + ')');
+                            btn_reminder.attr('style', 'width: 83px;background: #878787;box-shadow:0px 2px 2px rgba(0, 0, 0, 0.1);border-radius: 4px;cursor:pointer;');
+                            toastr.error(data.msg);
+                        }
+                    }, error: function (jqXHR) {
+                        btn_reminder.attr('onclick', 'unset_reminder(' + id_materi + ')');
+                        btn_reminder.attr('style', 'width: 83px;background: #878787;box-shadow:0px 2px 2px rgba(0, 0, 0, 0.1);border-radius: 4px;cursor:pointer;');
+                        toastr.error('error ' + jqXHR.status + ' ' + jqXHR.statusText);
+                    }
+                });
             }
         </script>
         <?php

@@ -213,4 +213,52 @@ class Streaming extends CI_Controller {
         return ToJson($response);
     }
 
+    public function set_reminder() {
+        $data = [
+            'id_user' => $this->id_user,
+            'id_materi' => Post_get('id_materi'),
+            'stat' => 1,
+            'syscreateuser' => $this->id_user,
+            'sysupdateuser' => $this->id_user,
+            'syscreatedate' => date('Y-m-d H:i:s'),
+            'sysupdatedate' => date('Y-m-d H:i:s')
+        ];
+        $exec = $this->model->_setReminder($data);
+        if ($exec) {
+            $result = [
+                'stat' => true,
+                'msg' => 'successfully added reminder note.'
+            ];
+        } else {
+            $result = [
+                'stat' => false,
+                'msg' => 'error while adding reminder.'
+            ];
+        }
+        return ToJson($result);
+    }
+
+    public function unset_reminder() {
+        $data = [
+            'id_user' => $this->id_user,
+            'id_materi' => Post_get('id_materi'),
+            'stat' => 0,
+            'sysupdateuser' => $this->id_user,
+            'sysupdatedate' => date('Y-m-d H:i:s')
+        ];
+        $exec = $this->model->_UnsetReminder($data);
+        if ($exec) {
+            $result = [
+                'stat' => true,
+                'msg' => 'successfully removed reminder note.'
+            ];
+        } else {
+            $result = [
+                'stat' => false,
+                'msg' => 'error while removing reminder.'
+            ];
+        }
+        return ToJson($result);
+    }
+
 }

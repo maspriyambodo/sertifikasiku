@@ -90,9 +90,12 @@ class M_streaming extends CI_Model {
 	dt_materi.nama_materi,
 	dt_materi.time_start,
 	dt_materi.time_stop,
-	mt_industri.nama AS nama_segment ')
+        dt_materi.stat,
+        dt_userinterest.stat AS stat_schedule,
+	mt_industri.nama AS nama_segment')
                 ->from('dt_materi')
                 ->join('mt_industri', 'dt_materi.id_industri = mt_industri.id')
+                ->join('dt_userinterest', 'dt_userinterest.id_materi = dt_materi.id', 'LEFT')
                 ->where('`dt_materi`.`stat` <>', 2, false)
                 ->order_by('DAY ( dt_materi.time_start ) ASC')
                 ->order_by('dt_materi.id_sesi ASC')
@@ -220,6 +223,56 @@ class M_streaming extends CI_Model {
                 ->where('`sys_users`.`login_stat`', 1, false)
                 ->count_all_results();
         return $exec;
+    }
+
+    public function _setReminder($data) {
+        $check_exists = $this->db->select('dt_userinterest.id')
+                ->from('dt_userinterest')
+                ->where('`dt_userinterest`.`id_user`', $data['id_user'], false)
+                ->where('`dt_userinterest`.`id_materi`', $data['id_materi'] + false)
+                ->get()
+                ->result();
+        if (!empty($check_exists[0]->id)) {
+            $result = $this->_UnsetReminder($data);
+        } else {
+            $this->db->trans_begin();
+            $this->db->set([
+                        '`dt_userinterest`.`id_user`' => $data['id_user'] + false,
+                        '`dt_userinterest`.`id_materi`' => $data['id_materi'] + false,
+                        '`dt_userinterest`.`stat`' => $data['stat'] + false,
+                        '`dt_userinterest`.`syscreateuser`' => $data['syscreateuser'] + false,
+                        'dt_userinterest.syscreatedate' => $data['syscreatedate']
+                    ])
+                    ->insert('dt_userinterest');
+            if ($this->db->trans_status() === false) {
+                $this->db->trans_rollback();
+                $result = false;
+            } else {
+                $this->db->trans_commit();
+                $result = true;
+            }
+        }
+        return $result;
+    }
+
+    public function _UnsetReminder($data) {
+        $this->db->trans_begin();
+        $this->db->set([
+                    '`dt_userinterest`.`stat`' => $data['stat'] + false,
+                    '`dt_userinterest`.`sysupdateuser`' => $data['sysupdateuser'] + false,
+                    'dt_userinterest.sysupdatedate' => $data['sysupdatedate']
+                ])
+                ->where('`dt_userinterest`.`id_materi`', $data['id_materi'] + false)
+                ->where('`dt_userinterest`.`id_user`', $data['id_user'] + false)
+                ->update('dt_userinterest');
+        if ($this->db->trans_status() === false) {
+            $this->db->trans_rollback();
+            $result = false;
+        } else {
+            $this->db->trans_commit();
+            $result = true;
+        }
+        return $result;
     }
 
 }
