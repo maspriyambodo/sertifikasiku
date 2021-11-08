@@ -2,7 +2,7 @@
     font-family: 'Galano Grotesque Alt Regular';
     font-style: normal;
     font-weight: normal;
-    src: local('Galano Grotesque Alt Regular'), url('GalanoGrotesqueAltRegular.woff') format('woff');
+    src: local('Galano Grotesque Alt Regular'), url('GalanoGrotesqueAltRegular.otf') format('otf');
 }
 
 
@@ -10,7 +10,7 @@
     font-family: 'Galano Grotesque Alt Italic';
     font-style: normal;
     font-weight: normal;
-    src: local('Galano Grotesque Alt Italic'), url('GalanoGrotesqueAltItalic.woff') format('woff');
+    src: local('Galano Grotesque Alt Italic'), url('GalanoGrotesqueAltItalic.otf') format('otf');
 }
 
 
@@ -18,7 +18,7 @@
     font-family: 'Galano Grotesque Alt Thin';
     font-style: normal;
     font-weight: normal;
-    src: local('Galano Grotesque Alt Thin'), url('GalanoGrotesqueAltThin.woff') format('woff');
+    src: local('Galano Grotesque Alt Thin'), url('GalanoGrotesqueAltThin.otf') format('otf');
 }
 
 
@@ -26,7 +26,7 @@
     font-family: 'Galano Grotesque Alt Thin Italic';
     font-style: normal;
     font-weight: normal;
-    src: local('Galano Grotesque Alt Thin Italic'), url('GalanoGrotesqueAltThinItalic.woff') format('woff');
+    src: local('Galano Grotesque Alt Thin Italic'), url('GalanoGrotesqueAltThinItalic.otf') format('otf');
 }
 
 
@@ -34,7 +34,7 @@
     font-family: 'Galano Grotesque Alt ExtraLight';
     font-style: normal;
     font-weight: normal;
-    src: local('Galano Grotesque Alt ExtraLight'), url('GalanoGrotesqueAltExtraLight.woff') format('woff');
+    src: local('Galano Grotesque Alt ExtraLight'), url('GalanoGrotesqueAltExtraLight.otf') format('otf');
 }
 
 
@@ -42,7 +42,7 @@
     font-family: 'Galano Grotesque Alt ExtraLight Italic';
     font-style: normal;
     font-weight: normal;
-    src: local('Galano Grotesque Alt ExtraLight Italic'), url('GalanoGrotesqueAltExtraLightItalic.woff') format('woff');
+    src: local('Galano Grotesque Alt ExtraLight Italic'), url('GalanoGrotesqueAltExtraLightItalic.otf') format('otf');
 }
 
 
@@ -50,7 +50,7 @@
     font-family: 'Galano Grotesque Alt Light';
     font-style: normal;
     font-weight: normal;
-    src: local('Galano Grotesque Alt Light'), url('GalanoGrotesqueAltLight.woff') format('woff');
+    src: local('Galano Grotesque Alt Light'), url('GalanoGrotesqueAltLight.otf') format('otf');
 }
 
 
@@ -58,7 +58,7 @@
     font-family: 'Galano Grotesque Alt Light Italic';
     font-style: normal;
     font-weight: normal;
-    src: local('Galano Grotesque Alt Light Italic'), url('GalanoGrotesqueAltLightItalic.woff') format('woff');
+    src: local('Galano Grotesque Alt Light Italic'), url('GalanoGrotesqueAltLightItalic.otf') format('otf');
 }
 
 
@@ -66,7 +66,7 @@
     font-family: 'Galano Grotesque Alt Medium';
     font-style: normal;
     font-weight: normal;
-    src: local('Galano Grotesque Alt Medium'), url('GalanoGrotesqueAltMedium.woff') format('woff');
+    src: local('Galano Grotesque Alt Medium'), url('GalanoGrotesqueAltMedium.otf') format('otf');
 }
 
 
@@ -74,7 +74,7 @@
     font-family: 'Galano Grotesque Alt Medium Italic';
     font-style: normal;
     font-weight: normal;
-    src: local('Galano Grotesque Alt Medium Italic'), url('GalanoGrotesqueAltMediumItalic.woff') format('woff');
+    src: local('Galano Grotesque Alt Medium Italic'), url('GalanoGrotesqueAltMediumItalic.otf') format('otf');
 }
 
 
@@ -82,7 +82,7 @@
     font-family: 'Galano Grotesque Alt SemiBold';
     font-style: normal;
     font-weight: normal;
-    src: local('Galano Grotesque Alt SemiBold'), url('GalanoGrotesqueAltSemiBold.woff') format('woff');
+    src: local('Galano Grotesque Alt SemiBold'), url('GalanoGrotesqueAltSemiBold.otf') format('otf');
 }
 
 
@@ -90,7 +90,7 @@
     font-family: 'Galano Grotesque Alt SemiBold Italic';
     font-style: normal;
     font-weight: normal;
-    src: local('Galano Grotesque Alt SemiBold Italic'), url('GalanoGrotesqueAltSemiBoldItalic.woff') format('woff');
+    src: local('Galano Grotesque Alt SemiBold Italic'), url('GalanoGrotesqueAltSemiBoldItalic.otf') format('otf');
 }
 
 
@@ -98,7 +98,7 @@
     font-family: 'Galano Grotesque Alt Bold';
     font-style: normal;
     font-weight: normal;
-    src: local('Galano Grotesque Alt Bold'), url('GalanoGrotesqueAltBold.woff') format('woff');
+    src: local('Galano Grotesque Alt Bold'), url('GalanoGrotesqueAltBold.otf') format('otf');
 }
 
 
@@ -106,7 +106,7 @@
     font-family: 'Galano Grotesque Alt Bold Italic';
     font-style: normal;
     font-weight: normal;
-    src: local('Galano Grotesque Alt Bold Italic'), url('GalanoGrotesqueAltBoldItalic.woff') format('woff');
+    src: local('Galano Grotesque Alt Bold Italic'), url('GalanoGrotesqueAltBoldItalic.otf') format('otf');
 }
 
 
@@ -114,7 +114,7 @@
     font-family: 'Galano Grotesque Alt ExtraBold';
     font-style: normal;
     font-weight: normal;
-    src: local('Galano Grotesque Alt ExtraBold'), url('GalanoGrotesqueAltExtraBold.woff') format('woff');
+    src: local('Galano Grotesque Alt ExtraBold'), url('GalanoGrotesqueAltExtraBold.otf') format('otf');
 }
 
 
@@ -122,7 +122,7 @@
     font-family: 'Galano Grotesque Alt ExtraBold Italic';
     font-style: normal;
     font-weight: normal;
-    src: local('Galano Grotesque Alt ExtraBold Italic'), url('GalanoGrotesqueAltExtraBoldItalic.woff') format('woff');
+    src: local('Galano Grotesque Alt ExtraBold Italic'), url('GalanoGrotesqueAltExtraBoldItalic.otf') format('otf');
 }
 
 
@@ -130,7 +130,7 @@
     font-family: 'Galano Grotesque Alt Heavy';
     font-style: normal;
     font-weight: normal;
-    src: local('Galano Grotesque Alt Heavy'), url('GalanoGrotesqueAltHeavy.woff') format('woff');
+    src: local('Galano Grotesque Alt Heavy'), url('GalanoGrotesqueAltHeavy.otf') format('otf');
 }
 
 
@@ -138,7 +138,7 @@
     font-family: 'Galano Grotesque Alt Heavy Italic';
     font-style: normal;
     font-weight: normal;
-    src: local('Galano Grotesque Alt Heavy Italic'), url('GalanoGrotesqueAltHeavyItalic.woff') format('woff');
+    src: local('Galano Grotesque Alt Heavy Italic'), url('GalanoGrotesqueAltHeavyItalic.otf') format('otf');
 }
 
 
@@ -146,7 +146,7 @@
     font-family: 'Galano Grotesque Alt Black';
     font-style: normal;
     font-weight: normal;
-    src: local('Galano Grotesque Alt Black'), url('GalanoGrotesqueAltBlack.woff') format('woff');
+    src: local('Galano Grotesque Alt Black'), url('GalanoGrotesqueAltBlack.otf') format('otf');
 }
 
 
@@ -154,7 +154,7 @@
     font-family: 'Galano Grotesque Alt Black Italic';
     font-style: normal;
     font-weight: normal;
-    src: local('Galano Grotesque Alt Black Italic'), url('GalanoGrotesqueAltBlackItalic.woff') format('woff');
+    src: local('Galano Grotesque Alt Black Italic'), url('GalanoGrotesqueAltBlackItalic.otf') format('otf');
 }
 
 
@@ -162,7 +162,7 @@
     font-family: 'Galano Grotesque Regular';
     font-style: normal;
     font-weight: normal;
-    src: local('Galano Grotesque Regular'), url('GalanoGrotesqueRegular.woff') format('woff');
+    src: local('Galano Grotesque Regular'), url('GalanoGrotesqueRegular.otf') format('otf');
 }
 
 
@@ -170,7 +170,7 @@
     font-family: 'Galano Grotesque Italic';
     font-style: normal;
     font-weight: normal;
-    src: local('Galano Grotesque Italic'), url('GalanoGrotesqueItalic.woff') format('woff');
+    src: local('Galano Grotesque Italic'), url('GalanoGrotesqueItalic.otf') format('otf');
 }
 
 
@@ -178,7 +178,7 @@
     font-family: 'Galano Grotesque Thin';
     font-style: normal;
     font-weight: normal;
-    src: local('Galano Grotesque Thin'), url('GalanoGrotesqueThin.woff') format('woff');
+    src: local('Galano Grotesque Thin'), url('GalanoGrotesqueThin.otf') format('otf');
 }
 
 
@@ -186,7 +186,7 @@
     font-family: 'Galano Grotesque Thin Italic';
     font-style: normal;
     font-weight: normal;
-    src: local('Galano Grotesque Thin Italic'), url('GalanoGrotesqueThinItalic.woff') format('woff');
+    src: local('Galano Grotesque Thin Italic'), url('GalanoGrotesqueThinItalic.otf') format('otf');
 }
 
 
@@ -194,7 +194,7 @@
     font-family: 'Galano Grotesque ExtraLight';
     font-style: normal;
     font-weight: normal;
-    src: local('Galano Grotesque ExtraLight'), url('GalanoGrotesqueExtraLight.woff') format('woff');
+    src: local('Galano Grotesque ExtraLight'), url('GalanoGrotesqueExtraLight.otf') format('otf');
 }
 
 
@@ -202,7 +202,7 @@
     font-family: 'Galano Grotesque ExtraLight Italic';
     font-style: normal;
     font-weight: normal;
-    src: local('Galano Grotesque ExtraLight Italic'), url('GalanoGrotesqueExtraLightItalic.woff') format('woff');
+    src: local('Galano Grotesque ExtraLight Italic'), url('GalanoGrotesqueExtraLightItalic.otf') format('otf');
 }
 
 
@@ -210,7 +210,7 @@
     font-family: 'Galano Grotesque Light';
     font-style: normal;
     font-weight: normal;
-    src: local('Galano Grotesque Light'), url('GalanoGrotesqueLight.woff') format('woff');
+    src: local('Galano Grotesque Light'), url('GalanoGrotesqueLight.otf') format('otf');
 }
 
 
@@ -218,7 +218,7 @@
     font-family: 'Galano Grotesque Light Italic';
     font-style: normal;
     font-weight: normal;
-    src: local('Galano Grotesque Light Italic'), url('GalanoGrotesqueLightItalic.woff') format('woff');
+    src: local('Galano Grotesque Light Italic'), url('GalanoGrotesqueLightItalic.otf') format('otf');
 }
 
 
@@ -226,7 +226,7 @@
     font-family: 'Galano Grotesque Medium';
     font-style: normal;
     font-weight: normal;
-    src: local('Galano Grotesque Medium'), url('GalanoGrotesqueMedium.woff') format('woff');
+    src: local('Galano Grotesque Medium'), url('GalanoGrotesqueMedium.otf') format('otf');
 }
 
 
@@ -234,7 +234,7 @@
     font-family: 'Galano Grotesque Medium Italic';
     font-style: normal;
     font-weight: normal;
-    src: local('Galano Grotesque Medium Italic'), url('GalanoGrotesqueMediumItalic.woff') format('woff');
+    src: local('Galano Grotesque Medium Italic'), url('GalanoGrotesqueMediumItalic.otf') format('otf');
 }
 
 
@@ -242,7 +242,7 @@
     font-family: 'Galano Grotesque SemiBold';
     font-style: normal;
     font-weight: normal;
-    src: local('Galano Grotesque SemiBold'), url('GalanoGrotesqueSemiBold.woff') format('woff');
+    src: local('Galano Grotesque SemiBold'), url('GalanoGrotesqueSemiBold.otf') format('otf');
 }
 
 
@@ -250,7 +250,7 @@
     font-family: 'Galano Grotesque SemiBold Italic';
     font-style: normal;
     font-weight: normal;
-    src: local('Galano Grotesque SemiBold Italic'), url('GalanoGrotesqueSemiBoldItalic.woff') format('woff');
+    src: local('Galano Grotesque SemiBold Italic'), url('GalanoGrotesqueSemiBoldItalic.otf') format('otf');
 }
 
 
@@ -258,7 +258,7 @@
     font-family: 'Galano Grotesque Bold';
     font-style: normal;
     font-weight: normal;
-    src: local('Galano Grotesque Bold'), url('GalanoGrotesqueBold.woff') format('woff');
+    src: local('Galano Grotesque Bold'), url('GalanoGrotesqueBold.otf') format('otf');
 }
 
 
@@ -266,7 +266,7 @@
     font-family: 'Galano Grotesque Bold Italic';
     font-style: normal;
     font-weight: normal;
-    src: local('Galano Grotesque Bold Italic'), url('GalanoGrotesqueBoldItalic.woff') format('woff');
+    src: local('Galano Grotesque Bold Italic'), url('GalanoGrotesqueBoldItalic.otf') format('otf');
 }
 
 
@@ -274,7 +274,7 @@
     font-family: 'Galano Grotesque ExtraBold';
     font-style: normal;
     font-weight: normal;
-    src: local('Galano Grotesque ExtraBold'), url('GalanoGrotesqueExtraBold.woff') format('woff');
+    src: local('Galano Grotesque ExtraBold'), url('GalanoGrotesqueExtraBold.otf') format('otf');
 }
 
 
@@ -282,7 +282,7 @@
     font-family: 'Galano Grotesque ExtraBold Italic';
     font-style: normal;
     font-weight: normal;
-    src: local('Galano Grotesque ExtraBold Italic'), url('GalanoGrotesqueExtraBoldItalic.woff') format('woff');
+    src: local('Galano Grotesque ExtraBold Italic'), url('GalanoGrotesqueExtraBoldItalic.otf') format('otf');
 }
 
 
@@ -290,7 +290,7 @@
     font-family: 'Galano Grotesque Heavy';
     font-style: normal;
     font-weight: normal;
-    src: local('Galano Grotesque Heavy'), url('GalanoGrotesqueHeavy.woff') format('woff');
+    src: local('Galano Grotesque Heavy'), url('GalanoGrotesqueHeavy.otf') format('otf');
 }
 
 
@@ -298,7 +298,7 @@
     font-family: 'Galano Grotesque Heavy Italic';
     font-style: normal;
     font-weight: normal;
-    src: local('Galano Grotesque Heavy Italic'), url('GalanoGrotesqueHeavyItalic.woff') format('woff');
+    src: local('Galano Grotesque Heavy Italic'), url('GalanoGrotesqueHeavyItalic.otf') format('otf');
 }
 
 
@@ -306,7 +306,7 @@
     font-family: 'Galano Grotesque Black';
     font-style: normal;
     font-weight: normal;
-    src: local('Galano Grotesque Black'), url('GalanoGrotesqueBlack.woff') format('woff');
+    src: local('Galano Grotesque Black'), url('GalanoGrotesqueBlack.otf') format('otf');
 }
 
 
@@ -314,5 +314,5 @@
     font-family: 'Galano Grotesque Black Italic';
     font-style: normal;
     font-weight: normal;
-    src: local('Galano Grotesque Black Italic'), url('GalanoGrotesqueBlackItalic.woff') format('woff');
+    src: local('Galano Grotesque Black Italic'), url('GalanoGrotesqueBlackItalic.otf') format('otf');
 }
