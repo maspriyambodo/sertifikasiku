@@ -91,17 +91,36 @@
                     <div class="col-lg-8 d-xs-block col-xs-12 col-12 col-md-12">
                         <div class="form-group">
                             <h4 class="text-white" style="font-family: 'Galano Grotesque Bold';">
-                                <?php echo $materi[0]->nama_materi; ?>
+                                <?php echo $materi[0]->nama_materi . ' - ' . $materi[0]->narasumber; ?>
                             </h4>
+                            <!--                            <div class="text-white desc_materi text-start">
+                                                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                                                        </div>-->
                         </div>
+                        <!--                        <div id="owl-carousel" class="owl-carousel owl-theme mt-4 multiCarosel">
+                                                    //<?php
+//                            foreach ($sponsor as $key => $sponsor1) {
+//                                if ($sponsor[$key]->kategori == 1) {
+//                                    echo '<div class="item">'
+//                                    . '<a href="' . $sponsor1->url_website . '" target="new">';
+//                                    echo '<img src="' . base_url('assets/images/sponsor/' . $sponsor1->path) . '" alt="' . $sponsor1->nama . '" class="img-fluid img-thumbnail" style="width:165px;"/>'
+//                                    . '</a>';
+//                                    echo '</div>';
+//                                } else {
+//                                    null;
+//                                }
+//                            }
+//                            
+                        ?>
+                                                </div>-->
                         <div class="clearfix" style="margin:50px 0px;"></div>
                         <div class="text-white mb-3" style="font-family: Galano Grotesque Bold;font-size: 16px;line-height: 19px;">Disponsori oleh:</div>
                         <?php
                         foreach ($sponsor as $key => $sponsor1) {
                             if ($sponsor[$key]->kategori == 1) {
                                 echo '<div style="width: -webkit-fit-content;height:-webkit-fit-content;width:-moz-fit-content;height:-moz-fit-content;float:left;margin-right:5px;margin-bottom:15px;">'
-                                . '<a href="' . $sponsor1->url_website . '" target="new">';
-                                echo '<img src="' . base_url('assets/images/sponsor/' . $sponsor1->path) . '" alt="' . $sponsor1->nama . '" class="img-fluid img-thumbnail" style="width:165px;"/>'
+                                . '<a href="' . $sponsor1->url_website . '" class="align-middle" target="new">';
+                                echo '<img src="' . base_url('assets/images/sponsor/' . $sponsor1->path) . '" alt="' . $sponsor1->nama . '" class="img-fluid text-center align-middle" style="max-width:165px;max-height:96px;"/>'
                                 . '</a>';
                                 echo '</div>';
                             } else {
@@ -109,6 +128,22 @@
                             }
                         }
                         ?>
+                        <!--                        <div id="owl-carousel2" class="owl-carousel owl-theme mt-4">
+                                                    //<?php
+//                            foreach ($sponsor as $key => $sponsor2) {
+//                                if ($sponsor[$key]->kategori == 2) {
+//                                    echo '<div class="item">'
+//                                    . '<a href="' . $sponsor2->url_website . '" target="new">';
+//                                    echo '<img src="' . base_url('assets/images/media_partner/' . $sponsor2->path) . '" alt="' . $sponsor2->nama . '" class="img-fluid img-thumbnail" style="width:165px;"/>'
+//                                    . '</a>';
+//                                    echo '</div>';
+//                                } else {
+//                                    null;
+//                                }
+//                            }
+//                            
+                        ?>
+                                                </div>-->
                         <div class="clearfix" style="margin:50px 0px;"></div>
                         <div class="text-white mb-3" style="font-family: Galano Grotesque Bold;font-size: 16px;line-height: 19px;">Bekerja sama dengan:</div>
                         <?php
@@ -116,7 +151,7 @@
                             if ($sponsor[$key3]->kategori == 2) {
                                 echo '<div style="width: -webkit-fit-content;height:-webkit-fit-content;width:-moz-fit-content;height:-moz-fit-content;float:left;margin-right:5px;margin-bottom:15px;">'
                                 . '<a href="' . $sponsor3->url_website . '" target="new">';
-                                echo '<img src="' . base_url('assets/images/media_partner/' . $sponsor3->path) . '" alt="' . $sponsor3->nama . '" class="img-fluid img-thumbnail" style="width:165px;"/>'
+                                echo '<img src="' . base_url('assets/images/media_partner/' . $sponsor3->path) . '" alt="' . $sponsor3->nama . '" class="img-fluid" style="max-width:165px;max-height:96px;"/>'
                                 . '</a>';
                                 echo '</div>';
                             } else {
@@ -124,6 +159,73 @@
                             }
                         }
                         ?>
+                    </div>
+                    <div class="col-lg-4">
+
+                        <!--                                                <div id="owl-carousel3" class="owl-carousel owl-theme bg-white" style="border-radius:10px;">
+                                                                            <div class="item">
+                                                                                <div class="text-center" style="background: #FFFFFF;box-shadow: 0px 2px 7px rgba(0, 0, 0, 0.11);border-radius: 10px 10px 0px 0px;">
+                                                                                    <div style="font-family: Galano Grotesque Medium;font-size: 14px;line-height: 16px;">
+                                                                                        Sabtu, 6 November 2021
+                                                                                    </div>
+                                                                                    <div style="padding:0px 10px;background: linear-gradient(90deg, #2C64A1 0%, #164579 51.56%, #2C64A1 100%);border-radius: 2px;">
+                                                                                        Bisnis dan Keuangan
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="clearfix my-4"></div>
+                                                                                <div class="row" style="background: rgba(0, 120, 254, 0.07);width:100% !important;">
+                                                                                    <div class="col-md-4">
+                                                                                        <div class="form-group">
+                                                                                            <div class="text-center">
+                                                                                                10:00 - 10:30
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="col-md-4">
+                                                                                        <div class="form-group" style="font-size:14px;line-height:16px;color: #242827;font-family:Galano Grotesque Medium;">
+                                                                                            Ignasius Ryan
+                                                                                        </div>
+                                                                                        <div class="form-group" style="font-size:12px;line-height:14px;color: #242827;font-family:Galano Grotesque Regular;">
+                                                                                            "Belajar mengelola Data menggunakan Excel untuk Bisnis"
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="col-md-4"></div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>-->
+
+                        <!--                        <div class="card">
+                                                    <div class="card-body">
+                                                        <div class="row">
+                                                            <div class="col-md-2">
+                                                                <div class="text-center">
+                                                                    <button type="button" id="prev_schedule" class="btn btn-default"><i class="fas fa-chevron-left"></i></button>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-8">
+                                                                <div class="text-center" style="font-family: Galano Grotesque Medium;font-size: 14px;line-height: 16px;color: #242827;">
+                                                                    Sabtu, 6 November 2021
+                                                                </div>
+                                                                <center>
+                                                                    <div class="text-center" style="padding: 4px 10px;background: linear-gradient(90deg, #2C64A1 0%, #164579 51.56%, #2C64A1 100%);border-radius: 2px;width: fit-content;margin-top: 3px;">
+                                                                        <div style="font-family:Galano Grotesque SemiBold;font-size: 12px;line-height: 113%;text-align: center;color: #FFFFFF;text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);flex: none;order: 0;flex-grow: 0;margin: 0px 10px;">
+                                                                            Bisnis dan Keuangan
+                                                                        </div>
+                                                                    </div>
+                                                                </center>
+                                                            </div>
+                                                            <div class="col-md-2">
+                                                                <div class="text-center">
+                                                                    <button type="button" id="next_schedule" class="btn btn-default"><i class="fas fa-chevron-right"></i></button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="">
+                                                            
+                                                        </div>
+                                                    </div>
+                                                </div>-->
+
                     </div>
                 </div>
             </div>

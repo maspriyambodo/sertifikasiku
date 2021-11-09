@@ -20,7 +20,7 @@ class Landing extends CI_Controller {
             $data = [
                 'csrf' => $this->bodo->Csrf(),
                 'materi' => $this->model2->Materi(),
-                'sponsor' => $this->model2->sponsor(),
+                'sponsor' => $this->model2->sponsor()
             ];
             $result = $this->parser->parse('v_landing', $data);
         }
