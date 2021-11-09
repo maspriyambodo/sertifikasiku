@@ -45,7 +45,7 @@ class M_materi extends CI_Model {
     }
 
     public function Get_id($id_materi) {
-        $exec = $this->db->query("select * from dt_materi where id = '$id_materi'");
+        $exec = $this->db->query("select * from dt_materi where id = $id_materi");
         return $exec->result();
     }
 
