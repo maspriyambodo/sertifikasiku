@@ -41,7 +41,7 @@ class Materi extends CI_Controller {
             'dt_materi.narasumber' => Post_input('narsumtxt'),
             'dt_materi.title_narsum' => Post_input('narsumtitle'),
             'dt_materi.link_video' => Post_input("link_video"),
-            'dt_materi.nama_materi' => Post_input("nama_materi"),
+            'dt_materi.nama_materi' => str_replace('"', '', Post_input("nama_materi")),
             'dt_materi.time_start' => Post_input("time_start"),
             'dt_materi.time_stop' => Post_input("time_stop"),
             'dt_materi.deskripsi' => Post_input("deskripsi"),
