@@ -246,7 +246,13 @@ $group_menu = $this->M_default->Group_menu();
                     </div>
                     <div class="d-flex flex-column">
                         <a href="#" class="font-weight-bold font-size-h5 text-dark-75 text-hover-primary">
-                            <?php echo $this->session->userdata('uname'); ?>
+                            <?php
+                            if ($fullname and strlen($fullname) <= 10) {
+                                echo $fullname;
+                            } else {
+                                echo $uname;
+                            }
+                            ?>
                         </a>
                         <div class="navi mt-2">
                             <span class="navi-text text-muted text-hover-primary">
