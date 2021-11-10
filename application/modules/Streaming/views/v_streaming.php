@@ -345,70 +345,6 @@
                     </div>
                     <div class="col-lg-4">
 
-                        <!--                                                <div id="owl-carousel3" class="owl-carousel owl-theme bg-white" style="border-radius:10px;">
-                                                                            <div class="item">
-                                                                                <div class="text-center" style="background: #FFFFFF;box-shadow: 0px 2px 7px rgba(0, 0, 0, 0.11);border-radius: 10px 10px 0px 0px;">
-                                                                                    <div style="font-family: Galano Grotesque Medium;font-size: 14px;line-height: 16px;">
-                                                                                        Sabtu, 6 November 2021
-                                                                                    </div>
-                                                                                    <div style="padding:0px 10px;background: linear-gradient(90deg, #2C64A1 0%, #164579 51.56%, #2C64A1 100%);border-radius: 2px;">
-                                                                                        Bisnis dan Keuangan
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="clearfix my-4"></div>
-                                                                                <div class="row" style="background: rgba(0, 120, 254, 0.07);width:100% !important;">
-                                                                                    <div class="col-md-4">
-                                                                                        <div class="form-group">
-                                                                                            <div class="text-center">
-                                                                                                10:00 - 10:30
-                                                                                            </div>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                    <div class="col-md-4">
-                                                                                        <div class="form-group" style="font-size:14px;line-height:16px;color: #242827;font-family:Galano Grotesque Medium;">
-                                                                                            Ignasius Ryan
-                                                                                        </div>
-                                                                                        <div class="form-group" style="font-size:12px;line-height:14px;color: #242827;font-family:Galano Grotesque Regular;">
-                                                                                            "Belajar mengelola Data menggunakan Excel untuk Bisnis"
-                                                                                        </div>
-                                                                                    </div>
-                                                                                    <div class="col-md-4"></div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>-->
-
-                        <!--                        <div class="card">
-                                                    <div class="card-body">
-                                                        <div class="row">
-                                                            <div class="col-md-2">
-                                                                <div class="text-center">
-                                                                    <button type="button" id="prev_schedule" class="btn btn-default"><i class="fas fa-chevron-left"></i></button>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-md-8">
-                                                                <div class="text-center" style="font-family: Galano Grotesque Medium;font-size: 14px;line-height: 16px;color: #242827;">
-                                                                    Sabtu, 6 November 2021
-                                                                </div>
-                                                                <center>
-                                                                    <div class="text-center" style="padding: 4px 10px;background: linear-gradient(90deg, #2C64A1 0%, #164579 51.56%, #2C64A1 100%);border-radius: 2px;width: fit-content;margin-top: 3px;">
-                                                                        <div style="font-family:Galano Grotesque SemiBold;font-size: 12px;line-height: 113%;text-align: center;color: #FFFFFF;text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);flex: none;order: 0;flex-grow: 0;margin: 0px 10px;">
-                                                                            Bisnis dan Keuangan
-                                                                        </div>
-                                                                    </div>
-                                                                </center>
-                                                            </div>
-                                                            <div class="col-md-2">
-                                                                <div class="text-center">
-                                                                    <button type="button" id="next_schedule" class="btn btn-default"><i class="fas fa-chevron-right"></i></button>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="">
-                                                            
-                                                        </div>
-                                                    </div>
-                                                </div>-->
-
                         <div class="card">
                             <div class="card-header">
                                 <div class="card-title">
@@ -505,6 +441,35 @@
         <script src="<?php echo base_url('node_modules/socket.io-client/dist/socket.io.min.js'); ?>" type="text/javascript"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.1.7/sweetalert2.all.js" integrity="sha512-wT0KEfF13tBeZVQN9MgyrOPpcazX2XUxLl11DuFYgctVVypKlqneS3cZp37g00U0x3G+rFvpaGtGs7JP3GTSIQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js" integrity="sha512-USPCA7jmJHlCNRSFwUFq3lAm9SaOjwG8TaB8riqx3i/dAJqhaYilVnaf2eVUH5zjq89BU6YguUuAno+jpRvUqA==" crossorigin="anonymous"></script>
+
+        <div class="modal fade tos" id="tos" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="tosdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-xl">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title text-center" id="tosdropLabel">Acceptable Uses Policy</h5>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <ul>
+                                <li>Peserta harap memastikan jaringan internet, gangguan sinyal tidak menjadi tanggung jawab dari penyelenggara.</li>
+                                <li>Peserta hanya bisa login menggunakan SATU DEVICE saja.</li>
+                                <li>Peserta dilarang keras mengucapkan kata-kata kasar atau mengandung unsur sara pada kolom komentar.</li>
+                                <li>Peserta diharapkan memperhatikan jadwal acara.</li>
+                                <li>Harap memberikan pertanyaan pada kolom komentar setelah sesi tanya jawab dibuka. </li>
+                                <li>Sesi absensi akan ada setelah sesi tanya jawab.</li>
+                                <li>E-sertifikat hanya akan diberikan pada peserta yang mengikuti webinar dari awal sesi hingga sesi selesai.</li>
+                                <li>E-sertifikat akan muncul pada MyCourse paling lambat H+5 setelah sesi webinar berlangsung.</li>
+                            </ul>
+                        </div>
+                        <div class="form-check form-group form-switch" style="padding-left:3.5em" data-bs-dismiss="modal">
+                            <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+                            <label class="form-check-label" for="flexSwitchCheckDefault">saya mengerti dan menerima.</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div class="modal fade kt_chat_modol" id="kt_chat_modol" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -695,6 +660,7 @@
                 }
             };
             $(document).ready(function () {
+                $('#tos').modal('show');
                 join_stream();
                 setInterval(function () {
                     console.clear();
