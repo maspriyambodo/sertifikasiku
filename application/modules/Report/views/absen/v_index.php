@@ -9,7 +9,7 @@ if ($this->session->userdata('role_id') == 1) {
     $statistik_materi = ' d-none';
 }
 ?>
-<div class="card card-custom">
+<div class="card card-custom<?php echo $statistik_materi; ?>">
     <div class="card-header">
         <div class="card-title">
             Rating Materi
