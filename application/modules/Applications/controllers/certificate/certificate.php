@@ -36,12 +36,10 @@ class certificate extends CI_Controller {
         $pdf->SetCreator(PDF_CREATOR);
         $pdf->SetFont('helvetica', 'B', 16);
 
-
         $pdf->setPrintHeader(false);
         $pdf->SetFooterMargin(0);
         $pdf->setPrintFooter(false);
         $pdf->SetAutoPageBreak(TRUE, 0);
-
 
         $pdf->SetLeftMargin(0);
         $pdf->SetTopMargin(0);
@@ -86,12 +84,13 @@ class certificate extends CI_Controller {
                 $msg['status'] = true;
                 $msg['message'] = 'Success';
             }
-            $this->response($msg, REST_Controller::HTTP_OK);
+//            $this->response($msg, REST_Controller::HTTP_OK);
+            ToJson($msg);
         } catch (Exception $e) {
             $msg['status'] = false;
             $msg['message'] = 'Fail !';
             $msg['error'] = $e->getMessage();
-            toJson($msg);
+            ToJson($msg);
         }
     }
 
