@@ -3,7 +3,7 @@
 <script src="https://cdn.amcharts.com/lib/4/themes/frozen.js"></script>
 <script src="https://cdn.amcharts.com/lib/4/themes/animated.js"></script>
 <?php
-if ($this->session->userdata('role_id') == 1) {
+if (Dekrip($this->session->userdata('role_id')) == 1) {
     $statistik_materi = null;
 } else {
     $statistik_materi = ' d-none';
