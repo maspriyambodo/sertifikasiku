@@ -85,14 +85,15 @@ class absensi extends CI_Controller {
                 $this->model2->Penalty($data);
                 if ($attempt == 3) {
                     $this->session->set_tempdata('blocked_account', true, 300);
-                    blocked_account();
+                    $result = blocked_account();
                 }
             case 2:
                 if ($attempt == 5) {
                     $this->session->set_tempdata('auth_sekuriti', true, 360);
-                    show_404();
+                    $result = show_404();
                 }
         }
+        return $result;
     }
 
     public function index() {
