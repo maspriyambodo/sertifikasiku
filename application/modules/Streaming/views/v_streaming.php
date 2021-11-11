@@ -371,9 +371,11 @@
                                             </div>
                                         </div>
                                         <?php
-                                        $time_start = date('d', strtotime($schedule_materi->time_start)) + date('m', strtotime($schedule_materi->time_start));
-                                        $time_now = date('d') + date('m');
-                                        if ($time_start < $time_now) {
+                                        //$schedule_materi->time_start
+                                        $time_start = date_create($schedule_materi->time_start);
+                                        $time_now = date_create(date('Y-m-d H:i:s'));
+                                        $date_schedule = date_diff($time_start, $time_now);
+                                        if ($time_start >= 0) {
                                             $btn_schedule = null;
                                         } elseif ($schedule_materi->stat_schedule == 1) {
                                             $btn_schedule = '<div class="text-center" style="float:right;">'
