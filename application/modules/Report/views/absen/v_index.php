@@ -90,6 +90,7 @@ unset($_SESSION['succ_msg']);
             toastr.success(b);
         }
         am4core.ready(function () {
+            am4core.addLicense("ch-custom-attribution");
             am4core.useTheme(am4themes_animated);
             var chart = am4core.create("chartdiv", am4charts.XYChart);
             chart.scrollbarX = new am4core.Scrollbar();
