@@ -22,6 +22,46 @@ if (Dekrip($this->session->userdata('role_id')) == 1) {
     </div>
     <div class="card-body">
         <div id="chartdiv" class="chartdivs" style="width:100%;height:600px;"></div>
+        <div class="clearfix my-5 border-bottom"></div>
+        <div class="table-responsive">
+            <table id="table_rating" class="table table-bordered table-hover table-striped" style="width:100%;">
+                <thead class="text-uppercase text-center">
+                    <tr>
+                        <th>no</th>
+                        <th>narasumber</th>
+                        <th>materi</th>
+                        <th>rating</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php foreach ($table_rating as $table_rating) { ?>
+                        <tr>
+                            <td>
+                                <?php
+                                static $id = 1;
+                                echo $id++;
+                                ?>
+                            </td>
+                            <td>
+                                <?php echo '<a href="' . base_url('Report/Absensi/detail_rating?token=' . Enkrip($table_rating->id)) . '">' . $table_rating->narasumber . '</a>'; ?>
+                            </td>
+                            <td>
+                                <?php echo $table_rating->nama_materi; ?>
+                            </td>
+                            <td class="text-center">
+                                <?php
+                                if (empty($table_rating->rating)) {
+                                    echo 0;
+                                } else {
+                                    echo $table_rating->rating;
+                                }
+                                ?>
+                            </td>
+                        </tr>
+                    <?php } ?>
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>
 <div class="clearfix my-4"></div>
@@ -44,7 +84,7 @@ if (Dekrip($this->session->userdata('role_id')) == 1) {
 <div class="card card-custom">
     <div class="card-body">
         <div class="table-responsive">
-            <table class="table table-bordered table-hover table-striped" style="width:100%;">
+            <table id="table_absensi" class="table table-bordered table-hover table-striped" style="width:100%;">
                 <thead class="text-center text-uppercase">
                     <tr>
                         <th rowspan="2">no</th>
@@ -108,7 +148,7 @@ unset($_SESSION['succ_msg']);
         chart1();
         chart2();
         var groupColumn = 6;
-        $('table').dataTable({
+        $('#table_absensi').dataTable({
             "serverSide": true,
             "order": [[0, "asc"]],
             "paging": true,
@@ -156,6 +196,34 @@ unset($_SESSION['succ_msg']);
                     }
                 });
             }
+        });
+        $('#table_rating').dataTable({
+            "serverSide": false,
+            "order": [[0, "asc"]],
+            "paging": false,
+            "ordering": true,
+            "info": true,
+            "processing": true,
+            "deferRender": true,
+            "scrollCollapse": true,
+            "scrollX": true,
+            "scrollY": "400px",
+            dom: `<'row'<'col-sm-6 text-left'f><'col-sm-6 text-right'B>>
+                <'row'<'col-sm-12'tr>>
+                <'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7 dataTables_pager'lp>>`,
+            buttons: [
+                {extend: 'print', footer: true},
+                {extend: 'copyHtml5', footer: true},
+                {extend: 'excelHtml5', footer: true},
+                {extend: 'csvHtml5', footer: true},
+                {extend: 'pdfHtml5', footer: true}
+            ],
+            columnDefs: [
+                {
+                    targets: 0,
+                    className: 'text-center'
+                }
+            ]
         });
     };
     function chart1() {

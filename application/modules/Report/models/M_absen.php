@@ -95,10 +95,23 @@ class M_absen extends CI_Model {
     }
 
     public function _userLogin() {
-        $exec = $this->db->select('dt_materi.narasumber,dt_materi.nama_materi,Count( tr_absensi.user_id ) AS user_hadir')
+        $exec = $this->db->select('dt_materi.narasumber,dt_materi.nama_materi,Count(DISTINCT(tr_absensi.user_id)) AS user_hadir')
                 ->from('dt_materi')
                 ->join('tr_absensi', 'tr_absensi.materi_id = dt_materi.id', 'LEFT')
                 ->group_by('dt_materi.id')
+                ->get()
+                ->result();
+        return $exec;
+    }
+
+    public function detail_rating($id_materi) {
+        $exec = $this->db->select('sys_users.uname,dt_users.nama AS fullname,dt_materi.narasumber,dt_materi.title_narsum,dt_materi.nama_materi,tr_absensi.rating_materi')
+                ->from('tr_absensi')
+                ->join('dt_materi', 'tr_absensi.materi_id = dt_materi.id', 'LEFT')
+                ->join('sys_users', 'tr_absensi.user_id = sys_users.id', 'LEFT')
+                ->join('dt_users', 'dt_users.sys_user_id = sys_users.id')
+                ->where('`tr_absensi`.`materi_id`', $id_materi, false)
+                ->group_by('tr_absensi.user_id')
                 ->get()
                 ->result();
         return $exec;

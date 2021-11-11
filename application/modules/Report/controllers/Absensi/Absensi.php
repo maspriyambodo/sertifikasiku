@@ -14,12 +14,13 @@ class Absensi extends CI_Controller {
         $data = [
             'csrf' => $this->bodo->Csrf(),
             'item_active' => 'Report/Absensi/index/',
+            'table_rating' => $this->model->_statistik(),
             'privilege' => $this->bodo->Check_previlege('Report/Absensi/index/'),
             'siteTitle' => 'Report Absensi | ' . $this->bodo->Sys('app_name'),
             'pagetitle' => 'Report Absensi',
             'breadcrumb' => [
                 0 => [
-                    'nama' => 'Dashboard',
+                    'nama' => 'index',
                     'link' => null,
                     'status' => true
                 ]
@@ -79,7 +80,7 @@ class Absensi extends CI_Controller {
         foreach ($exec as $value) {
             $narasumber = explode(',', $value->narasumber);
             $data[] = [
-                'id' => $value->id,
+                'id' => Enkrip($value->id),
                 'narasumber' => $narasumber[0],
                 'rating' => $value->rating,
                 'nama_materi' => $value->nama_materi
@@ -99,6 +100,33 @@ class Absensi extends CI_Controller {
             ];
         }
         return ToJson($data);
+    }
+
+    public function detail_rating() {
+        $id_materi = Dekrip(Post_get('token'));
+        $table_rating = $this->model->detail_rating($id_materi);
+        $data = [
+            'csrf' => $this->bodo->Csrf(),
+            'item_active' => 'Report/Absensi/index/',
+            'table_rating' => $table_rating,
+            'privilege' => $this->bodo->Check_previlege('Report/Absensi/index/'),
+            'siteTitle' => 'Detail Rating - ' . $table_rating[0]->nama_materi,
+            'pagetitle' => 'Detail Rating',
+            'breadcrumb' => [
+                0 => [
+                    'nama' => 'index',
+                    'link' => base_url('Report/Absensi/index/'),
+                    'status' => false
+                ],
+                1 => [
+                    'nama' => 'detail',
+                    'link' => null,
+                    'status' => true
+                ]
+            ]
+        ];
+        $data['content'] = $this->parser->parse('absen/detail_rating', $data, true);
+        return $this->parser->parse('Template/layout', $data);
     }
 
 }
