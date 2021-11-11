@@ -364,6 +364,11 @@
                                     ?>
                                     <div class="row mb-4"<?php echo $bg_schedule; ?>>
                                         <div style="font-family: Galano Grotesque SemiBold;font-size: 12px;line-height: 14px;color: #242827;" class="col-4 col-xs-4">
+                                            <div class="text-center" style="background: linear-gradient(90deg, #2C64A1 0%, #164579 51.56%, #2C64A1 100%);border-radius: 2px;min-width:1px;margin-bottom:10px;">
+                                                <div style="color: #FFFFFF;text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);font-family: Galano Grotesque SemiBold;font-size: 12px;">
+                                                    <?php echo $schedule_materi->nama_segment; ?>
+                                                </div>
+                                            </div>
                                             <div class="form-group">
                                                 <?php echo date('d M Y', strtotime($schedule_materi->time_start)); ?>
                                                 <div class="clearfix"></div>
