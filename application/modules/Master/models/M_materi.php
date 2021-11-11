@@ -27,8 +27,7 @@ class M_materi extends CI_Model {
                 ->join('mt_industri', 'dt_materi.id_industri = mt_industri.id')
                 ->join('mt_klasifikasi', 'dt_materi.id_klasifikasi = mt_klasifikasi.id')
                 ->where('`dt_materi`.`stat` <>', 2, false)
-                ->order_by('DAY( dt_materi.time_start ) ASC')
-                ->order_by('MONTH( dt_materi.time_start ) ASC')
+                ->order_by('date_format( dt_materi.time_start, "%Y-%m-%d" ) ASC')
                 ->order_by('dt_materi.id_sesi ASC')
                 ->get()
                 ->result();
