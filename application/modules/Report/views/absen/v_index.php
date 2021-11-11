@@ -25,6 +25,22 @@ if (Dekrip($this->session->userdata('role_id')) == 1) {
     </div>
 </div>
 <div class="clearfix my-4"></div>
+<div class="card card-custom<?php echo $statistik_materi; ?>">
+    <div class="card-header">
+        <div class="card-title">
+            User Login
+        </div>
+        <div class="card-toolbar">
+            <a href="#" class="btn btn-icon btn-sm btn-hover-light-primary mr-1" data-card-tool="toggle" data-toggle="tooltip" data-placement="top" title="Minimalkan">
+                <i class="ki ki-arrow-down icon-nm"></i>
+            </a>
+        </div>
+    </div>
+    <div class="card-body">
+        <div id="chartdiv2" class="chartdivs" style="width:100%;height:600px;"></div>
+    </div>
+</div>
+<div class="clearfix my-4"></div>
 <div class="card card-custom">
     <div class="card-body">
         <div class="table-responsive">
@@ -89,50 +105,8 @@ unset($_SESSION['succ_msg']);
         } else if (b) {
             toastr.success(b);
         }
-        am4core.ready(function () {
-            am4core.addLicense("ch-custom-attribution");
-            am4core.useTheme(am4themes_animated);
-            var chart = am4core.create("chartdiv", am4charts.XYChart);
-            chart.scrollbarX = new am4core.Scrollbar();
-            chart.dataSource.url = "Report/Absensi/Statistik_";
-            chart.exporting.menu = new am4core.ExportMenu();
-            var categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis());
-            categoryAxis.title.fontWeight = 800;
-            categoryAxis.title.text = 'Narasumber';
-            categoryAxis.dataFields.category = "narasumber";
-            categoryAxis.renderer.grid.template.location = 0;
-            categoryAxis.renderer.minGridDistance = 25;
-            categoryAxis.renderer.labels.template.horizontalCenter = "left";
-            categoryAxis.renderer.labels.template.verticalCenter = "middle";
-            categoryAxis.renderer.labels.template.rotation = 120;
-            categoryAxis.tooltip.disabled = true;
-            categoryAxis.renderer.minHeight = 110;
-            let label = categoryAxis.renderer.labels.template;
-            label.wrap = true;
-            label.maxWidth = 120;
-            var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
-            valueAxis.renderer.minWidth = 50;
-            valueAxis.title.text = "Jumlah Rating";
-            valueAxis.title.fontWeight = 800;
-            var series = chart.series.push(new am4charts.ColumnSeries());
-            series.sequencedInterpolation = true;
-            series.dataFields.valueY = "rating";
-            series.dataFields.categoryX = "narasumber";
-            series.tooltipText = "Jumlah Rating: [bold]{nama_materi}[/] = [bold]{valueY}[/]";
-            series.columns.template.strokeWidth = 0;
-            series.tooltip.pointerOrientation = "vertical";
-            series.columns.template.column.cornerRadiusTopLeft = 10;
-            series.columns.template.column.cornerRadiusTopRight = 10;
-            series.columns.template.column.fillOpacity = 0.8;
-            var hoverState = series.columns.template.column.states.create("hover");
-            hoverState.properties.cornerRadiusTopLeft = 0;
-            hoverState.properties.cornerRadiusTopRight = 0;
-            hoverState.properties.fillOpacity = 1;
-            series.columns.template.adapter.add("fill", function (fill, target) {
-                return chart.colors.getIndex(target.dataItem.index);
-            });
-            chart.cursor = new am4charts.XYCursor();
-        });
+        chart1();
+        chart2();
         var groupColumn = 6;
         $('table').dataTable({
             "serverSide": true,
@@ -184,4 +158,96 @@ unset($_SESSION['succ_msg']);
             }
         });
     };
+    function chart1() {
+        am4core.ready(function () {
+            am4core.addLicense("ch-custom-attribution");
+            am4core.useTheme(am4themes_animated);
+            var chart = am4core.create("chartdiv", am4charts.XYChart);
+            chart.scrollbarX = new am4core.Scrollbar();
+            chart.dataSource.url = "Report/Absensi/Statistik_";
+            chart.exporting.menu = new am4core.ExportMenu();
+            var categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis());
+            categoryAxis.title.fontWeight = 800;
+            categoryAxis.title.text = 'Narasumber';
+            categoryAxis.dataFields.category = "narasumber";
+            categoryAxis.renderer.grid.template.location = 0;
+            categoryAxis.renderer.minGridDistance = 25;
+            categoryAxis.renderer.labels.template.horizontalCenter = "left";
+            categoryAxis.renderer.labels.template.verticalCenter = "middle";
+            categoryAxis.renderer.labels.template.rotation = 120;
+            categoryAxis.tooltip.disabled = true;
+            categoryAxis.renderer.minHeight = 110;
+            let label = categoryAxis.renderer.labels.template;
+            label.wrap = true;
+            label.maxWidth = 120;
+            var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
+            valueAxis.renderer.minWidth = 50;
+            valueAxis.title.text = "Jumlah Rating";
+            valueAxis.title.fontWeight = 800;
+            var series = chart.series.push(new am4charts.ColumnSeries());
+            series.sequencedInterpolation = true;
+            series.dataFields.valueY = "rating";
+            series.dataFields.categoryX = "narasumber";
+            series.tooltipText = "Jumlah Rating: [bold]{nama_materi}[/] = [bold]{valueY} point[/]";
+            series.columns.template.strokeWidth = 0;
+            series.tooltip.pointerOrientation = "vertical";
+            series.columns.template.column.cornerRadiusTopLeft = 10;
+            series.columns.template.column.cornerRadiusTopRight = 10;
+            series.columns.template.column.fillOpacity = 0.8;
+            var hoverState = series.columns.template.column.states.create("hover");
+            hoverState.properties.cornerRadiusTopLeft = 0;
+            hoverState.properties.cornerRadiusTopRight = 0;
+            hoverState.properties.fillOpacity = 1;
+            series.columns.template.adapter.add("fill", function (fill, target) {
+                return chart.colors.getIndex(target.dataItem.index);
+            });
+            chart.cursor = new am4charts.XYCursor();
+        });
+    }
+    function chart2() {
+        am4core.ready(function () {
+            am4core.addLicense("ch-custom-attribution");
+            am4core.useTheme(am4themes_animated);
+            var chart = am4core.create("chartdiv2", am4charts.XYChart);
+            chart.scrollbarX = new am4core.Scrollbar();
+            chart.dataSource.url = "Report/Absensi/user_login";
+            chart.exporting.menu = new am4core.ExportMenu();
+            var categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis());
+            categoryAxis.title.fontWeight = 800;
+            categoryAxis.title.text = 'Narasumber';
+            categoryAxis.dataFields.category = "narasumber";
+            categoryAxis.renderer.grid.template.location = 0;
+            categoryAxis.renderer.minGridDistance = 25;
+            categoryAxis.renderer.labels.template.horizontalCenter = "left";
+            categoryAxis.renderer.labels.template.verticalCenter = "middle";
+            categoryAxis.renderer.labels.template.rotation = 120;
+            categoryAxis.tooltip.disabled = true;
+            categoryAxis.renderer.minHeight = 110;
+            let label = categoryAxis.renderer.labels.template;
+            label.wrap = true;
+            label.maxWidth = 120;
+            var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
+            valueAxis.renderer.minWidth = 50;
+            valueAxis.title.text = "Jumlah User Absen";
+            valueAxis.title.fontWeight = 800;
+            var series = chart.series.push(new am4charts.ColumnSeries());
+            series.sequencedInterpolation = true;
+            series.dataFields.valueY = "user_hadir";
+            series.dataFields.categoryX = "narasumber";
+            series.tooltipText = "Jumlah User: [bold]{nama_materi}[/] = [bold]{valueY} peserta[/]";
+            series.columns.template.strokeWidth = 0;
+            series.tooltip.pointerOrientation = "vertical";
+            series.columns.template.column.cornerRadiusTopLeft = 10;
+            series.columns.template.column.cornerRadiusTopRight = 10;
+            series.columns.template.column.fillOpacity = 0.8;
+            var hoverState = series.columns.template.column.states.create("hover");
+            hoverState.properties.cornerRadiusTopLeft = 0;
+            hoverState.properties.cornerRadiusTopRight = 0;
+            hoverState.properties.fillOpacity = 1;
+            series.columns.template.adapter.add("fill", function (fill, target) {
+                return chart.colors.getIndex(target.dataItem.index);
+            });
+            chart.cursor = new am4charts.XYCursor();
+        });
+    }
 </script>

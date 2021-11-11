@@ -76,7 +76,29 @@ class Absensi extends CI_Controller {
 
     public function Statistik_() {
         $exec = $this->model->_statistik();
-        return ToJson($exec);
+        foreach ($exec as $value) {
+            $narasumber = explode(',', $value->narasumber);
+            $data[] = [
+                'id' => $value->id,
+                'narasumber' => $narasumber[0],
+                'rating' => $value->rating,
+                'nama_materi' => $value->nama_materi
+            ];
+        }
+        return ToJson($data);
+    }
+
+    public function user_login() {
+        $exec = $this->model->_userLogin();
+        foreach ($exec as $value) {
+            $narasumber = explode(',', $value->narasumber);
+            $data[] = [
+                'narasumber' => $narasumber[0],
+                'nama_materi' => $value->nama_materi,
+                'user_hadir' => $value->user_hadir
+            ];
+        }
+        return ToJson($data);
     }
 
 }

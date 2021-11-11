@@ -94,4 +94,14 @@ class M_absen extends CI_Model {
         return $exec;
     }
 
+    public function _userLogin() {
+        $exec = $this->db->select('dt_materi.narasumber,dt_materi.nama_materi,Count( tr_absensi.user_id ) AS user_hadir')
+                ->from('dt_materi')
+                ->join('tr_absensi', 'tr_absensi.materi_id = dt_materi.id', 'LEFT')
+                ->group_by('dt_materi.id')
+                ->get()
+                ->result();
+        return $exec;
+    }
+
 }
