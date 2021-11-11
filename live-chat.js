@@ -3,7 +3,7 @@ var socket = require('socket.io')(server, {
     wsEngine: require("eiows").Server,
     transports: ["websocket", "polling"],
     cors: {
-        origin: ["https://event.sertifikasiku.com", "https://mc.alfabet.io", "https://mc.sertifikasiku.com", "http://localhost"],
+        origin: ["https://chat.alfabet.io", "https://event.sertifikasiku.com", "https://mc.alfabet.io", "https://mc.sertifikasiku.com", "http://localhost"],
         default: "https://event.sertifikasiku.com",
         methods: ["GET", "POST"]
     }
