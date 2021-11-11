@@ -9,13 +9,13 @@ if (Dekrip($this->session->userdata('role_id')) == 1) {
     $statistik_materi = ' d-none';
 }
 ?>
-<div class="card card-custom<?php echo $statistik_materi; ?>">
+<div class="card card-custom<?php echo $statistik_materi; ?>" data-card="true">
     <div class="card-header">
         <div class="card-title">
             Rating Materi
         </div>
         <div class="card-toolbar">
-            <a href="#" class="btn btn-icon btn-sm btn-hover-light-primary mr-1" data-card-tool="toggle" data-toggle="tooltip" data-placement="top" title="Minimalkan">
+            <a href="#" class="btn btn-icon btn-sm btn-hover-light-primary mr-1" data-card-tool="toggle" data-toggle="tooltip" data-placement="top" title="" data-original-title="Toggle Card">
                 <i class="ki ki-arrow-down icon-nm"></i>
             </a>
         </div>
@@ -25,13 +25,13 @@ if (Dekrip($this->session->userdata('role_id')) == 1) {
     </div>
 </div>
 <div class="clearfix my-4"></div>
-<div class="card card-custom<?php echo $statistik_materi; ?>">
+<div class="card card-custom<?php echo $statistik_materi; ?>" data-card="true">
     <div class="card-header">
         <div class="card-title">
             User Login
         </div>
         <div class="card-toolbar">
-            <a href="#" class="btn btn-icon btn-sm btn-hover-light-primary mr-1" data-card-tool="toggle" data-toggle="tooltip" data-placement="top" title="Minimalkan">
+            <a href="#" class="btn btn-icon btn-sm btn-hover-light-primary mr-1" data-card-tool="toggle" data-toggle="tooltip" data-placement="top" title="" data-original-title="Toggle Card">
                 <i class="ki ki-arrow-down icon-nm"></i>
             </a>
         </div>
