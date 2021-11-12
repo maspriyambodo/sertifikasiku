@@ -57,26 +57,129 @@
                 <div class="col-md-6">
                     <select id="kerjatxt" name="kerjatxt" class="form-control form-control-lg">
                         <option value="">pilih pekerjaan</option>
-                        <option value="Belum/Tidak Bekerja/Sedang Mencari Pekerjaan">Belum/Tidak Bekerja/Sedang Mencari Pekerjaan</option>
-                        <option value="Pelajar/Mahasiswa">Pelajar/Mahasiswa</option>
-                        <option value="Wiraswasta">Wiraswasta</option>
-                        <option value="Pegawai Swasta">Pegawai Swasta</option>
-                        <option value="Pegawai Negeri">Pegawai Negeri</option>
-                        <option value="Pegawai BUMN/BUMD">Pegawai BUMN/BUMD</option>
-                        <option value="Mengurus Rumah Tangga">Mengurus Rumah Tangga</option>
-                        <option value="Pensiunan">Pensiunan</option>
-                        <option value="Lainnya">Lainnya</option>
+                        <?php
+                        $kerjaan = $data[0]->pekerjaan;
+                        $option1 = null;
+                        $option2 = null;
+                        $option3 = null;
+                        $option4 = null;
+                        $option5 = null;
+                        $option6 = null;
+                        $option7 = null;
+                        $option8 = null;
+                        $option9 = null;
+                        if ($kerjaan == 'Belum/Tidak Bekerja/Sedang Mencari Pekerjaan') {
+                            $option1 = ' selected=""';
+                            $option2 = null;
+                            $option3 = null;
+                            $option4 = null;
+                            $option5 = null;
+                            $option6 = null;
+                            $option7 = null;
+                            $option8 = null;
+                            $option9 = null;
+                        } elseif ($kerjaan == 'Pelajar/Mahasiswa') {
+                            $option1 = null;
+                            $option2 = ' selected=""';
+                            $option3 = null;
+                            $option4 = null;
+                            $option5 = null;
+                            $option6 = null;
+                            $option7 = null;
+                            $option8 = null;
+                            $option9 = null;
+                        } elseif ($kerjaan == 'Wiraswasta') {
+                            $option1 = null;
+                            $option2 = null;
+                            $option3 = ' selected=""';
+                            $option4 = null;
+                            $option5 = null;
+                            $option6 = null;
+                            $option7 = null;
+                            $option8 = null;
+                            $option9 = null;
+                        } elseif ($kerjaan == 'Pegawai Swasta') {
+                            $option1 = null;
+                            $option2 = null;
+                            $option3 = null;
+                            $option4 = ' selected=""';
+                            $option5 = null;
+                            $option6 = null;
+                            $option7 = null;
+                            $option8 = null;
+                            $option9 = null;
+                        } elseif ($kerjaan == 'Pegawai Negeri') {
+                            $option1 = null;
+                            $option2 = null;
+                            $option3 = null;
+                            $option4 = null;
+                            $option5 = ' selected=""';
+                            $option6 = null;
+                            $option7 = null;
+                            $option8 = null;
+                            $option9 = null;
+                        } elseif ($kerjaan == 'Pegawai BUMN/BUMD') {
+                            $option1 = null;
+                            $option2 = null;
+                            $option3 = null;
+                            $option4 = null;
+                            $option5 = null;
+                            $option6 = ' selected=""';
+                            $option7 = null;
+                            $option8 = null;
+                            $option9 = null;
+                        } elseif ($kerjaan == 'Mengurus Rumah Tangga') {
+                            $option1 = null;
+                            $option2 = null;
+                            $option3 = null;
+                            $option4 = null;
+                            $option5 = null;
+                            $option6 = null;
+                            $option7 = ' selected=""';
+                            $option8 = null;
+                            $option9 = null;
+                        } elseif ($kerjaan == 'Pensiunan') {
+                            $option1 = null;
+                            $option2 = null;
+                            $option3 = null;
+                            $option4 = null;
+                            $option5 = null;
+                            $option6 = null;
+                            $option7 = null;
+                            $option8 = ' selected=""';
+                            $option9 = null;
+                        } else {
+                            $option1 = null;
+                            $option2 = null;
+                            $option3 = null;
+                            $option4 = null;
+                            $option5 = null;
+                            $option6 = null;
+                            $option7 = null;
+                            $option8 = null;
+                            $option9 = ' selected=""';
+                        }
+                        ?>
+                        <option value="Belum/Tidak Bekerja/Sedang Mencari Pekerjaan"<?php echo $option1; ?>>Belum/Tidak Bekerja/Sedang Mencari Pekerjaan</option>
+                        <option value="Pelajar/Mahasiswa"<?php echo $option2; ?>>Pelajar/Mahasiswa</option>
+                        <option value="Wiraswasta"<?php echo $option3; ?>>Wiraswasta</option>
+                        <option value="Pegawai Swasta"<?php echo $option4; ?>>Pegawai Swasta</option>
+                        <option value="Pegawai Negeri"<?php echo $option5; ?>>Pegawai Negeri</option>
+                        <option value="Pegawai BUMN/BUMD"<?php echo $option6; ?>>Pegawai BUMN/BUMD</option>
+                        <option value="Mengurus Rumah Tangga"<?php echo $option7; ?>>Mengurus Rumah Tangga</option>
+                        <option value="Pensiunan"<?php echo $option8; ?>>Pensiunan</option>
+                        <option value="Lainnya"<?php echo $option9; ?>>Lainnya</option>
                     </select>
                 </div>
             </div>
             <div class="form-group row">
-                <label class="col-form-label col-md-3 text-lg-right text-left">Email</label>
+                <label class="col-form-label col-md-3 text-lg-right text-left">Email<small class="text-danger">*</small></label>
                 <div class="col-md-6">
                     <input name="mail_user" class="form-control form-control-lg" type="email" value="<?php echo $data[0]->mail; ?>" autocomplete="off"/>
                 </div>
             </div>
             <div class="form-group row">
-                <label class="col-form-label col-md-3 text-lg-right text-left">Phone</label>
+                <label class="col-form-label col-md-3 text-lg-right text-left">Phone<small class="text-danger">*</small></label>
                 <div class="col-md-6">
                     <input name="tlepon" class="form-control form-control-lg" type="text" value="<?php echo $data[0]->telp; ?>" autocomplete="off" onkeypress="return isNumber(event)" maxlength="13"/>
                 </div>
@@ -88,7 +191,7 @@
                 </div>
             </div>
             <div class="form-group row">
-                <label class="col-form-label col-md-3 text-lg-right text-left">Sex</label>
+                <label class="col-form-label col-md-3 text-lg-right text-left">Sex<small class="text-danger">*</small></label>
                 <div class="col-md-6">
                     <select name="gender" class="form-control custom-select" required="">
                         <?php
@@ -110,19 +213,19 @@
                 </div>
             </div>
             <div class="form-group row">
-                <label class="col-form-label col-md-3 text-lg-right text-left">Born</label>
+                <label class="col-form-label col-md-3 text-lg-right text-left">Born<small class="text-danger">*</small></label>
                 <div class="col-md-6">
                     <input name="place_born" class="form-control form-control-lg" type="text" value="<?php echo $data[0]->lahir_1; ?>" autocomplete="off"/>
                 </div>
             </div>
             <div class="form-group row">
-                <label class="col-form-label col-md-3 text-lg-right text-left">Date Birth</label>
+                <label class="col-form-label col-md-3 text-lg-right text-left">Date Birth<small class="text-danger">*</small></label>
                 <div class="col-md-6">
                     <input name="date_birth" class="form-control form-control-lg datepicker" type="text" value="<?php echo $data[0]->lahir_2; ?>" autocomplete="off" style="width:100%;" onkeydown="return false;"/>
                 </div>
             </div>
             <div class="form-group row">
-                <label class="col-form-label col-md-3 text-lg-right text-left">Provinsi</label>
+                <label class="col-form-label col-md-3 text-lg-right text-left">Provinsi<small class="text-danger">*</small></label>
                 <div class="col-md-6">
                     <select name="provinsi" class="form-control custom-select" required="" onchange="Provinsi(this.value)">
                         <option value="">Choose Provinsi</option>
@@ -141,19 +244,19 @@
                 </div>
             </div>
             <div class="form-group row">
-                <label class="col-form-label col-md-3 text-lg-right text-left">Kabupaten</label>
+                <label class="col-form-label col-md-3 text-lg-right text-left">Kabupaten<small class="text-danger">*</small></label>
                 <div class="col-md-6">
                     <select id="kabupaten" name="kabupaten" class="form-control custom-select" required="" onchange="Kecamatan(this.value)"></select>
                 </div>
             </div>
             <div class="form-group row">
-                <label class="col-form-label col-md-3 text-lg-right text-left">Kecamatan</label>
+                <label class="col-form-label col-md-3 text-lg-right text-left">Kecamatan<small class="text-danger">*</small></label>
                 <div class="col-md-6">
                     <select id="kecamatan" name="kecamatan" class="form-control custom-select" required="" onchange="Kelurahan(this.value)"></select>
                 </div>
             </div>
             <div class="form-group row">
-                <label class="col-form-label col-md-3 text-lg-right text-left">Kelurahan</label>
+                <label class="col-form-label col-md-3 text-lg-right text-left">Kelurahan<small class="text-danger">*</small></label>
                 <div class="col-md-6">
                     <select id="kelurahan" name="kelurahan" class="form-control custom-select" required=""></select>
                 </div>
