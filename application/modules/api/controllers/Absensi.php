@@ -1,110 +1,29 @@
 <?php
 
+use chriskacerguis\RestServer\RestController;
+
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class absensi extends CI_Controller {
+class Absensi extends RestController {
 
     public function __construct() {
         parent::__construct();
         $this->load->model('M_absensi', 'model');
         $this->load->model('Auth/M_auth', 'model2');
-        $this->auth();
     }
 
-    /* EXAMPLE CURL
-     * $curl = curl_init();
-      curl_setopt_array($curl, array(
-      CURLOPT_URL => 'http://localhost/sertifikasiku/api/absensi/index/',
-      CURLOPT_RETURNTRANSFER => true,
-      CURLOPT_ENCODING => '',
-      CURLOPT_MAXREDIRS => 10,
-      CURLOPT_TIMEOUT => 0,
-      CURLOPT_FOLLOWLOCATION => true,
-      CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-      CURLOPT_CUSTOMREQUEST => 'GET',
-      CURLOPT_HTTPHEADER => array(
-      'uname: your_username',
-      'pwd: your_password'
-      ),
-      ));
-      $response = curl_exec($curl);
-      curl_close($curl);
-      echo $response;
-     */
-
-    private function auth() {
-        $header = getallheaders();
-        if ($header['Uname'] and $header['Pwd']) {
-            $data = [
-                'uname' => $header['Uname'],
-                'pwd' => $header['Pwd']
-            ];
-            $exec = $this->model2->Signin($data);
-            if (!empty($exec) and ($exec->limit_login == 0 or $exec->limit_login != 3)) {
-                $hashed = $exec->pwd;
-                if (password_verify($data['pwd'], $hashed)) {
-                    $this->bodo->Set_session($exec);
-                    $this->model2->Remove_penalty($data);
-                    //success login user
-                    return $this->uri->segment(3) . '()';
-                } else {
-                    $this->Attempt(1);
-                    header('HTTP/1.0 401 Unauthorized');
-                    echo '<p>Access denied. your password was incorrect</p>';
-                    exit;
-                }
-            } elseif (!empty($exec) and ($exec->limit_login == 3)) {
-                header('HTTP/1.0 401 Unauthorized');
-                echo '<p>Access denied. your account was blocked</p>';
-                exit;
-            } else {
-                header('HTTP/1.0 401 Unauthorized');
-                echo '<p>Access denied. username not registered!</p>';
-                exit;
-            }
-        } else {
-            $this->Attempt(2);
-            header('HTTP/1.0 401 Unauthorized');
-            // User will be presented with the username/password prompt
-            // If they hit cancel, they will see this access denied message.
-            echo '<p>Access denied. you don`t have permission</p>';
-            exit;
-        }
-    }
-
-    private function Attempt($id) {
-        $attempt = $this->session->userdata('attempt');
-        $attempt++;
-        $this->session->set_userdata('attempt', $attempt);
-        $data = [
-            'uname' => Post_input("username"),
-            'attempt' => $attempt
-        ];
-        switch ($id) {
-            case 1:
-                $this->model2->Penalty($data);
-                if ($attempt == 3) {
-                    $this->session->set_tempdata('blocked_account', true, 300);
-                    $result = blocked_account();
-                }
-            case 2:
-                if ($attempt == 5) {
-                    $this->session->set_tempdata('auth_sekuriti', true, 360);
-                    $result = show_404();
-                }
-        }
-        return $result;
-    }
-
-    public function index() {
-        $list = $this->model->lists();
+    public function index_get() {
+        $limit_start = Post_get('start');
+        $limit_length = Post_get('length');
+        $list = $this->model->index($limit_start, $limit_length);
         $data = [];
-        $no = Post_input("start");
-        $privilege = $this->bodo->Check_previlege('api/Absensi/index/');
+        static $no = 0;
         foreach ($list as $users) {
             $id_user = Enkrip($users->id_absensi);
             $no++;
             $row = [];
+            $row['start'] = $limit_start;
+            $row['length'] = $limit_length;
             $row['no'] = $no;
             $row['id_absensi'] = $id_user;
             $row['email'] = $users->email;
@@ -121,26 +40,7 @@ class absensi extends CI_Controller {
             $row['waktu_absen'] = $users->waktu_absen;
             $data[] = $row;
         }
-        return $this->_list($data, $privilege);
-    }
-
-    private function _list($data, $privilege) {
-        if ($privilege['read']) {
-            $output = [
-                "draw" => Post_input('draw'),
-                "recordsTotal" => $this->model->count_all(),
-                "recordsFiltered" => $this->model->count_filtered(),
-                "data" => $data
-            ];
-        } else {
-            $output = [
-                "draw" => Post_input('draw'),
-                "recordsTotal" => 0,
-                "recordsFiltered" => 0,
-                "data" => []
-            ];
-        }
-        return ToJson($output);
+        return $this->response($data, RestController::HTTP_OK);
     }
 
 }
