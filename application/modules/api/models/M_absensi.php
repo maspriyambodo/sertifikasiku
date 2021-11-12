@@ -18,7 +18,21 @@ class M_absensi extends CI_Model {
                 ->limit($limit_length, $limit_start)
                 ->get()
                 ->result();
-        log_message('error', $this->db->last_query());
+        return $exec;
+    }
+
+    public function count_all() {
+        $exec = $this->db->select('tr_absensi.id')
+                ->from('tr_absensi')
+                ->join('sys_users', 'tr_absensi.user_id = sys_users.id')
+                ->join('sys_roles', 'sys_users.role_id = sys_roles.id')
+                ->join('dt_users', 'dt_users.sys_user_id = sys_users.id')
+                ->join('dt_materi', 'tr_absensi.materi_id = dt_materi.id')
+                ->join('mt_sesimateri', 'dt_materi.id_sesi = mt_sesimateri.id')
+                ->group_by('tr_absensi.user_id')
+                ->group_by('tr_absensi.materi_id')
+                ->order_by('mt_sesimateri.id ASC')
+                ->count_all_results();
         return $exec;
     }
 

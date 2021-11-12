@@ -16,14 +16,13 @@ class Absensi extends RestController {
         $limit_start = Post_get('start');
         $limit_length = Post_get('length');
         $list = $this->model->index($limit_start, $limit_length);
+        $total_data = $this->model->count_all();
         $data = [];
         static $no = 0;
         foreach ($list as $users) {
             $id_user = Enkrip($users->id_absensi);
             $no++;
             $row = [];
-            $row['start'] = $limit_start;
-            $row['length'] = $limit_length;
             $row['no'] = $no;
             $row['id_absensi'] = $id_user;
             $row['email'] = $users->email;
@@ -40,6 +39,7 @@ class Absensi extends RestController {
             $row['waktu_absen'] = $users->waktu_absen;
             $data[] = $row;
         }
+        $data[0]['total_data'] = $total_data;
         return $this->response($data, RestController::HTTP_OK);
     }
 
