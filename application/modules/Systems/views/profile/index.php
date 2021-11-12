@@ -161,7 +161,7 @@
             <div class="form-group row">
                 <label class="col-form-label col-md-3 text-lg-right text-left">Address</label>
                 <div class="col-md-6">
-                    <textarea name="alamat" class="form-control" required=""><?php echo $data[0]->address_1; ?></textarea>
+                    <textarea name="alamat" class="form-control"><?php echo $data[0]->address_1; ?></textarea>
                 </div>
             </div>
         </div>
