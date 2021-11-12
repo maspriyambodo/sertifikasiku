@@ -70,93 +70,21 @@
                         $option9 = null;
                         if ($kerjaan == 'Belum/Tidak Bekerja/Sedang Mencari Pekerjaan') {
                             $option1 = ' selected=""';
-                            $option2 = null;
-                            $option3 = null;
-                            $option4 = null;
-                            $option5 = null;
-                            $option6 = null;
-                            $option7 = null;
-                            $option8 = null;
-                            $option9 = null;
                         } elseif ($kerjaan == 'Pelajar/Mahasiswa') {
-                            $option1 = null;
                             $option2 = ' selected=""';
-                            $option3 = null;
-                            $option4 = null;
-                            $option5 = null;
-                            $option6 = null;
-                            $option7 = null;
-                            $option8 = null;
-                            $option9 = null;
                         } elseif ($kerjaan == 'Wiraswasta') {
-                            $option1 = null;
-                            $option2 = null;
                             $option3 = ' selected=""';
-                            $option4 = null;
-                            $option5 = null;
-                            $option6 = null;
-                            $option7 = null;
-                            $option8 = null;
-                            $option9 = null;
                         } elseif ($kerjaan == 'Pegawai Swasta') {
-                            $option1 = null;
-                            $option2 = null;
-                            $option3 = null;
                             $option4 = ' selected=""';
-                            $option5 = null;
-                            $option6 = null;
-                            $option7 = null;
-                            $option8 = null;
-                            $option9 = null;
                         } elseif ($kerjaan == 'Pegawai Negeri') {
-                            $option1 = null;
-                            $option2 = null;
-                            $option3 = null;
-                            $option4 = null;
                             $option5 = ' selected=""';
-                            $option6 = null;
-                            $option7 = null;
-                            $option8 = null;
-                            $option9 = null;
                         } elseif ($kerjaan == 'Pegawai BUMN/BUMD') {
-                            $option1 = null;
-                            $option2 = null;
-                            $option3 = null;
-                            $option4 = null;
-                            $option5 = null;
                             $option6 = ' selected=""';
-                            $option7 = null;
-                            $option8 = null;
-                            $option9 = null;
                         } elseif ($kerjaan == 'Mengurus Rumah Tangga') {
-                            $option1 = null;
-                            $option2 = null;
-                            $option3 = null;
-                            $option4 = null;
-                            $option5 = null;
-                            $option6 = null;
                             $option7 = ' selected=""';
-                            $option8 = null;
-                            $option9 = null;
                         } elseif ($kerjaan == 'Pensiunan') {
-                            $option1 = null;
-                            $option2 = null;
-                            $option3 = null;
-                            $option4 = null;
-                            $option5 = null;
-                            $option6 = null;
-                            $option7 = null;
                             $option8 = ' selected=""';
-                            $option9 = null;
                         } else {
-                            $option1 = null;
-                            $option2 = null;
-                            $option3 = null;
-                            $option4 = null;
-                            $option5 = null;
-                            $option6 = null;
-                            $option7 = null;
-                            $option8 = null;
                             $option9 = ' selected=""';
                         }
                         ?>
