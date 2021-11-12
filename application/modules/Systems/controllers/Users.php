@@ -372,7 +372,7 @@ class Users extends CI_Controller {
         $token = Dekrip(Post_get('token'));
         if ($token == 'benar') {
             header('Content-Disposition: attachment; filename=' . md5(date('Y-m-d H:i:s')) . '.xlsx');
-            readfile(base_url('assets/media/sertif.xlsx'));
+            readfile(FCPATH . 'assets/media/sertif.xlsx');
         } else {
             echo "your token not match!";
         }
