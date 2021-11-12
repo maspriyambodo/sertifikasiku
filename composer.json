@@ -17,7 +17,8 @@
         "php-curl-class/php-curl-class": "9999999-dev",
         "phpoffice/phpspreadsheet": "1.18.0",
         "swiftmailer/swiftmailer": "^6.2",
-        "twbs/bootstrap": "^5.1"
+        "twbs/bootstrap": "^5.1",
+        "chriskacerguis/codeigniter-restserver": "^3.1"
     },
     "support": {
         "source": "https://github.com/maspriyambodo/master_cms",
