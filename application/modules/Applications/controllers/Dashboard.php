@@ -54,7 +54,7 @@ class Dashboard extends CI_Controller {
         $list = $this->model->lists();
         $data = [];
         $no = Post_input("start");
-        $privilege = $this->bodo->Check_previlege('Systems/Users/index/');
+        $privilege = $this->bodo->Check_previlege('Applications/Dashboard/index/');
         foreach ($list as $users) {
             $no++;
             $row = [];
