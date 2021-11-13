@@ -98,6 +98,7 @@ class M_streaming extends CI_Model {
                 ->join('dt_userinterest', 'dt_userinterest.id_materi = dt_materi.id', 'LEFT')
                 ->where('`dt_materi`.`stat` <>', 2, false)
                 ->where('DATE_FORMAT(dt_materi.time_start,"%Y-%m-%d") >=', 'DATE_FORMAT(NOW(),"%Y-%m-%d")', false)
+                ->group_by('dt_materi.id')
                 ->order_by('date_format( dt_materi.time_start, "%Y-%m-%d" ) ASC')
                 ->order_by('dt_materi.id_sesi ASC')
                 ->get()
