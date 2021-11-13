@@ -22,7 +22,8 @@ class M_absen extends CI_Model {
                     ->join('mt_sesimateri', 'dt_materi.id_sesi = mt_sesimateri.id')
                     ->group_by('tr_absensi.user_id')
                     ->group_by('tr_absensi.materi_id')
-                    ->order_by('mt_sesimateri.id ASC');
+                    ->order_by('date_format( dt_materi.time_start, "%Y-%m-%d" ) ASC')
+                    ->order_by('dt_materi.id_sesi ASC');
         } else {
             $exec = $this->db->select('tr_absensi.id AS id_absensi,sys_users.uname AS email,sys_roles.`name` AS role_name,dt_users.nama AS fullname,dt_users.telp,dt_users.pekerjaan,DATE_FORMAT(dt_materi.time_start,"%d %b %Y") AS time_start,mt_sesimateri.nama AS nama_sesi,dt_materi.nama_materi,dt_materi.narasumber,dt_materi.title_narsum,tr_absensi.rating_materi,tr_absensi.syscreatedate AS waktu_absen');
             $this->db->from($this->table)
@@ -34,7 +35,8 @@ class M_absen extends CI_Model {
                     ->where('`sys_users`.`id`', $id_user, false)
                     ->group_by('tr_absensi.user_id')
                     ->group_by('tr_absensi.materi_id')
-                    ->order_by('mt_sesimateri.id ASC');
+                    ->order_by('date_format( dt_materi.time_start, "%Y-%m-%d" ) ASC')
+                    ->order_by('dt_materi.id_sesi ASC');
         }
         return $exec;
     }
