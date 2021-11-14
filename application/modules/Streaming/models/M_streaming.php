@@ -95,7 +95,7 @@ class M_streaming extends CI_Model {
 	mt_industri.nama AS nama_segment')
                 ->from('dt_materi')
                 ->join('mt_industri', 'dt_materi.id_industri = mt_industri.id')
-                ->join('dt_userinterest', 'dt_userinterest.id_materi = dt_materi.id', 'LEFT')
+                ->join('dt_userinterest', 'dt_userinterest.id_materi = dt_materi.id AND dt_userinterest.id_user = ' . Dekrip($this->session->userdata('id_user')) . '', 'LEFT')
                 ->where('`dt_materi`.`stat` <>', 2, false)
                 ->where('DATE_FORMAT(dt_materi.time_start,"%Y-%m-%d") >=', 'DATE_FORMAT(NOW(),"%Y-%m-%d")', false)
                 ->group_by('dt_materi.id')
@@ -103,6 +103,7 @@ class M_streaming extends CI_Model {
                 ->order_by('dt_materi.id_sesi ASC')
                 ->get()
                 ->result();
+        log_message('error', $this->db->last_query());
         return $exec;
     }
 

@@ -404,7 +404,13 @@
                                                     . '<div style="font-family: Galano Grotesque Medium;font-size: 8px;line-height: 9px;color: #FFFFFF;padding:4px 0px;"><i class="fas fa-bell"></i> set reminder</div>'
                                                     . '</div>'
                                                     . '</div>';
-                                        } else {
+                                        } elseif ($schedule_materi->stat_schedule == 0) {
+                                            $btn_schedule = '<div class="text-center" style="float:right;">'
+                                                    . '<div id="btn_reminder' . $schedule_materi->id_materi . '" style="width: 83px;background: #459CCF;box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.1);border-radius: 4px;cursor:pointer;" title="set reminder" onclick="set_reminder(' . $schedule_materi->id_materi . ')">'
+                                                    . '<div style="font-family: Galano Grotesque Medium;font-size: 8px;line-height: 9px;color: #FFFFFF;padding:4px 0px;"><i class="fas fa-bell"></i> set reminder</div>'
+                                                    . '</div>'
+                                                    . '</div>';
+                                        } elseif (empty($schedule_materi->stat_schedule)) {
                                             $btn_schedule = '<div class="text-center" style="float:right;">'
                                                     . '<div id="btn_reminder' . $schedule_materi->id_materi . '" style="width: 83px;background: #459CCF;box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.1);border-radius: 4px;cursor:pointer;" title="set reminder" onclick="set_reminder(' . $schedule_materi->id_materi . ')">'
                                                     . '<div style="font-family: Galano Grotesque Medium;font-size: 8px;line-height: 9px;color: #FFFFFF;padding:4px 0px;"><i class="fas fa-bell"></i> set reminder</div>'
