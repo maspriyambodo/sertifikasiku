@@ -392,13 +392,7 @@
                                             </div>
                                         </div>
                                         <?php
-                                        //$schedule_materi->time_start
-                                        $time_start = date_create($schedule_materi->time_start);
-                                        $time_now = date_create(date('Y-m-d H:i:s'));
-                                        $date_schedule = date_diff($time_start, $time_now);
-                                        if ($time_start <= 0) {
-                                            $btn_schedule = null;
-                                        } elseif ($schedule_materi->stat_schedule == 1) {
+                                        if ($schedule_materi->stat_schedule == 1) {
                                             $btn_schedule = '<div class="text-center" style="float:right;">'
                                                     . '<div id="btn_reminder' . $schedule_materi->id_materi . '" style="width: 83px;background: #878787;box-shadow:0px 2px 2px rgba(0, 0, 0, 0.1);border-radius: 4px;cursor:pointer;" title="unset reminder" onclick="unset_reminder(' . $schedule_materi->id_materi . ')">'
                                                     . '<div style="font-family: Galano Grotesque Medium;font-size: 8px;line-height: 9px;color: #FFFFFF;padding:4px 0px;"><i class="fas fa-bell"></i> set reminder</div>'
