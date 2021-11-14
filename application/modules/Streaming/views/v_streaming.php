@@ -35,9 +35,15 @@
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0 d-lg-none">
                         <?php
                         if (Dekrip($this->session->userdata('role_id')) == 1 or Dekrip($this->session->userdata('role_id')) == 2) {
-                            echo '<li class="nav-item">'
-                            . '<a class="nav-link" href="javascript:absensi();">Absensi</a>'
-                            . '</li>';
+                            if ($this->bodo->Sys('absensi_member') == 0) {
+                                echo '<li id="absensi_control1" class="nav-item">'
+                                . '<a class="nav-link" href="javascript:enable_absensi();">Enable Absensi</a>'
+                                . '</li>';
+                            } else {
+                                echo '<li id="absensi_control1" class="nav-item">'
+                                . '<a class="nav-link" href="javascript:disable_absensi();">Disable Absensi</a>'
+                                . '</li>';
+                            }
                             if ($this->bodo->Sys('login_member') == 0) {
                                 echo '<li class="nav-item">'
                                 . '<a class="nav-link" href="javascript:enable_login();">Enable Login</a>'
@@ -48,7 +54,9 @@
                                 . '</li>';
                             }
                         } else {
-                            null;
+                            echo '<li class="nav-item">'
+                            . '<a class="nav-link" href="javascript:absensi_member();">Absensi</a>'
+                            . '</li>';
                         }
                         ?>
                         <li class="nav-item dropdown">
@@ -83,9 +91,15 @@
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                         <?php
                         if (Dekrip($this->session->userdata('role_id')) == 1 or Dekrip($this->session->userdata('role_id')) == 2) {
-                            echo '<li class="nav-item">'
-                            . '<a class="nav-link btn btn-light" href="javascript:absensi();" style="color:#214980 !important;">Absensi</a>'
-                            . '</li>';
+                            if ($this->bodo->Sys('absensi_member') == 0) {
+                                echo '<li id="absensi_control2" class="nav-item">'
+                                . '<a class="nav-link btn btn-light" href="javascript:enable_absensi();" style="color:#214980 !important;">Enable Absensi</a>'
+                                . '</li>';
+                            } else {
+                                echo '<li id="absensi_control2" class="nav-item">'
+                                . '<a class="nav-link btn btn-light" href="javascript:disable_absensi();" style="color:#214980 !important;">Disable Absensi</a>'
+                                . '</li>';
+                            }
                             if ($this->bodo->Sys('login_member') == 0) {
                                 echo '<li id="login_control" class="nav-item mx-3">'
                                 . '<a class="nav-link btn btn-light" href="javascript:enable_login();" style="color:#214980 !important;">Enable Login</a>'
@@ -96,7 +110,9 @@
                                 . '</li>';
                             }
                         } else {
-                            null;
+                            echo '<li class="nav-item">'
+                            . '<a class="nav-link btn btn-light" href="javascript:absensi_member();" style="color:#214980 !important;margin-right:5px;">Absensi</a>'
+                            . '</li>';
                         }
                         ?>
                         <li class="nav-item dropdown">
@@ -788,26 +804,6 @@
                         scrollTop: $('#scroll-pull').get(0).scrollHeight
                     });
                 });
-
-                socket.on('absensi', function () {
-                    var role_name = $('input[name="role_name"]').val();
-                    var fullname = $('input[name="fullname"]').val();
-                    var absenmsg = document.getElementById('absenmsg');
-                    var nama_materi = $('input[name="nama_materi"]');
-                    var id_absensi = $('input[name="id_absensi"]');
-                    if (role_name === 'Super User' || role_name === 'Administrator') {
-                        null;
-                    } else {
-                        if (fullname === '') {
-                            absenmsg.innerHTML = 'Halo, terimakasih telah mengikuti ' + nama_materi.val();
-                            $('#modal_absen').modal('show');
-                        } else {
-                            absenmsg.innerHTML = 'Halo ' + fullname + ', terimakasih telah mengikuti ' + nama_materi.val();
-                            $('#modal_absen').modal('show');
-                        }
-                    }
-                });
-
                 socket.on('<?php echo base64_encode($this->session->userdata('uname')); ?>', function (data) {
                     if (data.category === 1) {
                         $.ajax({
@@ -979,7 +975,6 @@
                 $('input[name="msgtxt"]').val('@' + uname + ' ');
                 $('textarea[name="msgtxt2"]').val('@' + uname + ' ');
             }
-
             function rating(id) {
                 if (id === 1) {
                     $('#rating1').attr('style', 'color:yellow;font-size: 48px;cursor:pointer;');
@@ -1121,6 +1116,32 @@
                     }, error: function (jqXHR) {
                         btn_reminder.attr('onclick', 'unset_reminder(' + id_materi + ')');
                         btn_reminder.attr('style', 'width: 83px;background: #878787;box-shadow:0px 2px 2px rgba(0, 0, 0, 0.1);border-radius: 4px;cursor:pointer;');
+                        toastr.error('error ' + jqXHR.status + ' ' + jqXHR.statusText);
+                    }
+                });
+            }
+            function absensi_member() {
+                $.ajax({
+                    type: "GET",
+                    url: "<?php echo base_url('Streaming/absensi_member/'); ?>",
+                    dataType: "json",
+                    cache: false,
+                    success: function (data) {
+                        if (data.status_absensi === true) {
+                            var fullname = $('input[name="fullname"]').val();
+                            var absenmsg = document.getElementById('absenmsg');
+                            var nama_materi = $('input[name="nama_materi"]');
+                            if (fullname === '') {
+                                absenmsg.innerHTML = 'Halo, terimakasih telah mengikuti ' + nama_materi.val();
+                                $('#modal_absen').modal('show');
+                            } else {
+                                absenmsg.innerHTML = 'Halo ' + fullname + ', terimakasih telah mengikuti ' + nama_materi.val();
+                                $('#modal_absen').modal('show');
+                            }
+                        } else {
+                            toastr.error('harap mengikuti materi sampai selesai!');
+                        }
+                    }, error: function (jqXHR) {
                         toastr.error('error ' + jqXHR.status + ' ' + jqXHR.statusText);
                     }
                 });

@@ -277,4 +277,41 @@ class M_streaming extends CI_Model {
         return $result;
     }
 
+    public function status_absensi() {
+        $absensi_member = $this->db->select('sys_app.absensi_member')
+                ->from('sys_app')
+                ->get()
+                ->result();
+        log_message('error', $this->db->last_query());
+        return $absensi_member[0]->absensi_member;
+    }
+
+    public function enable_absen() {
+        $this->db->trans_begin();
+        $this->db->set('`sys_app`.`absensi_member`', 1, false)
+                ->update('sys_app');
+        if ($this->db->trans_status() === false) {
+            $this->db->trans_rollback();
+            $result = false;
+        } else {
+            $this->db->trans_commit();
+            $result = true;
+        }
+        return $result;
+    }
+
+    public function disable_absen() {
+        $this->db->trans_begin();
+        $this->db->set('`sys_app`.`absensi_member`', 0, false)
+                ->update('sys_app');
+        if ($this->db->trans_status() === false) {
+            $this->db->trans_rollback();
+            $result = false;
+        } else {
+            $this->db->trans_commit();
+            $result = true;
+        }
+        return $result;
+    }
+
 }

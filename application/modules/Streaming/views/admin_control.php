@@ -85,10 +85,12 @@
             }
         });
     }
-    function absensi() {
+    function enable_absensi() {
+        var absensi_control1 = $('#absensi_control1');
+        var absensi_control2 = $('#absensi_control2');
         Swal.fire({
             title: 'Absensi Peserta',
-            html: 'pesan absensi akan muncul pada halaman peserta',
+            html: 'izinkan absensi peserta',
             icon: 'question',
             confirmButtonText: 'OK',
             showCancelButton: true,
@@ -97,8 +99,64 @@
             allowEnterKey: true
         }).then((result) => {
             if (result.isConfirmed === true) {
-                socket.emit('absensi', {
-
+                $.ajax({
+                    type: "GET",
+                    url: "<?php echo base_url('Streaming/absensi_admin?status_absensi=1'); ?>",
+                    dataType: "json",
+                    cache: false,
+                    success: function (data) {
+                        if (data.stat === true) {
+                            absensi_control1.empty();
+                            absensi_control2.empty();
+                            toastr.success('status absensi berhasil diubah!');
+                            absensi_control1.append('<a class="nav-link" href="javascript:disable_absensi();">Disable Absensi</a>');
+                            absensi_control2.append('<a class="nav-link btn btn-light" href="javascript:disable_absensi();">Disable Absensi</a>');
+                        } else {
+                            toastr.error('status absensi gagal diubah!');
+                        }
+                    },
+                    error: function (jqXHR) {
+                        toastr.error('error ' + jqXHR.status + ' ' + jqXHR.statusText);
+                    }
+                });
+            } else {
+                return true;
+            }
+        });
+    }
+    function disable_absensi() {
+        var absensi_control1 = $('#absensi_control1');
+        var absensi_control2 = $('#absensi_control2');
+        Swal.fire({
+            title: 'Absensi Peserta',
+            html: 'hilangkan izin absensi peserta',
+            icon: 'question',
+            confirmButtonText: 'OK',
+            showCancelButton: true,
+            allowOutsideClick: false,
+            allowEscapeKey: false,
+            allowEnterKey: true
+        }).then((result) => {
+            if (result.isConfirmed === true) {
+                $.ajax({
+                    type: "GET",
+                    url: "<?php echo base_url('Streaming/absensi_admin?status_absensi=0'); ?>",
+                    dataType: "json",
+                    cache: false,
+                    success: function (data) {
+                        if (data.stat === true) {
+                            absensi_control1.empty();
+                            absensi_control2.empty();
+                            toastr.success('status absensi berhasil diubah!');
+                            absensi_control1.append('<a class="nav-link" href="javascript:enable_absensi();">Enable Absensi</a>');
+                            absensi_control2.append('<a class="nav-link btn btn-light" href="javascript:enable_absensi();">Enable Absensi</a>');
+                        } else {
+                            toastr.error('status absensi gagal diubah!');
+                        }
+                    },
+                    error: function (jqXHR) {
+                        toastr.error('error ' + jqXHR.status + ' ' + jqXHR.statusText);
+                    }
                 });
             } else {
                 return true;

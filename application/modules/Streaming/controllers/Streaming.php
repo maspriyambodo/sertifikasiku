@@ -261,4 +261,39 @@ class Streaming extends CI_Controller {
         return ToJson($result);
     }
 
+    public function absensi_member() {
+        $status_absensi = $this->model->status_absensi();
+        if ($status_absensi == 1) {
+            $response = [
+                'status_absensi' => true
+            ];
+        } else {
+            $response = [
+                'status_absensi' => false
+            ];
+        }
+        return ToJson($response);
+    }
+
+    public function absensi_admin() {
+        $id = Post_get('status_absensi');
+        $response = [];
+        if ($id == 1) {
+            $enable_absen = $this->model->enable_absen();
+            if ($enable_absen == true) {
+                $response['stat'] = true;
+            } else {
+                $response['stat'] = false;
+            }
+        } else {
+            $disable_absen = $this->model->disable_absen();
+            if ($disable_absen == true) {
+                $response['stat'] = true;
+            } else {
+                $response['stat'] = false;
+            }
+        }
+        return ToJson($response);
+    }
+
 }
