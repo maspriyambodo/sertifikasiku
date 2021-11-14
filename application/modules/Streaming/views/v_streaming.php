@@ -846,13 +846,6 @@
                     event.preventDefault();
                     event.stopPropagation();
                 });
-                $('#owl-carousel3').owlCarousel({
-                    items: 4,
-                    autoplay: false,
-                    autoWidth: false,
-                    center: true,
-                    dots: false
-                });
                 $('#msg_dir').animate({
                     scrollTop: $('#msg_dir').get(0).scrollHeight
                 });
