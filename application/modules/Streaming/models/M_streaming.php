@@ -103,7 +103,6 @@ class M_streaming extends CI_Model {
                 ->order_by('dt_materi.id_sesi ASC')
                 ->get()
                 ->result();
-        log_message('error', $this->db->last_query());
         return $exec;
     }
 
