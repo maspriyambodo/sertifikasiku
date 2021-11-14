@@ -683,7 +683,6 @@
                 }
             };
             $(document).ready(function () {
-                $('#tos').modal('show');
                 join_stream();
                 setInterval(function () {
                     console.clear();
@@ -707,6 +706,12 @@
                 $('#bgndVideo').YTPlayer({
                     onReady: function (play) {
                         var height_bgndVideo = $('.YTPOverlay').height();
+                        var role_name = $('input[name="role_name"]').val();
+                        if (role_name === 'Super User' || role_name === 'Administrator') {
+                            null;
+                        } else {
+                            $('#tos').modal('show');
+                        }
                         $('#live-chat-lg').attr('style', 'height:100%;max-height:' + height_bgndVideo + 'px;height:' + height_bgndVideo + 'px;');
                         $('#msg_dir').animate({
                             scrollTop: $('#msg_dir').get(0).scrollHeight
