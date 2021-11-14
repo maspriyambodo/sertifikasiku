@@ -721,7 +721,7 @@
                         });
                     },
                     onError: function (play) {
-                        toastr.error('error while getting video');
+                        toastr.error('error while getting video, please refresh page!');
                     }
                 });
                 socket.on('viewers', function (data) {
