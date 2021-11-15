@@ -158,7 +158,7 @@
         echo '<input type="hidden" name="fullname" value="' . $this->session->userdata('fullname') . '"/>';
         ?>
         <div class="clearfix pt-5 d-xl-none"></div>
-        <section id="main_webinar" class="clearfix main_webinar" style="padding-bottom:20px;">
+        <section id="main_webinar" class="clearfix main_webinar" style="padding-bottom:20px;" loading="lazy">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-8 d-xs-block col-xs-12 col-12 col-md-12">

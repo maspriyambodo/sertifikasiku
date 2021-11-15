@@ -63,7 +63,7 @@
                 </div>
             </div>
         </nav>
-        <section id="main_webinar" class="clearfix main_webinar">
+        <section id="main_webinar" class="clearfix main_webinar" loading="lazy">
             <div class="container">
                 <div class="row pt-5">
                     <div class="col-lg-8 d-xs-block col-xs-12 col-12 col-md-12">
