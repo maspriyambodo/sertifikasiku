@@ -7,11 +7,11 @@
     <div class="card-body">
         <div class="form-group">
             <label>Narasumber:</label>
-            <?php echo $table_rating[0]->narasumber;?>
+            <?php echo $table_rating[0]->narasumber; ?>
         </div>
         <div class="form-group">
             <label>Judul Materi:</label>
-            <?php echo $table_rating[0]->nama_materi;?>
+            <?php echo $table_rating[0]->nama_materi; ?>
         </div>
         <div class="table-responsive">
             <table class="table table-bordered table-hover table-striped" style="width:100%;">
@@ -73,6 +73,10 @@ unset($_SESSION['succ_msg']);
                 {extend: 'excelHtml5', footer: true},
                 {extend: 'csvHtml5', footer: true},
                 {extend: 'pdfHtml5', footer: true}
+            ],
+            lengthMenu: [
+                [10, 50, 100, 500, -1],
+                ['10', '50', '100', '500', 'all']
             ]
         });
     };
