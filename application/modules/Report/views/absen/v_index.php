@@ -162,12 +162,17 @@ unset($_SESSION['succ_msg']);
             dom: `<'row'<'col-sm-6 text-left'f><'col-sm-6 text-right'B>>
                 <'row'<'col-sm-12'tr>>
                 <'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7 dataTables_pager'lp>>`,
+            lengthMenu: [
+                [10, 50, 100, 500, -1],
+                ['10', '50', '100', '500', 'all']
+            ],
             buttons: [
                 {extend: 'print', footer: true},
                 {extend: 'copyHtml5', footer: true},
                 {extend: 'excelHtml5', footer: true},
                 {extend: 'csvHtml5', footer: true},
-                {extend: 'pdfHtml5', footer: true}
+                {extend: 'pdfHtml5', footer: true},
+                {extend: 'colvis'}
             ],
             "ajax": {
                 "url": "<?php echo site_url('Report/Absensi/lists') ?>",
