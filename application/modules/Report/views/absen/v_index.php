@@ -223,6 +223,10 @@ unset($_SESSION['succ_msg']);
                 {extend: 'csvHtml5', footer: true},
                 {extend: 'pdfHtml5', footer: true}
             ],
+            lengthMenu: [
+                [10, 50, 100, 500, -1],
+                ['10', '50', '100', '500', 'all']
+            ],
             columnDefs: [
                 {
                     targets: 0,
