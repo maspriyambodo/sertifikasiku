@@ -10,5 +10,4 @@ deploy-server:
     - sshpass -p ${SSH_KEY} ssh -oStrictHostKeyChecking=no -p ${SSH_PORT} ${SSH_LOGIN} -t "cd /var/www/html/adminlayanan && sh update.sh"
     - echo "Job-mu is sukespulll!"
   only:
-    - main
-
+    - master
