@@ -278,7 +278,7 @@
             </div>
         </div>
         <div class="modal fade" id="coming_soon" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-            <div class="modal-dialog modal-xl">
+            <div class="modal-dialog modal-xl modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-body">
                         <div class="mb-2" style="float: right;">
