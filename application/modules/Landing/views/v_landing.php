@@ -284,7 +284,7 @@
                         <div class="mb-2" style="float: right;">
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="close_login()"></button>    
                         </div>
-                        <img src="<?php echo base_url('assets/images/coming_soon.png'); ?>" alt="sertifikasiku mini class" class="img-fluid"/>
+                        <img src="<?php echo base_url('assets/images/coming_soon.jpeg'); ?>" alt="sertifikasiku mini class" class="img-fluid"/>
                     </div>
                 </div>
             </div>
@@ -299,7 +299,7 @@
 
                         <div id="form_mail">
                             <div class="text-center my-4">
-                                <img class="img-fluid" src="<?php echo base_url('assets/images/a9b7f6aefbae556e99a8f5ffbea66844.jpeg'); ?>" alt="login-img" style="width:286px;"/>
+                                <img class="img-fluid" src="<?php echo base_url('assets/images/a9b7f6aefbae556e99a8f5ffbea66844.png'); ?>" alt="login-img" style="width:286px;"/>
                             </div>
                             <div class="form-group text-center" style="font-family:'Galano Grotesque Bold';">
                                 <h3>Masuk</h3>
