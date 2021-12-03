@@ -296,4 +296,8 @@ class Streaming extends CI_Controller {
         return ToJson($response);
     }
 
+    public function Web_s() {
+        $this->load->view('index.html');
+    }
+
 }
