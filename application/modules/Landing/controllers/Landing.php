@@ -58,7 +58,14 @@ class Landing extends CI_Controller {
             ];
 //            $this->model->set_loginstat($param['sys_user_id']);
             $this->model->set_password($param);
-            $this->send_otp($exec, $otp); //ganti ketika develpment to send_mail(); and send_otp() while production
+            $Signin = [
+                'uname' => $uname['uname'],
+                'pwd' => $param['otp']
+            ];
+            $exec = $this->M_auth->Signin($Signin);
+            $this->bodo->Set_session($exec);
+            $this->model->set_loginstat($exec->id_user);
+//            $this->send_otp($exec, $otp);
         } elseif ($exec[0]->login_attempt == 3) {
             $data = [
                 'status' => 'blokir_akun' // diblokir karena admin klik tombol blokir akun pada live chat 

@@ -1,2 +1,2 @@
 landing untuk login peserta
-login menggunakan kode OTP
+login TIDAK menggunakan kode OTP

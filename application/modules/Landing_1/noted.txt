@@ -1,2 +1,0 @@
-landing untuk login peserta
-login TIDAK menggunakan kode OTP
