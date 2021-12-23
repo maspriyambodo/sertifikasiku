@@ -24,7 +24,7 @@
             <div class="container-fluid">
                 <a class="navbar-brand" href="javascript:void();">
                     <?php
-                    echo '<img class="img-thumbnail" src="' . base_url('assets/images/systems/' . $this->bodo->Sys('logo')) . '" alt="Sertifikasiku logo"/>';
+                    echo '<img class="img-thumbnail" src="' . base_url('assets/images/systems/' . $this->bodo->Sys('logo')) . '" alt="Sertifikasiku logo" style="max-width:115px;"/>';
                     ?>
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" style="float:right;position:inherit;padding:1px;">
