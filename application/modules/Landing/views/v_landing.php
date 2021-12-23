@@ -182,7 +182,7 @@
                         <div class="mb-2" style="float: right;">
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="close_login()"></button>    
                         </div>
-                        <img src="<?php echo base_url('assets/images/coming_soon.jpeg'); ?>" alt="sertifikasiku mini class" class="img-fluid"/>
+                        <img src="<?php echo base_url('assets/images/coming_soon.jpg'); ?>" alt="sertifikasiku mini class" class="img-fluid"/>
                     </div>
                 </div>
             </div>
