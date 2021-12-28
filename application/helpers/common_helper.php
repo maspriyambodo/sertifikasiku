@@ -53,14 +53,14 @@ function _Upload($param) {
     $config['remove_spaces'] = true;
     $config['overwrite'] = true;
     $ci->load->library('upload', $config);
-    shell_exec('chmod 777 ' . $config['upload_path'] . $config['file_name'] . '.*');
+    shell_exec('sudo chmod 777 ' . $config['upload_path'] . $config['file_name'] . '.*');
     if ($ci->upload->do_upload($param['input_name']) == true) {
         $result = $ci->upload->data();
         $result['status'] = true;
+        shell_exec('sudo chmod 644 ' . $config['upload_path'] . $config['file_name'] . '.*');
     } else {
         $result['status'] = false;
     }
-    shell_exec('chmod 644 ' . $config['upload_path'] . $config['file_name'] . '.*');
     return $result;
 }
 
