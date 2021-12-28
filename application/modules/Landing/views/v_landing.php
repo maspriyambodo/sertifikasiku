@@ -33,7 +33,7 @@
         <nav class="navbar navbar-expand-lg navbar-light fixed-top bg-custom">
             <div class="container-fluid">
                 <a class="navbar-brand" href="javascript:void();">
-                    <img class="img-thumbnail" src="<?php echo base_url('assets/images/systems/' . $this->bodo->Sys('logo')); ?>" title="" alt="Festival Sertifikasiku"/>
+                    <img class="img-thumbnail" src="<?php echo base_url('assets/images/systems/' . $this->bodo->Sys('logo')); ?>" alt="Festival Sertifikasiku" style="max-width:115px;"/>
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" style="float:right;position:inherit;padding:1px">
                     <span class="navbar-toggler-icon"></span>
