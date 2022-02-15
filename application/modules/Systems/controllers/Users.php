@@ -334,16 +334,19 @@ class Users extends CI_Controller {
     }
 
     private function Check_duplikat($data, $dt_user) {
-        foreach ($data as $key => $value) {
-            $cek = $this->M_users->Cek_dulikat($value->uname);
-            if ($cek > 0) {
-                unset($data[$key]);
-                unset($dt_user[$key]);
-            } elseif (empty($data[$key]->uname)) {
-                unset($data[$key]);
-                unset($dt_user[$key]);
+        for ($index = 0; $index < count($data); $index++) {
+            $cek = $this->M_users->Cek_dulikat($data[$index]->uname);
+            if ($cek > 0 and!empty($cek)) {
+                unset($data[$index]);
+                unset($dt_user[$index]);
+            } elseif (empty($data[$index]->uname)) {
+                unset($data[$index]);
+                unset($dt_user[$index]);
             }
         }
+        print_array($data);
+        die;
+//            =====
         if (!empty($data)) {
             $this->M_users->Import_m($data);
             $result = $this->_dtuser($dt_user);
