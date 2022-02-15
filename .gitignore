@@ -13,3 +13,5 @@
 /composer.lock
 /node_modules
 /package-lock.json
+/assets/images/systems/logo.*
+/assets/images/systems/favicon.*
